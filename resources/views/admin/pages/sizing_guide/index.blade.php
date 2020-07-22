@@ -5,12 +5,12 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Personal style</h1>
+                <h1>Sizing guide</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                    <li class="breadcrumb-item active">Personal style</li>
+                    <li class="breadcrumb-item active">Sizing guide</li>
                 </ol>
             </div>
         </div>
@@ -20,7 +20,7 @@
 @section('content')
     <div class="primary">
         <p>
-            <a href="{{ route('sizing-guides.create') }}" class="btn btn-success btn-lg">Create Personal style</a>
+            <a href="{{ route('sizing-guides.create') }}" class="btn btn-success btn-lg">Create Sizing guide</a>
         </p>
     </div>
     <?php

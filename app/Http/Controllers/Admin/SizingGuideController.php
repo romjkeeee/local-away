@@ -76,6 +76,7 @@ class SizingGuideController extends Controller
     public function edit(SizingGuide $sizing_guide)
     {
         $data = $sizing_guide;
-        return view('admin.pages.sizing_guide.edit', compact('data'));
+        $sizing_category = SizingCategory::get()->pluck('title', 'id');
+        return view('admin.pages.sizing_guide.edit', compact('data','sizing_category'));
     }
 }

@@ -29,6 +29,10 @@
                     <label>Gender</label>
                     <input class="form-control" value="{{ $data->gender }}" disabled>
                 </div>
+                <div class="form-group">
+                    <label>Sizing category</label>
+                    <input class="form-control" value="{{ $data->sizing_category->title ?? '' }}" disabled>
+                </div>
             </div>
             <!-- /.card-body -->
             <a href="{{ route('sizing-guides.index') }}" class="btn btn-default">Back to list</a>

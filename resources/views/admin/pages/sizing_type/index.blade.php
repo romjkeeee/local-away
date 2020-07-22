@@ -10,7 +10,7 @@
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                    <li class="breadcrumb-item active">Personal style</li>
+                    <li class="breadcrumb-item active">Sizing Types</li>
                 </ol>
             </div>
         </div>
@@ -20,7 +20,7 @@
 @section('content')
     <div class="primary">
         <p>
-            <a href="{{ route('personal-style.create') }}" class="btn btn-success btn-lg">Create Personal style</a>
+            <a href="{{ route('sizing-type.create') }}" class="btn btn-success btn-lg">Create Sizing type</a>
         </p>
     </div>
     <?php
@@ -60,17 +60,19 @@
                                     @else
                                         @if($fields == 'image')
                                             <td><img src="{{asset('storage/'.$user->image)}}"></td>
+                                        @elseif($fields == 'sizing_category_id')
+                                            <td>{{ $user->sizing_category->title ?? '' }}</td>
                                         @else
                                             <td @if($fields == 'title')style="width: 100%"@endif>{{ $user->$fields }}</td>
                                         @endif
                                     @endif
                                 @endforeach
                                 <td>
-                                    <a href="{{ route('travel-purposes.show',[$user->id]) }}">
+                                    <a href="{{ route('sizing-type.show',[$user->id]) }}">
                                         <i class="fas fa-eye"></i>
                                     </a>
                                     @role('admin')
-                                    <a href="{{ route('travel-purposes.edit',[$user->id]) }}">
+                                    <a href="{{ route('sizing-type.edit',[$user->id]) }}">
                                         <i class="fas fa-edit"></i>
                                     </a>
                                     @endrole
