@@ -7,7 +7,7 @@
 @section('content')
     <div class="card card-secondary">
         <div class="card-header">
-            <h3 class="card-title">Sizeng Guide</h3>
+            <h3 class="card-title">Sizing Guide</h3>
         </div>
         <!-- /.card-header -->
         <!-- form start -->
@@ -19,7 +19,7 @@
                 </div>
                 <div class="form-group">
                     <label>Text</label>
-                    <textarea name="text" class="form-control" rows="3" placeholder="Enter ...">{{ $data->text }}</textarea>
+                    <textarea disabled name="text" class="form-control" rows="3" placeholder="Enter ...">{{ $data->text }}</textarea>
                 </div>
                 <div class="form-group">
                     <label>Image</label>

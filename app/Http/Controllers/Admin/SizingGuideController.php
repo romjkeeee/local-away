@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AdminStoreSizingGuides;
+use App\SizingCategory;
 use App\SizingGuide;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -24,7 +25,7 @@ class SizingGuideController extends Controller
      */
     public function index()
     {
-        $data = SizingGuide::all();
+        $data = SizingGuide::query()->with('sizing_category')->get();
         return view('admin.pages.sizing_guide.index', compact('data'));
     }
     /**
@@ -34,7 +35,8 @@ class SizingGuideController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.sizing_guide.create');
+        $sizing_category = SizingCategory::get()->pluck('title', 'id');
+        return view('admin.pages.sizing_guide.create',compact('sizing_category'));
     }
 
     /**

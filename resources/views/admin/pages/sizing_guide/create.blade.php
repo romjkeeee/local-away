@@ -15,11 +15,11 @@
                     {{ csrf_field() }}
                     <?php
                     $form_fields = array(
-                        'sizing_category_id',
                         'title',
                         'text',
                         'image',
                         'gender',
+                        'sizing_category_id',
                     );
                     ?>
                     @foreach($form_fields as $field)
@@ -35,8 +35,8 @@
                             </div>
                         @elseif($field == 'gender')
                             <div class="form-group">
-                                <label for="inputForRole">Gender</label>
-                                <p><select name="gender" class="form-control">
+                                <label for="inputFor{{$field}}">Gender</label>
+                                <p><select name="{{$field}}" class="form-control">
                                         <option selected disabled>Chose gender</option>
                                         <option value="male">Male</option>
                                         <option value="female">Female</option>
@@ -46,6 +46,16 @@
                             <div class="form-group">
                                 <label>{{$field}}</label>
                                 <textarea name="{{$field}}" class="form-control" rows="3" placeholder="Enter ..."></textarea>
+                            </div>
+                        @elseif($field == 'sizing_category_id')
+                            <div class="form-group">
+                                <label for="inputFor{{$field}}">Sizing Category</label>
+                                <p><select class="form-control" name="{{$field}}">
+                                        <option selected disabled>Chose sizing category</option>
+                                        @foreach($sizing_category as $key => $cat)
+                                            <option value="{{ $key }}">{{ $cat }}</option>
+                                        @endforeach
+                                    </select></p>
                             </div>
                         @else
                             <div class="form-group">
@@ -80,6 +90,12 @@
                             title: {
                                 required: true,
                             },
+                            sizing_category_id: {
+                                required: true,
+                            },
+                            text: {
+                                required: true,
+                            },
                             image: {
                                 required: true,
                             },
@@ -90,6 +106,12 @@
                         messages: {
                             title: {
                                 required: "Please enter a title",
+                            },
+                            sizing_category_id: {
+                                required: "Please enter a sizing category",
+                            },
+                            text: {
+                                required: "Please enter a text",
                             },
                             image: {
                                 required: "Please upload a image",

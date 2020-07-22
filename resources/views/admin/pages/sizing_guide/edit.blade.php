@@ -52,6 +52,11 @@
                                         @endforeach
                                     </select></p>
                             </div>
+                        @elseif($field == 'text')
+                            <div class="form-group">
+                                <label>{{ $field }}</label>
+                                <textarea disabled name="{{ $field }}" class="form-control" rows="3">{{$data[$field]}}</textarea>
+                            </div>
                         @else
                             <div class="form-group">
                                 <label for="inputFor{{ $field }}">{{ $field }}</label>

@@ -60,20 +60,20 @@
                                                 </div>
                                             </div>
                                         </td>
-                                    @else
-                                        @if($fields == 'image')
+                                    @elseif($fields == 'image')
                                             <td><img src="{{asset('storage/'.$user->image)}}"></td>
+                                    @elseif($fields == 'sizing_category_id')
+                                            <td>{{ $user->sizing_category->title ?? '' }}</td>
                                         @else
                                             <td @if($fields == 'text')style="width: 100%"@endif>{{ $user->$fields }}</td>
-                                        @endif
                                     @endif
                                 @endforeach
                                 <td>
-                                    <a href="{{ route('travel-purposes.show',[$user->id]) }}">
+                                    <a href="{{ route('sizing-guides.show',[$user->id]) }}">
                                         <i class="fas fa-eye"></i>
                                     </a>
                                     @role('admin')
-                                    <a href="{{ route('travel-purposes.edit',[$user->id]) }}">
+                                    <a href="{{ route('sizing-guides.edit',[$user->id]) }}">
                                         <i class="fas fa-edit"></i>
                                     </a>
                                     @endrole
