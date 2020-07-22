@@ -1,0 +1,92 @@
+#---------------------------------------------------------------
+#-- Variables Section --
+#---------------------------------------------------------------
+.common:
+    tags:
+    - &ENV_TAG develop
+    only:
+    - &ENV_ONLY master
+
+variables:
+    CI_ENV_GIT: "git@peiko-git.space:CaptainNemo/localway.git"
+    CI_ENV_BRANCH: "master"
+    CI_MYSQL_USER: ""
+    CI_MYSQL_PASS: ""
+
+#---------------------------------------------------------------
+#-- Deploy stages --
+#---------------------------------------------------------------
+stages:
+    - check_clone
+    - deploy
+    - update
+    - migrate
+
+#---------------------------------------------------------------
+#-- Сhecking the existence of the directory and files in it. --
+#---------------------------------------------------------------
+test_dir:
+    stage: check_clone
+    tags:
+        - *ENV_TAG
+    only:
+        - *ENV_ONLY
+    script:
+        # -- If the directory exists and there are files in it, then no action is required --
+        - "[ -d ~/www ] && [ `ls -1q ~/www| wc -l` -ne '0' ] && echo 'Look ok' && exit 0;"
+        #-- Else. Remove old dir if exist --
+        - "[ -d ~/www ] && rm -fr ~/www"
+        #-- Clone project--
+        - "cd ~ && git clone --branch $CI_ENV_BRANCH $CI_ENV_GIT www"
+        #-- Init --
+        - "cd ~/www"
+        - "composer install"
+        - "cp .env.example .env"
+        - "php artisan key:generate"
+        - "php artisan migrate --seed"
+        - "php artisan cache:clear"
+        - "php artisan config:clear"
+        - "php artisan storage:link"
+        #-- End --
+
+
+#---------------------------------------------------------------
+#-- Git deploy --
+#---------------------------------------------------------------
+git_pull:
+    stage: deploy
+    tags:
+        - *ENV_TAG
+    only:
+        - *ENV_ONLY
+    script:
+        - "cd ~/www && git pull"
+    when: on_success
+
+#---------------------------------------------------------------
+#-- Compouser update --
+#---------------------------------------------------------------
+update_composer:
+    stage: update
+    tags:
+        - *ENV_TAG
+    only:
+        - *ENV_ONLY
+    script:
+        - "cd ~/www && composer install"
+    when: on_success
+
+
+#---------------------------------------------------------------
+#-- Apply migration --
+#---------------------------------------------------------------
+migrate_apply:
+    stage: migrate
+    tags:
+        - *ENV_TAG
+    only:
+        - *ENV_ONLY
+    script:
+        - "cd ~/www && php artisan migrate"
+    allow_failure: true
+    when: on_success
