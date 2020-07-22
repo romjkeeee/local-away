@@ -60,7 +60,7 @@
                                         </td>
                                     @else
                                         @if($fields == 'image')
-                                            <td><img src="{{asset('storage/'.$user->image)}}"></td>
+                                            <td><img class="img-thumbnail" src="{{asset('storage/'.$user->image)}}"></td>
                                         @else
                                             <td @if($fields == 'title')style="width: 100%"@endif>{{ $user->$fields }}</td>
                                         @endif

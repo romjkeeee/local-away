@@ -7,41 +7,49 @@
 @section('content')
     <div class="card card-secondary">
         <div class="card-header">
-            <h3 class="card-title">User create</h3>
+            <h3 class="card-title">Body type create</h3>
         </div>
         <div class="panel panel-default">
             <div class="card-body">
-                <form id="storeForm" action="{{ route('users.store') }}" method="POST">
+                <form id="storeForm" action="{{ route('body-type.store') }}" enctype="multipart/form-data" method="POST">
                     {{ csrf_field() }}
-                <?php
+                    <?php
                     $form_fields = array(
-                        'name',
-                        'email',
-                        'password',
+                        'title',
+                        'image',
+                        'gender',
                     );
                     ?>
                     @foreach($form_fields as $field)
-                        @error($field)
-                        <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                        @enderror
-                        <div class="form-group">
-                            <label for="inputFor{{ $field }}">{{$field}}</label>
-                            <input class="form-control" name="{{ $field }}" id="input{{ $field }}">
-                        </div>
+                        @if($field == 'image')
+                            <div class="form-group">
+                                <label for="exampleInput{{ $field }}">{{ $field }}</label>
+                                <div class="input-group">
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="exampleInput{{ $field }}" name="{{ $field }}">
+                                        <label class="custom-file-label" for="exampleInput{{ $field }}">Choose file</label>
+                                    </div>
+                                </div>
+                            </div>
+                        @elseif($field == 'gender')
+                            <div class="form-group">
+                                <label for="inputForRole">Gender</label>
+                                <p><select name="gender" class="form-control">
+                                        <option selected disabled>Chose gender</option>
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                    </select></p>
+                            </div>
+                        @else
+                            <div class="form-group">
+                                <label for="inputFor{{ $field }}">{{$field}}</label>
+                                <input class="form-control" name="{{ $field }}" id="input{{ $field }}">
+                            </div>
+                        @endif
                     @endforeach
                     <div class="form-group">
-                        <label for="inputForRole">Role</label>
-                        <p><select name="role" class="form-control">
-                                <option selected disabled>Chose role</option>
-                                <option value="admin">Admin</option>
-                                <option value="user">User</option>
-                            </select></p>
-                    </div>
-                    <div class="form-group">
                         <button name="submit" type="submit" class="btn btn-secondary margin-r-5">Save</button>
-                        <a href="{{ route('users.index') }}" class="btn btn-default">Back to list</a>
+                        <a href="{{ route('body-type.index') }}" class="btn btn-default">Back to list</a>
 
                     </div>
                 </form>
@@ -49,12 +57,13 @@
         </div>
         @stop
 
-@section('js')
+        @section('js')
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/additional-methods.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/bs-custom-file-input/1.3.4/bs-custom-file-input.min.js"></script>
 
-    <script type="text/javascript">
-            $(document).ready(function () {
+            <script type="text/javascript">
+                $(document).ready(function () {
                     $.validator.setDefaults({
                         submitHandler: function () {
                             document.getElementById('storeForm').submit()
@@ -62,34 +71,26 @@
                     });
                     $('#storeForm').validate({
                         rules: {
-                            name: {
+                            title: {
                                 required: true,
                             },
-                            email: {
+                            image: {
                                 required: true,
-                                email: true,
                             },
-                            password: {
-                                required: true,
-                                minlength: 5
-                            },
-                            role: {
+                            gender: {
                                 required: true,
                             },
                         },
                         messages: {
-                            name: {
-                                required: "Please enter a name",
+                            title: {
+                                required: "Please enter a title",
                             },
-                            email: {
-                                required: "Please enter a email address",
-                                email: "Please enter a valid email address"
+                            image: {
+                                required: "Please upload a image",
                             },
-                            password: {
-                                required: "Please provide a password",
-                                minlength: "Your password must be at least 5 characters long"
+                            gender: {
+                                required: "Please chose a gender",
                             },
-                            role: "Please chose our role"
                         },
                         errorElement: 'span',
                         errorPlacement: function (error, element) {
@@ -104,5 +105,7 @@
                         }
                     });
                 });
+
+                $(document).ready(function () { bsCustomFileInput.init(); });
             </script>
 @stop

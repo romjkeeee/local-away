@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AdminStoreStyled;
 use App\Styled;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -39,17 +41,17 @@ class StyledController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param AdminStorePersonalStyle $request
+     * @param AdminStoreStyled $request
      * @return RedirectResponse
      */
-    public function store(AdminStorePersonalStyle $request)
+    public function store(AdminStoreStyled $request)
     {
-        $travel = PersonalStyle::query()->create($request->validated());
+        $travel = Styled::query()->create($request->validated());
         if ($request->file('image')) {
             $travel->image = $request->file('image')->store('package_type');
             $travel->update();
         }
-        return redirect()->route('personal-style.index');
+        return redirect()->route('styled.index');
     }
 
     /**
@@ -73,6 +75,6 @@ class StyledController extends Controller
     public function edit(Styled $styled)
     {
         $data = $styled;
-        return view('admin.pages.personal_style.edit', compact('data'));
+        return view('admin.pages.styled.edit', compact('data'));
     }
 }

@@ -7,48 +7,69 @@
 @section('content')
     <div class="card card-secondary">
         <div class="card-header">
-            <h3 class="card-title">Edit user</h3>
+            <h3 class="card-title">Edit body-type</h3>
         </div>
         <div class="panel panel-default">
             <div class="card-body">
-                <form action="{{ route('users.update', $user) }}" method="POST">
+                <form action="{{ route('body-type.update', $data) }}" method="POST">
                     {{ method_field('PUT') }}
                     {{ csrf_field() }}
                     <?php
                     $form_fields = array(
-                        'name',
-                        'email',
-                        'password',
+                        'title',
+                        'image',
+                        'gender',
                     );
+
+                    $gender_data = array(
+                        'male',
+                        'female',
+                    )
 
                     ?>
                     @foreach($form_fields as $field)
-                        @if($field == 'password')
-                        <div class="form-group">
-                            <label for="inputFor{{ $field }}">{{ $field }}</label>
-                            <input class="form-control"  style="" name="{{ $field }}" id="input{{ $field }}">
-                        </div>
+                        @if($field == 'image')
+                            <div class="form-group">
+                                <label for="exampleInput{{ $field }}">{{ $field }}</label>
+                                <div class="input-group">
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="exampleInput{{ $field }}" name="{{ $field }}">
+                                        <label class="custom-file-label" for="exampleInput{{ $field }}">Choose file</label>
+                                    </div>
+                                </div>
+                            </div>
+                        @elseif($field == 'gender')
+                            <div class="form-group">
+                                <label for="inputForurl">Gender</label>
+                                <p><select class="input-group" name="role">
+                                        <option selected disabled>Chose gender</option>
+                                        @foreach($gender_data as $gender)
+                                            @if($gender == $data->gender)
+                                                <option value="{{ $gender }}" selected>{{ $gender }}</option>
+                                            @else
+                                                <option value="{{ $gender }}">{{ $gender }}</option>
+                                            @endif
+                                        @endforeach
+                                    </select></p>
+                            </div>
                         @else
                             <div class="form-group">
                                 <label for="inputFor{{ $field }}">{{ $field }}</label>
                                 <input class="form-control"  style="" name="{{ $field }}"
                                        id="input{{ $field }}"
                                        placeholder="{{$field}}"
-                                       value="{{$user[$field]}}" >
+                                       value="{{$data[$field]}}" >
                             </div>
-                            @endif
+                        @endif
                     @endforeach
 
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary margin-r-5">Save</button>
-                        <a href="{{ route('users.index') }}" class="btn btn-default">Back to list</a>
+                        <a href="{{ route('body-type.index') }}" class="btn btn-default">Back to list</a>
 
                     </div>
                 </form>
             </div>
         </div>
-        @stop
+@stop
 
-        @section('css')
-            <link rel="stylesheet" href="/css/admin_custom.css">
-        @stop
