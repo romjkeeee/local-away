@@ -7,33 +7,32 @@
 @section('content')
     <div class="card card-secondary">
         <div class="card-header">
-            <h3 class="card-title">Users</h3>
+            <h3 class="card-title">Sizeng Guide</h3>
         </div>
         <!-- /.card-header -->
         <!-- form start -->
         <form role="form" action="">
             <div class="card-body">
                 <div class="form-group">
-                    <label>Name</label>
-                    <input class="form-control" value="{{ $user->name }}" disabled>
+                    <label>Title</label>
+                    <input class="form-control" value="{{ $data->title }}" disabled>
                 </div>
                 <div class="form-group">
-                    <label>Email</label>
-                    <input class="form-control" value="{{ $user->email }}" disabled>
+                    <label>Text</label>
+                    <textarea name="text" class="form-control" rows="3" placeholder="Enter ...">{{ $data->text }}</textarea>
                 </div>
                 <div class="form-group">
-                    <label>Role</label>
-
-                    <input class="form-control" value="{{ $user->role }}" disabled>
+                    <label>Image</label>
+                    <img class="img-fluid" src="{{ asset('storage/'.$data->image) }}" disabled>
+                </div>
+                <div class="form-group">
+                    <label>Gender</label>
+                    <input class="form-control" value="{{ $data->gender }}" disabled>
                 </div>
             </div>
             <!-- /.card-body -->
-            <a href="{{ route('users.index') }}" class="btn btn-default">Back to list</a>
+            <a href="{{ route('sizing-guides.index') }}" class="btn btn-default">Back to list</a>
 
         </form>
     </div>
-@stop
-
-@section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
 @stop

@@ -11,13 +11,11 @@
         </div>
         <div class="panel panel-default">
             <div class="card-body">
-                <form id="storeForm" action="{{ route('users.store') }}" method="POST">
+                <form id="storeForm" action="{{ route('sizing.store') }}" method="POST">
                     {{ csrf_field() }}
                 <?php
                     $form_fields = array(
-                        'name',
-                        'email',
-                        'password',
+                        'title',
                     );
                     ?>
                     @foreach($form_fields as $field)
@@ -32,16 +30,8 @@
                         </div>
                     @endforeach
                     <div class="form-group">
-                        <label for="inputForRole">Role</label>
-                        <p><select name="role" class="form-control">
-                                <option selected disabled>Chose role</option>
-                                <option value="admin">Admin</option>
-                                <option value="user">User</option>
-                            </select></p>
-                    </div>
-                    <div class="form-group">
                         <button name="submit" type="submit" class="btn btn-secondary margin-r-5">Save</button>
-                        <a href="{{ route('users.index') }}" class="btn btn-default">Back to list</a>
+                        <a href="{{ route('sizing.index') }}" class="btn btn-default">Back to list</a>
 
                     </div>
                 </form>
@@ -62,34 +52,14 @@
                     });
                     $('#storeForm').validate({
                         rules: {
-                            name: {
-                                required: true,
-                            },
-                            email: {
-                                required: true,
-                                email: true,
-                            },
-                            password: {
-                                required: true,
-                                minlength: 5
-                            },
-                            role: {
+                            title: {
                                 required: true,
                             },
                         },
                         messages: {
-                            name: {
-                                required: "Please enter a name",
+                            title: {
+                                required: "Please enter a title",
                             },
-                            email: {
-                                required: "Please enter a email address",
-                                email: "Please enter a valid email address"
-                            },
-                            password: {
-                                required: "Please provide a password",
-                                minlength: "Your password must be at least 5 characters long"
-                            },
-                            role: "Please chose our role"
                         },
                         errorElement: 'span',
                         errorPlacement: function (error, element) {

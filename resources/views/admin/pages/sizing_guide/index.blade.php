@@ -20,7 +20,7 @@
 @section('content')
     <div class="primary">
         <p>
-            <a href="{{ route('personal-style.create') }}" class="btn btn-success btn-lg">Create Personal style</a>
+            <a href="{{ route('sizing-guides.create') }}" class="btn btn-success btn-lg">Create Personal style</a>
         </p>
     </div>
     <?php
