@@ -37,8 +37,3 @@
             </div>
         </div>
         @stop
-        @section('js')
-            <script type="text/javascript">
-                $(document).ready(function () { bsCustomFileInput.init(); });
-            </script>
-@stop
