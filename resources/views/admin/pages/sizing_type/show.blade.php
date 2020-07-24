@@ -6,9 +6,8 @@
 
 @section('content')
     <div class="card card-secondary">
-        <div class="card-header">
-            <h3 class="card-title">Sizing Guide</h3>
-        </div>
+        <x-card-header title="Sizing type"></x-card-header>
+
         <!-- /.card-header -->
         <!-- form start -->
         <form role="form" action="">

@@ -2,35 +2,11 @@
 
 @section('title', 'Dashboard')
 @section('content_header')
-    <div class="container-fluid">
-        <div class="row mb-2">
-            <div class="col-sm-6">
-                <h1>Users</h1>
-            </div>
-            <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                    <li class="breadcrumb-item active">Users</li>
-                </ol>
-            </div>
-        </div>
-    </div><!-- /.container-fluid -->
+    <x-content-header title="Clothes category"></x-content-header>
 @stop
 
 @section('content')
-    <div class="primary">
-        <p>
-            <a href="{{ route('users.create') }}" class="btn btn-success btn-lg">Create user</a>
-        </p>
-    </div>
-    <?php
-    $form_fields = array(
-        'id',
-        'name',
-        'email',
-        'role'
-    );
-    ?>
+    <x-create-button title="Create clothes category" route="{{ route('clothes-categories.create') }}"></x-create-button>
     <div class="row">
         <div class="col-12">
             <div class="card">
@@ -39,37 +15,20 @@
                     <table id="example1" class="table table-bordered table-striped">
                         <thead>
                         <tr>
-                            @foreach($form_fields as $fields)
-                                <th>{{ $fields }}</th>
-                            @endforeach
+                            <th>id</th>
+                            <th>title</th>
+                            <th>active</th>
                             <th>Action</th>
                         </tr>
                         </thead>
                         <tbody>
                         @foreach ($data as $user)
                             <tr>
-                                @foreach($form_fields as $fields)
-                                    @if($fields == 'role')
-                                        @foreach($user->roles as $role)
-                                        <td>{{ $role->name ?? '' }}</td>
-                                        @endforeach
-                                    @else
-                                        <td @if($fields == 'email')style="width:100%"@endif>{{ $user->$fields }}</td>
-                                    @endif
-                                    @endforeach
-                                <td>
-                                    <a href="{{ route('users.show',[$user->id]) }}"><i class="fas fa-eye"></i></a>
-                                    @role('admin')
-                                    <a href="{{ route('users.edit',[$user->id]) }}"><i class="fas fa-edit"></i></a>
-                                    <a href="#" onclick="document.getElementById('deleteUser').submit()"><i class="fas fa-trash"></i>
-                                    <form id="deleteUser" action="{{ route('users.destroy', $user->id) }}" method="POST">
-                                        {{ method_field('DELETE') }}
-                                        {{ csrf_field() }}
-
-                                    </form>
-                                    </a>
-                                    @endrole
-                                </td>
+                                <td>{{ $user->id }}</td>
+                                <td style="width:100%">{{ $user->title }}</td>
+                                <x-active-status active="{{ $user->active }}"></x-active-status>
+                                <x-action-buttons show="{{ route('clothes-categories.show',[$user->id]) }}"
+                                                  edit="{{ route('clothes-categories.edit',[$user->id]) }}"></x-action-buttons>
                             </tr>
                         @endforeach
 
@@ -86,30 +45,4 @@
 
 @section('css')
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
-@stop
-@section('js')
-    <script>
-        $(function () {
-            $("#example1").DataTable({
-                "paging": true,
-                "lengthChange": true,
-                "searching": true,
-                "ordering": true,
-                "info": true,
-                "autoWidth": true,
-                "scrollCollapse": true,
-                "responsive": true,
-                "fixedHeader.header": true,
-                "scrollX": true,
-            });
-        });
-    </script>
-    <script src="https://code.jquery.com/jquery-3.4.1.js"
-            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
-    <!-- DataTables -->
-    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
-
-
 @stop

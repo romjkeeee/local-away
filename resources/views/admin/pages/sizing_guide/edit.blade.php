@@ -5,90 +5,52 @@
 @section('title', 'Dashboard')
 
 @section('content')
+    @if(count($errors) > 0)
+        @foreach($errors->all() as $error)
+            <x-validation-error errors="{{ $error }}"></x-validation-error>
+        @endforeach
+    @endif
     <div class="card card-secondary">
-        <div class="card-header">
-            <h3 class="card-title">Edit Sizing guide</h3>
-        </div>
+        <x-card-header title="Edit sizing guide"></x-card-header>
         <div class="panel panel-default">
             <div class="card-body">
-                <form action="{{ route('sizing-guides.update', $data) }}" method="POST">
-                    {{ method_field('PUT') }}
-                    {{ csrf_field() }}
-                    <?php
-                    $form_fields = array(
-                        'sizing_category_id',
-                        'title',
-                        'image',
-                        'gender',
-                    );
-
-                    $gender_data = array(
-                        'male',
-                        'female',
-                    )
-
-                    ?>
-                    @foreach($form_fields as $field)
-                        @if($field == 'image')
-                            <div class="form-group">
-                                <label for="exampleInput{{ $field }}">{{ $field }}</label>
-                                <div class="input-group">
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="exampleInput{{ $field }}" name="{{ $field }}">
-                                        <label class="custom-file-label" for="exampleInput{{ $field }}">Choose file</label>
-                                    </div>
-                                </div>
-                            </div>
-                        @elseif($field == 'gender')
-                            <div class="form-group">
-                                <label for="inputForurl">Gender</label>
-                                <p><select class="form-control" name="role">
-                                        <option selected disabled>Chose gender</option>
-                                        @foreach($gender_data as $gender)
-                                            @if($gender == $data->gender)
-                                                <option value="{{ $gender }}" selected>{{ $gender }}</option>
-                                            @else
-                                                <option value="{{ $gender }}">{{ $gender }}</option>
-                                            @endif
-                                        @endforeach
-                                    </select></p>
-                            </div>
-                        @elseif($field == 'sizing_category_id')
-                            <div class="form-group">
-                                <label for="inputForurl">Sizing Category</label>
-                                <p><select class="form-control" name="sizing_category_id">
-                                        <option selected disabled>Chose Sizing Category</option>
-                                        @foreach($sizing_category as $key => $category)
-                                            @if($key == $data->sizing_category_id)
-                                                <option value="{{ $key }}" selected>{{ $category }}</option>
-                                            @else
-                                                <option value="{{ $key }}">{{ $category }}</option>
-                                            @endif
-                                        @endforeach
-                                    </select></p>
-                            </div>
-                        @elseif($field == 'text')
-                            <div class="form-group">
-                                <label>{{ $field }}</label>
-                                <textarea disabled name="{{ $field }}" class="form-control" rows="3">{{$data[$field]}}</textarea>
-                            </div>
-                        @else
-                            <div class="form-group">
-                                <label for="inputFor{{ $field }}">{{ $field }}</label>
-                                <input class="form-control"  style="" name="{{ $field }}"
-                                       id="input{{ $field }}"
-                                       placeholder="{{$field}}"
-                                       value="{{$data[$field]}}" >
-                            </div>
-                        @endif
-                    @endforeach
-
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary margin-r-5">Save</button>
-                        <a href="{{ route('sizing-guides.index') }}" class="btn btn-default">Back to list</a>
+                {{ Form::model($data, ['method' => 'PUT', 'enctype'=>'multipart/form-data', 'route' => ['sizing-guides.update', $data->id]]) }}
+                <div class="form-group">
+                    {{ Form::label('Sizing category') }}<br>
+                    {{ Form::select('sizing_category_id',$sizing_category, old('sizing_category_id'),['class' => 'form-control']) }}
+                </div>
+                <div class="form-group">
+                    {{ Form::label('title') }}
+                    {{ Form::text('title', old('title'), ['class' => 'form-control', 'maxlength' => '190', 'placeholder' => '']) }}
+                </div>
+                <div class="form-group">
+                    {{ Form::label('text') }}
+                    {{ Form::textarea('text', old('text'),['class' => 'form-control']) }}
+                </div>
+                <label for="exampleInputImage">Image</label>
+                <div class="input-group">
+                    <div class="custom-file">
+                        {{ Form::label('image', 'Chose file', ['class' => 'custom-file-label']) }}
+                        {{ Form::file('image') }}
                     </div>
-                </form>
+                </div>
+                <div class="form-group">
+                    {{ Form::label('gender') }}
+                    {{ Form::select('gender',['male' => 'male', 'female' => 'female'], old('gender'), ['class' => 'form-control']) }}
+                </div>
+                <div class="form-group">
+                    {{ Form::label('active','active') }}<br>
+                    {{ Form::radio('active',0, null) }}No <br>
+                    {{ Form::radio('active',1, null) }}Yes
+                </div>
+
+                <x-footer-button route="{{ route('sizing-guides.index') }}"></x-footer-button>
+                {{ Form::close() }}
             </div>
         </div>
+        @stop
+        @section('js')
+            <script type="text/javascript">
+                $(document).ready(function () { bsCustomFileInput.init(); });
+            </script>
 @stop
-

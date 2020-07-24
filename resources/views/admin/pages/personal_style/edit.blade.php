@@ -5,71 +5,43 @@
 @section('title', 'Dashboard')
 
 @section('content')
+    @if(count($errors) > 0)
+        @foreach($errors->all() as $error)
+            <x-validation-error errors="{{ $error }}"></x-validation-error>
+        @endforeach
+    @endif
     <div class="card card-secondary">
-        <div class="card-header">
-            <h3 class="card-title">Edit personal style</h3>
-        </div>
+        <x-card-header title="Edit Personal style"></x-card-header>
         <div class="panel panel-default">
             <div class="card-body">
-                <form action="{{ route('personal-style.update', $data) }}" method="POST">
-                    {{ method_field('PUT') }}
-                    {{ csrf_field() }}
-                    <?php
-                    $form_fields = array(
-                        'title',
-                        'image',
-                        'gender',
-                    );
-
-                    $gender_data = array(
-                        'male',
-                        'female',
-                    )
-
-                    ?>
-                    @foreach($form_fields as $field)
-                        @if($field == 'image')
-                            <div class="form-group">
-                                <label for="exampleInput{{ $field }}">{{ $field }}</label>
-                                <div class="input-group">
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="exampleInput{{ $field }}" name="{{ $field }}">
-                                        <label class="custom-file-label" for="exampleInput{{ $field }}">Choose file</label>
-                                    </div>
-                                </div>
-                            </div>
-                        @elseif($field == 'gender')
-                            <div class="form-group">
-                                <label for="inputForurl">Gender</label>
-                                <p><select class="input-group" name="role">
-                                        <option selected disabled>Chose gender</option>
-                                        @foreach($gender_data as $gender)
-                                            @if($gender == $data->gender)
-                                                <option value="{{ $gender }}" selected>{{ $gender }}</option>
-                                            @else
-                                                <option value="{{ $gender }}">{{ $gender }}</option>
-                                            @endif
-                                        @endforeach
-                                    </select></p>
-                            </div>
-                        @else
-                            <div class="form-group">
-                                <label for="inputFor{{ $field }}">{{ $field }}</label>
-                                <input class="form-control"  style="" name="{{ $field }}"
-                                       id="input{{ $field }}"
-                                       placeholder="{{$field}}"
-                                       value="{{$data[$field]}}" >
-                            </div>
-                        @endif
-                    @endforeach
-
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary margin-r-5">Save</button>
-                        <a href="{{ route('personal-style.index') }}" class="btn btn-default">Back to list</a>
-
+                {{ Form::model($data, ['method' => 'PUT', 'enctype'=>'multipart/form-data', 'route' => ['personal-style.update', $data->id]]) }}
+                <div class="form-group">
+                    {{ Form::label('title') }}
+                    {{ Form::text('title', old('title'), ['class' => 'form-control', 'maxlength' => '190', 'placeholder' => '']) }}
+                </div>
+                <label for="exampleInputImage">Image</label>
+                <div class="input-group">
+                    <div class="custom-file">
+                        {{ Form::label('image', 'Chose file', ['class' => 'custom-file-label']) }}
+                        {{ Form::file('image') }}
                     </div>
-                </form>
+                </div>
+                <div class="form-group">
+                    {{ Form::label('gender') }}
+                    {{ Form::select('gender',['male' => 'male', 'female' => 'female'], old('gender'), ['class' => 'form-control']) }}
+                </div>
+                <div class="form-group">
+                    {{ Form::label('active','active') }}<br>
+                    {{ Form::radio('active',0, null) }}No <br>
+                    {{ Form::radio('active',1, null) }}Yes
+                </div>
+                <x-footer-button route="{{ route('personal-style.index') }}"></x-footer-button>
+                {{ Form::close() }}
             </div>
         </div>
+        @stop
+        @section('js')
+            <script type="text/javascript">
+                $(document).ready(function () { bsCustomFileInput.init(); });
+            </script>
 @stop
-

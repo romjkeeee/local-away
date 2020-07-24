@@ -24,7 +24,7 @@ class AdminStoreSizingGuides extends FormRequest
     public function rules()
     {
         return [
-            'sizing_category_id' => 'required|integer|exist:sizing_categories,id',
+            'sizing_category_id' => 'required|exists:sizing_categories,id',
             'title' => 'required|string',
             'text' => 'required',
             'image' => 'required|image',

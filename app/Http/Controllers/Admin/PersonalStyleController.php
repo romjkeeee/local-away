@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AdminStorePersonalStyle;
+use App\Http\Requests\AdminUpdatePersonalStyle;
 use App\PersonalStyle;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -75,5 +76,24 @@ class PersonalStyleController extends Controller
     {
         $data = $personal_style;
         return view('admin.pages.personal_style.edit', compact('data'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param AdminUpdatePersonalStyle $request
+     * @param PersonalStyle $personal_style
+     * @return RedirectResponse
+     */
+    public function update(AdminUpdatePersonalStyle $request, PersonalStyle $personal_style)
+    {
+        if ($personal_style->update($request->validated()))
+        {
+            if ($request->file('image')) {
+                $personal_style->image = $request->file('image')->store('personal-style');
+                $personal_style->update();
+            }
+            return redirect()->route('personal-style.index');
+        }
     }
 }

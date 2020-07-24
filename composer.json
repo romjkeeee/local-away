@@ -17,6 +17,7 @@
         "laravel/passport": "^9.3",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.1",
+        "laravelcollective/html": "^6.1",
         "mpociot/laravel-apidoc-generator": "^4.8",
         "santigarcor/laratrust": "^6.1"
     },

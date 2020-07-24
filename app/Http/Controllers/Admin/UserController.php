@@ -4,7 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AdminStoreUser;
+use App\Http\Requests\AdminUpdateUser;
+use App\Role;
 use App\User;
+use Exception;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
@@ -73,27 +76,43 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('admin.pages.users.edit', compact('user'));
+        $role = Role::all();
+        return view('admin.pages.users.edit', compact('user', 'role'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $user
-     * @return Response
+     * @param AdminUpdateUser $request
+     * @param User $user
+     * @return RedirectResponse
      */
-    public function update(Request $request, $user)
+    public function update(AdminUpdateUser $request,User $user)
     {
-        //
+        if ($request->name){
+            $user->name = $request->name;
+        }
+        if ($request->email){
+            $user->email = $request->email;
+        }
+        if ($request->password){
+            $user->password = bcrypt($request->password);
+        }
+        if ($request->role)
+        {
+            $user->detachRole($user->roles()->first());
+            $user->attachRole($request->role);
+        }
+        $user->update();
+        return redirect()->route('users.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param User $user
-     * @return Response
-     * @throws \Exception
+     * @return RedirectResponse
+     * @throws Exception
      */
     public function destroy(User $user)
     {

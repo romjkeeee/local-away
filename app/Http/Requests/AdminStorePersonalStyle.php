@@ -25,7 +25,7 @@ class AdminStorePersonalStyle extends FormRequest
     {
         return [
             'title' => 'required|string',
-            'image' => 'required|image',
+            'image' => 'required|image|mimes:jpeg,png,jpg',
             'gender' => 'required|in:male,female',
         ];
     }

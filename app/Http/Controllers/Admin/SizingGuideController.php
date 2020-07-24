@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AdminStoreSizingGuides;
+use App\Http\Requests\AdminUpdateSizingGuide;
 use App\SizingCategory;
 use App\SizingGuide;
 use Illuminate\Http\RedirectResponse;
@@ -35,8 +36,7 @@ class SizingGuideController extends Controller
      */
     public function create()
     {
-        $sizing_category = SizingCategory::get()->pluck('title', 'id');
-        return view('admin.pages.sizing_guide.create',compact('sizing_category'));
+        return view('admin.pages.sizing_guide.create');
     }
 
     /**
@@ -78,5 +78,24 @@ class SizingGuideController extends Controller
         $data = $sizing_guide;
         $sizing_category = SizingCategory::get()->pluck('title', 'id');
         return view('admin.pages.sizing_guide.edit', compact('data','sizing_category'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param AdminUpdateSizingGuide $request
+     * @param SizingGuide $sizing_guide
+     * @return RedirectResponse
+     */
+    public function update(AdminUpdateSizingGuide $request, SizingGuide $sizing_guide)
+    {
+        if ($sizing_guide->update($request->validated()))
+        {
+            if ($request->file('image')) {
+                $sizing_guide->image = $request->file('image')->store('sizing-guide');
+                $sizing_guide->update();
+            }
+            return redirect()->route('sizing-guides.index');
+        }
     }
 }

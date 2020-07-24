@@ -237,44 +237,65 @@ return [
             'can'  => 'manage-blog',
         ],
         [
-            'text'        => 'Package Type',
-            'url'         => 'admin/package-types',
-            'icon'        => 'far fa-fw fa-file',
-        ],
-        [
-            'text'        => 'Travel Purpose',
-            'url'         => 'admin/travel-purposes',
-            'icon'        => 'far fa-fw fa-mountain',
-        ],
-        [
-            'text'        => 'Personal Style',
-            'url'         => 'admin/personal-style',
-            'icon'        => 'far fa-fw fa-hat-cowboy-side',
-        ],
-        [
-            'text'        => 'Styled',
-            'url'         => 'admin/styled',
-            'icon'        => 'far fa-fw fa-tshirt',
-        ],
-        [
-            'text'        => 'Body type',
-            'url'         => 'admin/body-type',
-            'icon'        => 'far fa-fw fa-child',
-        ],
-        [
-            'text'        => 'Sizing',
-            'url'         => 'admin/sizing',
-            'icon'        => 'far fa-fw fa-ruler',
-        ],
-        [
-            'text'        => 'Sizing guides',
-            'url'         => 'admin/sizing-guides',
-            'icon'        => 'far fa-fw fa-book',
-        ],
-        [
-            'text'        => 'Sizing type',
-            'url'         => 'admin/sizing-type',
-            'icon'        => 'far fa-fw fa-book',
+            'text'    => 'Quiz',
+            'icon'    => 'fas fa-fw fa-share',
+            'submenu' => [
+                [
+                    'text'        => 'Package Type',
+                    'url'         => 'admin/package-types',
+                    'icon'        => 'far fa-fw fa-file',
+                ],
+                [
+                    'text'        => 'Travel Purpose',
+                    'url'         => 'admin/travel-purposes',
+                    'icon'        => 'far fa-fw fa-mountain',
+                ],
+                [
+                    'text'        => 'Personal Style',
+                    'url'         => 'admin/personal-style',
+                    'icon'        => 'far fa-fw fa-hat-cowboy-side',
+                ],
+                [
+                    'text'        => 'Styled',
+                    'url'         => 'admin/styled',
+                    'icon'        => 'far fa-fw fa-tshirt',
+                ],
+                [
+                    'text'        => 'Body type',
+                    'url'         => 'admin/body-type',
+                    'icon'        => 'far fa-fw fa-child',
+                ],
+                [
+                    'text'        => 'Sizing',
+                    'url'         => 'admin/sizing',
+                    'icon'        => 'far fa-fw fa-ruler',
+                ],
+                [
+                    'text'        => 'Sizing guides',
+                    'url'         => 'admin/sizing-guides',
+                    'icon'        => 'far fa-fw fa-book',
+                ],
+                [
+                    'text'        => 'Sizing type',
+                    'url'         => 'admin/sizing-type',
+                    'icon'        => 'far fa-fw fa-book',
+                ],
+                [
+                    'text'        => 'Sizing categories',
+                    'url'         => 'admin/sizing-categories',
+                    'icon'        => 'far fa-fw fa-book',
+                ],
+                [
+                    'text'        => 'Costs',
+                    'url'         => 'admin/costs',
+                    'icon'        => 'far fa-fw fa-book',
+                ],
+                [
+                    'text'        => 'Clothes categories',
+                    'url'         => 'admin/clothes-categories',
+                    'icon'        => 'far fa-fw fa-book',
+                ],
+            ],
         ],
         [
             'text'        => 'Users',
@@ -330,22 +351,22 @@ return [
 
     'plugins' => [
         'Datatables' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
-                    'asset' => false,
-                    'location' => '//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js',
+                    'asset' => true,
+                    'location' => 'https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js',
                 ],
                 [
                     'type' => 'js',
-                    'asset' => false,
-                    'location' => '//cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js',
+                    'asset' => true,
+                    'location' => 'https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js',
                 ],
                 [
                     'type' => 'css',
                     'asset' => false,
-                    'location' => '//cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css',
+                    'location' => 'https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css',
                 ],
             ],
         ],
@@ -364,6 +385,21 @@ return [
                 ],
             ],
         ],
+        'MyScript' => [
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'js/data.js',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => false,
+                    'location' => 'https://code.jquery.com/jquery-3.4.1.js',
+                ],
+            ],
+        ],
         'Chartjs' => [
             'active' => false,
             'files' => [
@@ -371,6 +407,16 @@ return [
                     'type' => 'js',
                     'asset' => false,
                     'location' => '//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.bundle.min.js',
+                ],
+            ],
+        ],
+        'InputFIleJs' => [
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'js',
+                    'asset' => false,
+                    'location' => 'https://cdnjs.cloudflare.com/ajax/libs/bs-custom-file-input/1.3.4/bs-custom-file-input.min.js',
                 ],
             ],
         ],

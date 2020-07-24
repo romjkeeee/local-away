@@ -6,16 +6,15 @@
 
 @section('content')
     <div class="card card-secondary">
-        <div class="card-header">
-            <h3 class="card-title">Sizing</h3>
-        </div>
+        <x-card-header title="Show sizing"></x-card-header>
+
         <!-- /.card-header -->
         <!-- form start -->
         <form role="form" action="">
             <div class="card-body">
                 <div class="form-group">
                     <label>Title</label>
-                    <input class="form-control" value="{{ $user->title }}" disabled>
+                    <input class="form-control" value="{{ $data->title }}" disabled>
                 </div>
             </div>
             <!-- /.card-body -->

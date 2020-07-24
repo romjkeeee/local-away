@@ -5,54 +5,39 @@
 @section('title', 'Dashboard')
 
 @section('content')
+    @if(count($errors) > 0)
+        @foreach($errors->all() as $error)
+            <x-validation-error errors="{{ $error }}"></x-validation-error>
+        @endforeach
+    @endif
     <div class="card card-secondary">
-        <div class="card-header">
-            <h3 class="card-title">Edit travel purpose</h3>
-        </div>
+        <x-card-header title="Edit Travel purpose"></x-card-header>
         <div class="panel panel-default">
             <div class="card-body">
-                <form action="{{ route('travel-purposes.update', $data) }}" method="POST">
-                    {{ method_field('PUT') }}
-                    {{ csrf_field() }}
-                    <?php
-                    $form_fields = array(
-                        'title',
-                        'image',
-                    );
-
-                    ?>
-                    @foreach($form_fields as $field)
-                        @if($field == 'image')
-                            <div class="form-group">
-                                <label for="exampleInput{{ $field }}">{{ $field }}</label>
-                                <div class="input-group">
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="exampleInput{{ $field }}" name="{{ $field }}">
-                                        <label class="custom-file-label" for="exampleInput{{ $field }}">Choose file</label>
-                                    </div>
-                                </div>
-                            </div>
-                        @else
-                            <div class="form-group">
-                                <label for="inputFor{{ $field }}">{{ $field }}</label>
-                                <input class="form-control"  style="" name="{{ $field }}"
-                                       id="input{{ $field }}"
-                                       placeholder="{{$field}}"
-                                       value="{{$data[$field]}}" >
-                            </div>
-                            @endif
-                    @endforeach
-
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary margin-r-5">Save</button>
-                        <a href="{{ route('travel-purposes.index') }}" class="btn btn-default">Back to list</a>
-
+                {{ Form::model($data, ['method' => 'PUT', 'enctype'=>'multipart/form-data', 'route' => ['travel-purposes.update', $data->id]]) }}
+                <div class="form-group">
+                    {{ Form::label('title') }}
+                    {{ Form::text('title', old('title'), ['class' => 'form-control', 'maxlength' => '190', 'placeholder' => '']) }}
+                </div>
+                <label for="exampleInputImage">Image</label>
+                <div class="input-group">
+                    <div class="custom-file">
+                        {{ Form::label('image', 'Chose file', ['class' => 'custom-file-label']) }}
+                        {{ Form::file('image') }}
                     </div>
-                </form>
+                </div>
+                <div class="form-group">
+                    {{ Form::label('active','active') }}<br>
+                    {{ Form::radio('active',0, null) }}No <br>
+                    {{ Form::radio('active',1, null) }}Yes
+                </div>
+                <x-footer-button route="{{ route('travel-purposes.index') }}"></x-footer-button>
+                {{ Form::close() }}
             </div>
         </div>
         @stop
-
-        @section('css')
-            <link rel="stylesheet" href="/css/admin_custom.css">
-        @stop
+        @section('js')
+            <script type="text/javascript">
+                $(document).ready(function () { bsCustomFileInput.init(); });
+            </script>
+@stop

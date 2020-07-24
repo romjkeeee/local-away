@@ -6,34 +6,27 @@
 
 @section('content')
     <div class="card card-secondary">
-        <div class="card-header">
-            <h3 class="card-title">Users</h3>
-        </div>
+        <x-card-header title="Show cost"></x-card-header>
         <!-- /.card-header -->
         <!-- form start -->
         <form role="form" action="">
             <div class="card-body">
                 <div class="form-group">
-                    <label>Name</label>
-                    <input class="form-control" value="{{ $user->name }}" disabled>
+                    <label>Title</label>
+                    <input class="form-control" value="{{ $data->title }}" disabled>
                 </div>
                 <div class="form-group">
-                    <label>Email</label>
-                    <input class="form-control" value="{{ $user->email }}" disabled>
+                    <label>Cost from</label>
+                    <input class="form-control" value="{{ $data->cost_from }}" disabled>
                 </div>
                 <div class="form-group">
-                    <label>Role</label>
-
-                    <input class="form-control" value="{{ $user->role }}" disabled>
+                    <label>Cost To</label>
+                    <input class="form-control" value="{{ $data->cost_to }}" disabled>
                 </div>
             </div>
             <!-- /.card-body -->
-            <a href="{{ route('users.index') }}" class="btn btn-default">Back to list</a>
+            <a href="{{ route('costs.index') }}" class="btn btn-default">Back to list</a>
 
         </form>
     </div>
-@stop
-
-@section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
 @stop

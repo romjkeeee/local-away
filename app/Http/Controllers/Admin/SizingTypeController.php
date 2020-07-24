@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AdminStoreSizingType;
+use App\Http\Requests\AdminUpdateSizingType;
 use App\SizingCategory;
 use App\SizingType;
 use Illuminate\Contracts\Foundation\Application;
@@ -35,8 +37,7 @@ class SizingTypeController extends Controller
      */
     public function create()
     {
-        $sizing_category = SizingCategory::get()->pluck('title', 'id');
-        return view('admin.pages.sizing_type.create',compact('sizing_category'));
+        return view('admin.pages.sizing_type.create');
     }
 
     /**
@@ -45,9 +46,9 @@ class SizingTypeController extends Controller
      * @param Request $request
      * @return RedirectResponse
      */
-    public function store(Request $request)
+    public function store(AdminStoreSizingType $request)
     {
-        $sizing = SizingType::query()->create($request->validated());
+        SizingType::query()->create($request->validated());
         return redirect()->route('sizing-type.index');
     }
 
@@ -74,5 +75,20 @@ class SizingTypeController extends Controller
         $data = $sizing_type;
         $sizing_category = SizingCategory::get()->pluck('title', 'id');
         return view('admin.pages.sizing_type.edit', compact('data','sizing_category'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param AdminUpdateSizingType $request
+     * @param SizingType $sizing_type
+     * @return RedirectResponse
+     */
+    public function update(AdminUpdateSizingType $request,SizingType $sizing_type)
+    {
+        if ($sizing_type->update($request->validated()))
+        {
+            return redirect()->route('sizing-type.index');
+        }
     }
 }

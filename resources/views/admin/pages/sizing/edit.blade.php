@@ -5,35 +5,23 @@
 @section('title', 'Dashboard')
 
 @section('content')
+    @if(count($errors) > 0)
+        @foreach($errors->all() as $error)
+            <x-validation-error errors="{{ $error }}"></x-validation-error>
+        @endforeach
+    @endif
     <div class="card card-secondary">
-        <div class="card-header">
-            <h3 class="card-title">Edit size</h3>
-        </div>
+        <x-card-header title="Edit sizing"></x-card-header>
         <div class="panel panel-default">
             <div class="card-body">
-                <form action="{{ route('sizing.update', $user) }}" method="POST">
-                    {{ method_field('PUT') }}
-                    {{ csrf_field() }}
-                    <?php
-                    $form_fields = array(
-                        'title',
-                    );
-                    ?>
-                    @foreach($form_fields as $field)
-                            <div class="form-group">
-                                <label for="inputFor{{ $field }}">{{ $field }}</label>
-                                <input class="form-control"  style="" name="{{ $field }}"
-                                       id="input{{ $field }}"
-                                       placeholder="{{$field}}"
-                                       value="{{$user[$field]}}" >
-                            </div>
-                    @endforeach
-
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary margin-r-5">Save</button>
-                        <a href="{{ route('sizing.index') }}" class="btn btn-default">Back to list</a>
-                    </div>
-                </form>
+                {{ Form::model($data, ['method' => 'PUT', 'enctype'=>'multipart/form-data', 'route' => ['sizing.update', $data->id]]) }}
+                <div class="form-group">
+                    {{ Form::label('title') }}
+                    {{ Form::text('title', old('title'), ['class' => 'form-control', 'maxlength' => '190', 'placeholder' => '']) }}
+                </div>
+                <x-footer-button route="{{ route('sizing.index') }}"></x-footer-button>
+                {{ Form::close() }}
             </div>
         </div>
-        @stop
+@stop
+

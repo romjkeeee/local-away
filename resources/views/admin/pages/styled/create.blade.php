@@ -5,107 +5,29 @@
 @section('title', 'Dashboard')
 
 @section('content')
+    @if(count($errors) > 0)
+        @foreach($errors->all() as $error)
+            <x-validation-error errors="{{ $error }}"></x-validation-error>
+        @endforeach
+    @endif
     <div class="card card-secondary">
-        <div class="card-header">
-            <h3 class="card-title">Styled create</h3>
-        </div>
+        <x-card-header title="Create styled"></x-card-header>
         <div class="panel panel-default">
             <div class="card-body">
-                <form id="storeForm" action="{{ route('styled.store') }}" enctype="multipart/form-data" method="POST">
-                    {{ csrf_field() }}
-                    <?php
-                    $form_fields = array(
-                        'title',
-                        'image',
-                        'gender',
-                    );
-                    ?>
-                    @foreach($form_fields as $field)
-                        @if($field == 'image')
-                            <div class="form-group">
-                                <label for="exampleInput{{ $field }}">{{ $field }}</label>
-                                <div class="input-group">
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="exampleInput{{ $field }}" name="{{ $field }}">
-                                        <label class="custom-file-label" for="exampleInput{{ $field }}">Choose file</label>
-                                    </div>
-                                </div>
-                            </div>
-                        @elseif($field == 'gender')
-                            <div class="form-group">
-                                <label for="inputForRole">Gender</label>
-                                <p><select name="gender" class="form-control">
-                                        <option selected disabled>Chose gender</option>
-                                        <option value="male">Male</option>
-                                        <option value="female">Female</option>
-                                    </select></p>
-                            </div>
-                        @else
-                            <div class="form-group">
-                                <label for="inputFor{{ $field }}">{{$field}}</label>
-                                <input class="form-control" name="{{ $field }}" id="input{{ $field }}">
-                            </div>
-                        @endif
-                    @endforeach
-                    <div class="form-group">
-                        <button name="submit" type="submit" class="btn btn-secondary margin-r-5">Save</button>
-                        <a href="{{ route('styled.index') }}" class="btn btn-default">Back to list</a>
-
-                    </div>
-                </form>
+                {{ Form::open(['route' => ['styled.store'], 'file' => true, 'method' => 'POST','enctype'=>'multipart/form-data']) }}
+                {{ csrf_field() }}
+                <x-title-input-create></x-title-input-create>
+                <x-image-input-create></x-image-input-create>
+                <x-gender-input-create></x-gender-input-create>
+                <x-footer-button route="{{ route('styled.index') }}"></x-footer-button>
+                {{ Form::close() }}
             </div>
         </div>
         @stop
 
         @section('js')
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/additional-methods.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/bs-custom-file-input/1.3.4/bs-custom-file-input.min.js"></script>
-
             <script type="text/javascript">
-                $(document).ready(function () {
-                    $.validator.setDefaults({
-                        submitHandler: function () {
-                            document.getElementById('storeForm').submit()
-                        }
-                    });
-                    $('#storeForm').validate({
-                        rules: {
-                            title: {
-                                required: true,
-                            },
-                            image: {
-                                required: true,
-                            },
-                            gender: {
-                                required: true,
-                            },
-                        },
-                        messages: {
-                            title: {
-                                required: "Please enter a title",
-                            },
-                            image: {
-                                required: "Please upload a image",
-                            },
-                            gender: {
-                                required: "Please chose a gender",
-                            },
-                        },
-                        errorElement: 'span',
-                        errorPlacement: function (error, element) {
-                            error.addClass('invalid-feedback');
-                            element.closest('.form-group').append(error);
-                        },
-                        highlight: function (element, errorClass, validClass) {
-                            $(element).addClass('is-invalid');
-                        },
-                        unhighlight: function (element, errorClass, validClass) {
-                            $(element).removeClass('is-invalid');
-                        }
-                    });
-                });
-
                 $(document).ready(function () { bsCustomFileInput.init(); });
             </script>
 @stop

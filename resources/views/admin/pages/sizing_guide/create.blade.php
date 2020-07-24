@@ -5,135 +5,32 @@
 @section('title', 'Dashboard')
 
 @section('content')
+    @if(count($errors) > 0)
+        @foreach($errors->all() as $error)
+            <x-validation-error errors="{{ $error }}"/>
+        @endforeach
+    @endif
     <div class="card card-secondary">
-        <div class="card-header">
-            <h3 class="card-title">Sizing guide create</h3>
-        </div>
+        <x-card-header title="Create Sizing Guide"></x-card-header>
         <div class="panel panel-default">
             <div class="card-body">
-                <form id="storeForm" action="{{ route('sizing-guides.store') }}" enctype="multipart/form-data" method="POST">
-                    {{ csrf_field() }}
-                    <?php
-                    $form_fields = array(
-                        'title',
-                        'text',
-                        'image',
-                        'gender',
-                        'sizing_category_id',
-                    );
-                    ?>
-                    @foreach($form_fields as $field)
-                        @if($field == 'image')
-                            <div class="form-group">
-                                <label for="exampleInput{{ $field }}">{{ $field }}</label>
-                                <div class="input-group">
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="exampleInput{{ $field }}" name="{{ $field }}">
-                                        <label class="custom-file-label" for="exampleInput{{ $field }}">Choose file</label>
-                                    </div>
-                                </div>
-                            </div>
-                        @elseif($field == 'gender')
-                            <div class="form-group">
-                                <label for="inputFor{{$field}}">Gender</label>
-                                <p><select name="{{$field}}" class="form-control">
-                                        <option selected disabled>Chose gender</option>
-                                        <option value="male">Male</option>
-                                        <option value="female">Female</option>
-                                    </select></p>
-                            </div>
-                        @elseif($field == 'text')
-                            <div class="form-group">
-                                <label>{{$field}}</label>
-                                <textarea name="{{$field}}" class="form-control" rows="3" placeholder="Enter ..."></textarea>
-                            </div>
-                        @elseif($field == 'sizing_category_id')
-                            <div class="form-group">
-                                <label for="inputFor{{$field}}">Sizing Category</label>
-                                <p><select class="form-control" name="{{$field}}">
-                                        <option selected disabled>Chose sizing category</option>
-                                        @foreach($sizing_category as $key => $cat)
-                                            <option value="{{ $key }}">{{ $cat }}</option>
-                                        @endforeach
-                                    </select></p>
-                            </div>
-                        @else
-                            <div class="form-group">
-                                <label for="inputFor{{ $field }}">{{$field}}</label>
-                                <input class="form-control" name="{{ $field }}" id="input{{ $field }}">
-                            </div>
-                        @endif
-                    @endforeach
-                    <div class="form-group">
-                        <button name="submit" type="submit" class="btn btn-secondary margin-r-5">Save</button>
-                        <a href="{{ route('sizing-guides.index') }}" class="btn btn-default">Back to list</a>
-                    </div>
-                </form>
+                {{ Form::open(['route' => ['sizing-guides.store'], 'file' => true, 'method' => 'POST','enctype'=>'multipart/form-data']) }}
+                 {{ csrf_field() }}
+                    <x-title-input-create/>
+                    <x-image-input-create/>
+                    <x-gender-input-create/>
+                    <x-text-area-input-store/>
+                    <x-sizing-category-select-store/>
+                    <x-footer-button route="{{ route('sizing-guides.index') }}"></x-footer-button>
+                {{ Form::close() }}
             </div>
         </div>
         @stop
 
         @section('js')
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/additional-methods.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/bs-custom-file-input/1.3.4/bs-custom-file-input.min.js"></script>
 
             <script type="text/javascript">
-                $(document).ready(function () {
-                    $.validator.setDefaults({
-                        submitHandler: function () {
-                            document.getElementById('storeForm').submit()
-                        }
-                    });
-                    $('#storeForm').validate({
-                        rules: {
-                            title: {
-                                required: true,
-                            },
-                            sizing_category_id: {
-                                required: true,
-                            },
-                            text: {
-                                required: true,
-                            },
-                            image: {
-                                required: true,
-                            },
-                            gender: {
-                                required: true,
-                            },
-                        },
-                        messages: {
-                            title: {
-                                required: "Please enter a title",
-                            },
-                            sizing_category_id: {
-                                required: "Please enter a sizing category",
-                            },
-                            text: {
-                                required: "Please enter a text",
-                            },
-                            image: {
-                                required: "Please upload a image",
-                            },
-                            gender: {
-                                required: "Please chose a gender",
-                            },
-                        },
-                        errorElement: 'span',
-                        errorPlacement: function (error, element) {
-                            error.addClass('invalid-feedback');
-                            element.closest('.form-group').append(error);
-                        },
-                        highlight: function (element, errorClass, validClass) {
-                            $(element).addClass('is-invalid');
-                        },
-                        unhighlight: function (element, errorClass, validClass) {
-                            $(element).removeClass('is-invalid');
-                        }
-                    });
-                });
-
                 $(document).ready(function () { bsCustomFileInput.init(); });
             </script>
 @stop

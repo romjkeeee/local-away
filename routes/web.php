@@ -30,6 +30,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::resource('body-type', 'BodyTypeController');
     Route::resource('sizing', 'SizingController');
     Route::resource('sizing-guides', 'SizingGuideController');
+    Route::resource('sizing-categories', 'SizingCategoryController');
     Route::resource('sizing-type', 'SizingTypeController');
-
+    Route::resource('costs', 'CostController');
+    Route::resource('clothes-categories', 'ClothesCategoryController');
 });

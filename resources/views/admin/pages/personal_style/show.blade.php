@@ -6,9 +6,8 @@
 
 @section('content')
     <div class="card card-secondary">
-        <div class="card-header">
-            <h3 class="card-title">Travel purpose</h3>
-        </div>
+        <x-card-header title="Create Personal style"></x-card-header>
+
         <!-- /.card-header -->
         <!-- form start -->
         <form role="form" action="">

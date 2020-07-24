@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AdminStoreStyled;
+use App\Http\Requests\AdminUpdateStyled;
 use App\Styled;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -76,5 +77,24 @@ class StyledController extends Controller
     {
         $data = $styled;
         return view('admin.pages.styled.edit', compact('data'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @param Styled $styled
+     * @return RedirectResponse
+     */
+    public function update(AdminUpdateStyled $request,Styled $styled)
+    {
+        if ($styled->update($request->validated()))
+        {
+            if ($request->file('image')) {
+                $styled->image = $request->file('image')->store('styled');
+                $styled->update();
+            }
+            return redirect()->route('styled.index');
+        }
     }
 }

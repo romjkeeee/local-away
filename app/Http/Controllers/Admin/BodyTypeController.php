@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\BodyType;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AdminStoreBodyType;
+use App\Http\Requests\AdminUpdateBodyType;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
@@ -75,5 +76,24 @@ class BodyTypeController extends Controller
     {
         $data = $body_type;
         return view('admin.pages.body_type.edit', compact('data'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param AdminUpdateBodyType $request
+     * @param $body_type
+     * @return RedirectResponse
+     */
+    public function update(AdminUpdateBodyType $request, BodyType $body_type)
+    {
+        if ($body_type->update($request->validated()))
+        {
+            if ($request->file('image')) {
+                $body_type->image = $request->file('image')->store('body-type');
+                $body_type->update();
+            }
+            return redirect()->route('body-type.index');
+        }
     }
 }
