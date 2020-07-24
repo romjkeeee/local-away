@@ -34,4 +34,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::resource('sizing-type', 'SizingTypeController');
     Route::resource('costs', 'CostController');
     Route::resource('clothes-categories', 'ClothesCategoryController');
+    Route::resource('contact-form', 'ContactFormController');
+    Route::resource('partnership', 'PartnershipController');
+
+    Route::get('profile','UserController@adminProfile');
 });

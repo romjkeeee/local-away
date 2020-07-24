@@ -2,11 +2,10 @@
 
 @section('title', 'Dashboard')
 @section('content_header')
-    <x-content-header title="Travel purpose"></x-content-header>
+    <x-content-header title="Contact Form"></x-content-header>
 @stop
 
 @section('content')
-    <x-create-button title="Create travel purposes" route="{{ route('travel-purposes.create') }}"></x-create-button>
     <div class="row">
         <div class="col-12">
             <div class="card">
@@ -16,9 +15,10 @@
                         <thead>
                         <tr>
                             <th>id</th>
-                            <th>title</th>
-                            <th>image</th>
-                            <th>active</th>
+                            <th>name</th>
+                            <th>email</th>
+                            <th>message</th>
+                            <th>read</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -26,11 +26,12 @@
                         @foreach ($data as $user)
                             <tr>
                                 <td>{{ $user->id }}</td>
-                                <td style="width: 100%">{{ $user->title }}</td>
-                                <x-image-column image="{{ $user->image }}"></x-image-column>
-                                <x-active-status active="{{ $user->active }}"></x-active-status>
-                                <x-action-buttons show="{{ route('travel-purposes.show',[$user->id]) }}"
-                                                  edit="{{ route('travel-purposes.edit',[$user->id]) }}"></x-action-buttons>
+                                <td>{{ $user->name }}</td>
+                                <td>{{ $user->email }}</td>
+                                <td style="width: 100%">{{ $user->message }}</td>
+                                <td>@if($user->read)<i class="fas fa fa-check"></i>@else<i class="fas fa fa-times"></i>@endif</td>
+                                <x-action-buttons show="{{ route('contact-form.show',[$user->id]) }}"
+                                                  edit="{{ route('contact-form.edit',[$user->id]) }}"></x-action-buttons>
                             </tr>
                         @endforeach
 

@@ -120,4 +120,10 @@ class UserController extends Controller
             return redirect()->route('users.index');
         }
     }
+
+    public function adminProfile()
+    {
+        $user = auth()->user();
+        return redirect()->route('users.show', $user->id);
+    }
 }

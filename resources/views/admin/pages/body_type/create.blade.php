@@ -25,9 +25,4 @@
         </div>
         @stop
 
-@section('js')
-             <script src="https://cdnjs.cloudflare.com/ajax/libs/bs-custom-file-input/1.3.4/bs-custom-file-input.min.js"></script>
-            <script type="text/javascript">
-                $(document).ready(function () { bsCustomFileInput.init(); });
-            </script>
-@stop
+

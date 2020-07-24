@@ -278,7 +278,7 @@ return [
                 [
                     'text'        => 'Sizing type',
                     'url'         => 'admin/sizing-type',
-                    'icon'        => 'far fa-fw fa-book',
+                    'icon'        => 'far fa-fw fa-ruler',
                 ],
                 [
                     'text'        => 'Sizing categories',
@@ -288,14 +288,24 @@ return [
                 [
                     'text'        => 'Costs',
                     'url'         => 'admin/costs',
-                    'icon'        => 'far fa-fw fa-book',
+                    'icon'        => 'far fa-fw fa-dollar-sign',
                 ],
                 [
                     'text'        => 'Clothes categories',
                     'url'         => 'admin/clothes-categories',
-                    'icon'        => 'far fa-fw fa-book',
+                    'icon'        => 'far fa-fw fa-tshirt',
                 ],
             ],
+        ],
+        [
+            'text'        => 'Contact Form',
+            'url'         => 'admin/contact-form',
+            'icon'        => 'far fa-fw fa-address-card',
+        ],
+        [
+            'text'        => 'Partnership',
+            'url'         => 'admin/partnership',
+            'icon'        => 'far fa-fw fa-handshake',
         ],
         [
             'text'        => 'Users',
