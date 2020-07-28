@@ -319,6 +319,11 @@ return [
             ],
         ],
         [
+            'text'        => 'Genders',
+            'url'         => 'admin/genders',
+            'icon'        => 'far fa-fw fa-venus-mars',
+        ],
+        [
             'text'        => 'Cities',
             'url'         => 'admin/cities',
             'icon'        => 'far fa-fw fa-building',
