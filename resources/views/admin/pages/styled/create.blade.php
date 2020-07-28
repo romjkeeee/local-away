@@ -16,11 +16,25 @@
             <div class="card-body">
                 {{ Form::open(['route' => ['styled.store'], 'file' => true, 'method' => 'POST','enctype'=>'multipart/form-data']) }}
                 {{ csrf_field() }}
-                <x-title-input-create></x-title-input-create>
-                <x-image-input-create></x-image-input-create>
-                <x-gender-input-create></x-gender-input-create>
+                <div class="form-group">
+                    {{ Form::label('title') }}
+                    {{ Form::text('title', old('title'), ['class' => 'form-control', 'maxlength' => '190', 'placeholder' => '']) }}
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputImage">Image</label>
+                    <div class="input-group">
+                        <div class="custom-file">
+                            {{ Form::label('image', 'Chose file', ['class' => 'custom-file-label']) }}
+                            {{ Form::file('image') }}
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    {{ Form::label('gender') }}
+                    {{ Form::select('gender',['male' => 'male', 'female' => 'female'], old('gender'), ['class' => 'form-control', 'placeholder' => 'Choose a gender...']) }}
+                </div>
                 <x-footer-button route="{{ route('styled.index') }}"></x-footer-button>
                 {{ Form::close() }}
             </div>
         </div>
-        @stop
+@stop

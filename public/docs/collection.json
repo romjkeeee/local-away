@@ -2,7 +2,7 @@
     "variables": [],
     "info": {
         "name": "Laravel API",
-        "_postman_id": "27d0624e-924d-44ce-a37f-cd9b4caa3fa3",
+        "_postman_id": "e8053689-e67b-4cc6-89c8-100941575da7",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.0.0\/collection.json"
     },
@@ -33,14 +33,14 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"email\": \"culpa\",\n    \"password\": \"similique\",\n    \"remember_me\": false\n}"
+                            "raw": "{\n    \"email\": \"esse\",\n    \"password\": \"ipsa\",\n    \"remember_me\": false\n}"
                         },
                         "description": "",
                         "response": []
                     }
                 },
                 {
-                    "name": "Sign-up\n\u0420\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u044f",
+                    "name": "Sign-up",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -61,7 +61,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"name\": \"quia\",\n    \"email\": \"dolor\",\n    \"password\": \"nihil\",\n    \"password_confirmation\": \"et\"\n}"
+                            "raw": "{\n    \"name\": \"molestiae\",\n    \"email\": \"possimus\",\n    \"password\": \"non\",\n    \"password_confirmation\": \"tenetur\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -126,6 +126,40 @@
             ]
         },
         {
+            "name": "Contact Form",
+            "description": "\nAPIs for",
+            "item": [
+                {
+                    "name": "Create\nContact Form",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost",
+                            "path": "api\/contact-form",
+                            "query": []
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"name\": \"id\",\n    \"email\": \"veniam\",\n    \"message\": \"amet\"\n}"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                }
+            ]
+        },
+        {
             "name": "User",
             "description": "\nAPIs for",
             "item": [
@@ -139,13 +173,13 @@
                             "query": [
                                 {
                                     "key": "PerPage",
-                                    "value": "veniam",
+                                    "value": "repellat",
                                     "description": "integer",
                                     "disabled": false
                                 },
                                 {
                                     "key": "page",
-                                    "value": "similique",
+                                    "value": "non",
                                     "description": "integer",
                                     "disabled": false
                                 }

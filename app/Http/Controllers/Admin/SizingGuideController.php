@@ -36,7 +36,8 @@ class SizingGuideController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.sizing_guide.create');
+        $sizing_category = SizingCategory::all()->pluck('title', 'id');
+        return view('admin.pages.sizing_guide.create',compact('sizing_category'));
     }
 
     /**

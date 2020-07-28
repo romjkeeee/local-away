@@ -16,8 +16,14 @@
             <div class="card-body">
                 {{ Form::open(['route' => ['sizing-type.store'], 'file' => true, 'method' => 'POST','enctype'=>'multipart/form-data']) }}
                 {{ csrf_field() }}
-                <x-title-input-create/>
-                <x-sizing-category-select-store/>
+                <div class="form-group">
+                    {{ Form::label('title') }}
+                    {{ Form::text('title', old('title'), ['class' => 'form-control', 'maxlength' => '190', 'placeholder' => '']) }}
+                </div>
+                <div class="form-group">
+                    {{ Form::label('Sizing Category') }}
+                    {{ Form::select('sizing_category_id',$sizing_category, old('sizing_category_id'),['class' => 'form-control',  'placeholder' => 'Choose a category...']) }}
+                </div>
                 <x-footer-button route="{{ route('sizing-type.index') }}"></x-footer-button>
                 {{ Form::close() }}
             </div>

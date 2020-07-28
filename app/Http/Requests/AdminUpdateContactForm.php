@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AdminUpdateTravelPurpose extends FormRequest
+class AdminUpdateContactForm extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,10 @@ class AdminUpdateTravelPurpose extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'string',
-            'image' => 'image|mimes:jpeg,png,jpg',
-            'active' => '',
+            'name' => 'string',
+            'email' => 'string|email',
+            'message' => '',
+            'read' => ''
         ];
     }
 }

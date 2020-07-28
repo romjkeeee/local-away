@@ -266,11 +266,6 @@ return [
                     'icon'        => 'far fa-fw fa-child',
                 ],
                 [
-                    'text'        => 'Sizing',
-                    'url'         => 'admin/sizing',
-                    'icon'        => 'far fa-fw fa-ruler',
-                ],
-                [
                     'text'        => 'Sizing guides',
                     'url'         => 'admin/sizing-guides',
                     'icon'        => 'far fa-fw fa-book',
@@ -298,13 +293,18 @@ return [
             ],
         ],
         [
+            'text'        => 'Sizes',
+            'url'         => 'admin/sizing',
+            'icon'        => 'far fa-fw fa-ruler',
+        ],
+        [
             'text'        => 'Contact Form',
             'url'         => 'admin/contact-form',
             'icon'        => 'far fa-fw fa-address-card',
         ],
         [
             'text'        => 'Partnership',
-            'url'         => 'admin/partnership',
+            'url'         => 'admin/partnerships',
             'icon'        => 'far fa-fw fa-handshake',
         ],
         [

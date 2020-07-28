@@ -31,7 +31,8 @@
                 <div class="form-group">
                     {{ Form::label('role') }}
                     {{ Form::select('role', ['admin' => 'admin', 'user' => 'user'], old('role'), ['class' => 'form-control']) }}
-                </div>                <x-footer-button route="{{ route('users.index') }}"></x-footer-button>
+                </div>
+                <x-footer-button route="{{ route('users.index') }}"></x-footer-button>
                 {{ Form::close() }}
             </div>
         </div>

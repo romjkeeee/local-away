@@ -2,7 +2,19 @@
 
 @section('title', 'Dashboard')
 @section('content_header')
-    <x-content-header title="Sizing guide"></x-content-header>
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Sizing guide</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+                    <li class="breadcrumb-item active">Sizing guide</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
 @stop
 
 @section('content')
@@ -32,7 +44,7 @@
                                 <td>{{ $user->sizing_category->title ?? '' }}</td>
                                 <td>{{ $user->title }}</td>
                                 <td style="width: 100%">{{ $user->text }}</td>
-                                <x-image-column image="{{ $user->image }}"></x-image-column>
+                                <td><img class="img-thumbnail" src="{{ asset('storage/'.$user->image) }}"></td>
                                 <td>{{ $user->gender }}</td>
                                 <x-active-status active="{{ $user->active }}"></x-active-status>
                                 <x-action-buttons show="{{ route('sizing-guides.show',[$user->id]) }}"

@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group(['namespace' => 'Api\V1',], function () {
+    Route::post('contact-form', 'ContactFormController@create');
     //Auth
     Route::group(['prefix' => 'auth'], function () {
         Route::post('login', 'AuthController@login');

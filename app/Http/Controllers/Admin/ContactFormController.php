@@ -68,11 +68,11 @@ class ContactFormController extends Controller
      * @param Sizing $sizing
      * @return RedirectResponse
      */
-    public function update(AdminUpdateSizing $request, Sizing $sizing)
+    public function update(AdminUpdateSizing $request, ContactForm $contact_form)
     {
-        if ($sizing->update($request->validated()))
+        if ($contact_form->update($request->validated()))
         {
-            return redirect()->route('sizing.index');
+            return redirect()->route('contact-form.index');
         }
     }
 }

@@ -16,8 +16,19 @@
             <div class="card-body">
                 {{ Form::open(['route' => ['travel-purposes.store'], 'file' => true, 'method' => 'POST','enctype'=>'multipart/form-data']) }}
                 {{ csrf_field() }}
-                <x-title-input-create></x-title-input-create>
-                <x-image-input-create></x-image-input-create>
+                <div class="form-group">
+                    {{ Form::label('title') }}
+                    {{ Form::text('title', old('title'), ['class' => 'form-control', 'maxlength' => '190', 'placeholder' => '']) }}
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputImage">Image</label>
+                    <div class="input-group">
+                        <div class="custom-file">
+                            {{ Form::label('image', 'Chose file', ['class' => 'custom-file-label']) }}
+                            {{ Form::file('image') }}
+                        </div>
+                    </div>
+                </div>
                 <x-footer-button route="{{ route('travel-purposes.index') }}"></x-footer-button>
                 {{ Form::close() }}
             </div>

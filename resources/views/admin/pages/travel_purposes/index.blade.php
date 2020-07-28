@@ -2,7 +2,19 @@
 
 @section('title', 'Dashboard')
 @section('content_header')
-    <x-content-header title="Travel purpose"></x-content-header>
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Travel purpose</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+                    <li class="breadcrumb-item active">Travel purpose</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
 @stop
 
 @section('content')
@@ -27,7 +39,7 @@
                             <tr>
                                 <td>{{ $user->id }}</td>
                                 <td style="width: 100%">{{ $user->title }}</td>
-                                <x-image-column image="{{ $user->image }}"></x-image-column>
+                                <td><img class="img-thumbnail" src="{{ asset('storage/'.$user->image) }}"></td>
                                 <x-active-status active="{{ $user->active }}"></x-active-status>
                                 <x-action-buttons show="{{ route('travel-purposes.show',[$user->id]) }}"
                                                   edit="{{ route('travel-purposes.edit',[$user->id]) }}"></x-action-buttons>

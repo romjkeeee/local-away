@@ -16,7 +16,10 @@
             <div class="card-body">
                 {{ Form::open(['route' => ['sizing.store'], 'file' => true, 'method' => 'POST','enctype'=>'multipart/form-data']) }}
                 {{ csrf_field() }}
-                <x-title-input-create></x-title-input-create>
+                <div class="form-group">
+                    {{ Form::label('title') }}
+                    {{ Form::text('title', old('title'), ['class' => 'form-control', 'maxlength' => '190', 'placeholder' => '']) }}
+                </div>
                 <x-footer-button route="{{ route('sizing.index') }}"></x-footer-button>
                 {{ Form::close() }}
             </div>

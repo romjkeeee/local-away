@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\AdminStoreSizingType;
 use App\Http\Requests\AdminUpdateSizingType;
 use App\SizingCategory;
+use App\SizingGuide;
 use App\SizingType;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -37,7 +38,8 @@ class SizingTypeController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.sizing_type.create');
+        $sizing_category = SizingCategory::all()->pluck('title', 'id');
+        return view('admin.pages.sizing_type.create', compact('sizing_category'));
     }
 
     /**
