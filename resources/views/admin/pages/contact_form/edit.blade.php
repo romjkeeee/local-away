@@ -11,10 +11,12 @@
         @endforeach
     @endif
     <div class="card card-secondary">
-        <x-card-header title="Edit contact"></x-card-header>
+        <div class="card-header">
+            <h3 class="card-title">Edit contact</h3>
+        </div>
         <div class="panel panel-default">
             <div class="card-body">
-                {{ Form::model($data, ['method' => 'PUT', 'enctype'=>'multipart/form-data', 'route' => ['travel-purposes.update', $data->id]]) }}
+                {{ Form::model($data, ['method' => 'PUT', 'enctype'=>'multipart/form-data', 'route' => ['contact-form.update', $data->id]]) }}
                 <div class="form-group">
                     {{ Form::label('name') }}
                     {{ Form::text('name', old('name'), ['class' => 'form-control', 'maxlength' => '190', 'placeholder' => '']) }}

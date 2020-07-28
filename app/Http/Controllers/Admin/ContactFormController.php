@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\ContactForm;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AdminUpdateContactForm;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
@@ -38,18 +39,6 @@ class ContactFormController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param ContactForm $contact_form
-     * @return Application|Factory|View
-     */
-    public function show(ContactForm $contact_form)
-    {
-        $data = $contact_form;
-        return view('admin.pages.contact_form.show',compact('data'));
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param ContactForm $contact_form
@@ -64,11 +53,11 @@ class ContactFormController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param AdminUpdateSizing $request
-     * @param Sizing $sizing
+     * @param AdminUpdateContactForm $request
+     * @param ContactForm $contact_form
      * @return RedirectResponse
      */
-    public function update(AdminUpdateSizing $request, ContactForm $contact_form)
+    public function update(AdminUpdateContactForm $request, ContactForm $contact_form)
     {
         if ($contact_form->update($request->validated()))
         {

@@ -42,8 +42,11 @@
                                 <td>{{ $user->email }}</td>
                                 <td style="width: 100%">{{ $user->message }}</td>
                                 <td>@if($user->read)<i class="fas fa fa-check"></i>@else<i class="fas fa fa-times"></i>@endif</td>
-                                <x-action-buttons show="{{ route('contact-form.show',[$user->id]) }}"
-                                                  edit="{{ route('contact-form.edit',[$user->id]) }}"></x-action-buttons>
+                                <td>
+                                    @role('admin')
+                                    <a href="{{ route('contact-form.edit',[$user->id]) }}"><i class="fas fa-edit"></i></a>
+                                    @endrole
+                                </td>
                             </tr>
                         @endforeach
 
