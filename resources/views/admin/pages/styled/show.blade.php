@@ -6,7 +6,9 @@
 
 @section('content')
     <div class="card card-secondary">
-        <x-card-header title="Styled"></x-card-header>
+        <div class="card-header">
+            <h3 class="card-title">Show styled</h3>
+        </div>
 
         <!-- /.card-header -->
         <!-- form start -->

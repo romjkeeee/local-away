@@ -6,26 +6,24 @@
 
 @section('content')
     <div class="card card-secondary">
-        <x-card-header title="Create Body Type"></x-card-header>
+        <div class="card-header">
+            <h3 class="card-title">Show color</h3>
+        </div>
         <!-- /.card-header -->
         <!-- form start -->
         <form role="form" action="">
             <div class="card-body">
                 <div class="form-group">
-                    <label>Title</label>
-                    <input class="form-control" value="{{ $data->title }}" disabled>
+                    <label>Name</label>
+                    <input class="form-control" value="{{ $data->name }}" disabled>
                 </div>
                 <div class="form-group">
                     <label>Image</label>
                     <img class="img-fluid" src="{{ asset('storage/'.$data->image) }}" disabled>
                 </div>
-                <div class="form-group">
-                    <label>Gender</label>
-                    <input class="form-control" value="{{ $data->gender }}" disabled>
-                </div>
             </div>
             <!-- /.card-body -->
-            <a href="{{ route('body-type.index') }}" class="btn btn-default">Back to list</a>
+            <a href="{{ route('colors.index') }}" class="btn btn-default">Back to list</a>
 
         </form>
     </div>

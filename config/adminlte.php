@@ -319,6 +319,11 @@ return [
             ],
         ],
         [
+            'text'        => 'Cities',
+            'url'         => 'admin/cities',
+            'icon'        => 'far fa-fw fa-building',
+        ],
+        [
             'text'        => 'Colors',
             'url'         => 'admin/colors',
             'icon'        => 'far fa-fw fa-paint-brush',

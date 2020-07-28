@@ -6,7 +6,9 @@
 
 @section('content')
     <div class="card card-secondary">
-        <x-card-header title="Create Personal style"></x-card-header>
+        <div class="card-header">
+            <h3 class="card-title">Show personal style</h3>
+        </div>
 
         <!-- /.card-header -->
         <!-- form start -->
