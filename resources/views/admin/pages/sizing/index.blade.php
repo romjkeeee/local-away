@@ -37,8 +37,11 @@
                             <tr>
                                 <td>{{ $user->id }}</td>
                                 <td style="width:100%">{{ $user->title }}</td>
-                                <x-action-buttons show="{{ route('sizing.show',[$user->id]) }}"
-                                                  edit="{{ route('sizing.edit',[$user->id]) }}"></x-action-buttons>
+                                <td>
+                                    @role('admin')
+                                    <a href="{{ route('sizing.edit',[$user->id]) }}"><i class="fas fa-edit"></i></a>
+                                    @endrole
+                                </td>
                             </tr>
                         @endforeach
 

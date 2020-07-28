@@ -52,18 +52,6 @@ class SizingController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param Sizing $sizing
-     * @return Application|Factory|View
-     */
-    public function show(Sizing $sizing)
-    {
-        $data = $sizing;
-        return view('admin.pages.sizing.show',compact('data'));
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param Sizing $sizing
