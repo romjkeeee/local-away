@@ -2,7 +2,7 @@
     "variables": [],
     "info": {
         "name": "Laravel API",
-        "_postman_id": "e8053689-e67b-4cc6-89c8-100941575da7",
+        "_postman_id": "da3ac342-ad4d-456e-820c-335b837d150c",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.0.0\/collection.json"
     },
@@ -33,7 +33,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"email\": \"esse\",\n    \"password\": \"ipsa\",\n    \"remember_me\": false\n}"
+                            "raw": "{\n    \"email\": \"et\",\n    \"password\": \"rerum\",\n    \"remember_me\": false\n}"
                         },
                         "description": "",
                         "response": []
@@ -61,7 +61,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"name\": \"molestiae\",\n    \"email\": \"possimus\",\n    \"password\": \"non\",\n    \"password_confirmation\": \"tenetur\"\n}"
+                            "raw": "{\n    \"name\": \"non\",\n    \"email\": \"amet\",\n    \"password\": \"ut\",\n    \"password_confirmation\": \"neque\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -151,7 +151,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"name\": \"id\",\n    \"email\": \"veniam\",\n    \"message\": \"amet\"\n}"
+                            "raw": "{\n    \"name\": \"dolor\",\n    \"email\": \"cum\",\n    \"message\": \"reiciendis\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -173,13 +173,13 @@
                             "query": [
                                 {
                                     "key": "PerPage",
-                                    "value": "repellat",
+                                    "value": "repudiandae",
                                     "description": "integer",
                                     "disabled": false
                                 },
                                 {
                                     "key": "page",
-                                    "value": "non",
+                                    "value": "quia",
                                     "description": "integer",
                                     "disabled": false
                                 }
