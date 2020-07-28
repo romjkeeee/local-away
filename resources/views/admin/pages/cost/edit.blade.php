@@ -11,7 +11,9 @@
         @endforeach
     @endif
     <div class="card card-secondary">
-        <x-card-header title="Edit Costs"></x-card-header>
+        <div class="card-header">
+            <h3 class="card-title">Edit cost</h3>
+        </div>
         <div class="panel panel-default">
             <div class="card-body">
                 {{ Form::model($data, ['method' => 'PUT', 'enctype'=>'multipart/form-data', 'route' => ['costs.update', $data->id]]) }}

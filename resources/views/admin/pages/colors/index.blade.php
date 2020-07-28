@@ -5,21 +5,22 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Cost</h1>
+                <h1>Colors</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                    <li class="breadcrumb-item active">Cost</li>
+                    <li class="breadcrumb-item active">Colors</li>
                 </ol>
             </div>
         </div>
     </div><!-- /.container-fluid -->
 @stop
+
 @section('content')
     <div class="primary">
         <p>
-            <a href="{{ route('costs.create') }}" class="btn btn-success btn-lg">Create cost</a>
+            <a href="{{ route('colors.create') }}" class="btn btn-success btn-lg">Create color</a>
         </p>
     </div>
     <div class="row">
@@ -31,9 +32,9 @@
                         <thead>
                         <tr>
                             <th>id</th>
-                            <th>title</th>
-                            <th>cost from</th>
-                            <th>cost to</th>
+                            <th>Name</th>
+                            <th>Image</th>
+                            <th>active</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -41,10 +42,11 @@
                         @foreach ($data as $user)
                             <tr>
                                 <td>{{ $user->id }}</td>
-                                <td style="width: 100%">{{ $user->title }}</td>
-                                <td>{{ $user->cost_from }}</td>
-                                <td>{{ $user->cost_to }}</td>
-                                <x-action-buttons show="{{ route('costs.show',[$user->id]) }}" edit="{{ route('costs.edit',[$user->id]) }}"></x-action-buttons>
+                                <td style="width: 100%">{{ $user->name }}</td>
+                                <td><img class="img-thumbnail" src="{{ asset('storage/'.$user->image) }}"></td>
+                                <x-active-status active="{{ $user->status }}"></x-active-status>
+                                <x-action-buttons show="{{ route('colors.show',[$user->id]) }}"
+                                                  edit="{{ route('colors.edit',[$user->id]) }}"></x-action-buttons>
                             </tr>
                         @endforeach
                     </table>
@@ -54,7 +56,5 @@
             <!-- /.card -->
         </div>
     </div>
-
-
 @stop
 

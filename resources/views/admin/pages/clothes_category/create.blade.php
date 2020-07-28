@@ -11,7 +11,9 @@
         @endforeach
     @endif
     <div class="card card-secondary">
-        <x-card-header title="Create Clothes Category"></x-card-header>
+        <div class="card-header">
+            <h3 class="card-title">Create clothe category</h3>
+        </div>
         <div class="panel panel-default">
             <div class="card-body">
                 {{ Form::open(['route' => ['clothes-categories.store'], 'file' => true, 'method' => 'POST','enctype'=>'multipart/form-data']) }}

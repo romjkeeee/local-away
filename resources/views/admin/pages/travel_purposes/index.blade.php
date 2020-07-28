@@ -18,7 +18,11 @@
 @stop
 
 @section('content')
-    <x-create-button title="Create travel purposes" route="{{ route('travel-purposes.create') }}"></x-create-button>
+    <div class="primary">
+        <p>
+            <a href="{{ route('travel-purposes.create') }}" class="btn btn-success btn-lg">Create travel purposes</a>
+        </p>
+    </div>
     <div class="row">
         <div class="col-12">
             <div class="card">

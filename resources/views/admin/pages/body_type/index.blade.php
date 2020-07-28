@@ -18,7 +18,11 @@
 @stop
 
 @section('content')
-    <x-create-button title="Create Body Type" route="{{ route('body-type.create') }}"></x-create-button>
+    <div class="primary">
+        <p>
+            <a href="{{ route('body-type.create') }}" class="btn btn-success btn-lg">Create Body Type</a>
+        </p>
+    </div>
     <div class="row">
         <div class="col-12">
             <div class="card">

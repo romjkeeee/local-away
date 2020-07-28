@@ -11,7 +11,9 @@
         @endforeach
     @endif
     <div class="card card-secondary">
-        <x-card-header title="Create Body Type"></x-card-header>
+        <div class="card-header">
+            <h3 class="card-title">Create body type</h3>
+        </div>
         <div class="panel panel-default">
             <div class="card-body">
                 {{ Form::open(['route' => ['body-type.store'], 'file' => true, 'method' => 'POST','enctype'=>'multipart/form-data']) }}

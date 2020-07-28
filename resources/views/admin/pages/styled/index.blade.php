@@ -18,7 +18,11 @@
 @stop
 
 @section('content')
-    <x-create-button title="Create Styled" route="{{ route('styled.create') }}"></x-create-button>
+    <div class="primary">
+        <p>
+            <a href="{{ route('styled.create') }}" class="btn btn-success btn-lg">Create styled</a>
+        </p>
+    </div>
     <div class="row">
         <div class="col-12">
             <div class="card">

@@ -18,7 +18,11 @@
 @stop
 
 @section('content')
-    <x-create-button title="Create Personal style" route="{{ route('personal-style.create') }}"></x-create-button>
+    <div class="primary">
+        <p>
+            <a href="{{ route('personal-style.create') }}" class="btn btn-success btn-lg">Create Personal style</a>
+        </p>
+    </div>
     <div class="row">
         <div class="col-12">
             <div class="card">

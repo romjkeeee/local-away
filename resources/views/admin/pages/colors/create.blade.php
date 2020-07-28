@@ -12,14 +12,15 @@
     @endif
     <div class="card card-secondary">
         <div class="card-header">
-            <h3 class="card-title">Edit styled</h3>
+            <h3 class="card-title">Create color</h3>
         </div>
         <div class="panel panel-default">
             <div class="card-body">
-                {{ Form::model($data, ['method' => 'PUT', 'enctype'=>'multipart/form-data', 'route' => ['styled.update', $data->id]]) }}
+                {{ Form::open(['route' => ['colors.store'], 'file' => true, 'method' => 'POST','enctype'=>'multipart/form-data']) }}
+                    {{ csrf_field() }}
                 <div class="form-group">
-                    {{ Form::label('title') }}
-                    {{ Form::text('title', old('title'), ['class' => 'form-control', 'maxlength' => '190', 'placeholder' => '']) }}
+                    {{ Form::label('name') }}
+                    {{ Form::text('name', old('name'), ['class' => 'form-control', 'maxlength' => '190', 'placeholder' => '']) }}
                 </div>
                 <label for="exampleInputImage">Image</label>
                 <div class="input-group">
@@ -28,18 +29,10 @@
                         {{ Form::file('image') }}
                     </div>
                 </div>
-                <div class="form-group">
-                    {{ Form::label('gender') }}
-                    {{ Form::select('gender',['male' => 'male', 'female' => 'female'], old('gender'), ['class' => 'form-control']) }}
-                </div>
-                <div class="form-group">
-                    {{ Form::label('active','active') }}<br>
-                    {{ Form::radio('active',0, null) }}No <br>
-                    {{ Form::radio('active',1, null) }}Yes
-                </div>
-                <x-footer-button route="{{ route('styled.index') }}"></x-footer-button>
+                    <x-footer-button route="{{ route('colors.index') }}"></x-footer-button>
                 {{ Form::close() }}
             </div>
         </div>
         @stop
+
 

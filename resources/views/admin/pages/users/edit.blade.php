@@ -11,7 +11,9 @@
         @endforeach
     @endif
     <div class="card card-secondary">
-        <x-card-header title="Edit User"></x-card-header>
+        <div class="card-header">
+            <h3 class="card-title">Edit user</h3>
+        </div>
         <div class="panel panel-default">
             <div class="card-body">
                 {{ Form::model($user, ['method' => 'PUT', 'route' => ['users.update', $user->id]]) }}

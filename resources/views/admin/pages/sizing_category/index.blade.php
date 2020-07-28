@@ -18,7 +18,11 @@
 @stop
 
 @section('content')
-    <x-create-button title="Create Sizing category" route="{{ route('sizing-categories.create') }}"></x-create-button>
+    <div class="primary">
+        <p>
+            <a href="{{ route('sizing-categories.create') }}" class="btn btn-success btn-lg">Create Sizing category</a>
+        </p>
+    </div>
     <div class="row">
         <div class="col-12">
             <div class="card">

@@ -17,7 +17,11 @@
     </div><!-- /.container-fluid -->
 @stop
 @section('content')
-    <x-create-button title="Create package type" route="{{ route('package-types.create') }}"></x-create-button>
+    <div class="primary">
+        <p>
+            <a href="{{ route('package-types.create') }}" class="btn btn-success btn-lg">Create package type</a>
+        </p>
+    </div>
     <div class="row">
         <div class="col-12">
             <div class="card">

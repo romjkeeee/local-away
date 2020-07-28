@@ -319,6 +319,11 @@ return [
             ],
         ],
         [
+            'text'        => 'Colors',
+            'url'         => 'admin/colors',
+            'icon'        => 'far fa-fw fa-paint-brush',
+        ],
+        [
             'text'        => 'Sizes',
             'url'         => 'admin/sizing',
             'icon'        => 'far fa-fw fa-ruler',

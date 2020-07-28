@@ -18,7 +18,11 @@
 @stop
 
 @section('content')
-    <x-create-button title="Create clothes category" route="{{ route('clothes-categories.create') }}"></x-create-button>
+    <div class="primary">
+        <p>
+            <a href="{{ route('clothes-categories.create') }}" class="btn btn-success btn-lg">Create clothes category</a>
+        </p>
+    </div>
     <div class="row">
         <div class="col-12">
             <div class="card">
