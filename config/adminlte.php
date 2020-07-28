@@ -293,19 +293,35 @@ return [
             ],
         ],
         [
+            'text'    => 'Orders',
+            'icon'    => 'fas fa-fw fa-list',
+            'submenu' => [
+                [
+                    'text'        => 'Partnership',
+                    'url'         => 'admin/partnerships',
+                    'icon'        => 'far fa-fw fa-handshake',
+                ],
+                [
+                    'text'        => 'Orders',
+                    'url'         => '#',
+                    'icon'        => 'far fa-fw fa-cart-plus',
+                ],
+                [
+                    'text'        => 'Contact Form',
+                    'url'         => 'admin/contact-form',
+                    'icon'        => 'far fa-fw fa-address-card',
+                ],
+                [
+                    'text'        => 'Q&A',
+                    'url'         => '#',
+                    'icon'        => 'far fa-fw fa-question',
+                ],
+            ],
+        ],
+        [
             'text'        => 'Sizes',
             'url'         => 'admin/sizing',
             'icon'        => 'far fa-fw fa-ruler',
-        ],
-        [
-            'text'        => 'Contact Form',
-            'url'         => 'admin/contact-form',
-            'icon'        => 'far fa-fw fa-address-card',
-        ],
-        [
-            'text'        => 'Partnership',
-            'url'         => 'admin/partnerships',
-            'icon'        => 'far fa-fw fa-handshake',
         ],
         [
             'text'        => 'Users',

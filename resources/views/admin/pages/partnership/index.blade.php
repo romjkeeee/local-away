@@ -5,12 +5,12 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Cost</h1>
+                <h1>Partnership</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                    <li class="breadcrumb-item active">Cost</li>
+                    <li class="breadcrumb-item active">Partnership</li>
                 </ol>
             </div>
         </div>
@@ -48,9 +48,12 @@
                                 <td>{{ $user->country }}</td>
                                 <td>{{ $user->phone }}</td>
                                 <td>@if($user->status)<i class="fas fa fa-check"></i>@else<i class="fas fa fa-times"></i>@endif</td>
-                                <x-action-buttons show="{{ route('partnerships.show',[$user->id]) }}"
-                                                  edit="{{ route('partnerships.edit',[$user->id]) }}"></x-action-buttons>
-                            </tr>
+                                <td>
+                                    @role('admin')
+                                    <a href="{{ route('partnerships.edit',[$user->id]) }}"><i class="fas fa-edit"></i></a>
+                                    @endrole
+                                </td>
+                              </tr>
                         @endforeach
 
                     </table>
