@@ -32,8 +32,8 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    {{ Form::label('gender') }}
-                    {{ Form::select('gender',['male' => 'male', 'female' => 'female'], old('gender'), ['class' => 'form-control', 'placeholder' => 'Choose a gender...']) }}
+                    {{ Form::label('Gender') }}
+                    {{ Form::select('gender_id',$gender, old('gender'),['class' => 'form-control',  'placeholder' => 'Choose a gender...']) }}
                 </div>
                 <x-footer-button route="{{ route('styled.index') }}"></x-footer-button>
                 {{ Form::close() }}

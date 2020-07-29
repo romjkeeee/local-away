@@ -29,8 +29,8 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    {{ Form::label('gender') }}
-                    {{ Form::select('gender',['male' => 'male', 'female' => 'female'], old('gender'), ['class' => 'form-control']) }}
+                    {{ Form::label('Gender') }}
+                    {{ Form::select('gender_id',$gender, old('gender'),['class' => 'form-control',  'placeholder' => 'Choose a gender...']) }}
                 </div>
                 <div class="form-group">
                     {{ Form::label('active','active') }}<br>

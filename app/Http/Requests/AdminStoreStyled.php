@@ -26,7 +26,7 @@ class AdminStoreStyled extends FormRequest
         return [
             'title' => 'required|string',
             'image' => 'required|image',
-            'gender' => 'required|in:male,female',
+            'gender_id' => 'required|exists:genders,id',
         ];
     }
 }

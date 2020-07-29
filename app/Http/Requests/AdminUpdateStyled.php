@@ -26,7 +26,7 @@ class AdminUpdateStyled extends FormRequest
         return [
             'title' => 'string',
             'image' => 'image',
-            'gender' => 'in:male,female',
+            'gender_id' => 'exists:genders,id',
             'active' => '',
         ];
     }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Gender;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AdminStoreStyled;
 use App\Http\Requests\AdminUpdateStyled;
@@ -36,7 +37,8 @@ class StyledController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.styled.create');
+        $gender = Gender::all()->pluck('title', 'id');
+        return view('admin.pages.styled.create', compact('gender'));
     }
 
     /**
@@ -76,7 +78,8 @@ class StyledController extends Controller
     public function edit(Styled $styled)
     {
         $data = $styled;
-        return view('admin.pages.styled.edit', compact('data'));
+        $gender = Gender::all()->pluck('title', 'id');
+        return view('admin.pages.styled.edit', compact('data', 'gender'));
     }
 
     /**

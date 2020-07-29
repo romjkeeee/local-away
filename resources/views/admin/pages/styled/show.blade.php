@@ -24,7 +24,7 @@
                 </div>
                 <div class="form-group">
                     <label>Gender</label>
-                    <input class="form-control" value="{{ $data->gender }}" disabled>
+                    <input class="form-control" value="{{ $data->gender->title ?? '' }}" disabled>
                 </div>
             </div>
             <!-- /.card-body -->
