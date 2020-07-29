@@ -26,7 +26,7 @@ class AdminUpdateBodyType extends FormRequest
         return [
             'title' => 'string',
             'image' => 'image|mimes:jpeg,png,jpg',
-            'gender' => 'in:male,female',
+            'gender_id' => 'required|exists:genders,id',
             'active' => ''
         ];
     }

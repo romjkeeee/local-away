@@ -28,10 +28,10 @@
                         {{ Form::file('image') }}
                     </div>
                 </div>
-            <div class="form-group">
-                        {{ Form::label('gender') }}
-                        {{ Form::select('gender',['male' => 'male', 'female' => 'female'], old('gender'), ['class' => 'form-control']) }}
-            </div>
+                <div class="form-group">
+                    {{ Form::label('Gender') }}
+                    {{ Form::select('gender_id',$gender, old('gender'),['class' => 'form-control',  'placeholder' => 'Choose a gender...']) }}
+                </div>
             <div class="form-group">
                         {{ Form::label('active','active') }}<br>
                         {{ Form::radio('active',0, null) }}No <br>

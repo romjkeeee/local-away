@@ -30,8 +30,8 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    {{ Form::label('gender') }}
-                    {{ Form::select('gender',['male' => 'male', 'female' => 'female'], null, ['class' => 'form-control', 'placeholder' => 'Choose a gender...']) }}
+                    {{ Form::label('Gender') }}
+                    {{ Form::select('gender_id',$gender, old('gender'),['class' => 'form-control',  'placeholder' => 'Choose a gender...']) }}
                 </div>
                     <x-footer-button route="{{ route('body-type.index') }}"></x-footer-button>
                 {{ Form::close() }}

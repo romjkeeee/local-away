@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\BodyType;
+use App\Gender;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AdminStoreBodyType;
 use App\Http\Requests\AdminUpdateBodyType;
@@ -28,6 +29,7 @@ class BodyTypeController extends Controller
         $data = BodyType::all();
         return view('admin.pages.body_type.index', compact('data'));
     }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -35,7 +37,8 @@ class BodyTypeController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.body_type.create');
+        $gender = Gender::all()->pluck('title', 'id');
+        return view('admin.pages.body_type.create', compact('gender'));
     }
 
     /**
@@ -75,7 +78,8 @@ class BodyTypeController extends Controller
     public function edit(BodyType $body_type)
     {
         $data = $body_type;
-        return view('admin.pages.body_type.edit', compact('data'));
+        $gender = Gender::all()->pluck('title', 'id');
+        return view('admin.pages.body_type.edit', compact('data', 'gender'));
     }
 
     /**
