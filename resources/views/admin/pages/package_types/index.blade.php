@@ -5,12 +5,12 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Cost</h1>
+                <h1>Package type</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                    <li class="breadcrumb-item active">Cost</li>
+                    <li class="breadcrumb-item active">Package type</li>
                 </ol>
             </div>
         </div>
@@ -55,6 +55,4 @@
             <!-- /.card -->
         </div>
     </div>
-
-
 @stop

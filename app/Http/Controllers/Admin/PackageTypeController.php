@@ -46,10 +46,10 @@ class PackageTypeController extends Controller
      */
     public function store(AdminStorePackageType $request)
     {
-        $travel = PackageType::query()->create($request->validated());
+        $package = PackageType::query()->create($request->validated());
         if ($request->file('image')) {
-            $travel->image = $request->file('image')->store('package_type');
-            $travel->update();
+            $package->image = $request->file('image')->store('package_type');
+            $package->update();
         }
         return redirect()->route('package-types.index');
     }
@@ -83,13 +83,17 @@ class PackageTypeController extends Controller
      * Update the specified resource in storage.
      *
      * @param AdminUpdatePackageType $request
-     * @param PackageType $packageType
+     * @param PackageType $package_type
      * @return RedirectResponse
      */
-    public function update(AdminUpdatePackageType $request, PackageType $packageType)
+    public function update(AdminUpdatePackageType $request, PackageType $package_type)
     {
-        if ($packageType->update($request->validated()))
+        if ($package_type->update($request->validated()))
         {
+            if ($request->file('image')) {
+                $package_type->image = $request->file('image')->store('package_type');
+                $package_type->update();
+            }
             return redirect()->route('package-types.index');
         }
     }

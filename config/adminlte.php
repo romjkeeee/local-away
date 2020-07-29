@@ -396,6 +396,11 @@ return [
             'files' => [
                 [
                     'type' => 'js',
+                    'asset' => false,
+                    'location' => 'https://code.jquery.com/jquery-3.4.1.js',
+                ],
+                [
+                    'type' => 'js',
                     'asset' => true,
                     'location' => 'https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js',
                 ],
@@ -433,11 +438,6 @@ return [
                     'type' => 'js',
                     'asset' => true,
                     'location' => 'js/data.js',
-                ],
-                [
-                    'type' => 'js',
-                    'asset' => false,
-                    'location' => 'https://code.jquery.com/jquery-3.4.1.js',
                 ],
             ],
         ],
