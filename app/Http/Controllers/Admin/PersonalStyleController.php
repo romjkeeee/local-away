@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Gender;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AdminStorePersonalStyle;
 use App\Http\Requests\AdminUpdatePersonalStyle;
@@ -24,7 +25,7 @@ class PersonalStyleController extends Controller
      */
     public function index()
     {
-        $data = PersonalStyle::all();
+        $data = PersonalStyle::query()->with('gender')->get();
         return view('admin.pages.personal_style.index', compact('data'));
     }
 
@@ -35,7 +36,8 @@ class PersonalStyleController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.personal_style.create');
+        $gender = Gender::all()->pluck('title', 'id');
+        return view('admin.pages.personal_style.create', compact('gender'));
     }
 
     /**
@@ -75,7 +77,8 @@ class PersonalStyleController extends Controller
     public function edit(PersonalStyle $personal_style)
     {
         $data = $personal_style;
-        return view('admin.pages.personal_style.edit', compact('data'));
+        $gender = Gender::all()->pluck('title', 'id');
+        return view('admin.pages.personal_style.edit', compact('data', 'gender'));
     }
 
     /**
