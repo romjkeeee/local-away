@@ -2,7 +2,7 @@
     "variables": [],
     "info": {
         "name": "Laravel API",
-        "_postman_id": "efb425ac-2505-457a-976f-32dfc3c9a8cf",
+        "_postman_id": "729c98f1-4564-451c-b516-129bf93bc07a",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.0.0\/collection.json"
     },
@@ -33,7 +33,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"email\": \"quasi\",\n    \"password\": \"sint\",\n    \"remember_me\": false\n}"
+                            "raw": "{\n    \"email\": \"debitis\",\n    \"password\": \"minus\",\n    \"remember_me\": false\n}"
                         },
                         "description": "",
                         "response": []
@@ -61,7 +61,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"name\": \"ex\",\n    \"email\": \"sunt\",\n    \"password\": \"non\",\n    \"password_confirmation\": \"rerum\"\n}"
+                            "raw": "{\n    \"name\": \"debitis\",\n    \"email\": \"ipsam\",\n    \"password\": \"sit\",\n    \"password_confirmation\": \"accusantium\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -151,7 +151,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"name\": \"qui\",\n    \"email\": \"magni\",\n    \"message\": \"sed\"\n}"
+                            "raw": "{\n    \"name\": \"quisquam\",\n    \"email\": \"repudiandae\",\n    \"message\": \"eligendi\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -185,7 +185,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"email\": \"omnis\"\n}"
+                            "raw": "{\n    \"email\": \"adipisci\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -207,13 +207,13 @@
                             "query": [
                                 {
                                     "key": "PerPage",
-                                    "value": "est",
+                                    "value": "vel",
                                     "description": "integer",
                                     "disabled": false
                                 },
                                 {
                                     "key": "page",
-                                    "value": "facere",
+                                    "value": "tenetur",
                                     "description": "integer",
                                     "disabled": false
                                 }

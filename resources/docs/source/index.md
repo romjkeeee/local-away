@@ -35,7 +35,7 @@ curl -X POST \
     "http://localhost/api/auth/login" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"quasi","password":"sint","remember_me":false}'
+    -d '{"email":"debitis","password":"minus","remember_me":false}'
 
 ```
 
@@ -50,8 +50,8 @@ let headers = {
 };
 
 let body = {
-    "email": "quasi",
-    "password": "sint",
+    "email": "debitis",
+    "password": "minus",
     "remember_me": false
 }
 
@@ -75,8 +75,8 @@ $response = $client->post(
             'Accept' => 'application/json',
         ],
         'json' => [
-            'email' => 'quasi',
-            'password' => 'sint',
+            'email' => 'debitis',
+            'password' => 'minus',
             'remember_me' => false,
         ],
     ]
@@ -114,7 +114,7 @@ curl -X POST \
     "http://localhost/api/auth/signup" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"name":"ex","email":"sunt","password":"non","password_confirmation":"rerum"}'
+    -d '{"name":"debitis","email":"ipsam","password":"sit","password_confirmation":"accusantium"}'
 
 ```
 
@@ -129,10 +129,10 @@ let headers = {
 };
 
 let body = {
-    "name": "ex",
-    "email": "sunt",
-    "password": "non",
-    "password_confirmation": "rerum"
+    "name": "debitis",
+    "email": "ipsam",
+    "password": "sit",
+    "password_confirmation": "accusantium"
 }
 
 fetch(url, {
@@ -155,10 +155,10 @@ $response = $client->post(
             'Accept' => 'application/json',
         ],
         'json' => [
-            'name' => 'ex',
-            'email' => 'sunt',
-            'password' => 'non',
-            'password_confirmation' => 'rerum',
+            'name' => 'debitis',
+            'email' => 'ipsam',
+            'password' => 'sit',
+            'password_confirmation' => 'accusantium',
         ],
     ]
 );
@@ -319,7 +319,7 @@ curl -X POST \
     "http://localhost/api/contact-form" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"name":"qui","email":"magni","message":"sed"}'
+    -d '{"name":"quisquam","email":"repudiandae","message":"eligendi"}'
 
 ```
 
@@ -334,9 +334,9 @@ let headers = {
 };
 
 let body = {
-    "name": "qui",
-    "email": "magni",
-    "message": "sed"
+    "name": "quisquam",
+    "email": "repudiandae",
+    "message": "eligendi"
 }
 
 fetch(url, {
@@ -359,9 +359,9 @@ $response = $client->post(
             'Accept' => 'application/json',
         ],
         'json' => [
-            'name' => 'qui',
-            'email' => 'magni',
-            'message' => 'sed',
+            'name' => 'quisquam',
+            'email' => 'repudiandae',
+            'message' => 'eligendi',
         ],
     ]
 );
@@ -403,7 +403,7 @@ curl -X POST \
     "http://localhost/api/subscribe" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"omnis"}'
+    -d '{"email":"adipisci"}'
 
 ```
 
@@ -418,7 +418,7 @@ let headers = {
 };
 
 let body = {
-    "email": "omnis"
+    "email": "adipisci"
 }
 
 fetch(url, {
@@ -441,7 +441,7 @@ $response = $client->post(
             'Accept' => 'application/json',
         ],
         'json' => [
-            'email' => 'omnis',
+            'email' => 'adipisci',
         ],
     ]
 );
@@ -478,7 +478,7 @@ APIs for
 
 ```bash
 curl -X GET \
-    -G "http://localhost/api/user?PerPage=est&page=facere" \
+    -G "http://localhost/api/user?PerPage=vel&page=tenetur" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"
 ```
@@ -489,8 +489,8 @@ const url = new URL(
 );
 
 let params = {
-    "PerPage": "est",
-    "page": "facere",
+    "PerPage": "vel",
+    "page": "tenetur",
 };
 Object.keys(params)
     .forEach(key => url.searchParams.append(key, params[key]));
@@ -519,8 +519,8 @@ $response = $client->get(
             'Accept' => 'application/json',
         ],
         'query' => [
-            'PerPage'=> 'est',
-            'page'=> 'facere',
+            'PerPage'=> 'vel',
+            'page'=> 'tenetur',
         ],
     ]
 );
