@@ -43,6 +43,6 @@ class PartnershipController extends Controller
      */
     public function list()
     {
-        return response(Partnership::query()->where('status','active')->get());
+        return response(Partnership::query()->where('status','active')->get(['id','company_name','image']));
     }
 }
