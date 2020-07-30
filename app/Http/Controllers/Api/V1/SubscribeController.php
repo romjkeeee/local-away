@@ -3,6 +3,7 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateContactFormRequest;
+use App\Http\Requests\CreateSubscribeRequest;
 use App\Subscribe;
 
 /**
@@ -19,10 +20,10 @@ class SubscribeController extends Controller
      *
      * @response 201
      *
-     * @param CreateContactFormRequest $request
+     * @param CreateSubscribeRequest $request
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
      */
-    public function create(CreateContactFormRequest $request)
+    public function create(CreateSubscribeRequest $request)
     {
         return response(Subscribe::query()->create($request->validated()), 201);
     }
