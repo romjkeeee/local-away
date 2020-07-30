@@ -35,7 +35,7 @@ curl -X POST \
     "http://localhost/api/auth/login" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"et","password":"rerum","remember_me":false}'
+    -d '{"email":"quasi","password":"sint","remember_me":false}'
 
 ```
 
@@ -50,8 +50,8 @@ let headers = {
 };
 
 let body = {
-    "email": "et",
-    "password": "rerum",
+    "email": "quasi",
+    "password": "sint",
     "remember_me": false
 }
 
@@ -75,8 +75,8 @@ $response = $client->post(
             'Accept' => 'application/json',
         ],
         'json' => [
-            'email' => 'et',
-            'password' => 'rerum',
+            'email' => 'quasi',
+            'password' => 'sint',
             'remember_me' => false,
         ],
     ]
@@ -114,7 +114,7 @@ curl -X POST \
     "http://localhost/api/auth/signup" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"name":"non","email":"amet","password":"ut","password_confirmation":"neque"}'
+    -d '{"name":"ex","email":"sunt","password":"non","password_confirmation":"rerum"}'
 
 ```
 
@@ -129,10 +129,10 @@ let headers = {
 };
 
 let body = {
-    "name": "non",
-    "email": "amet",
-    "password": "ut",
-    "password_confirmation": "neque"
+    "name": "ex",
+    "email": "sunt",
+    "password": "non",
+    "password_confirmation": "rerum"
 }
 
 fetch(url, {
@@ -155,10 +155,10 @@ $response = $client->post(
             'Accept' => 'application/json',
         ],
         'json' => [
-            'name' => 'non',
-            'email' => 'amet',
-            'password' => 'ut',
-            'password_confirmation' => 'neque',
+            'name' => 'ex',
+            'email' => 'sunt',
+            'password' => 'non',
+            'password_confirmation' => 'rerum',
         ],
     ]
 );
@@ -319,7 +319,7 @@ curl -X POST \
     "http://localhost/api/contact-form" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"name":"dolor","email":"cum","message":"reiciendis"}'
+    -d '{"name":"qui","email":"magni","message":"sed"}'
 
 ```
 
@@ -334,9 +334,9 @@ let headers = {
 };
 
 let body = {
-    "name": "dolor",
-    "email": "cum",
-    "message": "reiciendis"
+    "name": "qui",
+    "email": "magni",
+    "message": "sed"
 }
 
 fetch(url, {
@@ -359,9 +359,9 @@ $response = $client->post(
             'Accept' => 'application/json',
         ],
         'json' => [
-            'name' => 'dolor',
-            'email' => 'cum',
-            'message' => 'reiciendis',
+            'name' => 'qui',
+            'email' => 'magni',
+            'message' => 'sed',
         ],
     ]
 );
@@ -388,6 +388,84 @@ Parameter | Type | Status | Description
     
 <!-- END_34c722f4cb3e4cf4c3999707c2b9884d -->
 
+#Subscribe
+
+
+APIs for
+<!-- START_95d2609383a86210e2424765cf8031d1 -->
+## Create
+Subscribe
+
+> Example request:
+
+```bash
+curl -X POST \
+    "http://localhost/api/subscribe" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"email":"omnis"}'
+
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/api/subscribe"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "email": "omnis"
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+```php
+
+$client = new \GuzzleHttp\Client();
+$response = $client->post(
+    'http://localhost/api/subscribe',
+    [
+        'headers' => [
+            'Content-Type' => 'application/json',
+            'Accept' => 'application/json',
+        ],
+        'json' => [
+            'email' => 'omnis',
+        ],
+    ]
+);
+$body = $response->getBody();
+print_r(json_decode((string) $body));
+```
+
+
+> Example response (201):
+
+```json
+{}
+```
+
+### HTTP Request
+`POST api/subscribe`
+
+#### Body Parameters
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    `email` | string |  optional  | require
+    
+<!-- END_95d2609383a86210e2424765cf8031d1 -->
+
 #User
 
 
@@ -400,7 +478,7 @@ APIs for
 
 ```bash
 curl -X GET \
-    -G "http://localhost/api/user?PerPage=repudiandae&page=quia" \
+    -G "http://localhost/api/user?PerPage=est&page=facere" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"
 ```
@@ -411,8 +489,8 @@ const url = new URL(
 );
 
 let params = {
-    "PerPage": "repudiandae",
-    "page": "quia",
+    "PerPage": "est",
+    "page": "facere",
 };
 Object.keys(params)
     .forEach(key => url.searchParams.append(key, params[key]));
@@ -441,8 +519,8 @@ $response = $client->get(
             'Accept' => 'application/json',
         ],
         'query' => [
-            'PerPage'=> 'repudiandae',
-            'page'=> 'quia',
+            'PerPage'=> 'est',
+            'page'=> 'facere',
         ],
     ]
 );

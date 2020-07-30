@@ -316,6 +316,11 @@ return [
                     'url'         => '#',
                     'icon'        => 'far fa-fw fa-question',
                 ],
+                [
+                    'text'        => 'Subscribes',
+                    'url'         => 'admin/subscribes',
+                    'icon'        => 'far fa-fw fa-users',
+                ],
             ],
         ],
         [

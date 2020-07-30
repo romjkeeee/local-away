@@ -39,6 +39,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::resource('colors', 'ColorController');
     Route::resource('cities', 'CityController');
     Route::resource('genders', 'GenderController');
+    Route::resource('subscribes', 'SubscribeController');
 
     Route::get('profile','UserController@adminProfile');
 });

@@ -2,7 +2,7 @@
     "variables": [],
     "info": {
         "name": "Laravel API",
-        "_postman_id": "da3ac342-ad4d-456e-820c-335b837d150c",
+        "_postman_id": "efb425ac-2505-457a-976f-32dfc3c9a8cf",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.0.0\/collection.json"
     },
@@ -33,7 +33,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"email\": \"et\",\n    \"password\": \"rerum\",\n    \"remember_me\": false\n}"
+                            "raw": "{\n    \"email\": \"quasi\",\n    \"password\": \"sint\",\n    \"remember_me\": false\n}"
                         },
                         "description": "",
                         "response": []
@@ -61,7 +61,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"name\": \"non\",\n    \"email\": \"amet\",\n    \"password\": \"ut\",\n    \"password_confirmation\": \"neque\"\n}"
+                            "raw": "{\n    \"name\": \"ex\",\n    \"email\": \"sunt\",\n    \"password\": \"non\",\n    \"password_confirmation\": \"rerum\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -151,7 +151,41 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"name\": \"dolor\",\n    \"email\": \"cum\",\n    \"message\": \"reiciendis\"\n}"
+                            "raw": "{\n    \"name\": \"qui\",\n    \"email\": \"magni\",\n    \"message\": \"sed\"\n}"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Subscribe",
+            "description": "\nAPIs for",
+            "item": [
+                {
+                    "name": "Create\nSubscribe",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost",
+                            "path": "api\/subscribe",
+                            "query": []
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"email\": \"omnis\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -173,13 +207,13 @@
                             "query": [
                                 {
                                     "key": "PerPage",
-                                    "value": "repudiandae",
+                                    "value": "est",
                                     "description": "integer",
                                     "disabled": false
                                 },
                                 {
                                     "key": "page",
-                                    "value": "quia",
+                                    "value": "facere",
                                     "description": "integer",
                                     "disabled": false
                                 }

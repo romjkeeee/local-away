@@ -60,7 +60,7 @@
     "http://localhost/api/auth/login" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"et","password":"rerum","remember_me":false}'
+    -d '{"email":"quasi","password":"sint","remember_me":false}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://localhost/api/auth/login"
@@ -72,8 +72,8 @@ let headers = {
 };
 
 let body = {
-    "email": "et",
-    "password": "rerum",
+    "email": "quasi",
+    "password": "sint",
     "remember_me": false
 }
 
@@ -94,8 +94,8 @@ $response = $client-&gt;post(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'email' =&gt; 'et',
-            'password' =&gt; 'rerum',
+            'email' =&gt; 'quasi',
+            'password' =&gt; 'sint',
             'remember_me' =&gt; false,
         ],
     ]
@@ -146,7 +146,7 @@ print_r(json_decode((string) $body));</code></pre>
     "http://localhost/api/auth/signup" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"name":"non","email":"amet","password":"ut","password_confirmation":"neque"}'
+    -d '{"name":"ex","email":"sunt","password":"non","password_confirmation":"rerum"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://localhost/api/auth/signup"
@@ -158,10 +158,10 @@ let headers = {
 };
 
 let body = {
-    "name": "non",
-    "email": "amet",
-    "password": "ut",
-    "password_confirmation": "neque"
+    "name": "ex",
+    "email": "sunt",
+    "password": "non",
+    "password_confirmation": "rerum"
 }
 
 fetch(url, {
@@ -181,10 +181,10 @@ $response = $client-&gt;post(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'name' =&gt; 'non',
-            'email' =&gt; 'amet',
-            'password' =&gt; 'ut',
-            'password_confirmation' =&gt; 'neque',
+            'name' =&gt; 'ex',
+            'email' =&gt; 'sunt',
+            'password' =&gt; 'non',
+            'password_confirmation' =&gt; 'rerum',
         ],
     ]
 );
@@ -330,7 +330,7 @@ print_r(json_decode((string) $body));</code></pre>
     "http://localhost/api/contact-form" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"name":"dolor","email":"cum","message":"reiciendis"}'
+    -d '{"name":"qui","email":"magni","message":"sed"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://localhost/api/contact-form"
@@ -342,9 +342,9 @@ let headers = {
 };
 
 let body = {
-    "name": "dolor",
-    "email": "cum",
-    "message": "reiciendis"
+    "name": "qui",
+    "email": "magni",
+    "message": "sed"
 }
 
 fetch(url, {
@@ -364,9 +364,9 @@ $response = $client-&gt;post(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'name' =&gt; 'dolor',
-            'email' =&gt; 'cum',
-            'message' =&gt; 'reiciendis',
+            'name' =&gt; 'qui',
+            'email' =&gt; 'magni',
+            'message' =&gt; 'sed',
         ],
     ]
 );
@@ -410,6 +410,82 @@ print_r(json_decode((string) $body));</code></pre>
 </tbody>
 </table>
 <!-- END_34c722f4cb3e4cf4c3999707c2b9884d -->
+<h1>Subscribe</h1>
+<p>APIs for</p>
+<!-- START_95d2609383a86210e2424765cf8031d1 -->
+<h2>Create</h2>
+<p>Subscribe</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST \
+    "http://localhost/api/subscribe" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"email":"omnis"}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/subscribe"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "email": "omnis"
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<pre><code class="language-php">
+$client = new \GuzzleHttp\Client();
+$response = $client-&gt;post(
+    'http://localhost/api/subscribe',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'email' =&gt; 'omnis',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+<blockquote>
+<p>Example response (201):</p>
+</blockquote>
+<pre><code class="language-json">{}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/subscribe</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>email</code></td>
+<td>string</td>
+<td>optional</td>
+<td>require</td>
+</tr>
+</tbody>
+</table>
+<!-- END_95d2609383a86210e2424765cf8031d1 -->
 <h1>User</h1>
 <p>APIs for</p>
 <!-- START_2b6e5a4b188cb183c7e59558cce36cb6 -->
@@ -419,7 +495,7 @@ print_r(json_decode((string) $body));</code></pre>
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-bash">curl -X GET \
-    -G "http://localhost/api/user?PerPage=repudiandae&amp;page=quia" \
+    -G "http://localhost/api/user?PerPage=est&amp;page=facere" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"</code></pre>
 <pre><code class="language-javascript">const url = new URL(
@@ -427,8 +503,8 @@ print_r(json_decode((string) $body));</code></pre>
 );
 
 let params = {
-    "PerPage": "repudiandae",
-    "page": "quia",
+    "PerPage": "est",
+    "page": "facere",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
@@ -454,8 +530,8 @@ $response = $client-&gt;get(
             'Accept' =&gt; 'application/json',
         ],
         'query' =&gt; [
-            'PerPage'=&gt; 'repudiandae',
-            'page'=&gt; 'quia',
+            'PerPage'=&gt; 'est',
+            'page'=&gt; 'facere',
         ],
     ]
 );
