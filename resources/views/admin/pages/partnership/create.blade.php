@@ -12,11 +12,11 @@
     @endif
     <div class="card card-secondary">
         <div class="card-header">
-            <h3 class="card-title">Edit partnership</h3>
+            <h3 class="card-title">Create partnership</h3>
         </div>
         <div class="panel panel-default">
             <div class="card-body">
-                {{ Form::model($data, ['method' => 'PUT', 'enctype'=>'multipart/form-data', 'route' => ['partnerships.update', $data->id]]) }}
+                {{ Form::open(['route' => ['partnerships.store'], 'file' => true, 'method' => 'POST','enctype'=>'multipart/form-data']) }}
                 <div class="form-group">
                     {{ Form::label('First name') }}
                     {{ Form::text('first_name', old('first_name'), ['class' => 'form-control', 'maxlength' => '190', 'placeholder' => '']) }}

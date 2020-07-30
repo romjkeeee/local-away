@@ -30,7 +30,8 @@ class AdminUpdatePartnership extends FormRequest
             'company_name' => 'string',
             'country' => 'string',
             'phone' => 'string',
-            'status' => 'boolean',
+            'image' => 'image|mimes:jpeg,png,jpg',
+            'status' => 'in:active,disable,not_verified',
         ];
     }
 }

@@ -19,6 +19,11 @@
 
 @section('content')
     <div class="row">
+        <div class="primary">
+            <p>
+                <a href="{{ route('partnerships.create') }}" class="btn btn-success btn-lg">Create Partner</a>
+            </p>
+        </div>
         <div class="col-12">
             <div class="card">
                 <!-- /.card-header -->
@@ -33,7 +38,8 @@
                             <th>Email</th>
                             <th>Country</th>
                             <th>Phone</th>
-                            <th>Read</th>
+                            <th>Image</th>
+                            <th>Status</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -47,7 +53,8 @@
                                 <td>{{ $user->email }}</td>
                                 <td>{{ $user->country }}</td>
                                 <td>{{ $user->phone }}</td>
-                                <td>@if($user->status)<i class="fas fa fa-check"></i>@else<i class="fas fa fa-times"></i>@endif</td>
+                                <td><img class="img-thumbnail" src="{{ asset('storage/'.$user->image) }}"></td>
+                                <td>{{ $user->status }}</td>
                                 <td>
                                     @role('admin')
                                     <a href="{{ route('partnerships.edit',[$user->id]) }}"><i class="fas fa-edit"></i></a>

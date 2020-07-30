@@ -3,11 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\AdminStoreSizing;
+use App\Http\Requests\AdminStorePartnersipRequest;
 use App\Http\Requests\AdminUpdatePartnership;
-use App\Http\Requests\AdminUpdateSizing;
 use App\Partnership;
-use App\Sizing;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
@@ -29,6 +27,32 @@ class PartnershipController extends Controller
     {
         $data = Partnership::all();
         return view('admin.pages.partnership.index', compact('data'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return Application|Factory|View
+     */
+    public function create()
+    {
+        return view('admin.pages.partnership.create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param AdminStorePartnersipRequest $request
+     * @return RedirectResponse
+     */
+    public function store(AdminStorePartnersipRequest $request)
+    {
+        $travel = Partnership::query()->create($request->validated());
+        if ($request->file('image')) {
+            $travel->image = $request->file('image')->store('partnership');
+            $travel->update();
+        }
+        return redirect()->route('partnerships.index');
     }
 
     /**
@@ -54,6 +78,10 @@ class PartnershipController extends Controller
     {
         if ($partnership->update($request->validated()))
         {
+            if ($request->file('image')) {
+                $partnership->image = $request->file('image')->store('partnership');
+                $partnership->update();
+            }
             return redirect()->route('partnerships.index');
         }
     }
