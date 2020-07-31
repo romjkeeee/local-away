@@ -17,6 +17,13 @@ use Illuminate\Support\Facades\Route;
 Route::group(['namespace' => 'Api\V1',], function () {
     Route::post('contact-form', 'ContactFormController@create');
     Route::post('subscribe', 'SubscribeController@create');
+
+    Route::group(['prefix' => 'qa'], function() {
+        Route::get('/cities', 'QaController@cities_list');
+        Route::get('/{id}', 'QaController@show');
+        Route::post('/{id}/create', 'QaController@create');
+
+    });
     //Auth
     Route::group(['prefix' => 'auth'], function () {
         Route::post('login', 'AuthController@login');

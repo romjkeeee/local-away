@@ -312,8 +312,8 @@ return [
                     'icon'        => 'far fa-fw fa-address-card',
                 ],
                 [
-                    'text'        => 'Q&A',
-                    'url'         => '#',
+                    'text'        => 'Q&A Form',
+                    'url'         => 'admin/qa-forms',
                     'icon'        => 'far fa-fw fa-question',
                 ],
                 [
@@ -322,6 +322,11 @@ return [
                     'icon'        => 'far fa-fw fa-users',
                 ],
             ],
+        ],
+        [
+            'text'        => 'Q&A',
+            'url'         => 'admin/qas',
+            'icon'        => 'far fa-fw fa-question',
         ],
         [
             'text'        => 'Genders',

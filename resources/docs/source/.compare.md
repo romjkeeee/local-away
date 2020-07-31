@@ -35,7 +35,7 @@ curl -X POST \
     "http://localhost/api/auth/login" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"debitis","password":"minus","remember_me":false}'
+    -d '{"email":"officiis","password":"praesentium","remember_me":false}'
 
 ```
 
@@ -50,8 +50,8 @@ let headers = {
 };
 
 let body = {
-    "email": "debitis",
-    "password": "minus",
+    "email": "officiis",
+    "password": "praesentium",
     "remember_me": false
 }
 
@@ -75,8 +75,8 @@ $response = $client->post(
             'Accept' => 'application/json',
         ],
         'json' => [
-            'email' => 'debitis',
-            'password' => 'minus',
+            'email' => 'officiis',
+            'password' => 'praesentium',
             'remember_me' => false,
         ],
     ]
@@ -114,7 +114,7 @@ curl -X POST \
     "http://localhost/api/auth/signup" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"name":"debitis","email":"ipsam","password":"sit","password_confirmation":"accusantium"}'
+    -d '{"name":"sequi","email":"aut","password":"aut","password_confirmation":"beatae"}'
 
 ```
 
@@ -129,10 +129,10 @@ let headers = {
 };
 
 let body = {
-    "name": "debitis",
-    "email": "ipsam",
-    "password": "sit",
-    "password_confirmation": "accusantium"
+    "name": "sequi",
+    "email": "aut",
+    "password": "aut",
+    "password_confirmation": "beatae"
 }
 
 fetch(url, {
@@ -155,10 +155,10 @@ $response = $client->post(
             'Accept' => 'application/json',
         ],
         'json' => [
-            'name' => 'debitis',
-            'email' => 'ipsam',
-            'password' => 'sit',
-            'password_confirmation' => 'accusantium',
+            'name' => 'sequi',
+            'email' => 'aut',
+            'password' => 'aut',
+            'password_confirmation' => 'beatae',
         ],
     ]
 );
@@ -319,7 +319,7 @@ curl -X POST \
     "http://localhost/api/contact-form" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"name":"quisquam","email":"repudiandae","message":"eligendi"}'
+    -d '{"name":"aspernatur","email":"magni","message":"facere"}'
 
 ```
 
@@ -334,9 +334,9 @@ let headers = {
 };
 
 let body = {
-    "name": "quisquam",
-    "email": "repudiandae",
-    "message": "eligendi"
+    "name": "aspernatur",
+    "email": "magni",
+    "message": "facere"
 }
 
 fetch(url, {
@@ -359,9 +359,9 @@ $response = $client->post(
             'Accept' => 'application/json',
         ],
         'json' => [
-            'name' => 'quisquam',
-            'email' => 'repudiandae',
-            'message' => 'eligendi',
+            'name' => 'aspernatur',
+            'email' => 'magni',
+            'message' => 'facere',
         ],
     ]
 );
@@ -387,6 +387,216 @@ Parameter | Type | Status | Description
         `message` | string |  optional  | require
     
 <!-- END_34c722f4cb3e4cf4c3999707c2b9884d -->
+
+#Q&A
+
+
+APIs for
+<!-- START_7f94024b6548a1386d74b50a9851025a -->
+## List cities
+
+> Example request:
+
+```bash
+curl -X GET \
+    -G "http://localhost/api/qa/cities" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/api/qa/cities"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+```php
+
+$client = new \GuzzleHttp\Client();
+$response = $client->get(
+    'http://localhost/api/qa/cities',
+    [
+        'headers' => [
+            'Content-Type' => 'application/json',
+            'Accept' => 'application/json',
+        ],
+    ]
+);
+$body = $response->getBody();
+print_r(json_decode((string) $body));
+```
+
+
+> Example response (200):
+
+```json
+{}
+```
+
+### HTTP Request
+`GET api/qa/cities`
+
+
+<!-- END_7f94024b6548a1386d74b50a9851025a -->
+
+<!-- START_9c851a8914dbccb6b9e9c0b064d8e07c -->
+## Show qa by id city
+
+> Example request:
+
+```bash
+curl -X GET \
+    -G "http://localhost/api/qa/1?id=quia" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/api/qa/1"
+);
+
+let params = {
+    "id": "quia",
+};
+Object.keys(params)
+    .forEach(key => url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+```php
+
+$client = new \GuzzleHttp\Client();
+$response = $client->get(
+    'http://localhost/api/qa/1',
+    [
+        'headers' => [
+            'Content-Type' => 'application/json',
+            'Accept' => 'application/json',
+        ],
+        'query' => [
+            'id'=> 'quia',
+        ],
+    ]
+);
+$body = $response->getBody();
+print_r(json_decode((string) $body));
+```
+
+
+> Example response (200):
+
+```json
+{}
+```
+
+### HTTP Request
+`GET api/qa/{id}`
+
+#### Query Parameters
+
+Parameter | Status | Description
+--------- | ------- | ------- | -----------
+    `id` |  optional  | integer required
+
+<!-- END_9c851a8914dbccb6b9e9c0b064d8e07c -->
+
+<!-- START_085a58944c50208a727676a87c439527 -->
+## Create
+Qa request
+
+> Example request:
+
+```bash
+curl -X POST \
+    "http://localhost/api/qa/1/create" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"email":"tenetur"}'
+
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/api/qa/1/create"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "email": "tenetur"
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+```php
+
+$client = new \GuzzleHttp\Client();
+$response = $client->post(
+    'http://localhost/api/qa/1/create',
+    [
+        'headers' => [
+            'Content-Type' => 'application/json',
+            'Accept' => 'application/json',
+        ],
+        'json' => [
+            'email' => 'tenetur',
+        ],
+    ]
+);
+$body = $response->getBody();
+print_r(json_decode((string) $body));
+```
+
+
+> Example response (201):
+
+```json
+{}
+```
+
+### HTTP Request
+`POST api/qa/{id}/create`
+
+#### Body Parameters
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    `email` | string |  optional  | require
+    
+<!-- END_085a58944c50208a727676a87c439527 -->
 
 #Subscribe
 
@@ -478,7 +688,7 @@ APIs for
 
 ```bash
 curl -X GET \
-    -G "http://localhost/api/user?PerPage=vel&page=tenetur" \
+    -G "http://localhost/api/user?PerPage=perferendis&page=vel" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"
 ```
@@ -489,8 +699,8 @@ const url = new URL(
 );
 
 let params = {
-    "PerPage": "vel",
-    "page": "tenetur",
+    "PerPage": "perferendis",
+    "page": "vel",
 };
 Object.keys(params)
     .forEach(key => url.searchParams.append(key, params[key]));
@@ -519,8 +729,8 @@ $response = $client->get(
             'Accept' => 'application/json',
         ],
         'query' => [
-            'PerPage'=> 'vel',
-            'page'=> 'tenetur',
+            'PerPage'=> 'perferendis',
+            'page'=> 'vel',
         ],
     ]
 );

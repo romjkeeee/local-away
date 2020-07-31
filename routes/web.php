@@ -40,6 +40,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::resource('cities', 'CityController');
     Route::resource('genders', 'GenderController');
     Route::resource('subscribes', 'SubscribeController');
+    Route::resource('qas', 'QaController');
+    Route::resource('qa-forms', 'QaFormController');
 
     Route::get('profile','UserController@adminProfile');
 });

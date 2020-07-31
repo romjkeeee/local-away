@@ -2,7 +2,7 @@
     "variables": [],
     "info": {
         "name": "Laravel API",
-        "_postman_id": "729c98f1-4564-451c-b516-129bf93bc07a",
+        "_postman_id": "98fddbf2-4c8f-48bd-8636-bab3119e83b3",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.0.0\/collection.json"
     },
@@ -33,7 +33,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"email\": \"debitis\",\n    \"password\": \"minus\",\n    \"remember_me\": false\n}"
+                            "raw": "{\n    \"email\": \"officiis\",\n    \"password\": \"praesentium\",\n    \"remember_me\": false\n}"
                         },
                         "description": "",
                         "response": []
@@ -61,7 +61,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"name\": \"debitis\",\n    \"email\": \"ipsam\",\n    \"password\": \"sit\",\n    \"password_confirmation\": \"accusantium\"\n}"
+                            "raw": "{\n    \"name\": \"sequi\",\n    \"email\": \"aut\",\n    \"password\": \"aut\",\n    \"password_confirmation\": \"beatae\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -151,7 +151,104 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"name\": \"quisquam\",\n    \"email\": \"repudiandae\",\n    \"message\": \"eligendi\"\n}"
+                            "raw": "{\n    \"name\": \"aspernatur\",\n    \"email\": \"magni\",\n    \"message\": \"facere\"\n}"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Q&A",
+            "description": "\nAPIs for",
+            "item": [
+                {
+                    "name": "List cities",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost",
+                            "path": "api\/qa\/cities",
+                            "query": []
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Show qa by id city",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost",
+                            "path": "api\/qa\/:id",
+                            "query": [
+                                {
+                                    "key": "id",
+                                    "value": "quia",
+                                    "description": "integer required",
+                                    "disabled": false
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Create\nQa request",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost",
+                            "path": "api\/qa\/:id\/create",
+                            "query": []
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"email\": \"tenetur\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -207,13 +304,13 @@
                             "query": [
                                 {
                                     "key": "PerPage",
-                                    "value": "vel",
+                                    "value": "perferendis",
                                     "description": "integer",
                                     "disabled": false
                                 },
                                 {
                                     "key": "page",
-                                    "value": "tenetur",
+                                    "value": "vel",
                                     "description": "integer",
                                     "disabled": false
                                 }
