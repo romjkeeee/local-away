@@ -2,7 +2,7 @@
     "variables": [],
     "info": {
         "name": "Laravel API",
-        "_postman_id": "98fddbf2-4c8f-48bd-8636-bab3119e83b3",
+        "_postman_id": "8c543174-e1fd-4220-a18b-197169bc2faa",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.0.0\/collection.json"
     },
@@ -33,7 +33,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"email\": \"officiis\",\n    \"password\": \"praesentium\",\n    \"remember_me\": false\n}"
+                            "raw": "{\n    \"email\": \"impedit\",\n    \"password\": \"quos\",\n    \"remember_me\": false\n}"
                         },
                         "description": "",
                         "response": []
@@ -61,7 +61,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"name\": \"sequi\",\n    \"email\": \"aut\",\n    \"password\": \"aut\",\n    \"password_confirmation\": \"beatae\"\n}"
+                            "raw": "{\n    \"name\": \"in\",\n    \"email\": \"eius\",\n    \"password\": \"itaque\",\n    \"password_confirmation\": \"recusandae\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -151,7 +151,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"name\": \"aspernatur\",\n    \"email\": \"magni\",\n    \"message\": \"facere\"\n}"
+                            "raw": "{\n    \"name\": \"culpa\",\n    \"email\": \"excepturi\",\n    \"message\": \"voluptates\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -201,7 +201,7 @@
                             "query": [
                                 {
                                     "key": "id",
-                                    "value": "quia",
+                                    "value": "iusto",
                                     "description": "integer required",
                                     "disabled": false
                                 }
@@ -248,7 +248,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"email\": \"tenetur\"\n}"
+                            "raw": "{\n    \"email\": \"nisi\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -282,7 +282,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"email\": \"adipisci\"\n}"
+                            "raw": "{\n    \"email\": \"laboriosam\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -304,13 +304,13 @@
                             "query": [
                                 {
                                     "key": "PerPage",
-                                    "value": "perferendis",
+                                    "value": "consequatur",
                                     "description": "integer",
                                     "disabled": false
                                 },
                                 {
                                     "key": "page",
-                                    "value": "vel",
+                                    "value": "reprehenderit",
                                     "description": "integer",
                                     "disabled": false
                                 }
