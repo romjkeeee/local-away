@@ -52,6 +52,6 @@ class QaController extends Controller
      */
     public function show($id)
     {
-        return response(Qa::query()->where('city_id',$id)->first());
+        return response(Qa::query()->where('city_id',$id)->with('city:id,name')->first());
     }
 }
