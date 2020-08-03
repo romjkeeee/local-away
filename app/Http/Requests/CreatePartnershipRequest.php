@@ -30,7 +30,6 @@ class CreatePartnershipRequest extends FormRequest
             'company_name' => 'required|string',
             'country' => 'required|string',
             'phone' => 'required|string',
-            'image' => 'required|image|mimes:jpeg,png,jpg',
         ];
     }
 }
