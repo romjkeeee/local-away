@@ -17,34 +17,15 @@ return [
 
     'paths' => ['api/*'],
 
-    'allowed_methods' => [
-        'POST',
-        'GET',
-        'OPTIONS',
-        'PUT',
-        'PATCH',
-        'DELETE',
-        ],
+    'allowed_methods' => ['*'],
 
     'allowed_origins' => ['*'],
 
     'allowed_origins_patterns' => [],
 
-    'allowed_headers' => [
-        'Content-Type',
-        'X-Auth-Token',
-        'Origin',
-        'Authorization',
-        ],
+    'allowed_headers' => ['*'],
 
-    'exposed_headers' => [
-        'Cache-Control',
-        'Content-Language',
-        'Content-Type',
-        'Expires',
-        'Last-Modified',
-        'Pragma',
-    ],
+    'exposed_headers' => [],
 
     'max_age' => 0,
 
