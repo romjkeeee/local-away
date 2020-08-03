@@ -2,7 +2,7 @@
     "variables": [],
     "info": {
         "name": "Laravel API",
-        "_postman_id": "1743c501-fa35-41bc-a5fc-4ebc1844b4ee",
+        "_postman_id": "60b271a6-110d-487c-9e9d-c13141cd3157",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.0.0\/collection.json"
     },
@@ -33,7 +33,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"email\": \"quaerat\",\n    \"password\": \"repudiandae\",\n    \"remember_me\": true\n}"
+                            "raw": "{\n    \"email\": \"rerum\",\n    \"password\": \"in\",\n    \"remember_me\": true\n}"
                         },
                         "description": "",
                         "response": []
@@ -61,7 +61,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"name\": \"dolores\",\n    \"email\": \"veritatis\",\n    \"password\": \"delectus\",\n    \"password_confirmation\": \"ad\"\n}"
+                            "raw": "{\n    \"name\": \"in\",\n    \"email\": \"sit\",\n    \"password\": \"sit\",\n    \"password_confirmation\": \"et\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -151,7 +151,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"name\": \"quasi\",\n    \"email\": \"pariatur\",\n    \"message\": \"fugit\"\n}"
+                            "raw": "{\n    \"name\": \"quo\",\n    \"email\": \"adipisci\",\n    \"message\": \"sed\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -213,7 +213,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"first_name\": \"quod\",\n    \"last_name\": \"esse\",\n    \"email\": \"non\",\n    \"company_name\": \"error\",\n    \"country\": \"doloremque\",\n    \"phone\": \"amet\"\n}"
+                            "raw": "{\n    \"first_name\": \"veniam\",\n    \"last_name\": \"modi\",\n    \"email\": \"aut\",\n    \"company_name\": \"possimus\",\n    \"country\": \"temporibus\",\n    \"phone\": \"beatae\",\n    \"image\": \"illum\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -263,7 +263,7 @@
                             "query": [
                                 {
                                     "key": "id",
-                                    "value": "molestiae",
+                                    "value": "velit",
                                     "description": "integer required",
                                     "disabled": false
                                 }
@@ -310,7 +310,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"email\": \"iusto\"\n}"
+                            "raw": "{\n    \"email\": \"nihil\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -344,7 +344,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"email\": \"qui\"\n}"
+                            "raw": "{\n    \"email\": \"exercitationem\"\n}"
                         },
                         "description": "",
                         "response": []

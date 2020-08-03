@@ -24,6 +24,7 @@ class PartnershipController extends Controller
      * @bodyParam company_name string require
      * @bodyParam country string require
      * @bodyParam phone string require
+     * @bodyParam image file require
      *
      * @response 201
      *
@@ -32,7 +33,12 @@ class PartnershipController extends Controller
      */
     public function create(CreatePartnershipRequest $request)
     {
-        return response(Partnership::query()->create($request->validated()), 201);
+        $partner = Partnership::query()->create($request->validated());
+        if ($request->file('image')) {
+            $partner->image = $request->file('image')->store('partnership');
+            $partner->update();
+        }
+        return response($partner, 201);
     }
 
     /**
