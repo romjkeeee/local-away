@@ -29,7 +29,7 @@ class QaController extends Controller
      */
     public function create(CreateQaFormRequest $request, $id)
     {
-        return response(QaForm::query()->create(['qa_id' => $id, 'email' => $request->email]), 201);
+        return response(['status' => 'success', 'data' => QaForm::query()->create(['qa_id' => $id, 'email' => $request->email])],201);
     }
 
     /**
@@ -40,7 +40,7 @@ class QaController extends Controller
      */
     public function cities_list()
     {
-        return response(City::query()->whereHas('qa')->get());
+        return response(['status'=>'success','data' => City::query()->whereHas('qa')->get()]);
     }
 
     /**
@@ -52,6 +52,6 @@ class QaController extends Controller
      */
     public function show($id)
     {
-        return response(Qa::query()->where('city_id',$id)->with('city:id,name')->first());
+        return response(['status' => 'success','data' => Qa::query()->where('city_id',$id)->with('city:id,name')->first()]);
     }
 }
