@@ -21,6 +21,7 @@ stages:
     - deploy
     - update
     - migrate
+    - clean
 
 #---------------------------------------------------------------
 #-- Сhecking the existence of the directory and files in it. --
@@ -88,5 +89,22 @@ migrate_apply:
         - *ENV_ONLY
     script:
         - "cd ~/www && php artisan migrate"
+    allow_failure: true
+    when: on_success
+
+#---------------------------------------------------------------
+#-- Apply cleaner --
+#---------------------------------------------------------------
+cleaner_apply:
+    stage: clean
+    tags:
+        - *ENV_TAG
+    only:
+        - *ENV_ONLY
+    script:
+        - "cd ~/www && php artisan cache:clear"
+        - "cd ~/www && php artisan route:cache"
+        - "cd ~/www && php artisan config:cache"
+        - "cd ~/www && php artisan view:clear"
     allow_failure: true
     when: on_success
