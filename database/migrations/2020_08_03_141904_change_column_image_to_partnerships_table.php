@@ -14,7 +14,7 @@ class ChangeColumnImageToPartnershipsTable extends Migration
     public function up()
     {
         Schema::table('partnerships', function (Blueprint $table) {
-            $table->string('image')->nullable();
+            $table->string('image')->nullable()->change();
         });
     }
 
