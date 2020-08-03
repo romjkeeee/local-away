@@ -33,8 +33,4 @@ Route::group(['namespace' => 'Api\V1',], function () {
             Route::get('user', 'AuthController@user');
         });
     });
-    //User
-    Route::group(['prefix' => 'user'], function () {
-        Route::get('/', 'UserController@index');
-    });
 });
