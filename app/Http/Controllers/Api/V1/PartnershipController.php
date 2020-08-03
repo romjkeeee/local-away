@@ -3,6 +3,7 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateContactFormRequest;
+use App\Http\Requests\CreatePartnershipRequest;
 use App\Http\Requests\CreateSubscribeRequest;
 use App\Partnership;
 use App\Subscribe;
@@ -29,7 +30,7 @@ class PartnershipController extends Controller
      * @param CreateSubscribeRequest $request
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
      */
-    public function create(CreateSubscribeRequest $request)
+    public function create(CreatePartnershipRequest $request)
     {
         return response(Partnership::query()->create($request->validated()), 201);
     }
