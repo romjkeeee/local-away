@@ -2,7 +2,7 @@
     "variables": [],
     "info": {
         "name": "Laravel API",
-        "_postman_id": "8c543174-e1fd-4220-a18b-197169bc2faa",
+        "_postman_id": "1743c501-fa35-41bc-a5fc-4ebc1844b4ee",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.0.0\/collection.json"
     },
@@ -33,7 +33,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"email\": \"impedit\",\n    \"password\": \"quos\",\n    \"remember_me\": false\n}"
+                            "raw": "{\n    \"email\": \"quaerat\",\n    \"password\": \"repudiandae\",\n    \"remember_me\": true\n}"
                         },
                         "description": "",
                         "response": []
@@ -61,7 +61,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"name\": \"in\",\n    \"email\": \"eius\",\n    \"password\": \"itaque\",\n    \"password_confirmation\": \"recusandae\"\n}"
+                            "raw": "{\n    \"name\": \"dolores\",\n    \"email\": \"veritatis\",\n    \"password\": \"delectus\",\n    \"password_confirmation\": \"ad\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -151,7 +151,69 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"name\": \"culpa\",\n    \"email\": \"excepturi\",\n    \"message\": \"voluptates\"\n}"
+                            "raw": "{\n    \"name\": \"quasi\",\n    \"email\": \"pariatur\",\n    \"message\": \"fugit\"\n}"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Partnership",
+            "description": "\nAPIs for",
+            "item": [
+                {
+                    "name": "List\nList of active partners",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost",
+                            "path": "api\/partnership",
+                            "query": []
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Create\nRequest to partners",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost",
+                            "path": "api\/partnership\/create",
+                            "query": []
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"first_name\": \"quod\",\n    \"last_name\": \"esse\",\n    \"email\": \"non\",\n    \"company_name\": \"error\",\n    \"country\": \"doloremque\",\n    \"phone\": \"amet\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -201,7 +263,7 @@
                             "query": [
                                 {
                                     "key": "id",
-                                    "value": "iusto",
+                                    "value": "molestiae",
                                     "description": "integer required",
                                     "disabled": false
                                 }
@@ -248,7 +310,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"email\": \"nisi\"\n}"
+                            "raw": "{\n    \"email\": \"iusto\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -282,54 +344,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"email\": \"laboriosam\"\n}"
-                        },
-                        "description": "",
-                        "response": []
-                    }
-                }
-            ]
-        },
-        {
-            "name": "User",
-            "description": "\nAPIs for",
-            "item": [
-                {
-                    "name": "List\n\u0421\u043f\u0438\u0441\u043e\u043a \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u0435\u0439",
-                    "request": {
-                        "url": {
-                            "protocol": "http",
-                            "host": "localhost",
-                            "path": "api\/user",
-                            "query": [
-                                {
-                                    "key": "PerPage",
-                                    "value": "consequatur",
-                                    "description": "integer",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "page",
-                                    "value": "reprehenderit",
-                                    "description": "integer",
-                                    "disabled": false
-                                }
-                            ]
-                        },
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "[]"
+                            "raw": "{\n    \"email\": \"qui\"\n}"
                         },
                         "description": "",
                         "response": []

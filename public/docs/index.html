@@ -60,7 +60,7 @@
     "http://localhost/api/auth/login" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"impedit","password":"quos","remember_me":false}'
+    -d '{"email":"quaerat","password":"repudiandae","remember_me":true}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://localhost/api/auth/login"
@@ -72,9 +72,9 @@ let headers = {
 };
 
 let body = {
-    "email": "impedit",
-    "password": "quos",
-    "remember_me": false
+    "email": "quaerat",
+    "password": "repudiandae",
+    "remember_me": true
 }
 
 fetch(url, {
@@ -94,9 +94,9 @@ $response = $client-&gt;post(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'email' =&gt; 'impedit',
-            'password' =&gt; 'quos',
-            'remember_me' =&gt; false,
+            'email' =&gt; 'quaerat',
+            'password' =&gt; 'repudiandae',
+            'remember_me' =&gt; true,
         ],
     ]
 );
@@ -146,7 +146,7 @@ print_r(json_decode((string) $body));</code></pre>
     "http://localhost/api/auth/signup" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"name":"in","email":"eius","password":"itaque","password_confirmation":"recusandae"}'
+    -d '{"name":"dolores","email":"veritatis","password":"delectus","password_confirmation":"ad"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://localhost/api/auth/signup"
@@ -158,10 +158,10 @@ let headers = {
 };
 
 let body = {
-    "name": "in",
-    "email": "eius",
-    "password": "itaque",
-    "password_confirmation": "recusandae"
+    "name": "dolores",
+    "email": "veritatis",
+    "password": "delectus",
+    "password_confirmation": "ad"
 }
 
 fetch(url, {
@@ -181,10 +181,10 @@ $response = $client-&gt;post(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'name' =&gt; 'in',
-            'email' =&gt; 'eius',
-            'password' =&gt; 'itaque',
-            'password_confirmation' =&gt; 'recusandae',
+            'name' =&gt; 'dolores',
+            'email' =&gt; 'veritatis',
+            'password' =&gt; 'delectus',
+            'password_confirmation' =&gt; 'ad',
         ],
     ]
 );
@@ -330,7 +330,7 @@ print_r(json_decode((string) $body));</code></pre>
     "http://localhost/api/contact-form" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"name":"culpa","email":"excepturi","message":"voluptates"}'
+    -d '{"name":"quasi","email":"pariatur","message":"fugit"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://localhost/api/contact-form"
@@ -342,9 +342,9 @@ let headers = {
 };
 
 let body = {
-    "name": "culpa",
-    "email": "excepturi",
-    "message": "voluptates"
+    "name": "quasi",
+    "email": "pariatur",
+    "message": "fugit"
 }
 
 fetch(url, {
@@ -364,9 +364,9 @@ $response = $client-&gt;post(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'name' =&gt; 'culpa',
-            'email' =&gt; 'excepturi',
-            'message' =&gt; 'voluptates',
+            'name' =&gt; 'quasi',
+            'email' =&gt; 'pariatur',
+            'message' =&gt; 'fugit',
         ],
     ]
 );
@@ -410,6 +410,167 @@ print_r(json_decode((string) $body));</code></pre>
 </tbody>
 </table>
 <!-- END_34c722f4cb3e4cf4c3999707c2b9884d -->
+<h1>Partnership</h1>
+<p>APIs for</p>
+<!-- START_e88b3f674f53e6bc3b56df8094a82825 -->
+<h2>List</h2>
+<p>List of active partners</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET \
+    -G "http://localhost/api/partnership" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/partnership"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<pre><code class="language-php">
+$client = new \GuzzleHttp\Client();
+$response = $client-&gt;get(
+    'http://localhost/api/partnership',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET api/partnership</code></p>
+<!-- END_e88b3f674f53e6bc3b56df8094a82825 -->
+<!-- START_904b953d69d07e3c85634378491fd7d6 -->
+<h2>Create</h2>
+<p>Request to partners</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST \
+    "http://localhost/api/partnership/create" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"first_name":"quod","last_name":"esse","email":"non","company_name":"error","country":"doloremque","phone":"amet"}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/partnership/create"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "first_name": "quod",
+    "last_name": "esse",
+    "email": "non",
+    "company_name": "error",
+    "country": "doloremque",
+    "phone": "amet"
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<pre><code class="language-php">
+$client = new \GuzzleHttp\Client();
+$response = $client-&gt;post(
+    'http://localhost/api/partnership/create',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'first_name' =&gt; 'quod',
+            'last_name' =&gt; 'esse',
+            'email' =&gt; 'non',
+            'company_name' =&gt; 'error',
+            'country' =&gt; 'doloremque',
+            'phone' =&gt; 'amet',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+<blockquote>
+<p>Example response (201):</p>
+</blockquote>
+<pre><code class="language-json">{}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/partnership/create</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>first_name</code></td>
+<td>string</td>
+<td>optional</td>
+<td>require</td>
+</tr>
+<tr>
+<td><code>last_name</code></td>
+<td>string</td>
+<td>optional</td>
+<td>require</td>
+</tr>
+<tr>
+<td><code>email</code></td>
+<td>string</td>
+<td>optional</td>
+<td>require</td>
+</tr>
+<tr>
+<td><code>company_name</code></td>
+<td>string</td>
+<td>optional</td>
+<td>require</td>
+</tr>
+<tr>
+<td><code>country</code></td>
+<td>string</td>
+<td>optional</td>
+<td>require</td>
+</tr>
+<tr>
+<td><code>phone</code></td>
+<td>string</td>
+<td>optional</td>
+<td>require</td>
+</tr>
+</tbody>
+</table>
+<!-- END_904b953d69d07e3c85634378491fd7d6 -->
 <h1>Q&amp;A</h1>
 <p>APIs for</p>
 <!-- START_7f94024b6548a1386d74b50a9851025a -->
@@ -462,7 +623,7 @@ print_r(json_decode((string) $body));</code></pre>
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-bash">curl -X GET \
-    -G "http://localhost/api/qa/1?id=iusto" \
+    -G "http://localhost/api/qa/1?id=molestiae" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"</code></pre>
 <pre><code class="language-javascript">const url = new URL(
@@ -470,7 +631,7 @@ print_r(json_decode((string) $body));</code></pre>
 );
 
 let params = {
-    "id": "iusto",
+    "id": "molestiae",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
@@ -496,7 +657,7 @@ $response = $client-&gt;get(
             'Accept' =&gt; 'application/json',
         ],
         'query' =&gt; [
-            'id'=&gt; 'iusto',
+            'id'=&gt; 'molestiae',
         ],
     ]
 );
@@ -536,7 +697,7 @@ print_r(json_decode((string) $body));</code></pre>
     "http://localhost/api/qa/1/create" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"nisi"}'
+    -d '{"email":"iusto"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://localhost/api/qa/1/create"
@@ -548,7 +709,7 @@ let headers = {
 };
 
 let body = {
-    "email": "nisi"
+    "email": "iusto"
 }
 
 fetch(url, {
@@ -568,7 +729,7 @@ $response = $client-&gt;post(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'email' =&gt; 'nisi',
+            'email' =&gt; 'iusto',
         ],
     ]
 );
@@ -612,7 +773,7 @@ print_r(json_decode((string) $body));</code></pre>
     "http://localhost/api/subscribe" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"laboriosam"}'
+    -d '{"email":"qui"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://localhost/api/subscribe"
@@ -624,7 +785,7 @@ let headers = {
 };
 
 let body = {
-    "email": "laboriosam"
+    "email": "qui"
 }
 
 fetch(url, {
@@ -644,7 +805,7 @@ $response = $client-&gt;post(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'email' =&gt; 'laboriosam',
+            'email' =&gt; 'qui',
         ],
     ]
 );
@@ -676,86 +837,6 @@ print_r(json_decode((string) $body));</code></pre>
 </tbody>
 </table>
 <!-- END_95d2609383a86210e2424765cf8031d1 -->
-<h1>User</h1>
-<p>APIs for</p>
-<!-- START_2b6e5a4b188cb183c7e59558cce36cb6 -->
-<h2>List</h2>
-<p>Список пользователей</p>
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre><code class="language-bash">curl -X GET \
-    -G "http://localhost/api/user?PerPage=consequatur&amp;page=reprehenderit" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json"</code></pre>
-<pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/user"
-);
-
-let params = {
-    "PerPage": "consequatur",
-    "page": "reprehenderit",
-};
-Object.keys(params)
-    .forEach(key =&gt; url.searchParams.append(key, params[key]));
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response =&gt; response.json())
-    .then(json =&gt; console.log(json));</code></pre>
-<pre><code class="language-php">
-$client = new \GuzzleHttp\Client();
-$response = $client-&gt;get(
-    'http://localhost/api/user',
-    [
-        'headers' =&gt; [
-            'Content-Type' =&gt; 'application/json',
-            'Accept' =&gt; 'application/json',
-        ],
-        'query' =&gt; [
-            'PerPage'=&gt; 'consequatur',
-            'page'=&gt; 'reprehenderit',
-        ],
-    ]
-);
-$body = $response-&gt;getBody();
-print_r(json_decode((string) $body));</code></pre>
-<blockquote>
-<p>Example response (200):</p>
-</blockquote>
-<pre><code class="language-json">{}</code></pre>
-<h3>HTTP Request</h3>
-<p><code>GET api/user</code></p>
-<h4>Query Parameters</h4>
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Status</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>PerPage</code></td>
-<td>optional</td>
-<td>integer</td>
-</tr>
-<tr>
-<td><code>page</code></td>
-<td>optional</td>
-<td>integer</td>
-</tr>
-</tbody>
-</table>
-<!-- END_2b6e5a4b188cb183c7e59558cce36cb6 -->
       </div>
       <div class="dark-box">
                         <div class="lang-selector">

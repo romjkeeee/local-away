@@ -16,9 +16,6 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::group(['namespace' => 'Api\V1'], function () {
-    Route::middleware('auth:api')->get('/user', function (Request $request) {
-        return $request->user();
-    });
     Route::post('contact-form', 'ContactFormController@create');
     Route::post('subscribe', 'SubscribeController@create');
 
@@ -27,6 +24,11 @@ Route::group(['namespace' => 'Api\V1'], function () {
         Route::get('/{id}', 'QaController@show');
         Route::post('/{id}/create', 'QaController@create');
 
+    });
+    //Partnership
+    Route::group(['prefix' => 'partnership'], function() {
+        Route::get('/', 'PartnershipController@list');
+        Route::post('/create', 'PartnershipController@create');
     });
     //Auth
     Route::group(['prefix' => 'auth'], function () {
