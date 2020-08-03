@@ -38,7 +38,7 @@ class PartnershipController extends Controller
             $partner->image = $request->file('image')->store('partnership');
             $partner->update();
         }
-        return response($partner, 201);
+        return response(['status'=> 'success', 'data' => $partner], 201);
     }
 
     /**
@@ -50,6 +50,6 @@ class PartnershipController extends Controller
      */
     public function list()
     {
-        return response(Partnership::query()->where('status','active')->get(['id','company_name','image']));
+        return response(['status'=>'success', 'data' => Partnership::query()->where('status','active')->get(['id','company_name','image'])]);
     }
 }

@@ -25,6 +25,6 @@ class SubscribeController extends Controller
      */
     public function create(CreateSubscribeRequest $request)
     {
-        return response(Subscribe::query()->create($request->validated()), 201);
+        return response(['status' => 'success', 'data' => Subscribe::query()->create($request->validated())], 201);
     }
 }

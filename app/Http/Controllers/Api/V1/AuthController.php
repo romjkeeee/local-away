@@ -33,7 +33,7 @@ class AuthController extends Controller
         $user = new User($request->validated());
         $user->save();
         $user->attachRole('user');
-        return response()->json(['message' => 'Successfully created user!'], 201);
+        return response()->json(['status' => 'success', 'message' => 'Successfully created user!'], 201);
     }
 
     /**

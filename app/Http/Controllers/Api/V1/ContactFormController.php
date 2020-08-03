@@ -29,6 +29,6 @@ class ContactFormController extends Controller
      */
     public function create(CreateContactFormRequest $request)
     {
-        return response(ContactForm::query()->create($request->validated()), 201);
+        return response(['status' => 'success', 'data' => ContactForm::query()->create($request->validated())], 201);
     }
 }
