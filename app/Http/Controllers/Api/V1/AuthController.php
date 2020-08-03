@@ -36,7 +36,7 @@ class AuthController extends Controller
             'password' => bcrypt($request->password)
         ]);
         $user->save();
-        $user->assignRole('user');
+        $user->attachRole('user');
         return response()->json(['message' => 'Successfully created user!'], 201);
     }
 
