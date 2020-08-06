@@ -10,6 +10,7 @@ use App\Http\Requests\AdminStoreProductRequest;
 use App\Http\Requests\AdminUpdateProductRequest;
 use App\MediaToColorProduct;
 use App\Product;
+use App\ProductCategory;
 use App\Sizing;
 use Illuminate\Contracts\Auth\Factory;
 use Illuminate\Contracts\Console\Application;
@@ -47,7 +48,8 @@ class ProductController extends Controller
         $gender = Gender::all()->pluck('title', 'id');
         $sizes = Sizing::all();
         $colors = Color::all();
-        return view('admin.pages.products.create', compact('gender','sizes','colors'));
+        $category = ProductCategory::all()->pluck('name','id');
+        return view('admin.pages.products.create', compact('gender','sizes','colors','category'));
     }
 
     /**
@@ -97,8 +99,9 @@ class ProductController extends Controller
         $gender = Gender::all()->pluck('title', 'id');
         $sizes = Sizing::all();
         $colors = Color::all();
-        $data = Product::query()->where('id',$product->id)->with('colors','sizes')->first();
-        return view('admin.pages.products.edit', compact('data','gender','sizes','colors'));
+        $data = $product;
+        $category = ProductCategory::all()->pluck('name','id');
+        return view('admin.pages.products.edit', compact('data','gender','sizes','colors','category'));
     }
 
     /**

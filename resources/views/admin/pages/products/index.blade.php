@@ -34,6 +34,7 @@
                             <th>id</th>
                             <th>Name</th>
                             <th>Alias</th>
+                            <th>Category</th>
                             <th>Sizes</th>
                             <th>Colors</th>
                             <th>images</th>
@@ -49,6 +50,7 @@
                                 <td>{{ $user->id }}</td>
                                 <td style="width: 100%">{{ $user->name }}</td>
                                 <td>{{ $user->alias }}</td>
+                                <td>{{ $user->category->name ?? '' }}</td>
                                 <td>
                                     @foreach($user->sizes as $sizes)
                                         {{ $sizes->title ?? '' }},

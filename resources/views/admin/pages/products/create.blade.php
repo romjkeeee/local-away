@@ -23,13 +23,8 @@
                     {{ Form::text('name', old('name'), ['class' => 'form-control', 'maxlength' => '190', 'placeholder' => '']) }}
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputImage">Images</label>
-                    <div class="input-group">
-                        <div class="custom-file">
-                            {{ Form::label('images[]', 'Chose file', ['class' => 'custom-file-label']) }}
-                            {{ Form::file('images[]', ['multiple'=>true]) }}
-                        </div>
-                    </div>
+                    {{ Form::label('Category') }}
+                    {{ Form::select('product_category_id',$category, old('product_category_id'),['class' => 'form-control',  'placeholder' => 'Choose a category...']) }}
                 </div>
                 <div class="form-group">
                     {{ Form::label('Sizes') }}<br>

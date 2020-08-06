@@ -23,6 +23,10 @@
                     {{ Form::text('name', old('name'), ['class' => 'form-control', 'maxlength' => '190', 'placeholder' => '']) }}
                 </div>
                 <div class="form-group">
+                    {{ Form::label('Category') }}
+                    {{ Form::select('product_category_id',$category, old('product_category_id'),['class' => 'form-control',  'placeholder' => 'Choose a category...']) }}
+                </div>
+                <div class="form-group">
                     {{ Form::label('Sizes') }}<br>
                     <div class="form-check">
                         @foreach($sizes as $size)

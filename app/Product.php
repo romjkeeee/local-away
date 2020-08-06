@@ -12,10 +12,14 @@ class Product extends Model implements HasMedia
 {
     use InteractsWithMedia;
 
-    public $fillable = ['alias','name', 'gender_id', 'status'];
+    public $fillable = ['alias','name', 'gender_id', 'status','product_category_id'];
 
-    protected $with = ['sizes', 'colors', 'colorImage', 'gender'];
+    protected $with = ['sizes', 'colors', 'colorImage', 'gender','category'];
 
+    public function category()
+    {
+        return $this->hasOne(ProductCategory::class, 'id','product_category_id');
+    }
     public function sizes()
     {
         return $this->belongsToMany(Sizing::class, 'product_sizes');

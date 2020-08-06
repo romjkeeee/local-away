@@ -25,9 +25,8 @@ class AdminUpdateProductRequest extends FormRequest
     {
         return [
             'name' => 'string',
-            'images' => '',
-            'images.*' => 'image|mimes:jpeg,png,jpg',
             'gender_id' => 'exists:genders,id',
+            'product_category_id' => 'exists:product_categories,id',
             'sizing_id' => 'exists:sizings,id',
             'color_id' => 'exists:colors,id',
             'status' => 'in:active,disable',
