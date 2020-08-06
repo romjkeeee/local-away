@@ -349,6 +349,11 @@ return [
             'icon'        => 'far fa-fw fa-ruler',
         ],
         [
+            'text'        => 'Products',
+            'url'         => 'admin/products',
+            'icon'        => 'far fa-fw fa-shopping-cart',
+        ],
+        [
             'text'        => 'Users',
             'url'         => 'admin/users',
             'icon'        => 'far fa-fw fa-user',

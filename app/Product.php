@@ -1,0 +1,49 @@
+<?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Str;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+
+class Product extends Model implements HasMedia
+{
+    use InteractsWithMedia;
+
+    public $fillable = ['alias','name', 'gender_id', 'status'];
+
+    protected $with = ['sizes', 'colors', 'colorImage', 'gender'];
+
+    public function sizes()
+    {
+        return $this->belongsToMany(Sizing::class, 'product_sizes');
+    }
+
+    public function colors()
+    {
+        return $this->belongsToMany(Color::class, 'product_colors');
+    }
+
+    public function gender()
+    {
+        return $this->hasOne(Gender::class, 'id', 'gender_id');
+    }
+
+    public function colorImage()
+    {
+        return $this->hasMany(MediaToColorProduct::class, 'product_id', 'id');
+    }
+
+    public function setNameAttribute($value)
+    {
+        $this->attributes['name'] = $value;
+        $this->attributes['alias'] = Str::slug($value);
+    }
+
+    public function registerMediaCollections(): void
+    {
+        $this->addMediaCollection('images');
+    }
+}

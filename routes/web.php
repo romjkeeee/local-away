@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('auth/login');
+    return redirect('login');
 });
 
 Auth::routes();
@@ -42,6 +42,11 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::resource('subscribes', 'SubscribeController');
     Route::resource('qas', 'QaController');
     Route::resource('qa-forms', 'QaFormController');
+    Route::resource('products', 'ProductController');
+    Route::get('product/{id}/step2', 'ProductController@step2create');
+    Route::post('product/{id}/step2', 'ProductController@store2step');
+    Route::get('product/{product}/images', 'ProductController@show_image');
+    Route::get('image/{id}/delete', 'ProductController@deleteImage');
 
     Route::get('profile','UserController@adminProfile');
 });
