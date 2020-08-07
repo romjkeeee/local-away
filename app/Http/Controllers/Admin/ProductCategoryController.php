@@ -91,7 +91,7 @@ class ProductCategoryController extends Controller
     {
         if ($product_category->update($request->validated()))
         {
-            return redirect()->route('cities.index');
+            return redirect()->route('product-categories.index');
         }
     }
 }

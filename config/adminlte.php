@@ -243,52 +243,52 @@ return [
                 [
                     'text'        => 'Package Type',
                     'url'         => 'admin/package-types',
-                    'icon'        => 'far fa-fw fa-file',
+                    'icon'        => 'far fa-fw fa-circle nav-icon',
                 ],
                 [
                     'text'        => 'Travel Purpose',
                     'url'         => 'admin/travel-purposes',
-                    'icon'        => 'far fa-fw fa-mountain',
+                    'icon'        => 'far fa-fw fa-circle nav-icon',
                 ],
                 [
                     'text'        => 'Personal Style',
                     'url'         => 'admin/personal-style',
-                    'icon'        => 'far fa-fw fa-hat-cowboy-side',
+                    'icon'        => 'far fa-fw fa-circle nav-icon',
                 ],
                 [
                     'text'        => 'Styled',
                     'url'         => 'admin/styled',
-                    'icon'        => 'far fa-fw fa-tshirt',
+                    'icon'        => 'far fa-fw fa-circle nav-icon',
                 ],
                 [
                     'text'        => 'Body type',
                     'url'         => 'admin/body-type',
-                    'icon'        => 'far fa-fw fa-child',
+                    'icon'        => 'far fa-fw fa-circle nav-icon',
                 ],
                 [
                     'text'        => 'Sizing guides',
                     'url'         => 'admin/sizing-guides',
-                    'icon'        => 'far fa-fw fa-book',
+                    'icon'        => 'far fa-fw fa-circle nav-icon',
                 ],
                 [
                     'text'        => 'Sizing type',
                     'url'         => 'admin/sizing-type',
-                    'icon'        => 'far fa-fw fa-ruler',
+                    'icon'        => 'far fa-fw fa-circle nav-icon',
                 ],
                 [
                     'text'        => 'Sizing categories',
                     'url'         => 'admin/sizing-categories',
-                    'icon'        => 'far fa-fw fa-book',
+                    'icon'        => 'far fa-fw fa-circle nav-icon',
                 ],
                 [
                     'text'        => 'Costs',
                     'url'         => 'admin/costs',
-                    'icon'        => 'far fa-fw fa-dollar-sign',
+                    'icon'        => 'far fa-fw fa-circle nav-icon',
                 ],
                 [
                     'text'        => 'Clothes categories',
                     'url'         => 'admin/clothes-categories',
-                    'icon'        => 'far fa-fw fa-tshirt',
+                    'icon'        => 'far fa-fw fa-circle nav-icon',
                 ],
             ],
         ],
@@ -299,29 +299,39 @@ return [
                 [
                     'text'        => 'Partnership',
                     'url'         => 'admin/partnerships',
-                    'icon'        => 'far fa-fw fa-handshake',
+                    'icon'        => 'far fa-fw fa-circle nav-icon',
                 ],
                 [
                     'text'        => 'Orders',
                     'url'         => '#',
-                    'icon'        => 'far fa-fw fa-cart-plus',
+                    'icon'        => 'far fa-fw fa-circle nav-icon',
                 ],
                 [
                     'text'        => 'Contact Form',
                     'url'         => 'admin/contact-form',
-                    'icon'        => 'far fa-fw fa-address-card',
+                    'icon'        => 'far fa-fw fa-circle nav-icon',
                 ],
                 [
                     'text'        => 'Q&A Form',
                     'url'         => 'admin/qa-forms',
-                    'icon'        => 'far fa-fw fa-question',
+                    'icon'        => 'far fa-fw fa-circle nav-icon',
                 ],
                 [
                     'text'        => 'Subscribes',
                     'url'         => 'admin/subscribes',
-                    'icon'        => 'far fa-fw fa-users',
+                    'icon'        => 'far fa-fw fa-circle nav-icon',
                 ],
             ],
+        ],
+        [
+            'text'        => 'Travel Stories',
+            'url'         => 'admin/travel-stories',
+            'icon'        => 'far fa-fw fa-mountain',
+        ],
+        [
+            'text'        => 'Story style',
+            'url'         => 'admin/story-styles',
+            'icon'        => 'far fa-fw fa-tshirt',
         ],
         [
             'text'        => 'Q&A',
@@ -437,7 +447,7 @@ return [
             ],
         ],
         'Select2' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',

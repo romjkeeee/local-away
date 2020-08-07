@@ -47,7 +47,7 @@
           <!-- START_INFO -->
 <h1>Info</h1>
 <p>Welcome to the generated API reference.
-<a href="http://localhost/docs/collection.json">Get Postman Collection</a></p>
+<a href="http://localhost:8888/peiko/first/laravel/public/docs/collection.json">Get Postman Collection</a></p>
 <!-- END_INFO -->
 <h1>Auth</h1>
 <p>APIs for</p>
@@ -57,13 +57,13 @@
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-bash">curl -X POST \
-    "http://localhost/api/auth/login" \
+    "http://localhost:8888/peiko/first/laravel/public/api/auth/login" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"rerum","password":"in","remember_me":true}'
+    -d '{"email":"adipisci","password":"assumenda","remember_me":false}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/auth/login"
+    "http://localhost:8888/peiko/first/laravel/public/api/auth/login"
 );
 
 let headers = {
@@ -72,9 +72,9 @@ let headers = {
 };
 
 let body = {
-    "email": "rerum",
-    "password": "in",
-    "remember_me": true
+    "email": "adipisci",
+    "password": "assumenda",
+    "remember_me": false
 }
 
 fetch(url, {
@@ -87,16 +87,16 @@ fetch(url, {
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
 $response = $client-&gt;post(
-    'http://localhost/api/auth/login',
+    'http://localhost:8888/peiko/first/laravel/public/api/auth/login',
     [
         'headers' =&gt; [
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'email' =&gt; 'rerum',
-            'password' =&gt; 'in',
-            'remember_me' =&gt; true,
+            'email' =&gt; 'adipisci',
+            'password' =&gt; 'assumenda',
+            'remember_me' =&gt; false,
         ],
     ]
 );
@@ -143,13 +143,13 @@ print_r(json_decode((string) $body));</code></pre>
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-bash">curl -X POST \
-    "http://localhost/api/auth/signup" \
+    "http://localhost:8888/peiko/first/laravel/public/api/auth/signup" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"name":"in","email":"sit","password":"sit","password_confirmation":"et"}'
+    -d '{"name":"qui","email":"aut","password":"minus","password_confirmation":"quidem"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/auth/signup"
+    "http://localhost:8888/peiko/first/laravel/public/api/auth/signup"
 );
 
 let headers = {
@@ -158,10 +158,10 @@ let headers = {
 };
 
 let body = {
-    "name": "in",
-    "email": "sit",
-    "password": "sit",
-    "password_confirmation": "et"
+    "name": "qui",
+    "email": "aut",
+    "password": "minus",
+    "password_confirmation": "quidem"
 }
 
 fetch(url, {
@@ -174,17 +174,17 @@ fetch(url, {
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
 $response = $client-&gt;post(
-    'http://localhost/api/auth/signup',
+    'http://localhost:8888/peiko/first/laravel/public/api/auth/signup',
     [
         'headers' =&gt; [
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'name' =&gt; 'in',
-            'email' =&gt; 'sit',
-            'password' =&gt; 'sit',
-            'password_confirmation' =&gt; 'et',
+            'name' =&gt; 'qui',
+            'email' =&gt; 'aut',
+            'password' =&gt; 'minus',
+            'password_confirmation' =&gt; 'quidem',
         ],
     ]
 );
@@ -236,11 +236,11 @@ print_r(json_decode((string) $body));</code></pre>
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-bash">curl -X GET \
-    -G "http://localhost/api/auth/logout" \
+    -G "http://localhost:8888/peiko/first/laravel/public/api/auth/logout" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"</code></pre>
 <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/auth/logout"
+    "http://localhost:8888/peiko/first/laravel/public/api/auth/logout"
 );
 
 let headers = {
@@ -257,7 +257,7 @@ fetch(url, {
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
 $response = $client-&gt;get(
-    'http://localhost/api/auth/logout',
+    'http://localhost:8888/peiko/first/laravel/public/api/auth/logout',
     [
         'headers' =&gt; [
             'Content-Type' =&gt; 'application/json',
@@ -280,11 +280,11 @@ print_r(json_decode((string) $body));</code></pre>
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-bash">curl -X GET \
-    -G "http://localhost/api/auth/user" \
+    -G "http://localhost:8888/peiko/first/laravel/public/api/auth/user" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"</code></pre>
 <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/auth/user"
+    "http://localhost:8888/peiko/first/laravel/public/api/auth/user"
 );
 
 let headers = {
@@ -301,7 +301,7 @@ fetch(url, {
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
 $response = $client-&gt;get(
-    'http://localhost/api/auth/user',
+    'http://localhost:8888/peiko/first/laravel/public/api/auth/user',
     [
         'headers' =&gt; [
             'Content-Type' =&gt; 'application/json',
@@ -327,13 +327,13 @@ print_r(json_decode((string) $body));</code></pre>
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-bash">curl -X POST \
-    "http://localhost/api/contact-form" \
+    "http://localhost:8888/peiko/first/laravel/public/api/contact-form" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"name":"quo","email":"adipisci","message":"sed"}'
+    -d '{"name":"cupiditate","email":"temporibus","message":"vel"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/contact-form"
+    "http://localhost:8888/peiko/first/laravel/public/api/contact-form"
 );
 
 let headers = {
@@ -342,9 +342,9 @@ let headers = {
 };
 
 let body = {
-    "name": "quo",
-    "email": "adipisci",
-    "message": "sed"
+    "name": "cupiditate",
+    "email": "temporibus",
+    "message": "vel"
 }
 
 fetch(url, {
@@ -357,16 +357,16 @@ fetch(url, {
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
 $response = $client-&gt;post(
-    'http://localhost/api/contact-form',
+    'http://localhost:8888/peiko/first/laravel/public/api/contact-form',
     [
         'headers' =&gt; [
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'name' =&gt; 'quo',
-            'email' =&gt; 'adipisci',
-            'message' =&gt; 'sed',
+            'name' =&gt; 'cupiditate',
+            'email' =&gt; 'temporibus',
+            'message' =&gt; 'vel',
         ],
     ]
 );
@@ -419,11 +419,11 @@ print_r(json_decode((string) $body));</code></pre>
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-bash">curl -X GET \
-    -G "http://localhost/api/partnership" \
+    -G "http://localhost:8888/peiko/first/laravel/public/api/partnership" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"</code></pre>
 <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/partnership"
+    "http://localhost:8888/peiko/first/laravel/public/api/partnership"
 );
 
 let headers = {
@@ -440,7 +440,7 @@ fetch(url, {
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
 $response = $client-&gt;get(
-    'http://localhost/api/partnership',
+    'http://localhost:8888/peiko/first/laravel/public/api/partnership',
     [
         'headers' =&gt; [
             'Content-Type' =&gt; 'application/json',
@@ -464,13 +464,13 @@ print_r(json_decode((string) $body));</code></pre>
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-bash">curl -X POST \
-    "http://localhost/api/partnership/create" \
+    "http://localhost:8888/peiko/first/laravel/public/api/partnership/create" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"first_name":"veniam","last_name":"modi","email":"aut","company_name":"possimus","country":"temporibus","phone":"beatae","image":"illum"}'
+    -d '{"first_name":"hic","last_name":"quia","email":"ut","company_name":"maxime","country":"eius","phone":"impedit","image":"dolor"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/partnership/create"
+    "http://localhost:8888/peiko/first/laravel/public/api/partnership/create"
 );
 
 let headers = {
@@ -479,13 +479,13 @@ let headers = {
 };
 
 let body = {
-    "first_name": "veniam",
-    "last_name": "modi",
-    "email": "aut",
-    "company_name": "possimus",
-    "country": "temporibus",
-    "phone": "beatae",
-    "image": "illum"
+    "first_name": "hic",
+    "last_name": "quia",
+    "email": "ut",
+    "company_name": "maxime",
+    "country": "eius",
+    "phone": "impedit",
+    "image": "dolor"
 }
 
 fetch(url, {
@@ -498,20 +498,20 @@ fetch(url, {
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
 $response = $client-&gt;post(
-    'http://localhost/api/partnership/create',
+    'http://localhost:8888/peiko/first/laravel/public/api/partnership/create',
     [
         'headers' =&gt; [
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'first_name' =&gt; 'veniam',
-            'last_name' =&gt; 'modi',
-            'email' =&gt; 'aut',
-            'company_name' =&gt; 'possimus',
-            'country' =&gt; 'temporibus',
-            'phone' =&gt; 'beatae',
-            'image' =&gt; 'illum',
+            'first_name' =&gt; 'hic',
+            'last_name' =&gt; 'quia',
+            'email' =&gt; 'ut',
+            'company_name' =&gt; 'maxime',
+            'country' =&gt; 'eius',
+            'phone' =&gt; 'impedit',
+            'image' =&gt; 'dolor',
         ],
     ]
 );
@@ -587,11 +587,11 @@ print_r(json_decode((string) $body));</code></pre>
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-bash">curl -X GET \
-    -G "http://localhost/api/qa/cities" \
+    -G "http://localhost:8888/peiko/first/laravel/public/api/qa/cities" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"</code></pre>
 <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/qa/cities"
+    "http://localhost:8888/peiko/first/laravel/public/api/qa/cities"
 );
 
 let headers = {
@@ -608,7 +608,7 @@ fetch(url, {
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
 $response = $client-&gt;get(
-    'http://localhost/api/qa/cities',
+    'http://localhost:8888/peiko/first/laravel/public/api/qa/cities',
     [
         'headers' =&gt; [
             'Content-Type' =&gt; 'application/json',
@@ -631,15 +631,15 @@ print_r(json_decode((string) $body));</code></pre>
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-bash">curl -X GET \
-    -G "http://localhost/api/qa/1?id=velit" \
+    -G "http://localhost:8888/peiko/first/laravel/public/api/qa/1?id=autem" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"</code></pre>
 <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/qa/1"
+    "http://localhost:8888/peiko/first/laravel/public/api/qa/1"
 );
 
 let params = {
-    "id": "velit",
+    "id": "autem",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
@@ -658,14 +658,14 @@ fetch(url, {
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
 $response = $client-&gt;get(
-    'http://localhost/api/qa/1',
+    'http://localhost:8888/peiko/first/laravel/public/api/qa/1',
     [
         'headers' =&gt; [
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
         'query' =&gt; [
-            'id'=&gt; 'velit',
+            'id'=&gt; 'autem',
         ],
     ]
 );
@@ -702,13 +702,13 @@ print_r(json_decode((string) $body));</code></pre>
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-bash">curl -X POST \
-    "http://localhost/api/qa/1/create" \
+    "http://localhost:8888/peiko/first/laravel/public/api/qa/1/create" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"nihil"}'
+    -d '{"email":"consequatur"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/qa/1/create"
+    "http://localhost:8888/peiko/first/laravel/public/api/qa/1/create"
 );
 
 let headers = {
@@ -717,7 +717,7 @@ let headers = {
 };
 
 let body = {
-    "email": "nihil"
+    "email": "consequatur"
 }
 
 fetch(url, {
@@ -730,14 +730,14 @@ fetch(url, {
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
 $response = $client-&gt;post(
-    'http://localhost/api/qa/1/create',
+    'http://localhost:8888/peiko/first/laravel/public/api/qa/1/create',
     [
         'headers' =&gt; [
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'email' =&gt; 'nihil',
+            'email' =&gt; 'consequatur',
         ],
     ]
 );
@@ -778,13 +778,13 @@ print_r(json_decode((string) $body));</code></pre>
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-bash">curl -X POST \
-    "http://localhost/api/subscribe" \
+    "http://localhost:8888/peiko/first/laravel/public/api/subscribe" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"exercitationem"}'
+    -d '{"email":"rerum"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/subscribe"
+    "http://localhost:8888/peiko/first/laravel/public/api/subscribe"
 );
 
 let headers = {
@@ -793,7 +793,7 @@ let headers = {
 };
 
 let body = {
-    "email": "exercitationem"
+    "email": "rerum"
 }
 
 fetch(url, {
@@ -806,14 +806,14 @@ fetch(url, {
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
 $response = $client-&gt;post(
-    'http://localhost/api/subscribe',
+    'http://localhost:8888/peiko/first/laravel/public/api/subscribe',
     [
         'headers' =&gt; [
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'email' =&gt; 'exercitationem',
+            'email' =&gt; 'rerum',
         ],
     ]
 );
@@ -845,6 +845,171 @@ print_r(json_decode((string) $body));</code></pre>
 </tbody>
 </table>
 <!-- END_95d2609383a86210e2424765cf8031d1 -->
+<h1>Travel Story</h1>
+<p>APIs for</p>
+<!-- START_2aeadf770e8205486d79c4116cfb4bc2 -->
+<h2>List for home page</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET \
+    -G "http://localhost:8888/peiko/first/laravel/public/api/travel-stories/home-page" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8888/peiko/first/laravel/public/api/travel-stories/home-page"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<pre><code class="language-php">
+$client = new \GuzzleHttp\Client();
+$response = $client-&gt;get(
+    'http://localhost:8888/peiko/first/laravel/public/api/travel-stories/home-page',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET api/travel-stories/home-page</code></p>
+<!-- END_2aeadf770e8205486d79c4116cfb4bc2 -->
+<!-- START_9fcb341d0645c32f71c99074e13a3ca2 -->
+<h2>List of all stories with paginate</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET \
+    -G "http://localhost:8888/peiko/first/laravel/public/api/travel-stories?page=veritatis&amp;perPage=sint" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8888/peiko/first/laravel/public/api/travel-stories"
+);
+
+let params = {
+    "page": "veritatis",
+    "perPage": "sint",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<pre><code class="language-php">
+$client = new \GuzzleHttp\Client();
+$response = $client-&gt;get(
+    'http://localhost:8888/peiko/first/laravel/public/api/travel-stories',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'query' =&gt; [
+            'page'=&gt; 'veritatis',
+            'perPage'=&gt; 'sint',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET api/travel-stories</code></p>
+<h4>Query Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>page</code></td>
+<td>optional</td>
+</tr>
+<tr>
+<td><code>perPage</code></td>
+<td>optional</td>
+</tr>
+</tbody>
+</table>
+<!-- END_9fcb341d0645c32f71c99074e13a3ca2 -->
+<!-- START_ab95eac6843e9d57e47d1fdea5de4926 -->
+<h2>Show</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET \
+    -G "http://localhost:8888/peiko/first/laravel/public/api/travel-stories/1" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8888/peiko/first/laravel/public/api/travel-stories/1"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<pre><code class="language-php">
+$client = new \GuzzleHttp\Client();
+$response = $client-&gt;get(
+    'http://localhost:8888/peiko/first/laravel/public/api/travel-stories/1',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET api/travel-stories/{travel_story}</code></p>
+<!-- END_ab95eac6843e9d57e47d1fdea5de4926 -->
       </div>
       <div class="dark-box">
                         <div class="lang-selector">

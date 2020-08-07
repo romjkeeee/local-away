@@ -2,7 +2,7 @@
     "variables": [],
     "info": {
         "name": "Laravel API",
-        "_postman_id": "60b271a6-110d-487c-9e9d-c13141cd3157",
+        "_postman_id": "96722ecf-9da0-44c5-a896-cfe098f8f820",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.0.0\/collection.json"
     },
@@ -16,7 +16,7 @@
                     "request": {
                         "url": {
                             "protocol": "http",
-                            "host": "localhost",
+                            "host": "localhost:8888\/peiko\/first\/laravel\/public",
                             "path": "api\/auth\/login",
                             "query": []
                         },
@@ -33,7 +33,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"email\": \"rerum\",\n    \"password\": \"in\",\n    \"remember_me\": true\n}"
+                            "raw": "{\n    \"email\": \"adipisci\",\n    \"password\": \"assumenda\",\n    \"remember_me\": false\n}"
                         },
                         "description": "",
                         "response": []
@@ -44,7 +44,7 @@
                     "request": {
                         "url": {
                             "protocol": "http",
-                            "host": "localhost",
+                            "host": "localhost:8888\/peiko\/first\/laravel\/public",
                             "path": "api\/auth\/signup",
                             "query": []
                         },
@@ -61,7 +61,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"name\": \"in\",\n    \"email\": \"sit\",\n    \"password\": \"sit\",\n    \"password_confirmation\": \"et\"\n}"
+                            "raw": "{\n    \"name\": \"qui\",\n    \"email\": \"aut\",\n    \"password\": \"minus\",\n    \"password_confirmation\": \"quidem\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -72,7 +72,7 @@
                     "request": {
                         "url": {
                             "protocol": "http",
-                            "host": "localhost",
+                            "host": "localhost:8888\/peiko\/first\/laravel\/public",
                             "path": "api\/auth\/logout",
                             "query": []
                         },
@@ -100,7 +100,7 @@
                     "request": {
                         "url": {
                             "protocol": "http",
-                            "host": "localhost",
+                            "host": "localhost:8888\/peiko\/first\/laravel\/public",
                             "path": "api\/auth\/user",
                             "query": []
                         },
@@ -134,7 +134,7 @@
                     "request": {
                         "url": {
                             "protocol": "http",
-                            "host": "localhost",
+                            "host": "localhost:8888\/peiko\/first\/laravel\/public",
                             "path": "api\/contact-form",
                             "query": []
                         },
@@ -151,7 +151,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"name\": \"quo\",\n    \"email\": \"adipisci\",\n    \"message\": \"sed\"\n}"
+                            "raw": "{\n    \"name\": \"cupiditate\",\n    \"email\": \"temporibus\",\n    \"message\": \"vel\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -168,7 +168,7 @@
                     "request": {
                         "url": {
                             "protocol": "http",
-                            "host": "localhost",
+                            "host": "localhost:8888\/peiko\/first\/laravel\/public",
                             "path": "api\/partnership",
                             "query": []
                         },
@@ -196,7 +196,7 @@
                     "request": {
                         "url": {
                             "protocol": "http",
-                            "host": "localhost",
+                            "host": "localhost:8888\/peiko\/first\/laravel\/public",
                             "path": "api\/partnership\/create",
                             "query": []
                         },
@@ -213,7 +213,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"first_name\": \"veniam\",\n    \"last_name\": \"modi\",\n    \"email\": \"aut\",\n    \"company_name\": \"possimus\",\n    \"country\": \"temporibus\",\n    \"phone\": \"beatae\",\n    \"image\": \"illum\"\n}"
+                            "raw": "{\n    \"first_name\": \"hic\",\n    \"last_name\": \"quia\",\n    \"email\": \"ut\",\n    \"company_name\": \"maxime\",\n    \"country\": \"eius\",\n    \"phone\": \"impedit\",\n    \"image\": \"dolor\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -230,7 +230,7 @@
                     "request": {
                         "url": {
                             "protocol": "http",
-                            "host": "localhost",
+                            "host": "localhost:8888\/peiko\/first\/laravel\/public",
                             "path": "api\/qa\/cities",
                             "query": []
                         },
@@ -258,12 +258,12 @@
                     "request": {
                         "url": {
                             "protocol": "http",
-                            "host": "localhost",
+                            "host": "localhost:8888\/peiko\/first\/laravel\/public",
                             "path": "api\/qa\/:id",
                             "query": [
                                 {
                                     "key": "id",
-                                    "value": "velit",
+                                    "value": "autem",
                                     "description": "integer required",
                                     "disabled": false
                                 }
@@ -293,7 +293,7 @@
                     "request": {
                         "url": {
                             "protocol": "http",
-                            "host": "localhost",
+                            "host": "localhost:8888\/peiko\/first\/laravel\/public",
                             "path": "api\/qa\/:id\/create",
                             "query": []
                         },
@@ -310,7 +310,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"email\": \"nihil\"\n}"
+                            "raw": "{\n    \"email\": \"consequatur\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -327,7 +327,7 @@
                     "request": {
                         "url": {
                             "protocol": "http",
-                            "host": "localhost",
+                            "host": "localhost:8888\/peiko\/first\/laravel\/public",
                             "path": "api\/subscribe",
                             "query": []
                         },
@@ -344,7 +344,110 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"email\": \"exercitationem\"\n}"
+                            "raw": "{\n    \"email\": \"rerum\"\n}"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Travel Story",
+            "description": "\nAPIs for",
+            "item": [
+                {
+                    "name": "List for home page",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost:8888\/peiko\/first\/laravel\/public",
+                            "path": "api\/travel-stories\/home-page",
+                            "query": []
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "List of all stories with paginate",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost:8888\/peiko\/first\/laravel\/public",
+                            "path": "api\/travel-stories",
+                            "query": [
+                                {
+                                    "key": "page",
+                                    "value": "veritatis",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "perPage",
+                                    "value": "sint",
+                                    "description": "",
+                                    "disabled": false
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Show",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost:8888\/peiko\/first\/laravel\/public",
+                            "path": "api\/travel-stories\/:travel_story",
+                            "query": []
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
                         },
                         "description": "",
                         "response": []
