@@ -12,8 +12,8 @@
         <form role="form" action="">
             <div class="card-body">
                 <div class="form-group">
-                    <label>Title</label>
-                    <input class="form-control" value="{{ $data->title }}" disabled>
+                    <label>Travel story</label>
+                    <input class="form-control" value="{{ $data->travelStory->name ?? '' }}" disabled>
                 </div>
                 <div class="form-group">
                     <label>Image</label>
@@ -25,7 +25,7 @@
                 </div>
             </div>
             <!-- /.card-body -->
-            <a href="{{ route('body-type.index') }}" class="btn btn-default">Back to list</a>
+            <a href="{{ route('story-styles.index') }}" class="btn btn-default">Back to list</a>
 
         </form>
     </div>

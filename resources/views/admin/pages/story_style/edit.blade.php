@@ -12,15 +12,15 @@
     @endif
     <div class="card card-secondary">
         <div class="card-header">
-            <h3 class="card-title">Edit body type</h3>
+            <h3 class="card-title">Edit story style</h3>
         </div>
         <div class="panel panel-default">
             <div class="card-body">
-                {{ Form::model($data, ['method' => 'PUT', 'enctype'=>'multipart/form-data', 'route' => ['body-type.update', $data->id]]) }}
-                    <div class="form-group">
-                        {{ Form::label('title') }}
-                        {{ Form::text('title', old('title'), ['class' => 'form-control', 'maxlength' => '190', 'placeholder' => '']) }}
-                    </div>
+                {{ Form::model($data, ['method' => 'PUT', 'enctype'=>'multipart/form-data', 'route' => ['story-styles.update', $data->id]]) }}
+                <div class="form-group">
+                    {{ Form::label('Travel Stories') }}
+                    {{ Form::select('travel_stories_id',$travel_stories, old('travel_stories_id'),['class' => 'form-control',  'placeholder' => 'Choose a travel stories...']) }}
+                </div>
                 <label for="exampleInputImage">Image</label>
                 <div class="input-group">
                     <div class="custom-file">
@@ -32,12 +32,7 @@
                     {{ Form::label('Gender') }}
                     {{ Form::select('gender_id',$gender, old('gender'),['class' => 'form-control',  'placeholder' => 'Choose a gender...']) }}
                 </div>
-            <div class="form-group">
-                        {{ Form::label('active','active') }}<br>
-                        {{ Form::radio('active',0, null) }}No <br>
-                        {{ Form::radio('active',1, null) }}Yes
-            </div>
-                <x-footer-button route="{{ route('body-type.index') }}"></x-footer-button>
+                <x-footer-button route="{{ route('story-styles.index') }}"></x-footer-button>
                 {{ Form::close() }}
             </div>
         </div>
