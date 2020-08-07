@@ -27,9 +27,9 @@ class QaController extends Controller
      * @response 201
      *
      */
-    public function create(CreateQaFormRequest $request, $id)
+    public function create(CreateQaFormRequest $request)
     {
-        return response(['status' => 'success', 'data' => QaForm::query()->create(['qa_id' => $id, 'email' => $request->email])],201);
+        return response(['status' => 'success', 'data' => QaForm::query()->create(['qa_id' => $request->qa_id, 'email' => $request->email])],201);
     }
 
     /**

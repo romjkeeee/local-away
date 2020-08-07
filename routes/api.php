@@ -19,10 +19,17 @@ Route::group(['namespace' => 'Api\V1'], function () {
     Route::post('contact-form', 'ContactFormController@create');
     Route::post('subscribe', 'SubscribeController@create');
 
+    //Q&A
     Route::group(['prefix' => 'qa'], function() {
         Route::get('/cities', 'QaController@cities_list');
         Route::get('/{id}', 'QaController@show');
-        Route::post('/{id}/create', 'QaController@create');
+        Route::post('/create', 'QaController@create');
+    });
+    //Travel stories
+    Route::group(['prefix' => 'travel-stories'], function() {
+        Route::get('/home-page', 'TravelStoryController@home_page');
+        Route::get('/', 'TravelStoryController@index');
+        Route::get('/{travel_story}', 'TravelStoryController@show');
 
     });
     //Partnership

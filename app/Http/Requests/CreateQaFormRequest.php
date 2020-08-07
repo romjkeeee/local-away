@@ -24,6 +24,7 @@ class CreateQaFormRequest extends FormRequest
     public function rules()
     {
         return [
+            'qa_id' => 'nullable|exists:qas,id',
             'email' => 'required|string|email'
         ];
     }
