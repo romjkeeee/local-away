@@ -326,22 +326,22 @@ return [
         [
             'text'        => 'Travel Stories',
             'url'         => 'admin/travel-stories',
-            'icon'        => 'far fa-fw fa-mountain',
+            'icon'        => 'fas fa-fw fa-mountain',
         ],
         [
             'text'        => 'Story style',
             'url'         => 'admin/story-styles',
-            'icon'        => 'far fa-fw fa-tshirt',
+            'icon'        => 'fas fa-fw fa-tshirt',
         ],
         [
             'text'        => 'Q&A',
             'url'         => 'admin/qas',
-            'icon'        => 'far fa-fw fa-question',
+            'icon'        => 'fas fa-fw fa-question',
         ],
         [
             'text'        => 'Genders',
             'url'         => 'admin/genders',
-            'icon'        => 'far fa-fw fa-venus-mars',
+            'icon'        => 'fas fa-fw fa-venus-mars',
         ],
         [
             'text'        => 'Cities',
@@ -351,22 +351,22 @@ return [
         [
             'text'        => 'Colors',
             'url'         => 'admin/colors',
-            'icon'        => 'far fa-fw fa-paint-brush',
+            'icon'        => 'fas fa-fw fa-paint-brush',
         ],
         [
             'text'        => 'Sizes',
             'url'         => 'admin/sizing',
-            'icon'        => 'far fa-fw fa-ruler',
+            'icon'        => 'fas fa-fw fa-ruler',
         ],
         [
             'text'        => 'Products Category',
             'url'         => 'admin/product-categories',
-            'icon'        => 'far fa-fw fa-shopping-cart',
+            'icon'        => 'fas fa-fw fa-shopping-cart',
         ],
         [
             'text'        => 'Products',
             'url'         => 'admin/products',
-            'icon'        => 'far fa-fw fa-shopping-cart',
+            'icon'        => 'fas fa-fw fa-shopping-cart',
         ],
         [
             'text'        => 'Users',
@@ -478,6 +478,16 @@ return [
                     'type' => 'js',
                     'asset' => false,
                     'location' => '//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.bundle.min.js',
+                ],
+            ],
+        ],
+        'FontAwesome' => [
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'css',
+                    'asset' => false,
+                    'location' => 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css',
                 ],
             ],
         ],
