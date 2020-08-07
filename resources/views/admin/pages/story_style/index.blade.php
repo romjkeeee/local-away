@@ -20,7 +20,7 @@
 @section('content')
     <div class="primary">
         <p>
-            <a href="{{ route('body-type.create') }}" class="btn btn-success btn-lg">Create Story Style</a>
+            <a href="{{ route('story-styles.create') }}" class="btn btn-success btn-lg">Create Story Style</a>
         </p>
     </div>
     <div class="row">
@@ -43,6 +43,7 @@
                         @foreach ($data as $user)
                             <tr>
                                 <td>{{ $user->id }}</td>
+                                <td style="width: 100%">{{ $user->travelStory->name ?? ''}}</td>
                                 <td><img class="img-thumbnail" src="{{ asset('storage/'.$user->image) }}"></td>
                                 <td>{{ $user->gender->title ?? '' }}</td>
                                 <x-active-status active="{{ $user->active }}"></x-active-status>
