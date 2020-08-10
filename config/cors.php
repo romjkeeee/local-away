@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'paths' => ['*'],
+    'paths' => ['admin.localaway.com/api'],
 
     'allowed_methods' => ['*'],
 
