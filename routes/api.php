@@ -46,4 +46,4 @@ Route::group(['namespace' => 'Api\V1'], function () {
             Route::get('user', 'AuthController@user');
         });
     });
-})->middleware('cors');
+});
