@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::group(['namespace' => 'Api\V1'], function () {
+Route::group(['namespace' => 'Api\V1','middleware'=> ['cors']], function () {
     Route::post('contact-form', 'ContactFormController@create');
     Route::post('subscribe', 'SubscribeController@create');
 
