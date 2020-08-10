@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Gender;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AdminStoreTravelStoryRequest;
+use App\Http\Requests\AdminUpdateTravelStoryReqeust;
 use App\Product;
 use App\TravelStory;
 use Illuminate\Contracts\Foundation\Application;
@@ -92,9 +93,33 @@ class TravelStoryController extends Controller
         $gender = Gender::all()->pluck('title', 'id');
         $products = Product::all()->pluck('name','id');
         $products_ids = str_split(str_replace(',','', $travel_story['product_ids']));
-        foreach ($products_ids as $product){
-            $data_products[] = Product::query()->where('id',$product)->pluck('name','id');
-        }
+        $data_products = Product::query()->whereIn('id',$products_ids)->get();
         return view('admin.pages.travel_stories.edit', compact('data', 'gender','products','data_products'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param AdminUpdateTravelStoryReqeust $request
+     * @param TravelStory $travel_story
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function update(AdminUpdateTravelStoryReqeust $request,TravelStory $travel_story)
+    {
+        $travel_story->update([
+            'name' => $request->name,
+            'description' => $request->description,
+            'is_to_homepage' => $request->is_to_homepage,
+            'product_ids' => implode(",",$request->product_ids),
+        ]);
+        if ($request->file('preview_image')) {
+            $travel_story->preview_image = $request->file('preview_image')->store('travel-stories');
+            $travel_story->update();
+        }
+        if ($request->file('full_image_path')){
+            $travel_story->full_image_path = $request->file('full_image_path')->store('travel-stories');
+            $travel_story->update();
+        }
+        return redirect()->route('travel-stories.index');
     }
 }

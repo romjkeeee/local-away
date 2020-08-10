@@ -51,8 +51,14 @@
                                 <td><img class="img-thumbnail" src="{{ asset('storage/'.$user->preview_image) }}"></td>
                                 <td><img class="img-thumbnail" src="{{ asset('storage/'.$user->full_image_path) }}"></td>
                                 <td>{{ $user->description }}</td>
-                                <td>{{ $user->product_ids }}</td>
-                                <x-active-status active="{{ $user->active }}"></x-active-status>
+                                <td>
+                                    @php($products_ids = str_split(str_replace(',','', $user->product_ids)))
+                                    @foreach($products_ids as $product)
+                                        @php($data_products = \App\Product::query()->where('id',$product)->first())
+                                        {{ $data_products->name }},
+                                    @endforeach
+                                </td>
+                                <x-active-status active="{{ $user->is_to_homepage }}"></x-active-status>
                                 <x-action-buttons show="{{ route('travel-stories.show',[$user->id]) }}"
                                                   edit="{{ route('travel-stories.edit',[$user->id]) }}"></x-action-buttons>
                             </tr>
