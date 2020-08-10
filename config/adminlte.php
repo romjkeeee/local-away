@@ -324,6 +324,11 @@ return [
             ],
         ],
         [
+            'text'        => 'Show Room',
+            'url'         => 'admin/collections',
+            'icon'        => 'fas fa-fw fa-mountain',
+        ],
+        [
             'text'        => 'Travel Stories',
             'url'         => 'admin/travel-stories',
             'icon'        => 'fas fa-fw fa-mountain',
