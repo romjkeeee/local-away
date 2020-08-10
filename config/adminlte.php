@@ -321,7 +321,17 @@ return [
                     'url'         => 'admin/subscribes',
                     'icon'        => 'far fa-fw fa-circle nav-icon',
                 ],
+                [
+                    'text'        => 'Complains',
+                    'url'         => 'admin/complains',
+                    'icon'        => 'far fa-fw fa-circle nav-icon',
+                ],
             ],
+        ],
+        [
+            'text'        => 'Complain Types',
+            'url'         => 'admin/complain-types',
+            'icon'        => 'fas fa-fw fa-mountain',
         ],
         [
             'text'        => 'Show Room',
