@@ -46,6 +46,12 @@ class User extends Authenticatable
         return $this->hasMany(ShowRoomLike::class, 'user_id', 'id');
     }
 
+    public function userAddress()
+    {
+        return $this->hasMany(UserAddress::class, 'user_id', 'id')
+            ->where('status','show');
+    }
+
     public function setPasswordAttribute($value)
     {
         if($value != ""){
