@@ -393,6 +393,11 @@ return [
             'url'         => 'admin/users',
             'icon'        => 'far fa-fw fa-user',
         ],
+        [
+            'text'        => 'User Address',
+            'url'         => 'admin/user-address',
+            'icon'        => 'far fa-fw fa-user',
+        ],
         ['header' => 'account_settings'],
         [
             'text' => 'profile',
