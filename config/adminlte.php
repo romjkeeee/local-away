@@ -331,12 +331,17 @@ return [
         [
             'text'        => 'Complain Types',
             'url'         => 'admin/complain-types',
-            'icon'        => 'fas fa-fw fa-mountain',
+            'icon'        => 'fas fa-fw fa-angry',
         ],
         [
             'text'        => 'Show Room',
             'url'         => 'admin/collections',
-            'icon'        => 'fas fa-fw fa-mountain',
+            'icon'        => 'fas fa-fw fa-store',
+        ],
+        [
+            'text'        => 'Show Room Likes',
+            'url'         => 'admin/show-room-like',
+            'icon'        => 'fas fa-fw fa-thumbs-up',
         ],
         [
             'text'        => 'Travel Stories',

@@ -50,7 +50,9 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::resource('story-styles', 'StoryStyleController');
     Route::resource('collections', 'CollectionController');
     Route::resource('complain-types', 'ComplainTypeController');
-    Route::resource('complains', 'ComplainController');
+    Route::get('complains', 'ComplainController@index');
+    Route::get('show-room-like', 'ShowRoomLikeController@index');
+
 
     Route::get('profile','UserController@adminProfile');
 });
