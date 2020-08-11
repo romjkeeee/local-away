@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localway.dev-page.site'),
+    'url' => env('APP_URL', 'https://localway.dev-page.site'),
 
     'asset_url' => env('ASSET_URL', null),
 
