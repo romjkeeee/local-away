@@ -70,6 +70,7 @@ class AuthController extends Controller
     /**
      * Logout user
      *
+     * @authenticated required
      * @response 200
      */
     public function logout(Request $request)
@@ -80,7 +81,7 @@ class AuthController extends Controller
 
     /**
      * Get User
-     *
+     * @authenticated required
      * @response 200
      */
     public function user(Request $request)

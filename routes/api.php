@@ -25,6 +25,13 @@ Route::group(['namespace' => 'Api\V1'], function () {
         Route::get('/{id}', 'QaController@show');
         Route::post('/create', 'QaController@create');
     });
+
+    //Show Room
+    Route::group(['prefix' => '/show-room'], function() {
+        Route::get('/', 'ShowRoomController@index');
+        Route::post('/like', 'ShowRoomController@like');
+    });
+
     //Travel stories
     Route::group(['prefix' => 'travel-stories'], function() {
         Route::get('/home-page', 'TravelStoryController@home_page');

@@ -70,7 +70,7 @@ return [
         /*
          * The name for the exported Postman collection. Default: config('app.name')." API"
          */
-        'name' => null,
+        'name' => 'Local Away',
 
         /*
          * The description for the exported Postman collection.

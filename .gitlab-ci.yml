@@ -106,5 +106,6 @@ cleaner_apply:
         - "cd ~/www && php artisan route:cache"
         - "cd ~/www && php artisan config:cache"
         - "cd ~/www && php artisan view:clear"
+        - "cd ~/www && php artisan apidoc:generate"
     allow_failure: true
     when: on_success

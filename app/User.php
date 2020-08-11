@@ -41,6 +41,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function showRoomLike()
+    {
+        return $this->hasMany(ShowRoomLike::class, 'user_id', 'id');
+    }
+
     public function setPasswordAttribute($value)
     {
         if($value != ""){
