@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\City;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AdminStoreQaRequest;
+use App\Http\Requests\AdminUpdateQaRequest;
 use App\Qa;
 use Illuminate\Contracts\Auth\Factory;
 use Illuminate\Contracts\Console\Application;
@@ -88,19 +89,23 @@ class QaController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param AdminUpdatePersonalStyle $request
-     * @param PersonalStyle $personal_style
+     * @param AdminUpdateQaRequest $request
+     * @param Qa $qa
      * @return RedirectResponse
      */
-    public function update(AdminUpdatePersonalStyle $request, PersonalStyle $personal_style)
+    public function update(AdminUpdateQaRequest $request, Qa $qa)
     {
-        if ($personal_style->update($request->validated()))
+        if ($qa->update($request->validated()))
         {
-            if ($request->file('image')) {
-                $personal_style->image = $request->file('image')->store('personal-style');
-                $personal_style->update();
+            if ($request->file('location_image')) {
+                $qa->location_image = $request->file('location_image')->store('qas');
+                $qa->update();
             }
-            return redirect()->route('personal-style.index');
+            if ($request->file('lead_image')) {
+                $qa->lead_image = $request->file('lead_image')->store('qas');
+                $qa->update();
+            }
+            return redirect()->route('qas.index');
         }
     }
 }
