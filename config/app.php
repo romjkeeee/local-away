@@ -167,7 +167,7 @@ return [
          * Package Service Providers...
          */
         Fruitcake\Cors\CorsServiceProvider::class,
-//        Laravel\Socialite\SocialiteServiceProvider::class,
+        Laravel\Socialite\SocialiteServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -231,7 +231,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
 
-//        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
     ],
 
 ];

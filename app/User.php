@@ -52,6 +52,11 @@ class User extends Authenticatable
             ->where('status','show');
     }
 
+    public function linkedSocialAccounts()
+    {
+        return $this->hasMany(LinkedSocialAccount::class);
+    }
+
     public function setPasswordAttribute($value)
     {
         if($value != ""){
