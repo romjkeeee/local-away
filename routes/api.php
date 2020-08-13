@@ -30,7 +30,13 @@ Route::group(['namespace' => 'Api\V1'], function () {
 
     //Quiz
     Route::group(['prefix' => 'quiz'], function() {
-        Route::get('/sizing_info', 'QuizController@sizing_info');
+        Route::get('/package_for', 'QuizController@package_for');
+        Route::get('/travel-purposes', 'QuizController@travel_purposes');
+        Route::get('/personal-style', 'QuizController@personal_style');
+        Route::get('/styled', 'QuizController@styled');
+        Route::get('/body-type', 'QuizController@body_type');
+        Route::get('/sizing-info', 'QuizController@sizing_info');
+        Route::get('/costs', 'QuizController@costs');
     });
 
     //Show Room
