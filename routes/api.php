@@ -28,6 +28,11 @@ Route::group(['namespace' => 'Api\V1'], function () {
         Route::post('/create', 'QaController@create');
     });
 
+    //Quiz
+    Route::group(['prefix' => 'quiz'], function() {
+        Route::get('/sizing_info', 'QuizController@sizing_info');
+    });
+
     //Show Room
     Route::group(['prefix' => '/show-room'], function() {
         Route::get('/', 'ShowRoomController@index');

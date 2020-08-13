@@ -12,4 +12,9 @@ class SizingType extends Model
     {
         return $this->hasOne(SizingCategory::class, 'id', 'sizing_category_id');
     }
+
+    public function sizings()
+    {
+        return $this->belongsToMany(Sizing::class,'sizing_type_sizings');
+    }
 }
