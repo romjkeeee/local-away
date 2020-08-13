@@ -19,7 +19,7 @@ class CreateClotherCategoryCostsTable extends Migration
             $table->bigInteger('cost_id')->unsigned();
             $table->timestamps();
 
-            $table->foreign('clothe_category_id')->references('id')->on('clothe')
+            $table->foreign('clothe_category_id')->references('id')->on('clothes_categories')
                 ->onDelete('cascade');
             $table->foreign('cost_id')->references('id')->on('costs')
                 ->onDelete('cascade');

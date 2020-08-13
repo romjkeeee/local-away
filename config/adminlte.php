@@ -389,6 +389,11 @@ return [
             'icon'        => 'fas fa-fw fa-shopping-cart',
         ],
         [
+            'text'        => 'Countries',
+            'url'         => 'admin/countries',
+            'icon'        => 'fas fa-fw fa-globe',
+        ],
+        [
             'text'        => 'Users',
             'url'         => 'admin/users',
             'icon'        => 'far fa-fw fa-user',

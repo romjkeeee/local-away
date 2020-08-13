@@ -35,7 +35,7 @@ curl -X POST \
     "http://localhost:8888/peiko/first/laravel/public/api/auth/login" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"praesentium","password":"eos","remember_me":true}'
+    -d '{"email":"ab","password":"est","remember_me":true}'
 
 ```
 
@@ -50,8 +50,8 @@ let headers = {
 };
 
 let body = {
-    "email": "praesentium",
-    "password": "eos",
+    "email": "ab",
+    "password": "est",
     "remember_me": true
 }
 
@@ -75,8 +75,8 @@ $response = $client->post(
             'Accept' => 'application/json',
         ],
         'json' => [
-            'email' => 'praesentium',
-            'password' => 'eos',
+            'email' => 'ab',
+            'password' => 'est',
             'remember_me' => true,
         ],
     ]
@@ -114,7 +114,7 @@ curl -X POST \
     "http://localhost:8888/peiko/first/laravel/public/api/auth/signup" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"name":"hic","email":"vel","password":"quidem","password_confirmation":"at"}'
+    -d '{"name":"consequatur","email":"voluptatem","password":"officiis","password_confirmation":"excepturi"}'
 
 ```
 
@@ -129,10 +129,10 @@ let headers = {
 };
 
 let body = {
-    "name": "hic",
-    "email": "vel",
-    "password": "quidem",
-    "password_confirmation": "at"
+    "name": "consequatur",
+    "email": "voluptatem",
+    "password": "officiis",
+    "password_confirmation": "excepturi"
 }
 
 fetch(url, {
@@ -155,10 +155,10 @@ $response = $client->post(
             'Accept' => 'application/json',
         ],
         'json' => [
-            'name' => 'hic',
-            'email' => 'vel',
-            'password' => 'quidem',
-            'password_confirmation' => 'at',
+            'name' => 'consequatur',
+            'email' => 'voluptatem',
+            'password' => 'officiis',
+            'password_confirmation' => 'excepturi',
         ],
     ]
 );
@@ -321,7 +321,7 @@ curl -X POST \
     "http://localhost:8888/peiko/first/laravel/public/api/contact-form" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"name":"tenetur","email":"atque","message":"id"}'
+    -d '{"name":"quia","email":"sit","message":"eos"}'
 
 ```
 
@@ -336,9 +336,9 @@ let headers = {
 };
 
 let body = {
-    "name": "tenetur",
-    "email": "atque",
-    "message": "id"
+    "name": "quia",
+    "email": "sit",
+    "message": "eos"
 }
 
 fetch(url, {
@@ -361,9 +361,9 @@ $response = $client->post(
             'Accept' => 'application/json',
         ],
         'json' => [
-            'name' => 'tenetur',
-            'email' => 'atque',
-            'message' => 'id',
+            'name' => 'quia',
+            'email' => 'sit',
+            'message' => 'eos',
         ],
     ]
 );
@@ -465,7 +465,7 @@ curl -X POST \
     "http://localhost:8888/peiko/first/laravel/public/api/partnership/create" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"first_name":"sed","last_name":"eveniet","email":"sed","company_name":"veniam","country":"ut","phone":"id","image":"mollitia"}'
+    -d '{"first_name":"ut","last_name":"est","email":"sint","company_name":"esse","country":"aliquam","phone":"ratione","image":"molestiae"}'
 
 ```
 
@@ -480,13 +480,13 @@ let headers = {
 };
 
 let body = {
-    "first_name": "sed",
-    "last_name": "eveniet",
-    "email": "sed",
-    "company_name": "veniam",
-    "country": "ut",
-    "phone": "id",
-    "image": "mollitia"
+    "first_name": "ut",
+    "last_name": "est",
+    "email": "sint",
+    "company_name": "esse",
+    "country": "aliquam",
+    "phone": "ratione",
+    "image": "molestiae"
 }
 
 fetch(url, {
@@ -509,13 +509,13 @@ $response = $client->post(
             'Accept' => 'application/json',
         ],
         'json' => [
-            'first_name' => 'sed',
-            'last_name' => 'eveniet',
-            'email' => 'sed',
-            'company_name' => 'veniam',
-            'country' => 'ut',
-            'phone' => 'id',
-            'image' => 'mollitia',
+            'first_name' => 'ut',
+            'last_name' => 'est',
+            'email' => 'sint',
+            'company_name' => 'esse',
+            'country' => 'aliquam',
+            'phone' => 'ratione',
+            'image' => 'molestiae',
         ],
     ]
 );
@@ -616,7 +616,7 @@ print_r(json_decode((string) $body));
 
 ```bash
 curl -X GET \
-    -G "http://localhost:8888/peiko/first/laravel/public/api/qa/1?id=quis" \
+    -G "http://localhost:8888/peiko/first/laravel/public/api/qa/1?id=impedit" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"
 ```
@@ -627,7 +627,7 @@ const url = new URL(
 );
 
 let params = {
-    "id": "quis",
+    "id": "impedit",
 };
 Object.keys(params)
     .forEach(key => url.searchParams.append(key, params[key]));
@@ -656,7 +656,7 @@ $response = $client->get(
             'Accept' => 'application/json',
         ],
         'query' => [
-            'id'=> 'quis',
+            'id'=> 'impedit',
         ],
     ]
 );
@@ -693,7 +693,7 @@ curl -X POST \
     "http://localhost:8888/peiko/first/laravel/public/api/qa/create" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"autem"}'
+    -d '{"email":"itaque"}'
 
 ```
 
@@ -708,7 +708,7 @@ let headers = {
 };
 
 let body = {
-    "email": "autem"
+    "email": "itaque"
 }
 
 fetch(url, {
@@ -731,7 +731,7 @@ $response = $client->post(
             'Accept' => 'application/json',
         ],
         'json' => [
-            'email' => 'autem',
+            'email' => 'itaque',
         ],
     ]
 );
@@ -755,6 +755,83 @@ Parameter | Type | Status | Description
     `email` | string |  optional  | require
     
 <!-- END_9857e165d62910a9829c2aa5201830f0 -->
+
+#Quiz
+
+
+APIs for
+<!-- START_288325d02b102eb40d3dada937777224 -->
+## List sizing info
+
+> Example request:
+
+```bash
+curl -X GET \
+    -G "http://localhost:8888/peiko/first/laravel/public/api/quiz/sizing_info?gender_id=facilis" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://localhost:8888/peiko/first/laravel/public/api/quiz/sizing_info"
+);
+
+let params = {
+    "gender_id": "facilis",
+};
+Object.keys(params)
+    .forEach(key => url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+```php
+
+$client = new \GuzzleHttp\Client();
+$response = $client->get(
+    'http://localhost:8888/peiko/first/laravel/public/api/quiz/sizing_info',
+    [
+        'headers' => [
+            'Content-Type' => 'application/json',
+            'Accept' => 'application/json',
+        ],
+        'query' => [
+            'gender_id'=> 'facilis',
+        ],
+    ]
+);
+$body = $response->getBody();
+print_r(json_decode((string) $body));
+```
+
+
+> Example response (200):
+
+```json
+{}
+```
+
+### HTTP Request
+`GET api/quiz/sizing_info`
+
+#### Query Parameters
+
+Parameter | Status | Description
+--------- | ------- | ------- | -----------
+    `gender_id` |  optional  | int optional example: 1
+
+<!-- END_288325d02b102eb40d3dada937777224 -->
 
 #Show Room
 
@@ -835,7 +912,7 @@ curl -X POST \
     "http://localhost:8888/peiko/first/laravel/public/api/subscribe" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"email":"occaecati"}'
+    -d '{"email":"molestias"}'
 
 ```
 
@@ -850,7 +927,7 @@ let headers = {
 };
 
 let body = {
-    "email": "occaecati"
+    "email": "molestias"
 }
 
 fetch(url, {
@@ -873,7 +950,7 @@ $response = $client->post(
             'Accept' => 'application/json',
         ],
         'json' => [
-            'email' => 'occaecati',
+            'email' => 'molestias',
         ],
     ]
 );
@@ -968,7 +1045,7 @@ print_r(json_decode((string) $body));
 
 ```bash
 curl -X GET \
-    -G "http://localhost:8888/peiko/first/laravel/public/api/travel-stories?page=alias&perPage=dolore" \
+    -G "http://localhost:8888/peiko/first/laravel/public/api/travel-stories?page=vel&perPage=laborum" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"
 ```
@@ -979,8 +1056,8 @@ const url = new URL(
 );
 
 let params = {
-    "page": "alias",
-    "perPage": "dolore",
+    "page": "vel",
+    "perPage": "laborum",
 };
 Object.keys(params)
     .forEach(key => url.searchParams.append(key, params[key]));
@@ -1009,8 +1086,8 @@ $response = $client->get(
             'Accept' => 'application/json',
         ],
         'query' => [
-            'page'=> 'alias',
-            'perPage'=> 'dolore',
+            'page'=> 'vel',
+            'perPage'=> 'laborum',
         ],
     ]
 );
@@ -1099,6 +1176,121 @@ print_r(json_decode((string) $body));
 #general
 
 
+<!-- START_833ad57ebeefdb5e4da2be60f3fefff3 -->
+## Create a redirect method to facebook api.
+
+> Example request:
+
+```bash
+curl -X GET \
+    -G "http://localhost:8888/peiko/first/laravel/public/api/redirect" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://localhost:8888/peiko/first/laravel/public/api/redirect"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+```php
+
+$client = new \GuzzleHttp\Client();
+$response = $client->get(
+    'http://localhost:8888/peiko/first/laravel/public/api/redirect',
+    [
+        'headers' => [
+            'Content-Type' => 'application/json',
+            'Accept' => 'application/json',
+        ],
+    ]
+);
+$body = $response->getBody();
+print_r(json_decode((string) $body));
+```
+
+
+> Example response (500):
+
+```json
+{
+    "message": "Server Error"
+}
+```
+
+### HTTP Request
+`GET api/redirect`
+
+
+<!-- END_833ad57ebeefdb5e4da2be60f3fefff3 -->
+
+<!-- START_dc0643980e48fb7a26e2736eda46d3d8 -->
+## Return a callback method from facebook api.
+
+> Example request:
+
+```bash
+curl -X GET \
+    -G "http://localhost:8888/peiko/first/laravel/public/api/callback" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://localhost:8888/peiko/first/laravel/public/api/callback"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+```php
+
+$client = new \GuzzleHttp\Client();
+$response = $client->get(
+    'http://localhost:8888/peiko/first/laravel/public/api/callback',
+    [
+        'headers' => [
+            'Content-Type' => 'application/json',
+            'Accept' => 'application/json',
+        ],
+    ]
+);
+$body = $response->getBody();
+print_r(json_decode((string) $body));
+```
+
+
+
+### HTTP Request
+`GET api/callback`
+
+
+<!-- END_dc0643980e48fb7a26e2736eda46d3d8 -->
+
 <!-- START_53be1e9e10a08458929a2e0ea70ddb86 -->
 ## /
 > Example request:
@@ -1158,5 +1350,120 @@ print_r(json_decode((string) $body));
 
 
 <!-- END_53be1e9e10a08458929a2e0ea70ddb86 -->
+
+<!-- START_9824d1c3a7b12f9e74bc8c3f178773fa -->
+## Create a redirect method to facebook api.
+
+> Example request:
+
+```bash
+curl -X GET \
+    -G "http://localhost:8888/peiko/first/laravel/public/redirect" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://localhost:8888/peiko/first/laravel/public/redirect"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+```php
+
+$client = new \GuzzleHttp\Client();
+$response = $client->get(
+    'http://localhost:8888/peiko/first/laravel/public/redirect',
+    [
+        'headers' => [
+            'Content-Type' => 'application/json',
+            'Accept' => 'application/json',
+        ],
+    ]
+);
+$body = $response->getBody();
+print_r(json_decode((string) $body));
+```
+
+
+> Example response (500):
+
+```json
+{
+    "message": "Server Error"
+}
+```
+
+### HTTP Request
+`GET redirect`
+
+
+<!-- END_9824d1c3a7b12f9e74bc8c3f178773fa -->
+
+<!-- START_a1022ef14e60895aaf835226143990b3 -->
+## Return a callback method from facebook api.
+
+> Example request:
+
+```bash
+curl -X GET \
+    -G "http://localhost:8888/peiko/first/laravel/public/callback" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://localhost:8888/peiko/first/laravel/public/callback"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+```php
+
+$client = new \GuzzleHttp\Client();
+$response = $client->get(
+    'http://localhost:8888/peiko/first/laravel/public/callback',
+    [
+        'headers' => [
+            'Content-Type' => 'application/json',
+            'Accept' => 'application/json',
+        ],
+    ]
+);
+$body = $response->getBody();
+print_r(json_decode((string) $body));
+```
+
+
+
+### HTTP Request
+`GET callback`
+
+
+<!-- END_a1022ef14e60895aaf835226143990b3 -->
 
 

@@ -15,10 +15,9 @@ class AddColumnGenderIdToPackageTypesTable extends Migration
     {
         Schema::table('package_types', function (Blueprint $table) {
             $table->removeColumn('gender');
-            $table->bigInteger('gender_id')->unsigned();
+            $table->bigInteger('gender_id')->unsigned()->nullable();
 
-            $table->foreign('gender_id')->references('id')->on('genders')
-                ->onDelete('cascade');
+            $table->foreign('gender_id')->references('id')->on('genders');
         });
     }
 

@@ -1,8 +1,8 @@
 {
     "variables": [],
     "info": {
-        "name": "Laravel API",
-        "_postman_id": "487d3feb-3e13-445a-95df-914a0478fdc9",
+        "name": "Local Away",
+        "_postman_id": "85c12e8b-b27b-4f7d-9d49-610fc88491ca",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.0.0\/collection.json"
     },
@@ -33,7 +33,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"email\": \"praesentium\",\n    \"password\": \"eos\",\n    \"remember_me\": true\n}"
+                            "raw": "{\n    \"email\": \"ab\",\n    \"password\": \"est\",\n    \"remember_me\": true\n}"
                         },
                         "description": "",
                         "response": []
@@ -61,7 +61,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"name\": \"hic\",\n    \"email\": \"vel\",\n    \"password\": \"quidem\",\n    \"password_confirmation\": \"at\"\n}"
+                            "raw": "{\n    \"name\": \"consequatur\",\n    \"email\": \"voluptatem\",\n    \"password\": \"officiis\",\n    \"password_confirmation\": \"excepturi\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -151,7 +151,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"name\": \"tenetur\",\n    \"email\": \"atque\",\n    \"message\": \"id\"\n}"
+                            "raw": "{\n    \"name\": \"quia\",\n    \"email\": \"sit\",\n    \"message\": \"eos\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -213,7 +213,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"first_name\": \"sed\",\n    \"last_name\": \"eveniet\",\n    \"email\": \"sed\",\n    \"company_name\": \"veniam\",\n    \"country\": \"ut\",\n    \"phone\": \"id\",\n    \"image\": \"mollitia\"\n}"
+                            "raw": "{\n    \"first_name\": \"ut\",\n    \"last_name\": \"est\",\n    \"email\": \"sint\",\n    \"company_name\": \"esse\",\n    \"country\": \"aliquam\",\n    \"phone\": \"ratione\",\n    \"image\": \"molestiae\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -263,7 +263,7 @@
                             "query": [
                                 {
                                     "key": "id",
-                                    "value": "quis",
+                                    "value": "impedit",
                                     "description": "integer required",
                                     "disabled": false
                                 }
@@ -310,7 +310,48 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"email\": \"autem\"\n}"
+                            "raw": "{\n    \"email\": \"itaque\"\n}"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Quiz",
+            "description": "\nAPIs for",
+            "item": [
+                {
+                    "name": "List sizing info",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost:8888\/peiko\/first\/laravel\/public",
+                            "path": "api\/quiz\/sizing_info",
+                            "query": [
+                                {
+                                    "key": "gender_id",
+                                    "value": "facilis",
+                                    "description": "int optional example: 1",
+                                    "disabled": false
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
                         },
                         "description": "",
                         "response": []
@@ -378,7 +419,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"email\": \"occaecati\"\n}"
+                            "raw": "{\n    \"email\": \"molestias\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -428,13 +469,13 @@
                             "query": [
                                 {
                                     "key": "page",
-                                    "value": "alias",
+                                    "value": "vel",
                                     "description": "",
                                     "disabled": false
                                 },
                                 {
                                     "key": "perPage",
-                                    "value": "dolore",
+                                    "value": "laborum",
                                     "description": "",
                                     "disabled": false
                                 }
@@ -494,12 +535,124 @@
             "description": "",
             "item": [
                 {
+                    "name": "Create a redirect method to facebook api.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost:8888\/peiko\/first\/laravel\/public",
+                            "path": "api\/redirect",
+                            "query": []
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Return a callback method from facebook api.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost:8888\/peiko\/first\/laravel\/public",
+                            "path": "api\/callback",
+                            "query": []
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
                     "name": "\/",
                     "request": {
                         "url": {
                             "protocol": "http",
                             "host": "localhost:8888\/peiko\/first\/laravel\/public",
                             "path": "\/",
+                            "query": []
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Create a redirect method to facebook api.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost:8888\/peiko\/first\/laravel\/public",
+                            "path": "redirect",
+                            "query": []
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Return a callback method from facebook api.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost:8888\/peiko\/first\/laravel\/public",
+                            "path": "callback",
                             "query": []
                         },
                         "method": "GET",

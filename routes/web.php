@@ -55,6 +55,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::get('complains', 'ComplainController@index');
     Route::get('show-room-like', 'ShowRoomLikeController@index');
     Route::get('user-address', 'UserAddressController@index');
+    Route::resource('countries', 'CountryController');
 
 
     Route::get('profile','UserController@adminProfile');
