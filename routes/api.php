@@ -20,6 +20,7 @@ Route::group(['namespace' => 'Api\V1'], function () {
     Route::post('subscribe', 'SubscribeController@create');
     Route::get('/redirect', 'SocialAuthFacebookController@redirect');
     Route::get('/callback', 'SocialAuthFacebookController@callback');
+    Route::get('cities', 'CityController@index');
 
     //Q&A
     Route::group(['prefix' => 'qa'], function() {
