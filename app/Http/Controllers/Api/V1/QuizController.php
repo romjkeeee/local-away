@@ -65,8 +65,8 @@ class QuizController extends Controller
             'status' => 'success',
             'data' => PersonalStyle::query()
                 ->where('active', true)
-                ->when($request->gender_id, function ($query, $request) {
-                    return $query->where('gender_id', $request['gender_id']);
+                ->when($request->gender_id, function ($query) use ($request) {
+                    return $query->where('gender_id', $request->gender_id);
                 })
                 ->get()
         ]);
