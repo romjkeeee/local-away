@@ -34,6 +34,25 @@ class ShowRoomController extends Controller
     }
 
     /**
+     * List
+     * Show room list
+     *
+     * @queryParam gender_id required
+     *
+     * @response 200
+     */
+    public function last_collection(Request $request)
+    {
+        return response([
+            'status' => 'success',
+            'pagination' => Collection::query()
+                ->where('gender_id',$request->gender_id)
+                ->latest()
+                ->limit(3)
+        ]);
+    }
+
+    /**
      * Like
      * Like product
      *
