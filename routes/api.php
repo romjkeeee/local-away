@@ -37,6 +37,12 @@ Route::group(['namespace' => 'Api\V1', 'as' => 'api.'], function () {
         Route::post('/create', 'UserAddressController@store');
     });
 
+    //User settings
+    Route::group(['prefix' => 'user-settings'], function() {
+        Route::get('/', 'UserSettingController@index');
+        Route::post('/set', 'UserSettingController@update');
+    });
+
     //Quiz
     Route::group(['prefix' => 'quiz'], function() {
         Route::get('/package_for', 'QuizController@package_for');

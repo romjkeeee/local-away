@@ -52,6 +52,11 @@ class User extends Authenticatable
             ->where('status','show');
     }
 
+    public function userSettings()
+    {
+        return $this->hasMany(UserSetting::class, 'user_id', 'id');
+    }
+
     public function linkedSocialAccounts()
     {
         return $this->hasMany(LinkedSocialAccount::class);

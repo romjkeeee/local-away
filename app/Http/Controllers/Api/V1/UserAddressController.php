@@ -52,7 +52,6 @@ class UserAddressController extends Controller
      */
     public function store(StoreUserAddressRequest $request)
     {
-        dd($request->validated());
         return response([
             'status' => 'success',
             'data' => auth()->user()->userAddress()->create($request->validated())
