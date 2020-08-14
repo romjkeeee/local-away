@@ -85,7 +85,7 @@ class QuizController extends Controller
             'status' => 'success',
             'data' => Styled::query()
                 ->where('active', true)
-                ->when($request->gender_id, function ($query, $request) {
+                ->when($request->gender_id, function ($query) use ($request) {
                     return $query->where('gender_id', $request->gender_id);
                 })
                 ->get()
@@ -105,7 +105,7 @@ class QuizController extends Controller
             'status' => 'success',
             'data' => BodyType::query()
                 ->where('active', true)
-                ->when($request->gender_id, function ($query, $request) {
+                ->when($request->gender_id, function ($query) use ($request) {
                     return $query->where('gender_id', $request->gender_id);
                 })
                 ->get()
@@ -126,7 +126,7 @@ class QuizController extends Controller
             'status' => 'success',
             'data' => SizingCategory::query()
                 ->where('active', true)
-                ->when($request->gender_id, function ($query, $request) {
+                ->when($request->gender_id, function ($query) use ($request) {
                     return $query->where('gender_id', $request->gender_id);
                 })
                 ->with('sizing_types.sizings')
