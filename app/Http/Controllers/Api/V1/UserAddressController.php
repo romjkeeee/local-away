@@ -24,7 +24,7 @@ class UserAddressController extends Controller
      */
     public function index()
     {
-        $addresses = auth()->user()->userAddress()->first();
+        $addresses = auth()->user()->userAddress()->get();
         if ($addresses) {
             return response(['status'=>'success', 'data' => $addresses]);
         }else{

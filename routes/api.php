@@ -30,7 +30,7 @@ Route::group(['namespace' => 'Api\V1'], function () {
     });
 
     //User address
-    Route::group(['prefix' => 'user-address'], function() {
+    Route::group(['prefix' => 'user-address', 'middleware' => 'auth:api'], function() {
         Route::get('/', 'UserAddressController@index');
         Route::post('/{id}', 'UserAddressController@edit');
         Route::post('/create', 'UserAddressController@store');
