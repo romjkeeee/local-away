@@ -26,7 +26,7 @@
                     {{ Form::radio('active',0, null) }}No <br>
                     {{ Form::radio('active',1, null) }}Yes
                 </div>
-                <x-footer-button route="{{ route('body-type.index') }}"></x-footer-button>
+                <x-footer-button route="{{ route('clothes-categories.index') }}"></x-footer-button>
                 {{ Form::close() }}
             </div>
         </div>

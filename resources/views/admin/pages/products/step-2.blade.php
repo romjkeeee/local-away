@@ -16,7 +16,7 @@
         </div>
         <div class="panel panel-default">
             <div class="card-body">
-                {{ Form::open(['url' => 'admin/product/'.$product->id.'/step2', 'file' => true, 'method' => 'POST','enctype'=>'multipart/form-data']) }}
+                {{ Form::open(['url' => 'admin/product/'.$product->id.'/step2', 'file' => true, 'method' => 'PUT','enctype'=>'multipart/form-data']) }}
                 {{ csrf_field() }}
                 @foreach($product->colors as $color)
                 <div class="form-group">

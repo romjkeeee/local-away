@@ -35,17 +35,17 @@
                     {{ Form::label('gender') }}
                     {{ Form::select('gender',['male' => 'male', 'female' => 'female'], old('gender'), ['class' => 'form-control', 'placeholder' => 'Choose a gender...']) }}
                 </div>
-                <div class="form-group">
-                    <div class="adddd" id="popopo">
-                        {{ Form::label('title') }}
-                        {{ Form::text('title', old('title'), ['class' => 'form-control', 'maxlength' => '190', 'placeholder' => '']) }}
+{{--                <div class="form-group">--}}
+{{--                    <div class="adddd" id="popopo">--}}
+{{--                        {{ Form::label('title') }}--}}
+{{--                        {{ Form::text('title', old('title'), ['class' => 'form-control', 'maxlength' => '190', 'placeholder' => '']) }}--}}
 
-                        {{ Form::label('Sizes') }}<br>
-                        {{ Form::select('sizing_id[]',$sizes, old('sizing_id'), ['class' => 'js-example-basic-multiple',  'multiple'=>true]) }}
-                    </div>
-                    <div class="adddd" id="popopo1">
-                    </div>
-                    <button class="btn-default" type="button" id="addDom">Add more category</button>
+{{--                        {{ Form::label('Sizes') }}<br>--}}
+{{--                        {{ Form::select('sizing_id[]',$sizes, old('sizing_id'), ['class' => 'js-example-basic-multiple',  'multiple'=>true]) }}--}}
+{{--                    </div>--}}
+{{--                    <div class="adddd" id="popopo1">--}}
+{{--                    </div>--}}
+{{--                    <button class="btn-default" type="button" id="addDom">Add more category</button>--}}
                 </div>
                 <x-footer-button route="{{ route('sizing-categories.index') }}"></x-footer-button>
                 {{ Form::close() }}

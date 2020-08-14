@@ -14,20 +14,11 @@
             <div class="card-body">
                 <div class="form-group">
                     <label>Name</label>
-                    <input class="form-control" value="{{ $user->name }}" disabled>
-                </div>
-                <div class="form-group">
-                    <label>Email</label>
-                    <input class="form-control" value="{{ $user->email }}" disabled>
-                </div>
-                <div class="form-group">
-                    <label>Role</label>
-
-                    <input class="form-control" value="{{ $user->role }}" disabled>
+                    <input class="form-control" value="{{ $data->title }}" disabled>
                 </div>
             </div>
             <!-- /.card-body -->
-            <a href="{{ route('users.index') }}" class="btn btn-default">Back to list</a>
+            <a href="{{ route('clothes-categories.index') }}" class="btn btn-default">Back to list</a>
 
         </form>
     </div>

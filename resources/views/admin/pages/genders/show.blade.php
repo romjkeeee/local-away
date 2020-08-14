@@ -23,7 +23,7 @@
                 </div>
             </div>
             <!-- /.card-body -->
-            <a href="{{ route('colors.index') }}" class="btn btn-default">Back to list</a>
+            <a href="{{ route('genders.index') }}" class="btn btn-default">Back to list</a>
 
         </form>
     </div>
