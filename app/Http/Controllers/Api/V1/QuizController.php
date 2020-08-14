@@ -151,4 +151,86 @@ class QuizController extends Controller
                 ->get()
         ]);
     }
+
+    /**
+     * List preference
+     *
+     *
+     * @response 200
+     *
+     */
+    public function preference()
+    {
+        return response([
+            'status' => 'success',
+            'data' => array(
+                'measurement' => [
+                    [
+                        'id' => 1,
+                        'name' => 'imperial'
+                    ],
+                    [
+                        'id' => 2,
+                        'name' => 'metric'
+                    ],
+                ],
+                'age' => [
+                    [
+                        'id' => 1,
+                        'name' => '18-20'
+                    ],
+                    [
+                        'id' => 2,
+                        'name' => '20-25'
+                    ],
+                    [
+                        'id' => 3,
+                        'name' => '25-30'
+                    ],
+                    [
+                        'id' => 4,
+                        'name' => '30-35'
+                    ],
+                    [
+                        'id' => 5,
+                        'name' => '35+'
+                    ],
+                ],
+                'feet' => [
+                    [
+                        'id' => 1,
+                        'name' => '35'
+                    ],
+                    [
+                        'id' => 2,
+                        'name' => '36'
+                    ],
+                    [
+                        'id' => 3,
+                        'name' => '37'
+                    ],
+                    [
+                        'id' => 4,
+                        'name' => '38'
+                    ],
+                    [
+                        'id' => 5,
+                        'name' => '39'
+                    ],
+                    [
+                        'id' => 6,
+                        'name' => '40'
+                    ],
+                    [
+                        'id' => 6,
+                        'name' => '41'
+                    ],
+                    [
+                        'id' => 7,
+                        'name' => '42'
+                    ],
+                ],
+            )
+        ]);
+    }
 }

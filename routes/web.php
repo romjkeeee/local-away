@@ -56,6 +56,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::get('show-room-like', 'ShowRoomLikeController@index');
     Route::get('user-address', 'UserAddressController@index');
     Route::resource('countries', 'CountryController');
+    Route::resource('boxs', 'BoxController')->except('create', 'store');
 
 
     Route::get('profile','UserController@adminProfile');

@@ -400,6 +400,11 @@ return [
                     'url'         => 'admin/sizing',
                     'icon'        => 'far fa-fw fa-circle nav-icon',
                 ],
+                [
+                    'text'        => 'Box',
+                    'url'         => 'admin/boxs',
+                    'icon'        => 'far fa-fw fa-circle nav-icon',
+                ],
             ],
         ],
         [

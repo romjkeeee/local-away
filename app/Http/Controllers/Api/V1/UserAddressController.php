@@ -14,6 +14,10 @@ use Illuminate\Http\Request;
  */
 class UserAddressController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:api');
+    }
 
     /**
      * List of all user address
@@ -48,6 +52,7 @@ class UserAddressController extends Controller
      */
     public function store(StoreUserAddressRequest $request)
     {
+        dd($request->validated());
         return response([
             'status' => 'success',
             'data' => auth()->user()->userAddress()->create($request->validated())
@@ -70,7 +75,7 @@ class UserAddressController extends Controller
      */
     public function edit(UpdateUserAddress $request, $id)
     {
-        return response(auth()->user()->userAddress()->where('id',$id)->update($request->validated()));
+        return response(auth()->user()->userAddress()->where('id',$id)->first()->update($request->validated()));
     }
 
     /**

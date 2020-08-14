@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::group(['namespace' => 'Api\V1'], function () {
+Route::group(['namespace' => 'Api\V1', 'as' => 'api.'], function () {
     Route::post('contact-form', 'ContactFormController@create');
     Route::post('subscribe', 'SubscribeController@create');
     Route::get('/redirect', 'SocialAuthFacebookController@redirect');
@@ -30,11 +30,11 @@ Route::group(['namespace' => 'Api\V1'], function () {
     });
 
     //User address
-    Route::group(['prefix' => 'user-address', 'middleware' => 'auth:api'], function() {
+    Route::group(['prefix' => 'user-address'], function() {
         Route::get('/', 'UserAddressController@index');
-        Route::post('/{id}', 'UserAddressController@edit');
-        Route::post('/create', 'UserAddressController@store');
         Route::get('/delete/{id}', 'UserAddressController@delete');
+        Route::post('/{id}/edit', 'UserAddressController@edit');
+        Route::post('/create', 'UserAddressController@store');
     });
 
     //Quiz
@@ -46,6 +46,7 @@ Route::group(['namespace' => 'Api\V1'], function () {
         Route::get('/body-type', 'QuizController@body_type');
         Route::get('/sizing-info', 'QuizController@sizing_info');
         Route::get('/costs', 'QuizController@costs');
+        Route::get('/preference', 'QuizController@preference');
     });
 
     //Show Room

@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AdminStoreSizingCategory;
 use App\Http\Requests\AdminUpdateSizingCategory;
+use App\Sizing;
 use App\SizingCategory;
+use App\SizingType;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
@@ -36,7 +38,8 @@ class SizingCategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.sizing_category.create');
+        $sizes = Sizing::all()->pluck('title','id');
+        return view('admin.pages.sizing_category.create', compact('sizes'));
     }
 
     /**
