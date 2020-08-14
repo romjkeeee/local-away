@@ -329,64 +329,88 @@ return [
             ],
         ],
         [
+            'text'    => 'Show room',
+            'icon'    => 'fas fa-fw fa-list',
+            'submenu' => [
+                [
+                    'text'        => 'Show Room',
+                    'url'         => 'admin/collections',
+                    'icon'        => 'far fa-fw fa-circle nav-icon',
+                ],
+                [
+                    'text'        => 'Show Room Likes',
+                    'url'         => 'admin/show-room-like',
+                    'icon'        => 'far fa-fw fa-circle nav-icon',
+                ],
+            ],
+        ],
+        [
+            'text'    => 'Products',
+            'icon'    => 'fas fa-fw fa-list',
+            'submenu' => [
+                [
+                    'text'        => 'Products Category',
+                    'url'         => 'admin/product-categories',
+                    'icon'        => 'far fa-fw fa-circle nav-icon',
+                ],
+                [
+                    'text'        => 'Products',
+                    'url'         => 'admin/products',
+                    'icon'        => 'far fa-fw fa-circle nav-icon',
+                ],
+            ],
+        ],
+        [
+            'text'    => 'Travel Stories',
+            'icon'    => 'fas fa-fw fa-list',
+            'submenu' => [
+                [
+                    'text'        => 'Travel Stories',
+                    'url'         => 'admin/travel-stories',
+                    'icon'        => 'far fa-fw fa-circle nav-icon',
+                ],
+                [
+                    'text'        => 'Story style',
+                    'url'         => 'admin/story-styles',
+                    'icon'        => 'far fa-fw fa-circle nav-icon',
+                ],
+            ],
+        ],
+        [
+            'text'    => 'Settings',
+            'icon'    => 'fas fa-fw fa-list',
+            'submenu' => [
+                [
+                    'text'        => 'Genders',
+                    'url'         => 'admin/genders',
+                    'icon'        => 'far fa-fw fa-circle nav-icon',
+                ],
+                [
+                    'text'        => 'Cities',
+                    'url'         => 'admin/cities',
+                    'icon'        => 'far fa-fw fa-circle nav-icon',
+                ],
+                [
+                    'text'        => 'Colors',
+                    'url'         => 'admin/colors',
+                    'icon'        => 'far fa-fw fa-circle nav-icon',
+                ],
+                [
+                    'text'        => 'Sizes',
+                    'url'         => 'admin/sizing',
+                    'icon'        => 'far fa-fw fa-circle nav-icon',
+                ],
+            ],
+        ],
+        [
             'text'        => 'Complain Types',
             'url'         => 'admin/complain-types',
             'icon'        => 'fas fa-fw fa-angry',
         ],
         [
-            'text'        => 'Show Room',
-            'url'         => 'admin/collections',
-            'icon'        => 'fas fa-fw fa-store',
-        ],
-        [
-            'text'        => 'Show Room Likes',
-            'url'         => 'admin/show-room-like',
-            'icon'        => 'fas fa-fw fa-thumbs-up',
-        ],
-        [
-            'text'        => 'Travel Stories',
-            'url'         => 'admin/travel-stories',
-            'icon'        => 'fas fa-fw fa-mountain',
-        ],
-        [
-            'text'        => 'Story style',
-            'url'         => 'admin/story-styles',
-            'icon'        => 'fas fa-fw fa-tshirt',
-        ],
-        [
             'text'        => 'Q&A',
             'url'         => 'admin/qas',
             'icon'        => 'fas fa-fw fa-question',
-        ],
-        [
-            'text'        => 'Genders',
-            'url'         => 'admin/genders',
-            'icon'        => 'fas fa-fw fa-venus-mars',
-        ],
-        [
-            'text'        => 'Cities',
-            'url'         => 'admin/cities',
-            'icon'        => 'far fa-fw fa-building',
-        ],
-        [
-            'text'        => 'Colors',
-            'url'         => 'admin/colors',
-            'icon'        => 'fas fa-fw fa-paint-brush',
-        ],
-        [
-            'text'        => 'Sizes',
-            'url'         => 'admin/sizing',
-            'icon'        => 'fas fa-fw fa-ruler',
-        ],
-        [
-            'text'        => 'Products Category',
-            'url'         => 'admin/product-categories',
-            'icon'        => 'fas fa-fw fa-shopping-cart',
-        ],
-        [
-            'text'        => 'Products',
-            'url'         => 'admin/products',
-            'icon'        => 'fas fa-fw fa-shopping-cart',
         ],
         [
             'text'        => 'Countries',

@@ -29,6 +29,14 @@ Route::group(['namespace' => 'Api\V1'], function () {
         Route::post('/create', 'QaController@create');
     });
 
+    //User address
+    Route::group(['prefix' => 'user-address'], function() {
+        Route::get('/', 'UserAddressController@index');
+        Route::post('/{id}', 'UserAddressController@edit');
+        Route::post('/create', 'UserAddressController@store');
+        Route::get('/delete/{id}', 'UserAddressController@delete');
+    });
+
     //Quiz
     Route::group(['prefix' => 'quiz'], function() {
         Route::get('/package_for', 'QuizController@package_for');

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Gender;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AdminStorePackageType;
 use App\Http\Requests\AdminUpdatePackageType;
@@ -25,7 +26,8 @@ class PackageTypeController extends Controller
      */
     public function index()
     {
-        return view('admin.pages.package_types.index')->with('packageType', PackageType::all());
+        $package_types = PackageType::query()->with('gender')->get();
+        return view('admin.pages.package_types.index', compact('package_types'));
     }
 
     /**
@@ -35,7 +37,8 @@ class PackageTypeController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.package_types.create');
+        $gender = Gender::all()->pluck('title', 'id');
+        return view('admin.pages.package_types.create',compact('gender'));
     }
 
     /**
@@ -76,7 +79,8 @@ class PackageTypeController extends Controller
     public function edit(PackageType $package_type)
     {
         $data = $package_type;
-        return view('admin.pages.package_types.edit', compact('data'));
+        $gender = Gender::all()->pluck('title', 'id');
+        return view('admin.pages.package_types.edit', compact('data','gender'));
     }
 
     /**

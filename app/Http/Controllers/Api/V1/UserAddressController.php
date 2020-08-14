@@ -55,7 +55,7 @@ class UserAddressController extends Controller
     }
 
     /**
-     * Store of all user address
+     * Edit user address by id address
      *
      * @bodyParam address string
      * @bodyParam zip_code integer
@@ -74,7 +74,7 @@ class UserAddressController extends Controller
     }
 
     /**
-     * Delete user address
+     * Delete user address by id address
      *
      * @authenticated required
      * @response 204
