@@ -21,6 +21,8 @@ class CityController extends Controller
      */
     public function index()
     {
-        return response(['status'=>'success','data' => City::query()->with('countries')->get()]);
+        return response([
+            'status'=>'success',
+            'data' => City::query()->with('country')->get()]);
     }
 }
