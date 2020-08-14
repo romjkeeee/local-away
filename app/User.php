@@ -48,7 +48,8 @@ class User extends Authenticatable
 
     public function userAddress()
     {
-        return $this->hasMany(UserAddress::class, 'user_id', 'id');
+        return $this->hasMany(UserAddress::class, 'user_id', 'id')
+            ->where('status','show');
     }
 
     public function linkedSocialAccounts()
