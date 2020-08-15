@@ -18,7 +18,10 @@
             <div class="card-body">
                 {{ Form::open(['route' => ['costs.store'], 'file' => true, 'method' => 'POST','enctype'=>'multipart/form-data']) }}
                 {{ csrf_field() }}
-                <x-title-input-create></x-title-input-create>
+                <div class="form-group">
+                    {{ Form::label('title') }}
+                    {{ Form::text('title', old('title'), ['class' => 'form-control', 'maxlength' => '190', 'placeholder' => '']) }}
+                </div>
                 <div class="form-group">
                     {{ Form::label('cost_from') }}
                     {{ Form::text('cost_from', old('cost_from'), ['class' => 'form-control', 'maxlength' => '190', 'placeholder' => '']) }}

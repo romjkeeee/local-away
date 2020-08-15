@@ -33,6 +33,7 @@
                         <tr>
                             <th>id</th>
                             <th>Name</th>
+                            <th>Country</th>
                             <th>active</th>
                             <th>Action</th>
                         </tr>
@@ -42,6 +43,7 @@
                             <tr>
                                 <td>{{ $user->id }}</td>
                                 <td style="width: 100%">{{ $user->name }}</td>
+                                <td>{{ $user->country->name ?? '' }}</td>
                                 <x-active-status active="{{ $user->status }}"></x-active-status>
                                 <x-action-buttons show="{{ route('cities.show',[$user->id]) }}"
                                                   edit="{{ route('cities.edit',[$user->id]) }}"></x-action-buttons>

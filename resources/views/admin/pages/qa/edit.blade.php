@@ -12,7 +12,7 @@
     @endif
     <div class="card card-secondary">
         <div class="card-header">
-            <h3 class="card-title">Edit Sizing category</h3>
+            <h3 class="card-title">Edit q&a</h3>
         </div>
         <div class="panel panel-default">
             <div class="card-body">

@@ -14,7 +14,13 @@
             <div class="card-body">
                 <div class="form-group">
                     <label>Title</label>
-                    <input class="form-control" value="{{ $data->title }}" disabled>
+                    <input class="form-control" value="{{ $data->name }}" disabled>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="form-group">
+                    <label>Country</label>
+                    <input class="form-control" value="{{ $data->country->name ?? '' }}" disabled>
                 </div>
             </div>
             <!-- /.card-body -->

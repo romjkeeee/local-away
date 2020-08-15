@@ -27,6 +27,7 @@ class AdminUpdateCosts extends FormRequest
             'title' => 'string',
             'cost_from' => 'integer',
             'cost_to' => 'integer',
+            'status' => 'boolean'
         ];
     }
 }
