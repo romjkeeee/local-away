@@ -28,7 +28,7 @@ class AdminUpdateSizingGuide extends FormRequest
             'title' => 'string',
             'text' => '',
             'image' => 'image',
-            'gender' => 'in:male,female',
+            'gender' => 'exists:genders,id',
             'active' => '',
         ];
     }

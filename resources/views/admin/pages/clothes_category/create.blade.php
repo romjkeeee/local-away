@@ -22,8 +22,24 @@
                     {{ Form::label('title') }}
                     {{ Form::text('title', old('title'), ['class' => 'form-control', 'maxlength' => '190', 'placeholder' => '']) }}
                 </div>
+                <div class="form-group">
+                    {{ Form::label('Costs') }}<br>
+                    {{ Form::select('cost_id[]',$costs, old('cost_id'), ['class' => 'js-example-basic-multiple',  'multiple'=>true]) }}
+                </div>
                 <x-footer-button route="{{ route('clothes-categories.index') }}"></x-footer-button>
                 {{ Form::close() }}
             </div>
         </div>
         @stop
+        @section('js')
+            <script type="text/javascript">
+
+                $(document).ready(function () {
+                    $('.js-example-basic-multiple').select2({ width: '100%' });
+                    bsCustomFileInput.init();
+
+                })
+
+            </script>
+
+@endsection()

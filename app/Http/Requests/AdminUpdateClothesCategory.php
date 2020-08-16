@@ -25,6 +25,7 @@ class AdminUpdateClothesCategory extends FormRequest
     {
         return [
             'title' => 'string',
+            'cost_id' => 'exists:costs,id',
             'active' => ''
         ];
     }

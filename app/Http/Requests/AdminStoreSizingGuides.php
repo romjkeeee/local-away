@@ -28,7 +28,7 @@ class AdminStoreSizingGuides extends FormRequest
             'title' => 'required|string',
             'text' => 'required',
             'image' => 'required|image',
-            'gender' => 'required|in:male,female',
+            'gender' => 'required|exists:genders,id',
         ];
     }
 }

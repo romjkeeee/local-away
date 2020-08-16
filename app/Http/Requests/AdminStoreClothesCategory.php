@@ -25,6 +25,7 @@ class AdminStoreClothesCategory extends FormRequest
     {
         return [
             'title' => 'required|string',
+            'cost_id' => 'required|exists:costs,id',
         ];
     }
 }

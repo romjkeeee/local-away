@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class ClothesCategory extends Model
 {
-    public $guarded = ['id'];
+    public $fillable = ['title', 'active'];
+    public $with = ['costs'];
 
     public function costs()
     {

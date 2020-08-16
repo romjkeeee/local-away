@@ -22,6 +22,10 @@
                     {{ Form::text('title', old('title'), ['class' => 'form-control', 'maxlength' => '190', 'placeholder' => '']) }}
                 </div>
                 <div class="form-group">
+                    {{ Form::label('Costs') }}<br>
+                    {{ Form::select('cost_id[]',$costs, $data->costs, ['class' => 'js-example-basic-multiple',  'multiple'=>true]) }}
+                </div>
+                <div class="form-group">
                     {{ Form::label('active','active') }}<br>
                     {{ Form::radio('active',0, null) }}No <br>
                     {{ Form::radio('active',1, null) }}Yes
@@ -32,3 +36,15 @@
         </div>
         @stop
 
+        @section('js')
+            <script type="text/javascript">
+
+                $(document).ready(function () {
+                    $('.js-example-basic-multiple').select2({ width: '100%' });
+                    bsCustomFileInput.init();
+
+                })
+
+            </script>
+
+@endsection()
