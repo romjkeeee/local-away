@@ -29,6 +29,7 @@
                             <th>id</th>
                             <th>Q&A</th>
                             <th>email</th>
+                            <th>city</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -37,6 +38,7 @@
                                 <td>{{ $user->id }}</td>
                                 <td>{{ $user->qa->city->name ?? '' }}</td>
                                 <td style="width: 100%">{{ $user->email }}</td>
+                                <td>{{ $user->city->name ?? '' }}</td>
                             </tr>
                         @endforeach
 

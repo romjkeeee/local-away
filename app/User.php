@@ -59,11 +59,6 @@ class User extends Authenticatable
         return $this->hasMany(UserSetting::class, 'user_id', 'id');
     }
 
-    public function linkedSocialAccounts()
-    {
-        return $this->hasMany(LinkedSocialAccount::class);
-    }
-
     public function setPasswordAttribute($value)
     {
         if($value != ""){

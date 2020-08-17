@@ -21,6 +21,8 @@ Route::group(['namespace' => 'Api\V1', 'as' => 'api.'], function () {
     Route::get('cities', 'CityController@index');
     //fb-auth
     Route::get('/callback', 'SocialAuthFacebookController@callback');
+    //gg
+    Route::get('/callback_google', 'SocialAuthGoogleController@callback');
 
     //Q&A
     Route::group(['prefix' => 'qa'], function() {
