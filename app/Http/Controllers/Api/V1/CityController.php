@@ -23,6 +23,6 @@ class CityController extends Controller
     {
         return response([
             'status'=>'success',
-            'data' => City::query()->with('country')->get()]);
+            'data' => City::query()->where('status',true)->with('country')->get()]);
     }
 }
