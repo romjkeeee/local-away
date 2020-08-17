@@ -2,7 +2,7 @@
     "variables": [],
     "info": {
         "name": "Local Away",
-        "_postman_id": "85c12e8b-b27b-4f7d-9d49-610fc88491ca",
+        "_postman_id": "10ab74db-93e9-4471-94c0-dab97ae3b932",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.0.0\/collection.json"
     },
@@ -33,7 +33,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"email\": \"ab\",\n    \"password\": \"est\",\n    \"remember_me\": true\n}"
+                            "raw": "{\n    \"email\": \"distinctio\",\n    \"password\": \"dolorum\",\n    \"remember_me\": false\n}"
                         },
                         "description": "",
                         "response": []
@@ -61,7 +61,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"name\": \"consequatur\",\n    \"email\": \"voluptatem\",\n    \"password\": \"officiis\",\n    \"password_confirmation\": \"excepturi\"\n}"
+                            "raw": "{\n    \"name\": \"laudantium\",\n    \"email\": \"dolor\",\n    \"password\": \"corrupti\",\n    \"password_confirmation\": \"saepe\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -94,14 +94,20 @@
                         "description": "",
                         "response": []
                     }
-                },
+                }
+            ]
+        },
+        {
+            "name": "City",
+            "description": "\nAPIs for",
+            "item": [
                 {
-                    "name": "Get User",
+                    "name": "List cities",
                     "request": {
                         "url": {
                             "protocol": "http",
                             "host": "localhost:8888\/peiko\/first\/laravel\/public",
-                            "path": "api\/auth\/user",
+                            "path": "api\/cities",
                             "query": []
                         },
                         "method": "GET",
@@ -151,7 +157,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"name\": \"quia\",\n    \"email\": \"sit\",\n    \"message\": \"eos\"\n}"
+                            "raw": "{\n    \"name\": \"quaerat\",\n    \"email\": \"eum\",\n    \"message\": \"aliquam\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -213,7 +219,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"first_name\": \"ut\",\n    \"last_name\": \"est\",\n    \"email\": \"sint\",\n    \"company_name\": \"esse\",\n    \"country\": \"aliquam\",\n    \"phone\": \"ratione\",\n    \"image\": \"molestiae\"\n}"
+                            "raw": "{\n    \"first_name\": \"autem\",\n    \"last_name\": \"aut\",\n    \"email\": \"est\",\n    \"company_name\": \"excepturi\",\n    \"country\": \"reprehenderit\",\n    \"phone\": \"quae\",\n    \"image\": \"sit\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -263,7 +269,7 @@
                             "query": [
                                 {
                                     "key": "id",
-                                    "value": "impedit",
+                                    "value": "voluptatibus",
                                     "description": "integer required",
                                     "disabled": false
                                 }
@@ -310,7 +316,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"email\": \"itaque\"\n}"
+                            "raw": "{\n    \"email\": \"voluptate\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -323,20 +329,237 @@
             "description": "\nAPIs for",
             "item": [
                 {
+                    "name": "List package type",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost:8888\/peiko\/first\/laravel\/public",
+                            "path": "api\/quiz\/package_for",
+                            "query": []
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "List travel purposes",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost:8888\/peiko\/first\/laravel\/public",
+                            "path": "api\/quiz\/travel-purposes",
+                            "query": []
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "List personal style",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost:8888\/peiko\/first\/laravel\/public",
+                            "path": "api\/quiz\/personal-style",
+                            "query": [
+                                {
+                                    "key": "gender_id",
+                                    "value": "labore",
+                                    "description": "int optional example: 1",
+                                    "disabled": false
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "List styled",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost:8888\/peiko\/first\/laravel\/public",
+                            "path": "api\/quiz\/styled",
+                            "query": [
+                                {
+                                    "key": "gender_id",
+                                    "value": "omnis",
+                                    "description": "int optional example: 1",
+                                    "disabled": false
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "List body type",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost:8888\/peiko\/first\/laravel\/public",
+                            "path": "api\/quiz\/body-type",
+                            "query": [
+                                {
+                                    "key": "gender_id",
+                                    "value": "voluptate",
+                                    "description": "int optional example: 1",
+                                    "disabled": false
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
                     "name": "List sizing info",
                     "request": {
                         "url": {
                             "protocol": "http",
                             "host": "localhost:8888\/peiko\/first\/laravel\/public",
-                            "path": "api\/quiz\/sizing_info",
+                            "path": "api\/quiz\/sizing-info",
                             "query": [
                                 {
                                     "key": "gender_id",
-                                    "value": "facilis",
+                                    "value": "quas",
                                     "description": "int optional example: 1",
                                     "disabled": false
                                 }
                             ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "List sizing info",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost:8888\/peiko\/first\/laravel\/public",
+                            "path": "api\/quiz\/costs",
+                            "query": []
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "List preference",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost:8888\/peiko\/first\/laravel\/public",
+                            "path": "api\/quiz\/preference",
+                            "query": []
                         },
                         "method": "GET",
                         "header": [
@@ -419,7 +642,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"email\": \"molestias\"\n}"
+                            "raw": "{\n    \"email\": \"eos\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -469,13 +692,13 @@
                             "query": [
                                 {
                                     "key": "page",
-                                    "value": "vel",
+                                    "value": "voluptatem",
                                     "description": "",
                                     "disabled": false
                                 },
                                 {
                                     "key": "perPage",
-                                    "value": "laborum",
+                                    "value": "architecto",
                                     "description": "",
                                     "disabled": false
                                 }
@@ -531,65 +754,301 @@
             ]
         },
         {
+            "name": "User Address",
+            "description": "\nAPIs for",
+            "item": [
+                {
+                    "name": "List of all user address",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost:8888\/peiko\/first\/laravel\/public",
+                            "path": "api\/user-address",
+                            "query": []
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Delete user address by id address",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost:8888\/peiko\/first\/laravel\/public",
+                            "path": "api\/user-address\/delete\/:id",
+                            "query": []
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Edit user address by id address",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost:8888\/peiko\/first\/laravel\/public",
+                            "path": "api\/user-address\/:id\/edit",
+                            "query": []
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"address\": \"cum\",\n    \"zip_code\": 2,\n    \"city\": \"eius\",\n    \"state\": \"ducimus\",\n    \"country\": \"iure\",\n    \"apartment\": \"harum\"\n}"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Store of all user address",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost:8888\/peiko\/first\/laravel\/public",
+                            "path": "api\/user-address\/create",
+                            "query": []
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"address\": \"veniam\",\n    \"zip_code\": \"quo\",\n    \"city\": \"veritatis\",\n    \"state\": \"minus\",\n    \"country\": \"dolore\",\n    \"apartment\": \"nesciunt\"\n}"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                }
+            ]
+        },
+        {
+            "name": "User settings",
+            "description": "\nAPIs for",
+            "item": [
+                {
+                    "name": "List\n\u0421\u043f\u0438\u0441\u043e\u043a \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u0435\u0439",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost:8888\/peiko\/first\/laravel\/public",
+                            "path": "api\/user-settings\/metrics",
+                            "query": []
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "update settings",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost:8888\/peiko\/first\/laravel\/public",
+                            "path": "api\/user-settings\/set-metrics",
+                            "query": []
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"measurement\": 14,\n    \"height\": 4,\n    \"feet\": 8,\n    \"age_range\": 10,\n    \"body_type_id\": 15\n}"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Get user",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost:8888\/peiko\/first\/laravel\/public",
+                            "path": "api\/user-settings\/get-user",
+                            "query": []
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Update info\nFirst name, last_name, email",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost:8888\/peiko\/first\/laravel\/public",
+                            "path": "api\/user-settings\/update-info",
+                            "query": []
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Update avatar",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost:8888\/peiko\/first\/laravel\/public",
+                            "path": "api\/user-settings\/update-avatar",
+                            "query": []
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "remove avatar",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost:8888\/peiko\/first\/laravel\/public",
+                            "path": "api\/user-settings\/remove-avatar",
+                            "query": []
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                }
+            ]
+        },
+        {
             "name": "general",
             "description": "",
             "item": [
-                {
-                    "name": "Create a redirect method to facebook api.",
-                    "request": {
-                        "url": {
-                            "protocol": "http",
-                            "host": "localhost:8888\/peiko\/first\/laravel\/public",
-                            "path": "api\/redirect",
-                            "query": []
-                        },
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "[]"
-                        },
-                        "description": "",
-                        "response": []
-                    }
-                },
-                {
-                    "name": "Return a callback method from facebook api.",
-                    "request": {
-                        "url": {
-                            "protocol": "http",
-                            "host": "localhost:8888\/peiko\/first\/laravel\/public",
-                            "path": "api\/callback",
-                            "query": []
-                        },
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "[]"
-                        },
-                        "description": "",
-                        "response": []
-                    }
-                },
                 {
                     "name": "\/",
                     "request": {
@@ -597,62 +1056,6 @@
                             "protocol": "http",
                             "host": "localhost:8888\/peiko\/first\/laravel\/public",
                             "path": "\/",
-                            "query": []
-                        },
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "[]"
-                        },
-                        "description": "",
-                        "response": []
-                    }
-                },
-                {
-                    "name": "Create a redirect method to facebook api.",
-                    "request": {
-                        "url": {
-                            "protocol": "http",
-                            "host": "localhost:8888\/peiko\/first\/laravel\/public",
-                            "path": "redirect",
-                            "query": []
-                        },
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "[]"
-                        },
-                        "description": "",
-                        "response": []
-                    }
-                },
-                {
-                    "name": "Return a callback method from facebook api.",
-                    "request": {
-                        "url": {
-                            "protocol": "http",
-                            "host": "localhost:8888\/peiko\/first\/laravel\/public",
-                            "path": "callback",
                             "query": []
                         },
                         "method": "GET",

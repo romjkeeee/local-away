@@ -18,9 +18,9 @@ use Illuminate\Support\Facades\Route;
 Route::group(['namespace' => 'Api\V1', 'as' => 'api.'], function () {
     Route::post('contact-form', 'ContactFormController@create');
     Route::post('subscribe', 'SubscribeController@create');
-    Route::get('/redirect', 'SocialAuthFacebookController@redirect');
-    Route::get('/callback', 'SocialAuthFacebookController@callback');
     Route::get('cities', 'CityController@index');
+    //fb-auth
+    Route::get('/callback', 'SocialAuthFacebookController@callback');
 
     //Q&A
     Route::group(['prefix' => 'qa'], function() {
@@ -63,7 +63,7 @@ Route::group(['namespace' => 'Api\V1', 'as' => 'api.'], function () {
     //Show Room
     Route::group(['prefix' => '/show-room'], function() {
         Route::get('/', 'ShowRoomController@index');
-        Route::post('/like', 'ShowRoomController@like');
+        Route::post('/like', 'ShowRoomController@like')->name('like-showroom');
     });
 
     //Travel stories

@@ -14,8 +14,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'Admin\HomeController@login');
-Route::get('redirect', 'Api\V1\SocialAuthFacebookController@redirect');
-Route::get('callback', 'Api\V1\SocialAuthFacebookController@callback');
 
 Auth::routes();
 

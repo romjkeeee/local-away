@@ -5,28 +5,35 @@ namespace App\Http\Controllers\Api\V1;
 use App\Http\Controllers\Controller;
 use App\User;
 use Carbon\Carbon;
+use Facebook\Exceptions\FacebookResponseException;
+use Facebook\Exceptions\FacebookSDKException;
 use Facebook\Facebook;
 use Illuminate\Http\Request;
 use Laravel\Socialite\Facades\Socialite;
 use App\Services\SocialAccountsService;
 
+/**
+ * @group User settings
+ *
+ * APIs for
+ */
 class SocialAuthFacebookController extends Controller
 {
-    /**
-     * Create a redirect method to facebook api.
-     *
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
-     */
-    public function redirect()
-    {
-        return Socialite::driver('facebook')->redirect();
-    }
+//    /**
+//     * Create a redirect method to facebook api.
+//     *
+//     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+//     */
+//    public function redirect()
+//    {
+//        return Socialite::driver('facebook')->redirect();
+//    }
 
     /**
-     * Return a callback method from facebook api.
+     * Fb login
+     * @bodyParam fb_token
      *
-     * @param SocialAccountsService $service
-     * @return \Illuminate\Http\JsonResponse
+     * @response 200
      */
     public function callback(Request $request)
     {
@@ -47,8 +54,14 @@ class SocialAuthFacebookController extends Controller
             /**
              * Make the Facebook request.
              */
-            $response = $fb->get('/me?locale=en_GB&fields=first_name,last_name,email');
-
+            try {
+                // Returns a `Facebook\FacebookResponse` object
+                $response = $fb->get('/me?locale=en_GB&fields=first_name,last_name,email');
+            } catch(FacebookResponseException $e) {
+                return response(['status' => 'error', 'message' => 'Graph returned an error: ' . $e->getMessage()], 422);
+            } catch(FacebookSDKException $e) {
+                return response(['status' => 'error', 'message' => 'Facebook SDK returned an error: ' . $e->getMessage()], 422);
+            }
             $fbUser = $response->getDecodedBody();
 
             /**

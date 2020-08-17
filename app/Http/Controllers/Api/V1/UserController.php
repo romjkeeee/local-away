@@ -13,12 +13,17 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 /**
- * @group User
+ * @group User settings
  *
  * APIs for
  */
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:api');
+    }
+
     /**
      * Get user
      * @authenticated required
