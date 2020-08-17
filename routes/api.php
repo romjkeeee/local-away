@@ -39,8 +39,13 @@ Route::group(['namespace' => 'Api\V1', 'as' => 'api.'], function () {
 
     //User settings
     Route::group(['prefix' => 'user-settings'], function() {
-        Route::get('/', 'UserSettingController@index');
-        Route::post('/set', 'UserSettingController@update');
+        Route::get('metrics', 'UserSettingController@index');
+        Route::post('set-metrics', 'UserSettingController@update');
+        Route::get('get-user', 'UserController@index');
+        Route::post('update-info', 'UserController@update_info');
+        Route::post('update-avatar', 'UserController@update_avatar');
+        Route::delete('remove-avatar', 'UserController@remove_avatar');
+        Route::post('change-password', 'UserController@changePassword');
     });
 
     //Quiz
@@ -80,10 +85,5 @@ Route::group(['namespace' => 'Api\V1', 'as' => 'api.'], function () {
         Route::group(['middleware' => 'auth:api'], function () {
             Route::get('logout', 'AuthController@logout');
         });
-    });
-
-    Route::group(['prefix' => 'user-settings', 'middleware' => 'auth:api'], function () {
-        Route::post('login', 'AuthController@login')->name('login-api');
-        Route::post('signup', 'AuthController@signup')->name('sign-up');
     });
 });

@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ChangePasswordRequest;
+use App\Http\Requests\UpdateUserAvatar;
+use App\Http\Requests\UpdateUserInfo;
 use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\Auth;
@@ -19,31 +21,31 @@ class UserController extends Controller
 {
     /**
      * Get user
-     *
+     * @authenticated required
      * @response 200
      */
     public function index()
     {
-        return response(auth()->user());
+        return response(['status'=> 'success', 'data' => auth()->user()]);
     }
 
     /**
      * Update info
      * First name, last_name, email
-     *
+     * @authenticated required
      * @response 200
      */
-    public function update_info(Request $request)
+    public function update_info(UpdateUserInfo $request)
     {
-        return response(auth()->user()->first()->update($request));
+        return response(['status' => 'success', 'data' => auth()->user()->first()->update($request->validated())]);
     }
 
     /**
      * Update avatar
-     *
+     * @authenticated required
      * @response 200
      */
-    public function update_avatar(Request $request)
+    public function update_avatar(UpdateUserAvatar $request)
     {
         $user = User::query()->where('id', auth()->id())->first();
         if ($user->avatar){
@@ -53,12 +55,12 @@ class UserController extends Controller
                 $user->update();
             }
         }
-        return response();
+        return response(['status' => 'success','message' => 'Avatar successful update.', 'data' => $user], 200);
     }
 
     /**
      * remove avatar
-     *
+     * @authenticated required
      * @response 204
      */
     public function remove_avatar()
@@ -77,12 +79,12 @@ class UserController extends Controller
      * @bodyParam current_password
      * @bodyParam confirmation_current_password
      * @bodyParam new_password
-     *
+     * @authenticated required
      * @response 200
      */
     public function changePassword(ChangePasswordRequest $request)
     {
-        $user = Auth::user();
+        $user = User::query()->where('id', auth()->id())->first();
 
         if (password_verify($request->get('current_password'), $user->password)) {
 
