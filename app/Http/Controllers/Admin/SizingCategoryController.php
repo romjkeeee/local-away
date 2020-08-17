@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Gender;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AdminStoreSizingCategory;
 use App\Http\Requests\AdminUpdateSizingCategory;
@@ -38,8 +39,9 @@ class SizingCategoryController extends Controller
      */
     public function create()
     {
-        $sizes = Sizing::all()->pluck('title','id');
-        return view('admin.pages.sizing_category.create', compact('sizes'));
+        $sizes_types = SizingType::all()->pluck('title','id');
+        $gender = Gender::all()->pluck('title','id');
+        return view('admin.pages.sizing_category.create', compact('sizes_types','gender'));
     }
 
     /**

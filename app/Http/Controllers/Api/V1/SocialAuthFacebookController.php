@@ -48,13 +48,14 @@ class SocialAuthFacebookController extends Controller
              * Make the Facebook request.
              */
             $response = $fb->get('/me?locale=en_GB&fields=first_name,last_name,email');
+
             $fbUser = $response->getDecodedBody();
 
             /**
              * Create a new user if they haven't already signed up.
              */
             $facebook_id_column = config('facebook.registration.facebook_id', 'facebook_id');
-            $name_column = config('facebook.registration.name', 'name');
+//            $name_column = config('facebook.registration.name', 'name');
             $first_name_column = config('facebook.registration.first_name', 'first_name');
             $last_name_column = config('facebook.registration.last_name', 'last_name');
             $email_column = config('facebook.registration.email', 'email');
@@ -76,32 +77,34 @@ class SocialAuthFacebookController extends Controller
                 $user = new User();
                 $user->{$facebook_id_column} = $fbUser['id'];
 
-                if ($name_column) {
-                    $user->{$name_column} = $fbUser['first_name'];
-                }
                 $user->password = '';
                 if (isset($fbUser['email'])) {
                     $user->{$email_column} = $fbUser['email'];
                 }else{
                     $user->{$email_column} = $fbUser['id'].'@fb.nomail.com';
                 }
+                $user->first_name = $fbUser['first_name'];
+                $user->last_name = $fbUser['last_name'];
                 $user->save();
 
-                $user->profile()
-                    ->create([
-                        $first_name_column => $fbUser['first_name'],
-                        $last_name_column  => $fbUser['last_name'],
-                    ]);
                 /**
                  * Attach a role to the user.
                  */
                 if (!is_null(config('facebook.registration.attach_role'))) {
-                    $user->roles()
-                        ->attach(config('facebook.registration.attach_role'));
+                    $user->attachRole('user');
                 }
             }
 
-            return response()->json(['token' => $user->generateToken()]);
+            $tokenResult = $user->createToken('Personal Access Token');
+            $token = $tokenResult->token;
+            $token->save();
+            return response()->json([
+                'access_token' => $tokenResult->accessToken,
+                'token_type' => 'Bearer',
+                'expires_at' => Carbon::parse(
+                    $tokenResult->token->expires_at
+                )->toDateTimeString()
+            ]);
         }
 
         return null;

@@ -86,7 +86,7 @@ class UserAddressController extends Controller
      */
     public function delete($id)
     {
-        if (auth()->user()->userAddress()->where('id',$id)->delete()){
+        if (auth()->user()->userAddress()->where('id',$id)->update('status', 'hide')){
             return response([
                 'status' => 'success',
                 'message'=> 'Successful deleted'

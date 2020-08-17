@@ -78,14 +78,4 @@ class AuthController extends Controller
         $request->user()->token()->revoke();
         return response(['message' => 'Successfully logged out']);
     }
-
-    /**
-     * Get User
-     * @authenticated required
-     * @response 200
-     */
-    public function user(Request $request)
-    {
-        return response($request->user());
-    }
 }

@@ -79,7 +79,11 @@ Route::group(['namespace' => 'Api\V1', 'as' => 'api.'], function () {
         Route::post('signup', 'AuthController@signup')->name('sign-up');
         Route::group(['middleware' => 'auth:api'], function () {
             Route::get('logout', 'AuthController@logout');
-            Route::get('user', 'AuthController@user');
         });
+    });
+
+    Route::group(['prefix' => 'user-settings', 'middleware' => 'auth:api'], function () {
+        Route::post('login', 'AuthController@login')->name('login-api');
+        Route::post('signup', 'AuthController@signup')->name('sign-up');
     });
 });
