@@ -39,13 +39,13 @@ Route::group(['namespace' => 'Api\V1', 'as' => 'api.'], function () {
 
     //User settings
     Route::group(['prefix' => 'user-settings'], function() {
-        Route::get('metrics', 'UserSettingController@index');
-        Route::post('set-metrics', 'UserSettingController@update');
-        Route::get('get-user', 'UserController@index');
-        Route::post('update-info', 'UserController@update_info');
-        Route::post('update-avatar', 'UserController@update_avatar');
-        Route::delete('remove-avatar', 'UserController@remove_avatar');
-        Route::post('change-password', 'UserController@changePassword');
+        Route::get('/metrics', 'UserSettingController@index')->name('metrics');
+        Route::get('/get-user', 'UserController@index')->name('get-user');
+        Route::post('/set-metrics', 'UserSettingController@update')->name('set-metrics');
+        Route::post('/update-info', 'UserController@update_info')->name('update-info');
+        Route::post('/update-avatar', 'UserController@update_avatar')->name('update-avatar');
+        Route::post('/change-password', 'UserController@changePassword')->name('change-password');
+        Route::delete('/remove-avatar', 'UserController@remove_avatar')->name('remove-avatar');
     });
 
     //Quiz
