@@ -40,7 +40,7 @@ class QaController extends Controller
      */
     public function cities_list()
     {
-        return response(['status'=>'success','data' => City::query()->whereHas('qa')->get()]);
+        return response(['status'=>'success','data' => City::query()->where('status',1)->whereHas('qa')->get()]);
     }
 
     /**
