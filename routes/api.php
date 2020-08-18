@@ -19,6 +19,8 @@ Route::group(['namespace' => 'Api\V1', 'as' => 'api.'], function () {
     Route::post('contact-form', 'ContactFormController@create');
     Route::post('subscribe', 'SubscribeController@create');
     Route::get('cities', 'CityController@index');
+    Route::get('countries', 'CityController@list');
+
     //fb-auth
     Route::get('/callback', 'SocialAuthFacebookController@callback');
     //gg
