@@ -21,7 +21,8 @@ class AuthController extends Controller
      * Sign-up
      *
      *
-     * @bodyParam name string required
+     * @bodyParam first_name string
+     * @bodyParam last_name string
      * @bodyParam email string required
      * @bodyParam password string required
      * @bodyParam password_confirmation string required
@@ -33,7 +34,18 @@ class AuthController extends Controller
         $user = new User($request->validated());
         $user->save();
         $user->attachRole('user');
-        return response()->json(['status' => 'success', 'message' => 'Successfully created user!'], 201);
+        $tokenResult = $user->createToken('Personal Access Token');
+        $token = $tokenResult->token;
+        if ($request->remember_me)
+            $token->expires_at = Carbon::now()->addWeeks(1);
+        $token->save();
+        return response()->json([
+            'access_token' => $tokenResult->accessToken,
+            'token_type' => 'Bearer',
+            'expires_at' => Carbon::parse(
+                $tokenResult->token->expires_at
+            )->toDateTimeString()
+        ]);
     }
 
     /**
