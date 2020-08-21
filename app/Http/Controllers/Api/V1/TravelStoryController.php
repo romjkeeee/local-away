@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\ProductCollection;
+use App\Http\Resources\Products;
 use App\Product;
 use App\TravelStory;
 use Illuminate\Http\Request;
@@ -44,7 +46,7 @@ class TravelStoryController extends Controller
      */
     public function home_page()
     {
-        return response(['status' => 'success', 'data' => TravelStory::query()->where('is_to_homepage', 1)->get(['name', 'alias', 'preview_image', 'description'])]);
+        return response(['status' => 'success', 'data' => TravelStory::query()->where('is_to_homepage', 1)->get(['id', 'name', 'alias', 'preview_image', 'description'])]);
     }
 
     /**
@@ -55,20 +57,22 @@ class TravelStoryController extends Controller
      */
     public function show(TravelStory $travel_story, Request $request)
     {
-        $travel_story = TravelStory::query()->where('id', $travel_story->id)
+        $travel_story = TravelStory::query()->where('id', $travel_story->id)->with('storyStyle')
             ->when($request->gender_id, function ($query) use ($request) {
-                $query->whereHas('storyStyle', function ($q) use ($request) {
+                return $query->whereHas('storyStyle', function ($q) use ($request) {
                     return $q->where('gender_id', $request->gender_id);
-                });
+                })->get();
             })->first();
         $products = str_split(str_replace(',', '', $travel_story['product_ids']));
         foreach ($products as $product) {
-            $data[] = Product::query()
-                ->where('id', $product)
-                ->when($request->gender_id, function ($query) use ($request) {
-                    return $query->where('gender_id', $request->gender_id);
-                })
-                ->first();
+            if ($product != null) {
+                $data[] = new ProductCollection(Product::query()->with('colorImage')
+                    ->where('id', $product)
+                    ->when($request->gender_id, function ($query) use ($request) {
+                        return $query->where('gender_id', $request->gender_id);
+                    })
+                    ->first());
+            }
         }
 
         $travel_story['products'] = $data;
