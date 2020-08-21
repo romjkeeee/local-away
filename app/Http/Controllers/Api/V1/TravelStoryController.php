@@ -66,12 +66,12 @@ class TravelStoryController extends Controller
         $products = str_split(str_replace(',', '', $travel_story['product_ids']));
         foreach ($products as $product) {
             if ($product != null) {
-                $data[] = new ProductCollection(Product::query()->with('colorImage')
+                $data[] = Product::query()->with('colorImage')
                     ->where('id', $product)
                     ->when($request->gender_id, function ($query) use ($request) {
                         return $query->where('gender_id', $request->gender_id);
                     })
-                    ->first());
+                    ->first();
             }
         }
 
