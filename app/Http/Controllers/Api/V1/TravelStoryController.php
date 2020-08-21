@@ -8,6 +8,7 @@ use App\Http\Resources\Products;
 use App\Product;
 use App\TravelStory;
 use Illuminate\Http\Request;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 /**
  * @group Travel Story
@@ -66,7 +67,7 @@ class TravelStoryController extends Controller
         $products = str_split(str_replace(',', '', $travel_story['product_ids']));
         foreach ($products as $product) {
             if ($product != null) {
-                $data[] = Product::query()->with('colorImage')
+                $data[] = Product::query()
                     ->where('id', $product)
                     ->when($request->gender_id, function ($query) use ($request) {
                         return $query->where('gender_id', $request->gender_id);
