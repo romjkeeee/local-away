@@ -50,4 +50,20 @@ class Product extends Model implements HasMedia
     {
         $this->addMediaCollection('images');
     }
+
+    public function toArray()
+    {
+        $data = parent::toArray();
+
+        $images = [];
+
+        foreach ($this->getMedia('images') as $key => $value) {
+            $images[$key]['id'] = $value->id;
+            $images[$key]['link'] = $value->getFullUrl();
+        }
+
+        $data['images'] = $images;
+
+        return $data;
+    }
 }
