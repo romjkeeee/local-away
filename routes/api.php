@@ -20,11 +20,13 @@ Route::group(['namespace' => 'Api\V1', 'as' => 'api.'], function () {
     Route::post('subscribe', 'SubscribeController@create');
     Route::get('cities', 'CityController@index');
     Route::get('countries', 'CityController@list');
+    Route::get('genders', 'GenderController@index');
+
+
+    Route::get('order', 'OrderController@store');
 
     //fb-auth
     Route::get('/callback', 'SocialAuthFacebookController@callback');
-    //gg
-    Route::get('/callback_google', 'SocialAuthGoogleController@callback');
 
     //Q&A
     Route::group(['prefix' => 'qa'], function() {
