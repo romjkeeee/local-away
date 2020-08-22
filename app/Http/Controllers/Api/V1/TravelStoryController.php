@@ -58,12 +58,9 @@ class TravelStoryController extends Controller
      */
     public function show(TravelStory $travel_story, Request $request)
     {
-        $travel_story = TravelStory::query()->where('id', $travel_story->id)->with('storyStyle')
-            ->when($request->gender_id, function ($query) use ($request) {
-                return $query->whereHas('storyStyle', function ($q) use ($request) {
-                    return $q->where('gender_id', $request->gender_id);
-                })->get();
-            })->first();
+        $travel_story = TravelStory::query()->where('id', $travel_story->id)
+            ->with('storyStyle')
+            ->first();
         $products = str_split(str_replace(',', '', $travel_story['product_ids']));
         foreach ($products as $product) {
             if ($product != null) {
@@ -77,6 +74,7 @@ class TravelStoryController extends Controller
         }
 
         $travel_story['products'] = $data;
+        $travel_story['storyStyle'] = $travel_story->storyStyle()->where('gender_id', $request->gender_id)->get();
         return response(['status' => 'success', 'data' => $travel_story]);
     }
 }

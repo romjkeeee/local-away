@@ -303,7 +303,7 @@ return [
                 ],
                 [
                     'text'        => 'Orders',
-                    'url'         => '#',
+                    'url'         => 'admin/orders',
                     'icon'        => 'far fa-fw fa-circle nav-icon',
                 ],
                 [

@@ -9,7 +9,6 @@ class TravelStory extends Model
 {
     public $guarded = ['id'];
 
-    public $with = ['storyStyle'];
 
     public function storyStyle()
     {
