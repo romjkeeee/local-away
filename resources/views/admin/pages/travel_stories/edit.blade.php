@@ -48,10 +48,6 @@
                     {{ Form::select('product_ids[]',$products, $data_products, ['class' => 'js-example-basic-multiple',  'multiple'=>true]) }}
                 </div>
                 <div class="form-group">
-                    {{ Form::label('Boutique') }}<br>
-                    {{ Form::select('boutiques_id',$boutiques, old('boutiques_id'), ['class' => 'js-example-basic-multiple']) }}
-                </div>
-                <div class="form-group">
                     {{ Form::label('is_to_homepage','Home page') }}<br>
                     {{ Form::radio('is_to_homepage',0, null) }}No <br>
                     {{ Form::radio('is_to_homepage',1, null) }}Yes

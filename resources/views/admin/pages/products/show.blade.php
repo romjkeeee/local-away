@@ -24,6 +24,10 @@
                     <input class="form-control" value="{{ $data->gender->title ?? '' }}" disabled>
                 </div>
                 <div class="form-group">
+                    <label>Boutique</label>
+                    <input class="form-control" value="{{ $data->boutique->name ?? '' }}" disabled>
+                </div>
+                <div class="form-group">
                     <label>Sizes</label>
                     @foreach($data->sizes as $size)
                         <span class="badge badge-primary badge-pill">{{ $size->title ?? '' }}</span>

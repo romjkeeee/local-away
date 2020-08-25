@@ -53,6 +53,10 @@
                     {{ Form::select('gender_id',$gender, old('gender'),['class' => 'form-control',  'placeholder' => 'Choose a gender...']) }}
                 </div>
                 <div class="form-group">
+                    {{ Form::label('Boutique') }}<br>
+                    {{ Form::select('boutiques_id',$boutiques, old('boutiques_id'), ['class' => 'js-example-basic-multiple', 'placeholder' => 'Choose ..']) }}
+                </div>
+                <div class="form-group">
                     <button name="submit" type="submit" class="btn btn-secondary margin-r-5">Next step</button>
                     <a href="{{ route('products.index') }}" class="btn btn-default">Back to list</a>
                 </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Boutique;
 use App\Color;
 use App\Gender;
 use App\Http\Controllers\Controller;
@@ -49,7 +50,8 @@ class ProductController extends Controller
         $sizes = Sizing::all();
         $colors = Color::all();
         $category = ProductCategory::all()->pluck('name','id');
-        return view('admin.pages.products.create', compact('gender','sizes','colors','category'));
+        $boutiques = Boutique::all()->pluck('name','id');
+        return view('admin.pages.products.create', compact('gender','sizes','colors','category','boutiques'));
     }
 
     /**
@@ -101,7 +103,8 @@ class ProductController extends Controller
         $colors = Color::all();
         $data = $product;
         $category = ProductCategory::all()->pluck('name','id');
-        return view('admin.pages.products.edit', compact('data','gender','sizes','colors','category'));
+        $boutiques = Boutique::all()->pluck('name','id');
+        return view('admin.pages.products.edit', compact('data','gender','sizes','colors','category', 'boutiques'));
     }
 
     /**

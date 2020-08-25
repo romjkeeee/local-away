@@ -31,6 +31,7 @@ class AdminUpdateProductRequest extends FormRequest
             'color_id' => 'exists:colors,id',
             'status' => 'in:active,disable',
             'price' => 'numeric',
+            'boutiques_id' => 'exists:boutiques,id',
         ];
     }
 }

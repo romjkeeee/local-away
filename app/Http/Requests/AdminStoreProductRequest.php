@@ -32,6 +32,7 @@ class AdminStoreProductRequest extends FormRequest
             'product_category_id' => 'required|exists:product_categories,id',
             'sizing_id' => 'required|exists:sizings,id',
             'color_id' => 'required|exists:colors,id',
+            'boutiques_id' => 'required|exists:boutiques,id',
         ];
     }
 }

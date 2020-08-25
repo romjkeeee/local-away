@@ -49,10 +49,6 @@
                     {{ Form::select('product_ids[]',$products, old('product_ids'), ['class' => 'js-example-basic-multiple',  'multiple'=>true]) }}
                 </div>
                 <div class="form-group">
-                    {{ Form::label('Boutique') }}<br>
-                    {{ Form::select('boutiques_id',$boutiques, old('boutiques_id'), ['class' => 'js-example-basic-multiple', 'placeholder' => 'Choose ..']) }}
-                </div>
-                <div class="form-group">
                     {{ Form::label('Gender') }}
                     {{ Form::select('gender_id',$gender, old('gender'),['class' => 'form-control',  'placeholder' => 'Choose a gender...']) }}
                 </div>

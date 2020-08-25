@@ -40,8 +40,7 @@ class TravelStoryController extends Controller
     {
         $gender = Gender::all()->pluck('title', 'id');
         $products = Product::all()->pluck('name','id');
-        $boutiques = Boutique::all()->pluck('name','id');
-        return view('admin.pages.travel_stories.create', compact('gender','products', 'boutiques'));
+        return view('admin.pages.travel_stories.create', compact('gender','products'));
     }
 
     /**
@@ -59,7 +58,6 @@ class TravelStoryController extends Controller
             'preview_image' => $request->preview_image,
             'full_image_path' => $request->full_image_path,
             'product_ids' => implode(",",$request->product_ids),
-            'boutiques_id' => $request->boutiques_id,
         ]);
         if ($request->file('preview_image')) {
             $travel->preview_image = $request->file('preview_image')->store('travel-stories');
@@ -115,7 +113,6 @@ class TravelStoryController extends Controller
             'description' => $request->description,
             'is_to_homepage' => $request->is_to_homepage,
             'product_ids' => implode(",",$request->product_ids),
-            'boutiques_id' => $request->boutiques_id,
         ]);
         if ($request->file('preview_image')) {
             $travel_story->preview_image = $request->file('preview_image')->store('travel-stories');

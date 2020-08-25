@@ -14,7 +14,12 @@ class Product extends Model implements HasMedia
 
     public $fillable = ['alias','name', 'gender_id', 'status','product_category_id'];
 
-    protected $with = ['sizes', 'colors', 'colorImage', 'gender','category'];
+    protected $with = ['sizes', 'colors', 'colorImage', 'gender','category', 'boutique'];
+
+    public function boutique()
+    {
+        return $this->hasOne(Boutique::class, 'id', 'boutiques_id');
+    }
 
     public function category()
     {

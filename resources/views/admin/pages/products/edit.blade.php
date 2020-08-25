@@ -53,6 +53,10 @@
                     {{ Form::select('gender_id',$gender, old('gender'),['class' => 'form-control',  'placeholder' => 'Choose a gender...']) }}
                 </div>
                 <div class="form-group">
+                    {{ Form::label('Boutique') }}<br>
+                    {{ Form::select('boutiques_id',$boutiques, old('boutiques_id'), ['class' => 'js-example-basic-multiple']) }}
+                </div>
+                <div class="form-group">
                     {{ Form::label('status','status') }}<br>
                     {{ Form::radio('status','active', null) }}Active <br>
                     {{ Form::radio('status','disable', null) }}Disable
