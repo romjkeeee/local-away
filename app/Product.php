@@ -12,7 +12,7 @@ class Product extends Model implements HasMedia
 {
     use InteractsWithMedia;
 
-    public $fillable = ['alias','name', 'gender_id', 'status','product_category_id'];
+    public $fillable = ['alias','name', 'gender_id', 'status','product_category_id', 'boutiques_id'];
 
     protected $with = ['sizes', 'colors', 'colorImage', 'gender','category', 'boutique'];
 
