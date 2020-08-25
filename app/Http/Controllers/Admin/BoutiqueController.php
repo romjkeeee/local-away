@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Boutique;
 use App\Gender;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\StoreBoutiqe;
+use App\Http\Requests\Admin\UpdateBoutique;
 use App\Http\Requests\AdminStoreGender;
 use App\Http\Requests\AdminUpdateGender;
 use Illuminate\Contracts\View\View;
@@ -45,7 +47,7 @@ class BoutiqueController extends Controller
      * @param AdminStoreGender $request
      * @return RedirectResponse
      */
-    public function store(AdminStoreGender $request)
+    public function store(StoreBoutiqe $request)
     {
         if (Boutique::query()->create($request->validated())) {
             return redirect()->route('boutiques.index');
@@ -83,7 +85,7 @@ class BoutiqueController extends Controller
      * @param Gender $gender
      * @return RedirectResponse
      */
-    public function update(AdminUpdateGender $request, Boutique $boutique)
+    public function update(UpdateBoutique $request, Boutique $boutique)
     {
         if ($boutique->update($request->validated()))
         {
