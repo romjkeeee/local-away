@@ -48,7 +48,7 @@
                     {{ Form::select('product_ids[]',$products, $data_products, ['class' => 'js-example-basic-multiple',  'multiple'=>true]) }}
                 </div>
                 <div class="form-group">
-                    {{ Form::label('Products') }}<br>
+                    {{ Form::label('Boutique') }}<br>
                     {{ Form::select('boutiques_id',$boutiques, old('boutiques_id'), ['class' => 'js-example-basic-multiple']) }}
                 </div>
                 <div class="form-group">
