@@ -60,6 +60,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::get('orders/equip/{order}', 'OrderController@equip')->name('orders.equip');
     Route::post('orders/equip/{order}', 'OrderController@store_equip')->name('orders.equip.store');
     Route::resource('order-products', 'OrderProductController');
+    Route::resource('boutiques', 'BoutiqueController');
 
 
     Route::get('profile','UserController@adminProfile');

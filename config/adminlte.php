@@ -423,6 +423,11 @@ return [
             'icon'        => 'fas fa-fw fa-globe',
         ],
         [
+            'text'        => 'Boutiques',
+            'url'         => 'admin/boutiques',
+            'icon'        => 'fas fa-fw fa-globe',
+        ],
+        [
             'text'        => 'Users',
             'url'         => 'admin/users',
             'icon'        => 'far fa-fw fa-user',

@@ -15,6 +15,11 @@ class TravelStory extends Model
         return $this->hasMany(StoryStyle::class, 'travel_stories_id', 'id');
     }
 
+    public function boutique()
+    {
+        return $this->hasOne(Boutique::class, 'id', 'boutiques_id');
+    }
+
     public function setNameAttribute($value)
     {
         $this->attributes['name'] = $value;

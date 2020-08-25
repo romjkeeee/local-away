@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Boutique;
 use App\Gender;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AdminStoreTravelStoryRequest;
@@ -39,7 +40,8 @@ class TravelStoryController extends Controller
     {
         $gender = Gender::all()->pluck('title', 'id');
         $products = Product::all()->pluck('name','id');
-        return view('admin.pages.travel_stories.create', compact('gender','products'));
+        $boutiques = Boutique::all()->pluck('name','id');
+        return view('admin.pages.travel_stories.create', compact('gender','products', 'boutiques'));
     }
 
     /**
@@ -49,7 +51,7 @@ class TravelStoryController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(AdminStoreTravelStoryRequest $request)
-    {
+    {;
         $travel = TravelStory::query()->create([
             'name' => $request->name,
             'description' => $request->description,
@@ -57,6 +59,7 @@ class TravelStoryController extends Controller
             'preview_image' => $request->preview_image,
             'full_image_path' => $request->full_image_path,
             'product_ids' => implode(",",$request->product_ids),
+            'boutiques_id' => $request->boutiques_id,
         ]);
         if ($request->file('preview_image')) {
             $travel->preview_image = $request->file('preview_image')->store('travel-stories');
@@ -94,7 +97,8 @@ class TravelStoryController extends Controller
         $products = Product::all()->pluck('name','id');
         $products_ids = str_split(str_replace(',','', $travel_story['product_ids']));
         $data_products = Product::query()->whereIn('id',$products_ids)->get();
-        return view('admin.pages.travel_stories.edit', compact('data', 'gender','products','data_products'));
+        $boutiques = Boutique::all()->pluck('name','id');
+        return view('admin.pages.travel_stories.edit', compact('data', 'gender','products','data_products', 'boutiques'));
     }
 
     /**
