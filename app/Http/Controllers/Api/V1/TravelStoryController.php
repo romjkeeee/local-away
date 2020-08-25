@@ -63,13 +63,14 @@ class TravelStoryController extends Controller
         $travel_story = TravelStory::query()->where('id', $travel_story->id)->first();
         $products = str_split(str_replace(',', '', $travel_story['product_ids']));
         foreach ($products as $product) {
-            if ($product != null) {
-                $data[] = Product::query()
-                    ->where('id', $product)
-                    ->when($request->gender_id, function ($query) use ($request) {
-                        return $query->where('gender_id', $request->gender_id);
-                    })
-                    ->first();
+            $prod = Product::query()
+                ->where('id', $product)
+                ->when($request->gender_id, function ($query) use ($request) {
+                    return $query->where('gender_id', $request->gender_id);
+                })
+                ->first();
+            if ($prod) {
+                $data[] = $prod;
             }
         }
 
