@@ -326,6 +326,11 @@ return [
                     'url'         => 'admin/complains',
                     'icon'        => 'far fa-fw fa-circle nav-icon',
                 ],
+                [
+                    'text'        => 'Beta Form',
+                    'url'         => 'admin/beta-forms',
+                    'icon'        => 'far fa-fw fa-circle nav-icon',
+                ],
             ],
         ],
         [

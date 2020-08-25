@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::group(['namespace' => 'Api\V1', 'as' => 'api.'], function () {
     Route::post('contact-form', 'ContactFormController@create');
     Route::post('subscribe', 'SubscribeController@create');
+    Route::post('beta-form', 'BetaFormController@store');
     Route::get('cities', 'CityController@index');
     Route::get('countries', 'CityController@list');
     Route::get('genders', 'GenderController@index');

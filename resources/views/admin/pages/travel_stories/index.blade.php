@@ -38,6 +38,7 @@
                             <th>full image</th>
                             <th>description</th>
                             <th>products</th>
+                            <th>Gender image</th>
                             <th>is homepage</th>
                             <th>Action</th>
                         </tr>
@@ -58,6 +59,7 @@
                                         {{ $data_products->name }},
                                     @endforeach
                                 </td>
+                                <td>{{ count($user->travel_story_image_gender) }}</td>
                                 <x-active-status active="{{ $user->is_to_homepage }}"></x-active-status>
                                 <x-action-buttons show="{{ route('travel-stories.show',[$user->id]) }}"
                                                   edit="{{ route('travel-stories.edit',[$user->id]) }}"></x-action-buttons>

@@ -61,6 +61,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::post('orders/equip/{order}', 'OrderController@store_equip')->name('orders.equip.store');
     Route::resource('order-products', 'OrderProductController');
     Route::resource('boutiques', 'BoutiqueController');
+    Route::resource('beta-forms', 'BetaFormController');
 
 
     Route::get('profile','UserController@adminProfile');
