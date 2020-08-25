@@ -47,6 +47,9 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::get('product/{product}/images', 'ProductController@show_image');
     Route::get('image/{id}/delete', 'ProductController@deleteImage');
     Route::resource('travel-stories', 'TravelStoryController');
+    Route::get('travel-stories/{id}/step2', 'TravelStoryController@step2create');
+    Route::put('travel-stories/{id}/step2', 'TravelStoryController@store2step');
+    Route::get('travel-stories/{id}/delete', 'TravelStoryController@deleteImage');
     Route::resource('story-styles', 'StoryStyleController');
     Route::resource('collections', 'CollectionController');
     Route::resource('complain-types', 'ComplainTypeController');

@@ -26,7 +26,7 @@ class RemoveColumnToTravelStoriesTable extends Migration
     public function down()
     {
         Schema::table('travel_stories', function (Blueprint $table) {
-            //
+            $table->removeColumn('boutiques_id');
         });
     }
 }

@@ -59,7 +59,9 @@
                                         {{ $data_products->name }},
                                     @endforeach
                                 </td>
-                                <td>{{ count($user->travel_story_image_gender) }}</td>
+                                <td>
+                                    <a href="{{ url('admin/travel-stories/'.$user->id.'/step2') }}">{{ count($user->travel_story_image_gender) }}</a>
+                                </td>
                                 <x-active-status active="{{ $user->is_to_homepage }}"></x-active-status>
                                 <x-action-buttons show="{{ route('travel-stories.show',[$user->id]) }}"
                                                   edit="{{ route('travel-stories.edit',[$user->id]) }}"></x-action-buttons>
