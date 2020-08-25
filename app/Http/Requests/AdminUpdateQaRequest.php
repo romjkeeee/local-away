@@ -28,6 +28,7 @@ class AdminUpdateQaRequest extends FormRequest
             'location_image' => 'image|mimes:jpeg,png,jpg',
             'lead_description' => 'string',
             'lead_image' => 'image|mimes:jpeg,png,jpg',
+            'lead_lower_image' => 'image|mimes:jpeg,png,jpg',
         ];
     }
 }

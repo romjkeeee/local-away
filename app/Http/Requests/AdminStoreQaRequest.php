@@ -28,6 +28,7 @@ class AdminStoreQaRequest extends FormRequest
             'location_image' => 'required|image|mimes:jpeg,png,jpg',
             'lead_description' => 'required|string',
             'lead_image' => 'required|image|mimes:jpeg,png,jpg',
+            'lead_lower_image' => 'required|image|mimes:jpeg,png,jpg',
         ];
     }
 }

@@ -37,6 +37,7 @@
                             <th>Local Image</th>
                             <th>Lead Description</th>
                             <th>Lead Image</th>
+                            <th>Lead Lower Image</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -49,6 +50,7 @@
                                 <td><img class="img-thumbnail" src="{{ asset('storage/'.$user->location_image) }}"></td>
                                 <td style="width: 100%">{{ $user->lead_description }}</td>
                                 <td><img class="img-thumbnail" src="{{ asset('storage/'.$user->lead_image) }}"></td>
+                                <td><img class="img-thumbnail" src="{{ asset('storage/'.$user->lead_lower_image) }}"></td>
                                 <x-action-buttons show="{{ route('qas.show',[$user->id]) }}"
                                                   edit="{{ route('qas.edit',[$user->id]) }}"></x-action-buttons>
                             </tr>

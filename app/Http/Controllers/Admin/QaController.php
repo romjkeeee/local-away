@@ -58,6 +58,10 @@ class QaController extends Controller
             $qa->lead_image = $request->file('lead_image')->store('qas');
             $qa->update();
         }
+        if ($request->file('lead_lower_image')) {
+            $qa->lead_lower_image = $request->file('lead_lower_image')->store('qas');
+            $qa->update();
+        }
         return redirect()->route('qas.index');
     }
 
@@ -103,6 +107,10 @@ class QaController extends Controller
             }
             if ($request->file('lead_image')) {
                 $qa->lead_image = $request->file('lead_image')->store('qas');
+                $qa->update();
+            }
+            if ($request->file('lead_lower_image')) {
+                $qa->lead_lower_image = $request->file('lead_lower_image')->store('qas');
                 $qa->update();
             }
             return redirect()->route('qas.index');
