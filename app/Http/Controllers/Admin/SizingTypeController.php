@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AdminStoreSizingType;
 use App\Http\Requests\AdminUpdateSizingType;
+use App\Sizing;
 use App\SizingCategory;
 use App\SizingGuide;
 use App\SizingType;
@@ -39,7 +40,8 @@ class SizingTypeController extends Controller
     public function create()
     {
         $sizing_category = SizingCategory::all()->pluck('title', 'id');
-        return view('admin.pages.sizing_type.create', compact('sizing_category'));
+        $sizes = Sizing::all();
+        return view('admin.pages.sizing_type.create', compact('sizing_category', 'sizes'));
     }
 
     /**
@@ -50,7 +52,8 @@ class SizingTypeController extends Controller
      */
     public function store(AdminStoreSizingType $request)
     {
-        SizingType::query()->create($request->validated());
+        $sizing_type = SizingType::query()->create($request->validated());
+        $sizing_type->sizings()->attach($request->get('sizing_id'));
         return redirect()->route('sizing-type.index');
     }
 
@@ -76,7 +79,8 @@ class SizingTypeController extends Controller
     {
         $data = $sizing_type;
         $sizing_category = SizingCategory::get()->pluck('title', 'id');
-        return view('admin.pages.sizing_type.edit', compact('data','sizing_category'));
+        $sizes = Sizing::all();
+        return view('admin.pages.sizing_type.edit', compact('data','sizing_category','sizes'));
     }
 
     /**
@@ -90,6 +94,7 @@ class SizingTypeController extends Controller
     {
         if ($sizing_type->update($request->validated()))
         {
+            $sizing_type->sizings()->sync($request->get('sizing_id'));
             return redirect()->route('sizing-type.index');
         }
     }

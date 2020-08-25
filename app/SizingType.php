@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class SizingType extends Model
 {
-    public $guarded = ['id'];
+    public $fillable = ['sizing_category_id','title'];
 
     public function sizing_category()
     {

@@ -121,7 +121,11 @@
                         <td class="text-right py-0 align-middle">
                             <div class="btn-group btn-group-sm">
                                 <a href="{{ route('order-products.edit', $products->id) }}" class="btn btn-info"><i class="fas fa-eye"></i></a>
-                                <a href="{{ route('order-products.destroy', $products->id, ['method' => 'POST']) }}" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+{{--                                <a href="{{ route('order-products.destroy', $products->id, ['method' => 'DELETE']) }}" class="btn btn-danger"><i class="fas fa-trash"></i></a>--}}
+                                {{ Form::open(['method' => 'DELETE', 'route' => ['order-products.destroy', $products->id]]) }}
+                                {{ Form::button('<i class="fas fa-trash"></i>',
+                                    ['class' => 'btn btn-danger', 'type' => 'submit'] )  }}
+                                {{ Form::close() }}
                             </div>
                         </td>
                     </tr>

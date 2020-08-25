@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AdminStoreSizingType extends FormRequest
+class UpdateOrderProductRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,9 @@ class AdminStoreSizingType extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|string',
-            'sizing_category_id' => 'required|exists:sizing_categories,id',
-            'sizing_id' => 'required|exists:sizings,id',
+            'color_id' => 'exists:colors,id',
+            'size_id' => 'exists:sizings,id',
+            'count' => 'numeric'
         ];
     }
 }

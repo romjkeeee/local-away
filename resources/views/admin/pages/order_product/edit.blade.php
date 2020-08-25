@@ -16,7 +16,7 @@
         </div>
         <div class="panel panel-default">
             <div class="card-body">
-                {{ Form::model($data, ['method' => 'PUT', 'enctype'=>'multipart/form-data', 'route' => ['genders.update', $data->id]]) }}
+                {{ Form::model($data, ['method' => 'PUT', 'enctype'=>'multipart/form-data', 'route' => ['order-products.update', $data->id]]) }}
                 <div class="row">
                     <div class="col-12 col-sm-6">
                         <h3 class="d-inline-block d-sm-none">{{ $data->product->name }}</h3>
@@ -34,7 +34,7 @@
                         <div class="btn-group btn-group-toggle" data-toggle="buttons">
                             <div class="form-group">
                                 <div class="form-check">
-                                    {{ Form::select('color_id', $colors, $data->color_id,['class' => 'form-check-input']) }}
+                                    {{ Form::select('color_id', $colors, $data->color_id,['class' => 'form-control']) }}
                                 </div>
                             </div>
                         </div>
@@ -42,11 +42,22 @@
                         <div class="btn-group btn-group-toggle" data-toggle="buttons">
                             <div class="form-group">
                                 <div class="form-check">
-                                    {{ Form::select('size_id', $sizes, $data->size_id,['class' => 'form-check-input']) }}
+                                    {{ Form::select('size_id', $sizes, $data->size_id,['class' => 'form-control']) }}
+                                </div>
+                            </div>
+                        </div>
+                        <h4 class="mt-3">Count</h4>
+                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                            <div class="form-group">
+                                <div class="form-check">
+                                    <div class="form-group">
+                                        {{Form::text('count', old('count'), ['class' => 'form-control', 'placeholder' => 'Quantity', 'id' => 'sales_quantity'])}}
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
+                        <h4 class="mt-3">Price</h4>
                         <div class="bg-gray py-2 px-3 mt-4">
                             <h2 class="mb-0">
                                 ${{ $data->product->price ?? '123' }}

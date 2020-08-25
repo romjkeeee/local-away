@@ -39,7 +39,8 @@
                 <address>
                     <strong>{{ $data->user->first_name. ' ' . $data->user->last_name ?? '' }}</strong><br>
                     {{ $data->address->address ?? '' }}<br>
-                    {{ $data->address->state ?? '' }},{{ $data->address->city ?? '' }}, {{ $data->address->zip_code ?? '' }}<br>
+                    {{ $data->address->state ?? '' }},{{ $data->address->city ?? '' }}
+                    , {{ $data->address->zip_code ?? '' }}<br>
                 </address>
             </div>
             <!-- /.col -->
@@ -51,11 +52,11 @@
                 <b>Account:</b> 968-34567
             </div>
             @if($data->status->name == 'PAYED')
-            <div class="col-sm-4 invoice-col">
-                <img class="img-lg" src="{{ asset('img/paid.png') }}">
-            </div>
-            @endif
-            <!-- /.col -->
+                <div class="col-sm-4 invoice-col">
+                    <img class="img-lg" src="{{ asset('img/paid.png') }}">
+                </div>
+        @endif
+        <!-- /.col -->
         </div>
         <!-- /.row -->
 
@@ -65,28 +66,40 @@
                 <table class="table table-striped">
                     <thead>
                     <tr>
-                        <th>Qty</th>
                         <th>Product</th>
-                        <th>Serial #</th>
-                        <th>Description</th>
+                        <th>Size</th>
+                        <th>Color</th>
+                        <th>Count</th>
+                        <th>Price</th>
                         <th>Subtotal</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Travel box</td>
-                        <td>455-981-221</td>
-                        <td></td>
-                        <td>$50.00</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Ochki</td>
-                        <td>247-925-726</td>
-                        <td>krutiye ochki</td>
-                        <td>$150.00</td>
-                    </tr>
+                    @if($data->quiz)
+                        <tr>
+                            <td>Travel box</td>
+                            <td></td>
+                            <td></td>
+                            <td>1</td>
+                            <td>$50</td>
+                            <td>$50</td>
+                        </tr>
+                        <?php $total = 50; ?>
+                    @else
+                        <?php $total = 0; ?>
+                    @endif
+                    @foreach($product as $products)
+                        <?php $total += $products->price * $products->count; ?>
+
+                        <tr>
+                            <td>{{ $products->product->name ?? ''}}</td>
+                            <td>{{ $products->size->title ?? '' }}</td>
+                            <td>{{ $products->color->name ?? '' }}</td>
+                            <td>{{ $products->count }}</td>
+                            <td>${{ $products->price ?? ''}}</td>
+                            <td>${{ $products->price * $products->count ?? ''}}</td>
+                        </tr>
+                    @endforeach
                     </tbody>
                 </table>
             </div>
@@ -104,15 +117,17 @@
 
                 <div class="table-responsive">
                     <table class="table">
-                        <tbody><tr>
+                        <tbody>
+                        <tr>
                             <th style="width:50%">Subtotal:</th>
-                            <td>$200.00</td>
+                            <td>${{$total}}</td>
                         </tr>
                         <tr>
                             <th>Total:</th>
-                            <td>$200.00</td>
+                            <td>${{$total}}</td>
                         </tr>
-                        </tbody></table>
+                        </tbody>
+                    </table>
                 </div>
             </div>
             <!-- /.col -->
@@ -123,7 +138,8 @@
         <div class="row no-print">
             <div class="col-12">
                 @if($data->quiz)
-                    <a class="btn btn-primary float-right" href="{{ route('orders.equip', $data->id) }}"><i class="fas fa-download"></i> Equip</a>
+                    <a class="btn btn-primary float-right" href="{{ route('orders.equip', $data->id) }}"><i
+                            class="fas fa-download"></i> Equip</a>
                 @endif
             </div>
         </div>

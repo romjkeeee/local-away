@@ -26,8 +26,24 @@
                     {{ Form::label('Sizing Category') }}
                     {{ Form::select('sizing_category_id',$sizing_category, old('sizing_category_id'),['class' => 'form-control',  'placeholder' => 'Choose a category...']) }}
                 </div>
+                <div class="form-group">
+                    {{ Form::label('Sizes') }}<br>
+                    <div class="form-check">
+                        @foreach($sizes as $size)
+                            {{ Form::checkbox('sizing_id[]', $size->id, false,['class' => 'form-check-input']) }}
+                            {{ Form::label($size->title,'', ['class' => 'form-check-label']) }}<br>
+                        @endforeach
+                    </div>
+                </div>
                 <x-footer-button route="{{ route('sizing-type.index') }}"></x-footer-button>
                 {{ Form::close() }}
             </div>
         </div>
         @stop
+        @section('js')
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    bsCustomFileInput.init();
+                });
+            </script>
+@endsection

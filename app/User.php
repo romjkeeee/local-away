@@ -48,6 +48,11 @@ class User extends Authenticatable
         return $this->hasMany(ShowRoomLike::class, 'user_id', 'id');
     }
 
+    public function orders()
+    {
+        return $this->hasMany(Order::class, 'user_id', 'id');
+    }
+
     public function userAddress()
     {
         return $this->hasMany(UserAddress::class, 'user_id', 'id')

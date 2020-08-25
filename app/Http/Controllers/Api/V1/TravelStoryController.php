@@ -53,14 +53,14 @@ class TravelStoryController extends Controller
     /**
      * Show
      * @queryParam gender_id
+     *
+     *
      * @response 200
      *
      */
     public function show(TravelStory $travel_story, Request $request)
     {
-        $travel_story = TravelStory::query()->where('id', $travel_story->id)
-            ->with('storyStyle')
-            ->first();
+        $travel_story = TravelStory::query()->where('id', $travel_story->id)->first();
         $products = str_split(str_replace(',', '', $travel_story['product_ids']));
         foreach ($products as $product) {
             if ($product != null) {

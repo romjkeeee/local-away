@@ -34,6 +34,7 @@
                             <th>id</th>
                             <th>title</th>
                             <th>sizing category</th>
+                            <th>sizings</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -43,6 +44,11 @@
                                 <td>{{ $user->id }}</td>
                                 <td style="width: 100%">{{ $user->title }}</td>
                                 <td>{{ $user->sizing_category->title ?? '' }}</td>
+                                <td>
+                                    @foreach($user->sizings as $sizings)
+                                    {{ $sizings->title ?? '' }},
+                                    @endforeach
+                                </td>
                                 <x-action-buttons show="{{ route('sizing-type.show',[$user->id]) }}"
                                                   edit="{{ route('sizing-type.edit',[$user->id]) }}"></x-action-buttons>
                             </tr>
