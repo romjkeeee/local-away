@@ -41,7 +41,7 @@
                         @foreach ($data as $user)
                             <tr>
                                 <td>{{ $user->id }}</td>
-                                <td style="width: 100%">{{ $user->title }}</td>
+                                <td style="width: 100%">{{ $user->name }}</td>
                                 <x-active-status active="{{ $user->status }}"></x-active-status>
                                 <x-action-buttons show="{{ route('boutiques.show',[$user->id]) }}"
                                                   edit="{{ route('boutiques.edit',[$user->id]) }}"></x-action-buttons>
