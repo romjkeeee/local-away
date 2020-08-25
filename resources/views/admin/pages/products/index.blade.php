@@ -38,7 +38,7 @@
                             <th>Sizes</th>
                             <th>Colors</th>
                             <th>images</th>
-                            <th>price</th
+                            <th>price</th>
                             <th>Boutique</th>
                             <th>Gender</th>
                             <th>status</th>
