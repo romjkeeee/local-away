@@ -45,6 +45,10 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    {{ Form::label('Price') }}
+                    {{ Form::text('price', old('price'), ['class' => 'form-control', 'maxlength' => '190', 'placeholder' => '']) }}
+                </div>
+                <div class="form-group">
                     {{ Form::label('Gender') }}
                     {{ Form::select('gender_id',$gender, old('gender'),['class' => 'form-control',  'placeholder' => 'Choose a gender...']) }}
                 </div>

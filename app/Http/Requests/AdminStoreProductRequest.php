@@ -25,6 +25,7 @@ class AdminStoreProductRequest extends FormRequest
     {
         return [
             'name' => 'required|string',
+            'price' => 'required|numeric',
 //            'images' => 'required',
 //            'images.*' => 'image|mimes:jpeg,png,jpg',
             'gender_id' => 'required|exists:genders,id',

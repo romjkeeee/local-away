@@ -38,6 +38,7 @@
                             <th>Sizes</th>
                             <th>Colors</th>
                             <th>images</th>
+                            <th>price</th>
                             <th>Gender</th>
                             <th>status</th>
                             <th>Action</th>
@@ -64,6 +65,7 @@
                                 <td>
                                     <a href="{{ url('admin/product/'.$user->id.'/images') }}">{{ count($user->getMedia('images')) }}</a>
                                 </td>
+                                <td>${{ $user->price }}</td>
                                 <td>{{ $user->gender->title ?? '' }}</td>
                                 <td style="text-align: center">@if($user->status == 'active')<i class="fas fa-toggle-on fa-2x"></i>@else<i class="fa fa-toggle-off fa-2x"></i>@endif</td>
                                 <x-action-buttons show="{{ route('products.show',[$user->id]) }}"
