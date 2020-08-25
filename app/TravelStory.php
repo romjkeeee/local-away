@@ -15,6 +15,11 @@ class TravelStory extends Model
         return $this->hasMany(StoryStyle::class, 'travel_stories_id', 'id');
     }
 
+    public function travel_story_image_gender()
+    {
+        return $this->belongsToMany(Gender::class, 'travel_story_images','travel_stories_id', 'gender_id');
+    }
+
     public function setNameAttribute($value)
     {
         $this->attributes['name'] = $value;
