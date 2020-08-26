@@ -14,8 +14,12 @@
         <form role="form" action="">
             <div class="card-body">
                 <div class="form-group">
-                    <label>Name</label>
-                    <input class="form-control" value="{{ $user->name }}" disabled>
+                    <label>First Name</label>
+                    <input class="form-control" value="{{ $user->first_name }}" disabled>
+                </div>
+                <div class="form-group">
+                    <label>Last Name</label>
+                    <input class="form-control" value="{{ $user->last_name }}" disabled>
                 </div>
                 <div class="form-group">
                     <label>Email</label>

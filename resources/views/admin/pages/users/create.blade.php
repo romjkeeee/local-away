@@ -19,8 +19,12 @@
                 {{ Form::open(['route' => ['users.store'], 'file' => true, 'method' => 'POST','enctype'=>'multipart/form-data']) }}
                 {{ csrf_field() }}
                 <div class="form-group">
-                    {{ Form::label('name') }}
-                    {{ Form::text('name', old('name'), ['class' => 'form-control', 'maxlength' => '190', 'placeholder' => '']) }}
+                    {{ Form::label('first_name') }}
+                    {{ Form::text('first_name', old('first_name'), ['class' => 'form-control', 'maxlength' => '190', 'placeholder' => '']) }}
+                </div>
+                <div class="form-group">
+                    {{ Form::label('last_name') }}
+                    {{ Form::text('last_name', old('last_name'), ['class' => 'form-control', 'maxlength' => '190', 'placeholder' => '']) }}
                 </div>
                 <div class="form-group">
                     {{ Form::label('email') }}
