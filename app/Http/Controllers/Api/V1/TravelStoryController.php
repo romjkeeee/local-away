@@ -79,7 +79,7 @@ class TravelStoryController extends Controller
         }
 
         $travel_story['storyStyle'] = $travel_story->storyStyle()->where('gender_id', $request->gender_id)->get();
-        $travel_story['after_text_image'] = $travel_story->travel_story_image_gender()->where('gender_id', $request->gender_id)->get(['image']);
+        $travel_story['after_text_image'] = $travel_story->travel_story_image_gender()->where('gender_id', $request->gender_id)->first(['image'])->image;
         return response(['status' => 'success', 'data' => $travel_story]);
     }
 }
