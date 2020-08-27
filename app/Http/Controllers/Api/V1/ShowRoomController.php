@@ -44,9 +44,8 @@ class ShowRoomController extends Controller
     {
         return response([
             'status' => 'success',
-            'pagination' => Collection::query()
+            'data' => Collection::query()
                 ->where('gender_id',$request->gender_id)
-                ->latest()
                 ->limit(3)
         ]);
     }
