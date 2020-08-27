@@ -47,6 +47,7 @@ class ShowRoomController extends Controller
             'data' => Collection::query()
                 ->where('gender_id',$request->gender_id)
                 ->limit(3)
+                ->get()
         ]);
     }
 
