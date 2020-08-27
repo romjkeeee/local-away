@@ -26,6 +26,6 @@ class BetaFormController extends Controller
         return response([
             'status'=>'success',
             'data' => BetaForm::query()->create($request->validated())
-        ]);
+        ], 201);
     }
 }
