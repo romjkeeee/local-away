@@ -37,9 +37,17 @@
                                      src="{{ $data->getMedia('images')->where('id',$image->media_id)->first()->getFullUrl()  }}"
                                      disabled>
                             @endforeach
-                @endforeach
+                            @endforeach
                             <x-footer-button route="{{ route('products.index') }}"></x-footer-button>
                             {{ Form::close() }}
                         </div>
                     </div>
-@stop
+            </div>
+        </div>
+        @stop
+        @section('js')
+            <script type="text/javascript">$(document).ready(function () {
+                    bsCustomFileInput.init();
+                });
+            </script>
+@endsection

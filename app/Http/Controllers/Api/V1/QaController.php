@@ -9,8 +9,10 @@ use App\ContactForm;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateContactFormRequest;
 use App\Http\Requests\CreateQaFormRequest;
+use App\Http\Resources\QaCollection;
 use App\Qa;
 use App\QaForm;
+use Illuminate\Http\Request;
 
 /**
  * @group Q&A
@@ -40,7 +42,7 @@ class QaController extends Controller
      */
     public function cities_list()
     {
-        return response(['status'=>'success','data' => City::query()->where('status',1)->whereHas('qa')->get()]);
+        return response(['status' => 'success', 'data' => QaCollection::make(Qa::query()->get())]);
     }
 
     /**
@@ -50,8 +52,11 @@ class QaController extends Controller
      * @response 200
      *
      */
-    public function show($id)
+    public function show($alias)
     {
-        return response(['status' => 'success','data' => Qa::query()->where('city_id',$id)->with('city:id,name')->first()]);
+        return response([
+            'status' => 'success',
+            'data' => \App\Http\Resources\QaShow::make(Qa::query()->where('alias', $alias)->first())
+        ]);
     }
 }

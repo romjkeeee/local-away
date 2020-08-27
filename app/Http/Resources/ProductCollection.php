@@ -14,12 +14,15 @@ class ProductCollection extends ResourceCollection
      */
     public function toArray($request)
     {
-        return [
-            'id' => $this->id,
-            'alias' => $this->alias,
-            'name' => $this->name,
-            'gender' => $this->gender_id,
-//            'images' => $this->media->getFullUrl(),
-        ];
+        foreach ($this as $item) {
+            $data[] = [
+                'id' => $item->id,
+                'name' => $item->product->name,
+                'price' => $item->price,
+//                'image' => $item->product->colorImage->getMedia()
+            ];
+        }
+
+        return $data;
     }
 }

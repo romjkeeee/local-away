@@ -36,7 +36,7 @@ Route::group(['namespace' => 'Api\V1', 'as' => 'api.'], function () {
     //Q&A
     Route::group(['prefix' => 'qa'], function () {
         Route::get('/cities', 'QaController@cities_list');
-        Route::get('/{id}', 'QaController@show');
+        Route::get('/show/{alias}', 'QaController@show');
         Route::post('/create', 'QaController@create');
     });
 

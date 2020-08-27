@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\V1;
 
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\OrderCollection;
 use App\Order;
 
 /**
@@ -14,6 +15,11 @@ use App\Order;
  */
 class OrderController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth:api');
+    }
     /**
      * Get orders
      *
@@ -22,9 +28,19 @@ class OrderController extends Controller
      */
     public function index()
     {
+        $orders = Order::query()->where('user_id', auth()->id())->get();
+        foreach ($orders as $order){
+            if($order->status_id == 5 && $order->has('quiz')->first()){
+                $data[] = OrderCollection::make($order->with('order_products.product', 'status')->first());
+            }elseif(!$order->has('quiz')) {
+                $data[] = OrderCollection::make($order->with('order_products.product', 'status')->first());
+            }else{
+                $data[] = OrderCollection::make($order->with('status')->first());
+            }
+        }
         return response([
             'status'=>'success',
-            'data' => auth()->user()->orders()->get()
+            'data' => $data
         ]);
     }
 
