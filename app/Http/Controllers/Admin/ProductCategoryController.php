@@ -5,8 +5,11 @@ namespace App\Http\Controllers\Admin;
 use App\City;
 use App\Color;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\StoreProductCategoryRequest;
+use App\Http\Requests\Admin\UpdateProductCategoryRequest;
 use App\Http\Requests\AdminStoreCity;
 use App\Http\Requests\AdminStoreColor;
+use App\Http\Requests\AdminStoreProductRequest;
 use App\Http\Requests\AdminUpdateCity;
 use App\Http\Requests\AdminUpdateColor;
 use App\ProductCategory;
@@ -49,7 +52,7 @@ class ProductCategoryController extends Controller
      * @param AdminStoreCity $request
      * @return RedirectResponse
      */
-    public function store(AdminStoreCity $request)
+    public function store(StoreProductCategoryRequest $request)
     {
         if (ProductCategory::query()->create($request->validated())){
             return redirect()->route('product-categories.index');
@@ -87,7 +90,7 @@ class ProductCategoryController extends Controller
      * @param ProductCategory $product_category
      * @return RedirectResponse
      */
-    public function update(AdminUpdateCity $request, ProductCategory $product_category)
+    public function update(UpdateProductCategoryRequest $request, ProductCategory $product_category)
     {
         if ($product_category->update($request->validated()))
         {
