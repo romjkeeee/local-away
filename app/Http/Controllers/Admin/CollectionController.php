@@ -19,7 +19,8 @@ use Illuminate\View\View;
 
 class CollectionController extends Controller
 {
-    function __construct() {
+    function __construct()
+    {
         $this->middleware('role:admin|user');
     }
 
@@ -43,7 +44,7 @@ class CollectionController extends Controller
     {
         $products = Product::all()->pluck('name', 'id');
         $gender = Gender::all()->pluck('title', 'id');
-        return view('admin.pages.collections.create',compact('gender','products'));
+        return view('admin.pages.collections.create', compact('gender', 'products'));
     }
 
     /**
@@ -74,7 +75,7 @@ class CollectionController extends Controller
         $data = $collection;
         $products = Product::all()->pluck('name', 'id');
         $gender = Gender::all()->pluck('title', 'id');
-        return view('admin.pages.collections.show',compact('data','products','gender'));
+        return view('admin.pages.collections.show', compact('data', 'products', 'gender'));
     }
 
     /**
@@ -88,7 +89,7 @@ class CollectionController extends Controller
         $data = $collection;
         $products = Product::all()->pluck('name', 'id');
         $gender = Gender::all()->pluck('title', 'id');
-        return view('admin.pages.collections.edit', compact('data','products','gender'));
+        return view('admin.pages.collections.edit', compact('data', 'products', 'gender'));
     }
 
     /**
@@ -100,8 +101,11 @@ class CollectionController extends Controller
      */
     public function update(AdminUpdateCollectionRequest $request, Collection $collection)
     {
-        if ($collection->update($request->validated()))
-        {
+        if ($collection->update($request->validated())) {
+            if ($request->file('image')) {
+                $collection->image = $request->file('image')->store('collection');
+                $collection->update();
+            }
             $collection->products()->sync($request->get('product_id'));
             return redirect()->route('collections.index');
         }
