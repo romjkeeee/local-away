@@ -56,7 +56,7 @@
                                     @php($products_ids = str_split(str_replace(',','', $user->product_ids)))
                                     @foreach($products_ids as $product)
                                         @php($data_products = \App\Product::query()->where('id',$product)->first())
-                                        {{ $data_products->name ?? 'NO PRODUCTS' }},
+                                        {{ $data_products->name ?? 'NO NAME' }},
                                     @endforeach
                                 </td>
 {{--                                <td>--}}
