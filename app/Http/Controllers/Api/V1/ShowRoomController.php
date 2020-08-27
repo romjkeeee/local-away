@@ -34,8 +34,7 @@ class ShowRoomController extends Controller
     }
 
     /**
-     * List
-     * Show room list
+     * Last collection by gender
      *
      * @queryParam gender_id required
      *
