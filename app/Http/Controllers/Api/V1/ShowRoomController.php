@@ -16,7 +16,7 @@ use Illuminate\Http\Request;
 class ShowRoomController extends Controller
 {
     function __construct() {
-        $this->middleware('auth:api')->except('index');
+        $this->middleware('auth:api')->except('index','last_collection');
     }
 
     /**
