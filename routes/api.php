@@ -22,22 +22,26 @@ Route::group(['namespace' => 'Api\V1', 'as' => 'api.'], function () {
     Route::get('cities', 'CityController@index');
     Route::get('countries', 'CityController@list');
     Route::get('genders', 'GenderController@index');
+    Route::get('founders', 'FounderController@index');
+    Route::get('document-about-us', 'DocumentController@about_us');
 
-
-    Route::get('order', 'OrderController@store');
+    Route::group(['prefix' => 'order'], function () {
+        Route::post('create', 'OrderController@store');
+        Route::get('/', 'OrderController@index');
+    });
 
     //fb-auth
     Route::get('/callback', 'SocialAuthFacebookController@callback');
 
     //Q&A
-    Route::group(['prefix' => 'qa'], function() {
+    Route::group(['prefix' => 'qa'], function () {
         Route::get('/cities', 'QaController@cities_list');
         Route::get('/{id}', 'QaController@show');
         Route::post('/create', 'QaController@create');
     });
 
     //User address
-    Route::group(['prefix' => 'user-address'], function() {
+    Route::group(['prefix' => 'user-address'], function () {
         Route::get('/', 'UserAddressController@index');
         Route::get('/delete/{id}', 'UserAddressController@delete');
         Route::post('/{id}/edit', 'UserAddressController@edit');
@@ -45,7 +49,7 @@ Route::group(['namespace' => 'Api\V1', 'as' => 'api.'], function () {
     });
 
     //User settings
-    Route::group(['prefix' => 'user-settings'], function() {
+    Route::group(['prefix' => 'user-settings'], function () {
         Route::get('/metrics', 'UserSettingController@index')->name('metrics');
         Route::get('/get-user', 'UserController@index')->name('get-user');
         Route::post('/set-metrics', 'UserSettingController@update')->name('set-metrics');
@@ -56,7 +60,7 @@ Route::group(['namespace' => 'Api\V1', 'as' => 'api.'], function () {
     });
 
     //Quiz
-    Route::group(['prefix' => 'quiz'], function() {
+    Route::group(['prefix' => 'quiz'], function () {
         Route::get('/package_for', 'QuizController@package_for');
         Route::get('/travel-purposes', 'QuizController@travel_purposes');
         Route::get('/personal-style', 'QuizController@personal_style');
@@ -68,20 +72,20 @@ Route::group(['namespace' => 'Api\V1', 'as' => 'api.'], function () {
     });
 
     //Show Room
-    Route::group(['prefix' => '/show-room'], function() {
+    Route::group(['prefix' => '/show-room'], function () {
         Route::get('/', 'ShowRoomController@index');
         Route::post('/like', 'ShowRoomController@like')->name('like-showroom');
     });
 
     //Travel stories
-    Route::group(['prefix' => 'travel-stories'], function() {
+    Route::group(['prefix' => 'travel-stories'], function () {
         Route::get('/home-page', 'TravelStoryController@home_page');
         Route::get('/', 'TravelStoryController@index');
         Route::get('/{travel_story}', 'TravelStoryController@show');
 
     });
     //Partnership
-    Route::group(['prefix' => 'partnership'], function() {
+    Route::group(['prefix' => 'partnership'], function () {
         Route::get('/', 'PartnershipController@list');
         Route::post('/create', 'PartnershipController@create');
     });

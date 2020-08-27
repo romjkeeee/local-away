@@ -410,6 +410,16 @@ return [
                     'url'         => 'admin/boxs',
                     'icon'        => 'far fa-fw fa-circle nav-icon',
                 ],
+                [
+                    'text'        => 'Founders',
+                    'url'         => 'admin/founders',
+                    'icon'        => 'far fa-fw fa-circle nav-icon',
+                ],
+                [
+                    'text'        => 'Documents',
+                    'url'         => 'admin/documents',
+                    'icon'        => 'far fa-fw fa-circle nav-icon',
+                ],
             ],
         ],
         [
