@@ -69,7 +69,7 @@ class TravelStoryController extends Controller
             $travel->full_image_path = $request->file('full_image_path')->store('travel-stories');
             $travel->update();
         }
-        return redirect()->to('admin/travel-stories/' . $travel->id . '/step2');
+        return redirect()->route('travel-stories.index');
     }
 
     /**
