@@ -20,7 +20,7 @@
                 {{ csrf_field() }}
                 <div class="form-group">
                     {{ Form::label('name') }}
-                    {{ Form::text('name', old('name'), ['class' => 'form-control', 'maxlength' => '190', 'placeholder' => '']) }}
+                    {{ Form::text('name', old('name'), ['class' => 'form-control', 'placeholder' => '']) }}
                 </div>
                 <div class="form-group">
                     <label for="exampleInputImage">Preview image</label>
