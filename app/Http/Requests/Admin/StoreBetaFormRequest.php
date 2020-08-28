@@ -24,7 +24,7 @@ class StoreBetaFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => 'required|string|email'
+            'email' => 'required|string|email|unique:beta_forms,email,',
         ];
     }
 }
