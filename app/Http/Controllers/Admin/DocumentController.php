@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Document;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\UpdateDocumentRequest;
 use Illuminate\Http\Request;
 
 class DocumentController extends Controller
@@ -75,7 +76,7 @@ class DocumentController extends Controller
      * @param  \App\Document  $document
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, Document $document)
+    public function update(UpdateDocumentRequest $request, Document $document)
     {
         if ($document->update($request->validated())) {
             if ($request->file('file')) {

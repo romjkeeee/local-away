@@ -18,6 +18,7 @@ class QaShow extends JsonResource
             'id' => $this->id,
             'alias' => $this->alias,
             'name' => $this->city->name ?? 'no name',
+            'location_image' => $this->location_image,
             'lead_image' => $this->lead_image,
             'lead_description' => $this->lead_description,
             'lead_lower_image' => $this->lead_lower_image,
