@@ -37,11 +37,12 @@
                                      src="{{ $data->getMedia('images')->where('id',$image->media_id)->first()->getFullUrl()  }}"
                                      disabled>
                             @endforeach
-                            @endforeach
-                            <x-footer-button route="{{ route('products.index') }}"></x-footer-button>
-                            {{ Form::close() }}
                         </div>
                     </div>
+                @endforeach
+                            <x-footer-button route="{{ route('products.index') }}"></x-footer-button>
+                            {{ Form::close() }}
+
             </div>
         </div>
         @stop
