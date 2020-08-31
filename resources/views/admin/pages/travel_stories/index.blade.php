@@ -36,8 +36,6 @@
                             <th>alias</th>
                             <th>preview image</th>
                             <th>full image</th>
-                            <th>description</th>
-                            <th>products</th>
 {{--                            <th>Gender image</th>--}}
                             <th>is homepage</th>
                             <th>Active</th>
@@ -52,14 +50,6 @@
                                 <td>{{ $user->alias }}</td>
                                 <td><img class="img-thumbnail" src="{{ asset('storage/'.$user->preview_image) }}"></td>
                                 <td><img class="img-thumbnail" src="{{ asset('storage/'.$user->full_image_path) }}"></td>
-                                <td>{{ $user->description }}</td>
-                                <td>
-                                    @php($products_ids = str_split(str_replace(',','', $user->product_ids)))
-                                    @foreach($products_ids as $product)
-                                        @php($data_products = \App\Product::query()->where('id',$product)->first())
-                                        {{ $data_products->name ?? 'NO NAME' }},
-                                    @endforeach
-                                </td>
 {{--                                <td>--}}
 {{--                                    <a href="{{ url('admin/travel-stories/'.$user->id.'/step2') }}">{{ count($user->travel_story_image_gender) }}</a>--}}
 {{--                                </td>--}}

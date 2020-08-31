@@ -21,11 +21,11 @@
                 </div>
                 <div class="form-group">
                     <label>Preview image</label>
-                    <img class="img-fluid" src="{{ asset('storage/'.$data->preview_image) }}" disabled>
+                    <img style="height: 100px" class="img-thumbnail" src="{{ asset('storage/'.$data->preview_image) }}" disabled>
                 </div>
                 <div class="form-group">
                     <label>Full image</label>
-                    <img class="img-fluid" src="{{ asset('storage/'.$data->full_image_path) }}" disabled>
+                    <img style="height: 100px" class="img-thumbnail" src="{{ asset('storage/'.$data->full_image_path) }}" disabled>
                 </div>
                 <div class="form-group">
                     <label>Description</label>
@@ -33,7 +33,11 @@
                 </div>
                 <div class="form-group">
                     <label>Products</label>
-                    <input class="form-control" value="{{ $data->product_ids }}" disabled>
+                    @php($products_ids = str_split(str_replace(',','', $data->product_ids)))
+                    @foreach($products_ids as $product)
+                        @php($data_products = \App\Product::query()->where('id',$product)->first())
+                        <span class="badge badge-primary badge-pill">{{ $data_products->name ?? 'NO NAME' }}</span>
+                    @endforeach
                 </div>
                 <div class="form-group">
                     <label>Home page</label><br>
