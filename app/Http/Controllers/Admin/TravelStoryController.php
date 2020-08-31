@@ -41,7 +41,7 @@ class TravelStoryController extends Controller
      */
     public function create()
     {
-        $products = Product::all()->pluck('name', 'id');
+        $products = Product::query()->where('status','active')->pluck('name', 'id');
         return view('admin.pages.travel_stories.create', compact('products'));
     }
 

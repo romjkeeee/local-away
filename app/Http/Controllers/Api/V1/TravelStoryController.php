@@ -71,6 +71,7 @@ class TravelStoryController extends Controller
         foreach ($products as $product) {
             $prod = Product::query()
                 ->where('id', $product)
+                ->where('status', 'active')
                 ->when($request->gender_id, function ($query) use ($request) {
                     return $query->where('gender_id', $request->gender_id);
                 })
