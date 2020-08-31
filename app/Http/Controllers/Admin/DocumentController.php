@@ -80,7 +80,8 @@ class DocumentController extends Controller
     {
         if ($document->update($request->validated())) {
             if ($request->file('file')) {
-                $document->file = $request->file('file')->store('documents');
+                $name = $request->file('file')->getClientOriginalName();
+                $document->file = $request->file('file')->storeAs('documents',$name);
                 $document->update();
             }
             return redirect()->route('documents.index');
