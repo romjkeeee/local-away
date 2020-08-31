@@ -25,7 +25,7 @@ class UpdateDocumentRequest extends FormRequest
     {
         return [
             'name' => 'string',
-            'file' => 'mimes:docx,doc,txt,pdf'
+            'file' => 'mimes:docx,doc,txt,pdf|max:2000'
         ];
     }
 }
