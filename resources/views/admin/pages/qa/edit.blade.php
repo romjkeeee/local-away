@@ -46,6 +46,17 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <div class="row-cols-3">
+                        @if($data->location_image)
+                            {{--                            <a href="{{ url('travel-stories/'.$data->id.'/delete') }}"><i--}}
+                            {{--                                    class="fas fa-trash"></i></a>--}}
+                            <img style="height: 100px" class="img-thumbnail"
+                                 src="{{ asset('storage/'.$data->location_image) }}"
+                                 disabled>
+                        @endif
+                    </div>
+                </div>
+                <div class="form-group">
                     {{ Form::label('Lead Description') }}
                     {{ Form::textarea('lead_description', old('lead_description'),['class' => 'form-control']) }}
                 </div>
@@ -53,18 +64,40 @@
                     <label for="exampleInputImage">Lead Image</label>
                     <div class="input-group">
                         <div class="custom-file">
-                            {{ Form::label('Lead Image', 'Chose file', ['class' => 'custom-file-1']) }}
+                            {{ Form::label('Lead Image', 'Chose file', ['class' => 'custom-file-label']) }}
                             {{ Form::file('lead_image') }}
                         </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row-cols-3">
+                        @if($data->lead_image)
+                            {{--                            <a href="{{ url('travel-stories/'.$data->id.'/delete') }}"><i--}}
+                            {{--                                    class="fas fa-trash"></i></a>--}}
+                            <img style="height: 100px" class="img-thumbnail"
+                                 src="{{ asset('storage/'.$data->lead_image) }}"
+                                 disabled>
+                        @endif
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputImage">Lead Lower Image</label>
                     <div class="input-group">
                         <div class="custom-file">
-                            {{ Form::label('Lead Lower Image', 'Chose file', ['class' => 'custom-file-1']) }}
+                            {{ Form::label('Lead Lower Image', 'Chose file', ['class' => 'custom-file-label']) }}
                             {{ Form::file('lead_lower_image') }}
                         </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row-cols-3">
+                        @if($data->lead_lower_image)
+                            {{--                            <a href="{{ url('travel-stories/'.$data->id.'/delete') }}"><i--}}
+                            {{--                                    class="fas fa-trash"></i></a>--}}
+                            <img style="height: 100px" class="img-thumbnail"
+                                 src="{{ asset('storage/'.$data->lead_lower_image) }}"
+                                 disabled>
+                        @endif
                     </div>
                 </div>
                 <x-footer-button route="{{ route('qas.index') }}"></x-footer-button>
