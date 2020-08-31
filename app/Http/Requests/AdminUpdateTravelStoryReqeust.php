@@ -29,6 +29,7 @@ class AdminUpdateTravelStoryReqeust extends FormRequest
             'preview_image' => 'image|mimes:jpeg,png,jpg',
             'full_image_path' => 'image|mimes:jpeg,png,jpg',
             'is_to_homepage' => 'boolean',
+            'active' => 'boolean',
             'product_ids' => 'exists:products,id',
         ];
     }

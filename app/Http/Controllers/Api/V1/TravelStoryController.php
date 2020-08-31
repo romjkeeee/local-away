@@ -28,7 +28,7 @@ class TravelStoryController extends Controller
      */
     public function index(Request $request)
     {
-        $tavel_stories = TravelStory::query()->paginate($request->perPage);
+        $tavel_stories = TravelStory::query()->where('active', 1)->paginate($request->perPage);
         return response([
             'status' => 'success',
             'currentPage' => $tavel_stories->currentPage(),
@@ -47,7 +47,13 @@ class TravelStoryController extends Controller
      */
     public function home_page()
     {
-        return response(['status' => 'success', 'data' => TravelStory::query()->where('is_to_homepage', 1)->get(['id', 'name', 'alias', 'preview_image', 'description'])]);
+        return response([
+            'status' => 'success',
+            'data' => TravelStory::query()
+                ->where('is_to_homepage', 1)
+                ->where('active', 1)
+                ->get(['id', 'name', 'alias', 'preview_image', 'description'])
+        ]);
     }
 
     /**
@@ -61,7 +67,7 @@ class TravelStoryController extends Controller
     public function show(TravelStory $travel_story, Request $request)
     {
         $travel_story = TravelStory::query()->where('id', $travel_story->id)->first();
-        $products = explode(',',$travel_story['product_ids']);
+        $products = explode(',', $travel_story['product_ids']);
         foreach ($products as $product) {
             $prod = Product::query()
                 ->where('id', $product)

@@ -52,6 +52,11 @@
                     {{ Form::radio('is_to_homepage',0, null) }}No <br>
                     {{ Form::radio('is_to_homepage',1, null) }}Yes
                 </div>
+                <div class="form-group">
+                    {{ Form::label('active','active') }}<br>
+                    {{ Form::radio('active',0, null) }}No <br>
+                    {{ Form::radio('active',1, null) }}Yes
+                </div>
                 <x-footer-button route="{{ route('travel-stories.index') }}"></x-footer-button>
                 {{ Form::close() }}
             </div>

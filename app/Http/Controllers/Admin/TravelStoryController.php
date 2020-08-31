@@ -114,6 +114,7 @@ class TravelStoryController extends Controller
             'name' => $request->name,
             'description' => $request->description,
             'is_to_homepage' => $request->is_to_homepage,
+            'active' => $request->active,
             'product_ids' => implode(",", $request->product_ids),
         ]);
         if ($request->file('preview_image')) {

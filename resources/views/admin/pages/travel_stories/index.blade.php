@@ -40,6 +40,7 @@
                             <th>products</th>
 {{--                            <th>Gender image</th>--}}
                             <th>is homepage</th>
+                            <th>Active</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -63,6 +64,7 @@
 {{--                                    <a href="{{ url('admin/travel-stories/'.$user->id.'/step2') }}">{{ count($user->travel_story_image_gender) }}</a>--}}
 {{--                                </td>--}}
                                 <x-active-status active="{{ $user->is_to_homepage }}"></x-active-status>
+                                <x-active-status active="{{ $user->active }}"></x-active-status>
                                 <x-action-buttons show="{{ route('travel-stories.show',[$user->id]) }}"
                                                   edit="{{ route('travel-stories.edit',[$user->id]) }}"></x-action-buttons>
                             </tr>
