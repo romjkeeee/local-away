@@ -30,7 +30,7 @@ class AdminUpdateTravelStoryReqeust extends FormRequest
             'full_image_path' => 'image|mimes:jpeg,png,jpg',
             'is_to_homepage' => 'boolean',
             'active' => 'boolean',
-            'product_ids' => 'exists:products,id',
+            'product_ids' => 'required|exists:products,id',
         ];
     }
 }
