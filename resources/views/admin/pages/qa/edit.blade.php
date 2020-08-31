@@ -64,7 +64,7 @@
                     <label for="exampleInputImage">Lead Image</label>
                     <div class="input-group">
                         <div class="custom-file">
-                            {{ Form::label('Lead Image', 'Chose file', ['class' => 'custom-file-label']) }}
+                            {{ Form::label('lead_image', 'Chose file', ['class' => 'custom-file-label']) }}
                             {{ Form::file('lead_image') }}
                         </div>
                     </div>
@@ -84,7 +84,7 @@
                     <label for="exampleInputImage">Lead Lower Image</label>
                     <div class="input-group">
                         <div class="custom-file">
-                            {{ Form::label('Lead Lower Image', 'Chose file', ['class' => 'custom-file-label']) }}
+                            {{ Form::label('lead_lower_image', 'Chose file', ['class' => 'custom-file-label']) }}
                             {{ Form::file('lead_lower_image') }}
                         </div>
                     </div>
