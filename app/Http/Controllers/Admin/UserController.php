@@ -41,7 +41,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.users.create');
+        $role = Role::all()->pluck('name','id');
+        return view('admin.pages.users.create', compact('role'));
     }
 
     /**
@@ -76,8 +77,9 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        $role = Role::all();
-        return view('admin.pages.users.edit', compact('user', 'role'));
+        $role = Role::all()->pluck('name','id');
+        $user_role = $user->roles()->first(['name','id']);
+        return view('admin.pages.users.edit', compact('user', 'role','user_role'));
     }
 
     /**
