@@ -31,12 +31,34 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <div class="row-cols-3">
+                        @if($data->preview_image)
+                            {{--                            <a href="{{ url('travel-stories/'.$data->id.'/delete') }}"><i--}}
+                            {{--                                    class="fas fa-trash"></i></a>--}}
+                            <img style="height: 100px" class="img-thumbnail"
+                                 src="{{ asset('storage/'.$data->preview_image) }}"
+                                 disabled>
+                        @endif
+                    </div>
+                </div>
+                <div class="form-group">
                     <label for="exampleInputImage">Full image</label>
                     <div class="input-group">
                         <div class="custom-file">
                             {{ Form::label('full_image_path', 'Chose file', ['class' => 'custom-file-label']) }}
                             {{ Form::file('full_image_path') }}
                         </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row-cols-3">
+                        @if($data->full_image_path)
+                            {{--                            <a href="{{ url('travel-stories/'.$data->id.'/delete') }}"><i--}}
+                            {{--                                    class="fas fa-trash"></i></a>--}}
+                            <img style="height: 100px" class="img-thumbnail"
+                                 src="{{ asset('storage/'.$data->full_image_path) }}"
+                                 disabled>
+                        @endif
                     </div>
                 </div>
                 <div class="form-group">
