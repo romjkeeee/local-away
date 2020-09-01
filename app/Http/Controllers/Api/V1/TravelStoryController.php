@@ -31,7 +31,12 @@ class TravelStoryController extends Controller
      */
     public function index(Request $request)
     {
-        $tavel_stories = TravelStory::query()->where('active', 1)->paginate($request->perPage);
+        if ($request->perPage == 0) {
+            $per_page = TravelStory::query()->where('active', 1)->count();
+        }else{
+            $per_page = $request->perPage;
+        }
+        $tavel_stories = TravelStory::query()->where('active', 1)->paginate($per_page);
         return response([
             'status' => 'success',
             'currentPage' => $tavel_stories->currentPage(),
@@ -87,7 +92,7 @@ class TravelStoryController extends Controller
         }
 
         if (isset($data)) {
-            $paginator = $this->paginate($data, $request->per_page,$request->page);
+            $paginator = $this->paginate($data, $request->per_page ?? 15,$request->page ?? 1);
             $travel_story['products'] = $paginator->values();
         }
 
