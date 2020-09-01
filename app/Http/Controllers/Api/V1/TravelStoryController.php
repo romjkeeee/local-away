@@ -8,6 +8,9 @@ use App\Http\Resources\Products;
 use App\Product;
 use App\TravelStory;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Collection;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 /**
@@ -59,6 +62,8 @@ class TravelStoryController extends Controller
     /**
      * Show
      * @queryParam gender_id
+     * @queryParam per_page
+     * @queryParam page
      *
      *
      * @response 200
@@ -82,7 +87,8 @@ class TravelStoryController extends Controller
         }
 
         if (isset($data)) {
-            $travel_story['products'] = $data;
+            $paginator = $this->paginate($data, $request->per_page,$request->page);
+            $travel_story['products'] = $paginator->values();
         }
 
 //        $after_image = $travel_story->travel_story_image_gender()->where('gender_id', $request->gender_id)->select('image')->first();
@@ -91,5 +97,15 @@ class TravelStoryController extends Controller
 //            $travel_story['after_text_image'] = $after_image->image;
 //        }
         return response(['status' => 'success', 'data' => $travel_story]);
+    }
+
+    /* Пагинация для массива */
+    public function paginate($items, $perPage = 15, $page = null, $options = [])
+    {
+        $page = $page ?: (Paginator::resolveCurrentPage() ?: 1);
+
+        $items = $items instanceof Collection ? $items : Collection::make($items);
+
+        return new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, $options);
     }
 }
