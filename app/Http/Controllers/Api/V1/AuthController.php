@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use App\User;
+use phpseclib\Crypt\Hash;
 
 /**
  * @group Auth
@@ -63,7 +64,7 @@ class AuthController extends Controller
         if(!Auth::attempt($credentials))
             return response()->json([
                 'status' => 'failed',
-                'message' => 'Email or Password is incorrect'
+                'message' => 'Password is incorrect'
             ], 401);
         $user = $request->user();
         $tokenResult = $user->createToken('Personal Access Token');
