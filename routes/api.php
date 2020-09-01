@@ -25,9 +25,10 @@ Route::group(['namespace' => 'Api\V1', 'as' => 'api.'], function () {
     Route::get('founders', 'FounderController@index');
     Route::get('document-about-us', 'DocumentController@about_us');
 
-    Route::group(['prefix' => 'order'], function () {
+    Route::group(['prefix' => 'orders'], function () {
         Route::post('create', 'OrderController@store');
         Route::get('/', 'OrderController@index');
+        Route::get('/last', 'OrderController@show_last');
     });
 
     //fb-auth
@@ -50,6 +51,8 @@ Route::group(['namespace' => 'Api\V1', 'as' => 'api.'], function () {
 
     //User settings
     Route::group(['prefix' => 'user-settings'], function () {
+        Route::get('/preference', 'UserPreferenceController@index')->name('preference');
+        Route::post('/preference', 'UserPreferenceController@update')->name('preference-update');
         Route::get('/metrics', 'UserSettingController@index')->name('metrics');
         Route::get('/get-user', 'UserController@index')->name('get-user');
         Route::post('/set-metrics', 'UserSettingController@update')->name('set-metrics');
