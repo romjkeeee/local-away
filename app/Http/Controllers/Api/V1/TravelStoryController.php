@@ -94,6 +94,8 @@ class TravelStoryController extends Controller
         if (isset($data)) {
             $paginator = $this->paginate($data, $request->per_page ?? 15,$request->page ?? 1);
             $travel_story['products'] = $paginator->values();
+        }else{
+            $travel_story['products'] = [];
         }
 
 //        $after_image = $travel_story->travel_story_image_gender()->where('gender_id', $request->gender_id)->select('image')->first();
