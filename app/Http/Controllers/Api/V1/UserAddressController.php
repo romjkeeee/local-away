@@ -30,9 +30,9 @@ class UserAddressController extends Controller
     {
         $addresses = auth()->user()->userAddress()->get();
         if ($addresses) {
-            return response(['status'=>'success', 'data' => $addresses]);
-        }else{
-            return response(['status'=>'error', 'message' => 'Not found'], 404);
+            return response(['status' => 'success', 'data' => $addresses]);
+        } else {
+            return response(['status' => 'error', 'message' => 'Not found'], 404);
         }
     }
 
@@ -74,7 +74,7 @@ class UserAddressController extends Controller
      */
     public function edit(UpdateUserAddress $request, $id)
     {
-        return response(auth()->user()->userAddress()->where('id',$id)->first()->update($request->validated()));
+        return response(auth()->user()->userAddress()->where('id', $id)->first()->update($request->validated()));
     }
 
     /**
@@ -86,11 +86,10 @@ class UserAddressController extends Controller
      */
     public function delete($id)
     {
-        if (auth()->user()->userAddress()->where('id',$id)->update('status', 'hide')){
-            return response([
-                'status' => 'success',
-                'message'=> 'Successful deleted'
-            ], 204);
-        }
+        auth()->user()->userAddress()->where('id', $id)->update(['status' => 'hide']);
+        return response([
+            'status' => 'success',
+            'message' => 'Successful deleted'
+        ], 204);
     }
 }
