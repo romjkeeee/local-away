@@ -18,7 +18,7 @@ use Illuminate\View\View;
 class SizingCategoryController extends Controller
 {
     function __construct() {
-        $this->middleware('role:admin|user');
+        $this->middleware('role:admin');
     }
 
     /**
@@ -28,7 +28,7 @@ class SizingCategoryController extends Controller
      */
     public function index()
     {
-        $data = SizingCategory::all();
+        $data = SizingCategory::query()->with('gender')->get();
         return view('admin.pages.sizing_category.index', compact('data'));
     }
 
@@ -39,9 +39,8 @@ class SizingCategoryController extends Controller
      */
     public function create()
     {
-        $sizes_types = SizingType::all()->pluck('title','id');
         $gender = Gender::all()->pluck('title','id');
-        return view('admin.pages.sizing_category.create', compact('sizes_types','gender'));
+        return view('admin.pages.sizing_category.create', compact('gender'));
     }
 
     /**
@@ -81,7 +80,8 @@ class SizingCategoryController extends Controller
     public function edit(SizingCategory $sizing_category)
     {
         $data = $sizing_category;
-        return view('admin.pages.sizing_category.edit', compact('data'));
+        $gender = Gender::all()->pluck('title','id');
+        return view('admin.pages.sizing_category.edit', compact('data','gender'));
     }
 
     /**

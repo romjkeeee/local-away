@@ -30,7 +30,7 @@
                 </div>
                 <div class="form-group">
                     {{ Form::label('gender') }}
-                    {{ Form::select('gender',['male' => 'male', 'female' => 'female'], old('gender'), ['class' => 'form-control']) }}
+                    {{ Form::select('gender_id',$gender, old('gender_id'), ['class' => 'form-control']) }}
                 </div>
                 <div class="form-group">
                     {{ Form::label('active','active') }}<br>

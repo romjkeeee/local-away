@@ -26,7 +26,7 @@ class AdminStoreSizingCategory extends FormRequest
         return [
             'title' => 'required|string',
             'image' => 'required|image|mimes:jpeg,png,jpg',
-            'gender' => 'required|in:male,female',
+            'gender_id' => 'required|exists:genders,id',
         ];
     }
 }

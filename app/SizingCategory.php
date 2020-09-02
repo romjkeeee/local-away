@@ -22,4 +22,9 @@ class SizingCategory extends Model
     {
         return $this->hasOne(SizingGuide::class,'sizing_category_id','id');
     }
+
+    public function gender()
+    {
+        return $this->hasOne(Gender::class, 'id', 'gender_id');
+    }
 }

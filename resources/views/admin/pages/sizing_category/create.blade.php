@@ -33,7 +33,7 @@
                 </div>
                 <div class="form-group">
                     {{ Form::label('gender') }}
-                    {{ Form::select('gender',$gender, old('gender'), ['class' => 'form-control', 'placeholder' => 'Choose a gender...']) }}
+                    {{ Form::select('gender_id',$gender, old('gender_id'), ['class' => 'form-control', 'placeholder' => 'Choose a gender...']) }}
                 </div>
                 <x-footer-button route="{{ route('sizing-categories.index') }}"></x-footer-button>
                 {{ Form::close() }}
