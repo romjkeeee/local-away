@@ -78,7 +78,7 @@ class SizingTypeController extends Controller
     public function edit(SizingType $sizing_type)
     {
         $data = $sizing_type;
-        $sizing_category = SizingCategory::get()->pluck('title', 'id');
+        $sizing_category = SizingCategory::query()->where('active',true)->get()->pluck('title', 'id');
         $sizes = Sizing::all();
         return view('admin.pages.sizing_type.edit', compact('data','sizing_category','sizes'));
     }
