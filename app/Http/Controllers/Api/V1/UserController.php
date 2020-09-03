@@ -36,13 +36,21 @@ class UserController extends Controller
 
     /**
      * Update info
-     * First name, last_name, email
+     *
+     * @bodyParam fist_name
+     * @bodyParam last_name
+     * @bodyParam email
+     *
      * @authenticated required
      * @response 200
      */
     public function update_info(UpdateUserInfo $request)
     {
-        return response(['status' => 'success', 'data' => auth()->user()->first()->update($request->validated())]);
+        return response([
+            'status' => 'success',
+            'data' => User::query()->where('id',auth()->id())->update($request->validated()),
+            'message' => 'Data successful update.'
+        ]);
     }
 
     /**
