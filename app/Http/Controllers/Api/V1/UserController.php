@@ -61,10 +61,12 @@ class UserController extends Controller
     public function update_avatar(UpdateUserAvatar $request)
     {
         $user = User::query()->where('id', auth()->id())->first();
-        if ($user->avatar){
-            Storage::delete($user->avatar);
+        if ($user){
+            if ($user->avatar) {
+                Storage::delete($user->avatar);
+            }
             if ($request->file('avatar')) {
-                $user->avatar = $request->file('avatar')->store('avatar/user'.$user->id);
+                $user->avatar = $request->file('avatar')->store('avatar/user/'.$user->id);
                 $user->update();
             }
         }
