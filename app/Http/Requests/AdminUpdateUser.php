@@ -27,7 +27,7 @@ class AdminUpdateUser extends FormRequest
             'name' => 'string',
             'email' => 'string|email|unique:users,email,'.$this->user->id,
             'password' => 'nullable|string',
-            'role' => 'in:admin,user'
+            'role' => 'exists:roles,id'
         ];
     }
 }
