@@ -15,14 +15,9 @@ class ProductCollection extends ResourceCollection
     public function toArray($request)
     {
         foreach ($this as $item) {
-            $data[] = [
-                'id' => $item->id,
-                'name' => $item->product->name,
-                'price' => $item->price,
-//                'image' => $item->product->colorImage->getMedia()
-            ];
+            $data[] = $item->product;
         }
 
-        return $data;
+        return $data ?? [];
     }
 }

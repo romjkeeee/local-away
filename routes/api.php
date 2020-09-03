@@ -78,7 +78,7 @@ Route::group(['namespace' => 'Api\V1', 'as' => 'api.'], function () {
     Route::group(['prefix' => '/show-room'], function () {
         Route::get('/', 'ShowRoomController@index');
         Route::get('/last-collection', 'ShowRoomController@last_collection');
-        Route::post('/like', 'ShowRoomController@like')->name('like-showroom');
+        Route::post('/like', 'ShowRoomController@like')->middleware('auth:api');
     });
 
     //Travel stories

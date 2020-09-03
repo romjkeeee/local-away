@@ -27,6 +27,7 @@
         "mpociot/laravel-apidoc-generator": "^4.8",
         "php-http/curl-client": "^2.1",
         "santigarcor/laratrust": "^6.1",
+        "shippo/shippo-php": "^1.4",
         "spatie/laravel-medialibrary": "^8.0.0"
     },
     "require-dev": {

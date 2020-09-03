@@ -75,7 +75,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @if($data->quiz)
+                    @if(count($data->quiz))
                         <tr>
                             <td>Travel box</td>
                             <td></td>
@@ -89,6 +89,9 @@
                         <?php $total = 0; ?>
                     @endif
                     @foreach($product as $products)
+                        @if(isset($products->quiz_id) && $products->status_id == 5)
+                            @continue
+                        @endif
                         <?php $total += $products->price * $products->count; ?>
 
                         <tr>
@@ -137,7 +140,7 @@
         <!-- this row will not appear when printing -->
         <div class="row no-print">
             <div class="col-12">
-                @if($data->quiz)
+                @if(count($data->quiz))
                     <a class="btn btn-primary float-right" href="{{ route('orders.equip', $data->id) }}"><i
                             class="fas fa-download"></i> Equip</a>
                 @endif

@@ -17,14 +17,18 @@ class OrderCollection extends JsonResource
      */
     public function toArray($request)
     {
-            $data = [
-                'id' => $this->id,
-                'user_id' => $this->user_id,
-                'sum' => $this->sum,
-                'status' => $this->status->name,
-                'products' => ($this->status_id == 5 && isset($this->quiz) || !isset($this->quiz)) ? ProductCollection::make($this->order_products) : 'WAIT DELIVERING',
-            ];
-
-        return $data;
+        $price_product = 0;
+        if (count($this->order_products)) {
+            foreach ($this->order_products as $product) {
+                $price_product += $product->price;
+            }
+        }
+        return [
+            'id' => $this->id,
+            'user_id' => $this->user_id,
+            'sum' => (isset($this->quiz) && $this->status_id != 5 ? $this->sum + 50 * count($this->quiz) : $this->sum + count($this->quiz) + $price_product),
+            'status' => $this->status->name,
+            'products' => $this->status_id == 5 && count($this->quiz) || !count($this->quiz) ? ProductCollection::make($this->order_products) : [],
+        ];
     }
 }

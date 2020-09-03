@@ -137,17 +137,20 @@ class QuizController extends Controller
 
     /**
      * List costs
-     *
+     * @queryParam gender_id int optional example: 1
      *
      * @response 200
      *
      */
-    public function costs()
+    public function costs(Request $request)
     {
         return response([
             'status' => 'success',
             'data' => ClothesCategory::query()
                 ->where('active', true)
+                ->when($request->gender_id, function ($query) use ($request) {
+                    return $query->where('gender_id', $request->gender_id);
+                })
                 ->with('costs')
                 ->get()
         ]);

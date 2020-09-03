@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class OrderQuizSetting extends Model
+class Shipping extends Model
 {
-    public $guarded = ['id'];
+    //
 }

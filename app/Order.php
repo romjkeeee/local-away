@@ -13,6 +13,11 @@ class Order extends Model
         return $this->hasOne(User::class, 'id', 'user_id');
     }
 
+    public function package_type()
+    {
+        return $this->hasOne(PackageType::class, 'id', 'package_type_id');
+    }
+
     public function status()
     {
         return $this->hasOne(Status::class, 'id', 'status_id');
@@ -25,7 +30,7 @@ class Order extends Model
 
     public function quiz()
     {
-        return $this->hasOne(OrderQuizSetting::class, 'order_id', 'id');
+        return $this->hasMany(OrderQuizSetting::class, 'order_id', 'id');
     }
 
     public function order_products()

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\ClothesCategory;
 use App\Cost;
+use App\Gender;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AdminStoreClothesCategory;
 use App\Http\Requests\AdminUpdateClothesCategory;
@@ -16,7 +17,7 @@ use Illuminate\View\View;
 class ClothesCategoryController extends Controller
 {
     function __construct() {
-        $this->middleware('role:admin|user');
+        $this->middleware('role:admin');
     }
 
     /**
@@ -38,7 +39,8 @@ class ClothesCategoryController extends Controller
     public function create()
     {
         $costs = Cost::all()->pluck('title','id');
-        return view('admin.pages.clothes_category.create', compact('costs'));
+        $gender = Gender::all()->pluck('title', 'id');
+        return view('admin.pages.clothes_category.create', compact('costs','gender'));
     }
 
     /**
@@ -78,7 +80,8 @@ class ClothesCategoryController extends Controller
     {
         $data = $clothes_category;
         $costs = Cost::all()->pluck('title', 'id');
-        return view('admin.pages.clothes_category.edit', compact('data', 'costs'));
+        $gender = Gender::all()->pluck('title', 'id');
+        return view('admin.pages.clothes_category.edit', compact('data', 'costs','gender'));
     }
 
     /**

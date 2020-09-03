@@ -107,7 +107,75 @@ class OrderController extends Controller
     {
         $data = Order::query()->with('quiz','address','order_products.product', 'order_products.size','order_products.color')->where('id',$order->id)->first();
         $products = Product::all()->pluck('name','id');
-        return view('admin.pages.orders.product', compact('data', 'products'));
+        $preferences_array = array(
+            'measurement' => [
+                [
+                    'id' => 1,
+                    'name' => 'imperial'
+                ],
+                [
+                    'id' => 2,
+                    'name' => 'metric'
+                ],
+            ],
+            'age' => [
+                [
+                    'id' => 1,
+                    'name' => '18-20'
+                ],
+                [
+                    'id' => 2,
+                    'name' => '20-25'
+                ],
+                [
+                    'id' => 3,
+                    'name' => '25-30'
+                ],
+                [
+                    'id' => 4,
+                    'name' => '30-35'
+                ],
+                [
+                    'id' => 5,
+                    'name' => '35+'
+                ],
+            ],
+            'feet' => [
+                [
+                    'id' => 1,
+                    'name' => '35'
+                ],
+                [
+                    'id' => 2,
+                    'name' => '36'
+                ],
+                [
+                    'id' => 3,
+                    'name' => '37'
+                ],
+                [
+                    'id' => 4,
+                    'name' => '38'
+                ],
+                [
+                    'id' => 5,
+                    'name' => '39'
+                ],
+                [
+                    'id' => 6,
+                    'name' => '40'
+                ],
+                [
+                    'id' => 6,
+                    'name' => '41'
+                ],
+                [
+                    'id' => 7,
+                    'name' => '42'
+                ],
+            ],
+        );
+        return view('admin.pages.orders.product', compact('data', 'products', 'preferences_array'));
     }
 
     public function store_equip(Order $order, Request $request)

@@ -15,10 +15,6 @@ use Illuminate\Http\Request;
  */
 class ShowRoomController extends Controller
 {
-    function __construct() {
-        $this->middleware('auth:api')->except('index','last_collection');
-    }
-
     /**
      * List
      * Show room list
@@ -65,6 +61,6 @@ class ShowRoomController extends Controller
     {
         return response([
             'status' => 'success',
-            'data' => auth()->user()->showRoomLike()->create($request->validated())]);
+            'data' => auth()->user()->showRoomLike()->create($request->validated())], 201);
     }
 }

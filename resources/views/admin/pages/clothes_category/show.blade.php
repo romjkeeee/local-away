@@ -16,6 +16,11 @@
                     <label>Name</label>
                     <input class="form-control" value="{{ $data->title }}" disabled>
                 </div>
+
+                <div class="form-group">
+                    <label>Gender</label>
+                    <input class="form-control" value="{{ $data->gender->title ?? '' }}" disabled>
+                </div>
             </div>
             <!-- /.card-body -->
             <a href="{{ route('clothes-categories.index') }}" class="btn btn-default">Back to list</a>
