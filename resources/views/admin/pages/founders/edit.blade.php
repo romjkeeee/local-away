@@ -43,6 +43,17 @@
                         </div>
                     </div>
                 </div>
+                <div class="form-group">
+                    <div class="row-cols-3">
+                        @if($data->photo)
+                            {{--                            <a href="{{ url('travel-stories/'.$data->id.'/delete') }}"><i--}}
+                            {{--                                    class="fas fa-trash"></i></a>--}}
+                            <img style="height: 100px" class="img-thumbnail"
+                                 src="{{ asset('storage/'.$data->photo) }}"
+                                 disabled>
+                        @endif
+                    </div>
+                </div>
                 <x-footer-button route="{{ route('founders.index') }}"></x-footer-button>
                 {{ Form::close() }}
             </div>

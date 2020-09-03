@@ -37,6 +37,17 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <div class="row-cols-3">
+                        @if($data->image)
+                            {{--                            <a href="{{ url('travel-stories/'.$data->id.'/delete') }}"><i--}}
+                            {{--                                    class="fas fa-trash"></i></a>--}}
+                            <img style="height: 100px" class="img-thumbnail"
+                                 src="{{ asset('storage/'.$data->image) }}"
+                                 disabled>
+                        @endif
+                    </div>
+                </div>
+                <div class="form-group">
                     {{ Form::label('gender') }}
                     {{ Form::select('gender',$gender, old('gender'), ['class' => 'form-control']) }}
                 </div>
