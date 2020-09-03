@@ -39,7 +39,7 @@ class SizingTypeController extends Controller
      */
     public function create()
     {
-        $sizing_category = SizingCategory::all()->pluck('title', 'id');
+        $sizing_category = SizingCategory::query()->where('active',true)->get()->pluck('title', 'id');
         $sizes = Sizing::all();
         return view('admin.pages.sizing_type.create', compact('sizing_category', 'sizes'));
     }
