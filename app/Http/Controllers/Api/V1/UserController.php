@@ -68,6 +68,7 @@ class UserController extends Controller
             if ($request->file('avatar')) {
                 $user->avatar = $request->file('avatar')->store('avatar/user/'.$user->id);
                 $user->update();
+                dd('im get file');
             }
         }
         return response(['status' => 'success','message' => 'Avatar successful update.', 'data' => $user], 200);
