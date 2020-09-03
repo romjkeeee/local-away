@@ -96,10 +96,24 @@ class UserAddressController extends Controller
      */
     public function delete($id)
     {
-        auth()->user()->userAddress()->where('id', $id)->update(['status' => 'hide']);
-        return response([
-            'status' => 'success',
-            'message' => 'Successful deleted'
-        ], 204);
+        $user_address = auth()->user()->userAddress()->where('id', $id)->first();
+        if($user_address) {
+            if($user_address->update(['status' => 'hide'])) {
+                return response([
+                    'status' => 'success',
+                    'message' => 'Successful deleted'
+                ], 204);
+            }else{
+                return response([
+                    'status' => 'error',
+                    'message' => 'something wrong'
+                ], 422);
+            }
+        }else {
+            return response([
+                'status' => 'error',
+                'message' => 'Not found'
+            ], 404);
+        }
     }
 }
