@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ChangePasswordRequest;
 use App\Http\Requests\UpdateUserAvatar;
 use App\Http\Requests\UpdateUserInfo;
+use Illuminate\Http\File;
 use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\Auth;
@@ -63,12 +64,12 @@ class UserController extends Controller
         $user = User::query()->where('id', auth()->id())->first();
         if ($user){
             if ($user->avatar) {
-                Storage::delete($user->avatar);
+                $avatar = str_replace(config('app.url') . '/storage/','',$user->avatar);
+                Storage::delete($avatar);
             }
             if ($request->file('avatar')) {
-                $user->avatar = $request->file('avatar')->store('avatar/user/'.$user->id);
+                $user->avatar = config('app.url') . '/storage/' . $request->file('avatar')->store('avatar/user/'.$user->id);
                 $user->update();
-                dd('im get file');
             }
         }
         return response(['status' => 'success','message' => 'Avatar successful update.', 'data' => $user], 200);
@@ -83,7 +84,8 @@ class UserController extends Controller
     {
         $user = User::query()->where('id', auth()->id())->first();
         if ($user->avatar) {
-            Storage::delete($user->avatar);
+            $avatar = str_replace(config('app.url') . '/storage/','',$user->avatar);
+            Storage::delete($avatar);
             $user->avatar = null;
             $user->update();
         }
