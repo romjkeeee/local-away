@@ -74,7 +74,17 @@ class UserAddressController extends Controller
      */
     public function edit(UpdateUserAddress $request, $id)
     {
-        return response(auth()->user()->userAddress()->where('id', $id)->first()->update($request->validated()));
+        if (auth()->user()->userAddress()->where('id', $id)->first()) {
+            return response([
+                'status' => 'success',
+                'data' => auth()->user()->userAddress()->where('id', $id)->first()->update($request->validated())
+            ]);
+        }else{
+            return response([
+                'status' => 'error',
+                'message' => 'Not found'
+            ], 404);
+        }
     }
 
     /**
