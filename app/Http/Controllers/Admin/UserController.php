@@ -91,8 +91,11 @@ class UserController extends Controller
      */
     public function update(AdminUpdateUser $request,User $user)
     {
-        if ($request->name){
-            $user->name = $request->name;
+        if ($request->first_name){
+            $user->first_name = $request->first_name;
+        }
+        if ($request->last_name){
+            $user->last_name = $request->last_name;
         }
         if ($request->email){
             $user->email = $request->email;

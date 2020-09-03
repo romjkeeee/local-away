@@ -21,7 +21,7 @@
                     {{ csrf_field() }}
                 <div class="form-group">
                     {{ Form::label('first_name') }}
-                    {{ Form::text('first_name', old('name'), ['class' => 'form-control', 'maxlength' => '190', 'placeholder' => '']) }}
+                    {{ Form::text('first_name', old('first_name'), ['class' => 'form-control', 'maxlength' => '190', 'placeholder' => '']) }}
                 </div>
                 <div class="form-group">
                     {{ Form::label('last_name') }}
