@@ -64,7 +64,8 @@
                                     @endforeach
                                 </td>
                                 <td>
-                                    <a href="{{ url('admin/product/'.$user->id.'/images') }}">{{ count($user->getMedia('images')) }}</a>
+                                    {{ count($user->getMedia('images')) }}
+                                    <a href="{{ url('admin/product/'.$user->id.'/images') }}"><i class="fas fa-edit"></i></a>
                                 </td>
                                 <td>${{ $user->price }}</td>
                                 <td>{{ $user->boutique->name ?? '' }}</td>
