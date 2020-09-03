@@ -53,10 +53,18 @@ class OrderController extends Controller
      */
     public function show_last()
     {
-        return response([
-            'status' => 'success',
-            'data' => OrderCollection::make(Order::query()->where('user_id', auth()->id())->where('status_id', 1)->first())
-        ]);
+        $order = Order::query()->where('user_id', auth()->id())->where('status_id', 1)->first();
+        if($order) {
+            return response([
+                'status' => 'success',
+                'data' => OrderCollection::make($order)
+            ]);
+        }else{
+            return response([
+                'status' => 'success',
+                'message' => 'You dont have new orders'
+            ]);
+        }
     }
 
     /**
