@@ -41,7 +41,7 @@
                         @foreach ($data as $user)
                             <tr>
                                 <td>{{ $user->id }}</td>
-                                <td>{{ $user->user->name ?? '' }}</td>
+                                <td>{{ $user->user->first_name ?? '' }}</td>
                                 <td style="width: 100%">{{ $user->address }}</td>
                                 <td>{{ $user->zip_code }}</td>
                                 <td>{{ $user->city }}</td>
