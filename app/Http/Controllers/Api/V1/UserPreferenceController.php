@@ -27,10 +27,19 @@ class UserPreferenceController extends Controller
      */
     public function index()
     {
-        return response([
-            'status' => 'success',
-            'data' => auth()->user()->preference()->first()
-        ]);
+        $data = auth()->user()->preference()->first();
+        if ($data) {
+            return response([
+                'status' => 'success',
+                'data' => $data
+            ]);
+        } else {
+            return response([
+                'status' => 'error',
+                'message' => 'Not found'
+            ], 404);
+        }
+
     }
 
     /**
@@ -47,9 +56,9 @@ class UserPreferenceController extends Controller
     public function update(UpdateUserSettingsRequest $request)
     {
         $user = auth()->user();
-        if ($user->preference()->first()){
+        if ($user->preference()->first()) {
             $user->preference()->update($request->validated());
-        }else{
+        } else {
             $user->preference()->create($request->validated());
         }
         return response([
