@@ -55,7 +55,7 @@ Route::group(['namespace' => 'Api\V1', 'as' => 'api.'], function () {
         Route::post('/preference', 'UserPreferenceController@update')->name('preference-update');
         Route::get('/metrics', 'UserSettingController@index')->name('metrics');
         Route::get('/get-user', 'UserController@index')->name('get-user');
-        Route::post('/set-metrics', 'UserSettingController@update')->name('set-metrics');
+//        Route::post('/set-metrics', 'UserSettingController@update')->name('set-metrics');
         Route::post('/update-info', 'UserController@update_info')->name('update-info');
         Route::post('/update-avatar', 'UserController@update_avatar')->name('update-avatar');
         Route::post('/change-password', 'UserController@changePassword')->name('change-password');

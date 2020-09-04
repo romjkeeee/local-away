@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UpdateUserAddress;
 use App\Http\Requests\UpdateUserSettingsRequest;
 use Illuminate\Http\Request;
 
@@ -47,7 +48,7 @@ class UserSettingController extends Controller
      * @response 200
      *
      */
-    public function update(UpdateUserSettingsRequest $request)
+    public function update(UpdateUserAddress $request)
     {
         return response([
             'status' => 'success',
