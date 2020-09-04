@@ -24,11 +24,11 @@ class UpdateUserSettingsRequest extends FormRequest
     public function rules()
     {
         return [
-            'measurement' => 'string',
-            'height' => 'string',
-            'feet' => 'string',
-            'age_range' => 'string',
-            'body_type_id' => 'exists:body_types,id',
+            'measurement' => 'required|string',
+            'height' => 'required|string',
+            'feet' => 'required|string',
+            'age' => 'required|string',
+            'body_type_id' => 'required|exists:body_types,id',
         ];
     }
 }

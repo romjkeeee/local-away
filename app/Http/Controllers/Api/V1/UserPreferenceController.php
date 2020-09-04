@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UpdateUserSettingsRequest;
 use Illuminate\Http\Request;
 
 /**
@@ -43,11 +44,11 @@ class UserPreferenceController extends Controller
      * @authenticated required
      * @response 200
      */
-    public function update(Request $request)
+    public function update(UpdateUserSettingsRequest $request)
     {
         return response([
             'status' => 'success',
-            'data' => auth()->user()->preference()->first()->update($request->all())
+            'data' => auth()->user()->preference()->first()->updateOrCreate(['user_id' => auth()->id()],$request->validated())
         ]);
     }
 }
