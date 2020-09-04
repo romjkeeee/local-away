@@ -23,7 +23,7 @@ class FounderController extends Controller
     {
         return response([
             'status' => 'success',
-            'data' => Founder::all()
+            'data' => Founder::query()->where('status','active')->get()
         ]);
     }
 }

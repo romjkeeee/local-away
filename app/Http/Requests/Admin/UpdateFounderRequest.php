@@ -29,6 +29,7 @@ class UpdateFounderRequest extends FormRequest
             'facebook' => 'string',
             'twitter' => 'string',
             'photo' => 'image|mimes:jpeg,png,jpg',
+            'status' => 'in:active,disable',
         ];
     }
 }

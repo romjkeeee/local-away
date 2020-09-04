@@ -54,6 +54,11 @@
                         @endif
                     </div>
                 </div>
+                <div class="form-group">
+                    {{ Form::label('status','status') }}<br>
+                    {{ Form::radio('status','active', null) }}Active <br>
+                    {{ Form::radio('status','disable', null) }}Disable
+                </div>
                 <x-footer-button route="{{ route('founders.index') }}"></x-footer-button>
                 {{ Form::close() }}
             </div>
