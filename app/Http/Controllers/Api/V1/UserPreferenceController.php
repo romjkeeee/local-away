@@ -46,9 +46,15 @@ class UserPreferenceController extends Controller
      */
     public function update(UpdateUserSettingsRequest $request)
     {
+        $user = auth()->user();
+        if ($user->preference()->first()){
+            $user->preference()->update($request->validated());
+        }else{
+            $user->preference()->create($request->validated());
+        }
         return response([
             'status' => 'success',
-            'data' => auth()->user()->preference()->first()->updateOrCreate(['user_id' => auth()->id()],$request->validated())
+            'data' => $user->preference()->first()
         ]);
     }
 }
