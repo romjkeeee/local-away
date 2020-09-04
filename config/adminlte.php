@@ -452,6 +452,11 @@ return [
             'url'         => 'admin/user-address',
             'icon'        => 'far fa-fw fa-user',
         ],
+        [
+            'text'        => 'User Preference',
+            'url'         => 'admin/user-settings',
+            'icon'        => 'far fa-fw fa-user',
+        ],
         ['header' => 'account_settings'],
         [
             'text' => 'profile',

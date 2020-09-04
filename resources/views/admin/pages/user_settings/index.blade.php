@@ -52,7 +52,7 @@
                                     @endif
                                 @endforeach
                                 @foreach($preference['age'] as $data)
-                                    @if($data['id'] == $user->age_range)
+                                    @if($data['id'] == $user->age)
                                         <td style="width: 100%">{{ $data['name'] }}</td>
                                     @endif
                                 @endforeach
