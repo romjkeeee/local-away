@@ -188,7 +188,7 @@ class OrderController extends Controller
             foreach ($request->product_ids as $product) {
                 $order->quiz_products()->create([
                     'product_id' => $product,
-                    'order_quiz_id' => $order->quiz->id
+                    'order_quiz_id' => $order->quiz->first()->id
                 ]);
             }
         }
