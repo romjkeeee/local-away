@@ -15,7 +15,19 @@ class CreateShippingsTable extends Migration
     {
         Schema::create('shippings', function (Blueprint $table) {
             $table->id();
-            $table->text('data');
+            $table->text('messages');
+            $table->string('carrier')->nullable();
+            $table->string('tracking_number');
+            $table->text('address_from');
+            $table->text('address_to');
+            $table->string('eta');
+            $table->string('original_eta');
+            $table->text('servicelevel');
+            $table->string('metadata')->nullable();
+            $table->text('tracking_status');
+            $table->text('tracking_history');
+            $table->string('transaction')->nullable();
+            $table->boolean('test');
             $table->timestamps();
         });
     }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\UpdateOrderReqeust;
 use App\Order;
 use App\Product;
 use Illuminate\Http\Request;
@@ -71,7 +72,8 @@ class OrderController extends Controller
      */
     public function edit(Order $order)
     {
-        //
+        $data = $order;
+        return view('admin.pages.orders.edit', compact('data'));
     }
 
     /**
@@ -81,9 +83,10 @@ class OrderController extends Controller
      * @param  \App\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Order $order)
+    public function update(UpdateOrderReqeust $request, Order $order)
     {
-        //
+        $order->update($request->validated());
+        return redirect()->route('orders.index');
     }
 
     /**
