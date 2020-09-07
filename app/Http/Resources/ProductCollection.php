@@ -16,6 +16,7 @@ class ProductCollection extends ResourceCollection
     {
         foreach ($this as $item) {
             $data[] = $item->product;
+            $item->product['count'] = $item->count;
         }
 
         return $data ?? [];
