@@ -14,6 +14,7 @@ return [
     */
 
     'name' => env('APP_NAME', 'Laravel'),
+    'box_fee' => 50,
 
     /*
     |--------------------------------------------------------------------------
@@ -53,6 +54,7 @@ return [
     */
 
     'url' => env('APP_URL', 'https://admin.localaway.com'),
+    'front_url' => env('FRONT_URL', 'https://localaway.com'),
 
     'asset_url' => env('ASSET_URL', null),
 

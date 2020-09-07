@@ -101,4 +101,10 @@ Route::group(['namespace' => 'Api\V1', 'as' => 'api.'], function () {
             Route::get('logout', 'AuthController@logout');
         });
     });
+
+    //Payments
+    Route::group(['prefix' => 'payment'], function () {
+        Route::post('create', 'PaymentController@create')->name('payment.create');
+        Route::any('process/{processor}', 'PaymentController@process')->name('payment.process');
+    });
 });

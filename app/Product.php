@@ -8,6 +8,10 @@ use Illuminate\Support\Str;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
+/**
+ * Class Product
+ * @property string $name
+ */
 class Product extends Model implements HasMedia
 {
     use InteractsWithMedia;
