@@ -186,7 +186,7 @@ class OrderController extends Controller
         $order = Order::query()->where('id',$order->id)->first();
         if ($request->product_ids) {
             foreach ($request->product_ids as $product) {
-                $order->order_products()->create([
+                $order->quiz_products()->create([
                     'product_id' => $product,
                     'order_quiz_id' => $order->quiz->id
                 ]);
