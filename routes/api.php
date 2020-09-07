@@ -50,6 +50,11 @@ Route::group(['namespace' => 'Api\V1', 'as' => 'api.'], function () {
         Route::post('/create', 'UserAddressController@store');
     });
 
+    //Products
+    Route::group(['prefix' => 'products'], function () {
+        Route::get('/show/{product}', 'ProductController@show');
+    });
+
     //User settings
     Route::group(['prefix' => 'user-settings'], function () {
         Route::get('/preference', 'UserPreferenceController@index')->name('preference');
