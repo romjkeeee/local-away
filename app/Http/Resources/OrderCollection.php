@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Box;
 use App\Product;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Http\Resources\Json\ResourceCollection;
@@ -29,8 +30,8 @@ class OrderCollection extends JsonResource
             'sum' => (isset($this->quiz) && $this->status_id != 5 ? $this->sum + 50 * count($this->quiz) : $this->sum + count($this->quiz) + $price_product),
             'status' => $this->status->name,
             'products' => ProductCollection::make($this->order_products) ?? [],
-            'quiz' => $this->quiz ?? [],
-            'quiz_products' => $this->status_id == 5 ? ProductCollection::make($this->quiz_products) : [],
+            'quiz' => (count($this->quiz) ? TravelBox::make($this) : ''),
+//            'quiz_products' => $this->status_id == 5 ? ProductCollection::make($this->quiz_products) : [],
             'created_at' => $this->created_at
         ];
     }
