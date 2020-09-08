@@ -45,11 +45,8 @@
             </div>
             <!-- /.col -->
             <div class="col-sm-4 invoice-col">
-                <b>Invoice #007612</b><br>
-                <br>
-                <b>Order ID:</b> 4F3S8J<br>
-                <b>Payment Due:</b> 2/22/2014<br>
-                <b>Account:</b> 968-34567
+                <b>Order ID:</b> {{ $data->id }}<br>
+                <b>Account:</b> {{ $data->user->first_name. ' ' . $data->user->last_name ?? '' }}
             </div>
             @if($data->status->name == 'PAYED')
                 <div class="col-sm-4 invoice-col">
@@ -89,9 +86,7 @@
                         <?php $total = 0; ?>
                     @endif
                     @foreach($product as $products)
-                        @if(isset($products->quiz_id) && $products->status_id == 5)
-                            @continue
-                        @endif
+
                         <?php $total += $products->price * $products->count; ?>
 
                         <tr>
@@ -116,7 +111,6 @@
             </div>
             <!-- /.col -->
             <div class="col-6">
-                <p class="lead">Amount Due 2/22/2014</p>
 
                 <div class="table-responsive">
                     <table class="table">

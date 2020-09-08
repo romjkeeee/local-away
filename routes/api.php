@@ -25,6 +25,7 @@ Route::group(['namespace' => 'Api\V1', 'as' => 'api.'], function () {
     Route::get('genders', 'GenderController@index');
     Route::get('founders', 'FounderController@index');
     Route::get('document-about-us', 'DocumentController@about_us');
+    Route::get('track-status/show/{id}', 'TrackOrderController@show');
 
     Route::group(['prefix' => 'orders'], function () {
         Route::post('/refund/{id}', 'OrderController@refund');

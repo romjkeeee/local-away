@@ -26,7 +26,8 @@ class UpdateOrderProductRequest extends FormRequest
         return [
             'color_id' => 'exists:colors,id',
             'size_id' => 'exists:sizings,id',
-            'count' => 'numeric'
+            'count' => 'numeric',
+            'price' => 'numeric'
         ];
     }
 }
