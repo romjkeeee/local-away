@@ -46,7 +46,7 @@ abstract class Processor
 
     protected function validateCost(int $actual)
     {
-        if ((int) $this->transaction->cost != (int) request('data.object.amount_total')) {
+        if ((int) $this->transaction->cost != $actual) {
             throw new \Exception('Cost not equals: expected: '
                 . (int) $this->transaction->cost . ', actual: '
                 . $actual);
