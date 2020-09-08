@@ -31,7 +31,7 @@ class ProductController extends Controller
             'status' => 'success',
             'data' => [
                 'product' => $product,
-                'images_by_color' => $data
+                'images_by_color' => $data ?? []
             ]
         ]);
     }
