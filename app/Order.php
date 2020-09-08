@@ -85,15 +85,14 @@ class Order extends Model
             return $this->transaction;
         }
 
-        $serviceFee = $this->quiz_products->count() > 0 ? config('app.box_fee') * 100 : 0;
-        $originSum = $this->sum * 100;
+        $serviceFee = $this->quiz_products->count() > 0 ? config('app.box_fee') : 0;
 
         $transaction = $this->transaction()->create([
             'operation' => 'order',
-            'origin_cost' => $originSum,
+            'origin_cost' => $this->sum,
             'service_fee' => $serviceFee,
             'processor' => $processor,
-            'cost' => $originSum + $serviceFee,
+            'cost' => $this->sum + $serviceFee,
             'description' => 'Pay for products',
         ]);
 
