@@ -34,8 +34,8 @@
                             <th>id</th>
                             <th>name</th>
                             <th>alias</th>
-                            <th>preview image</th>
-                            <th>full image</th>
+{{--                            <th>preview image</th>--}}
+{{--                            <th>full image</th>--}}
 {{--                            <th>Gender image</th>--}}
                             <th>is homepage</th>
                             <th>Active</th>
@@ -48,8 +48,8 @@
                                 <td>{{ $user->id }}</td>
                                 <td style="width: 100%">{{ $user->name }}</td>
                                 <td>{{ $user->alias }}</td>
-                                <td><img class="img-thumbnail" src="{{ asset('storage/'.$user->preview_image) }}"></td>
-                                <td><img class="img-thumbnail" src="{{ asset('storage/'.$user->full_image_path) }}"></td>
+{{--                                <td><img class="img-thumbnail" src="{{ asset('storage/'.$user->preview_image) }}"></td>--}}
+{{--                                <td><img class="img-thumbnail" src="{{ asset('storage/'.$user->full_image_path) }}"></td>--}}
 {{--                                <td>--}}
 {{--                                    <a href="{{ url('admin/travel-stories/'.$user->id.'/step2') }}">{{ count($user->travel_story_image_gender) }}</a>--}}
 {{--                                </td>--}}
