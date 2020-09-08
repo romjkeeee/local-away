@@ -12,7 +12,7 @@ class PaymentController extends Controller
 {
     public function create(PaymentCreateRequest $request)
     {
-        $processor = Processor::instance('stripe');
+        $processor = Processor::instance(config('app.default_processor'));
 
         /** @var Order $order */
         $order = Order::query()->find($request->get('order_id'));

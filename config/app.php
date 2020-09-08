@@ -15,6 +15,7 @@ return [
 
     'name' => env('APP_NAME', 'Laravel'),
     'box_fee' => 50,
+    'default_processor' => env('DEFAULT_PROCESSOR', 'stripe'),
 
     /*
     |--------------------------------------------------------------------------
