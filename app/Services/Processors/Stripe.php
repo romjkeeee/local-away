@@ -45,7 +45,7 @@ class Stripe extends Processor
             'payment_method_types' => ['card'],
             'line_items' => $lineItems,
             'success_url' => url(config('app.front_url') . '/payment/success', $urlParams),
-            'cancel_url' => url(config('app.front_url') . '/payment/cancel', $urlParams),
+            'cancel_url' => url(config('app.front_url') . '/payment/fail', $urlParams),
             'client_reference_id' => $transaction->token,
         ]);
 
