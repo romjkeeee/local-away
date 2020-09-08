@@ -37,7 +37,7 @@
                                 <th>Last name</th>
                                 <th>email</th>
                                 <th>Facebook id</th>
-                                <th>Avatar</th>
+{{--                                <th>Avatar</th>--}}
                                 <th>role</th>
                                 <th>Action</th>
                             </tr>
@@ -50,7 +50,7 @@
                                 <td>{{ $user->last_name }}</td>
                                 <td style="width:100%">{{ $user->email }}</td>
                                 <td>{{ $user->facebook_id }}</td>
-                                <td><img class="img-thumbnail" src="{{ asset($user->avatar) }}"></td>
+{{--                                <td><img class="img-thumbnail" src="{{ asset($user->avatar) }}"></td>--}}
                             @foreach($user->roles as $role)
                                 <td>{{ $role->name ?? '' }}</td>
                             @endforeach

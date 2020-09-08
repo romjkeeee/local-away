@@ -33,7 +33,7 @@
                         <tr>
                             <th>id</th>
                             <th>title</th>
-                            <th>image</th>
+{{--                            <th>image</th>--}}
                             <th>active</th>
                             <th>Action</th>
                         </tr>
@@ -43,7 +43,7 @@
                             <tr>
                                 <td>{{ $user->id }}</td>
                                 <td style="width: 100%">{{ $user->title }}</td>
-                                <td><img class="img-thumbnail" src="{{ asset('storage/'.$user->image) }}"></td>
+{{--                                <td><img class="img-thumbnail" src="{{ asset('storage/'.$user->image) }}"></td>--}}
                                 <x-active-status active="{{ $user->active }}"></x-active-status>
                                 <x-action-buttons show="{{ route('travel-purposes.show',[$user->id]) }}"
                                                   edit="{{ route('travel-purposes.edit',[$user->id]) }}"></x-action-buttons>

@@ -173,4 +173,11 @@ class TravelStoryController extends Controller
         return response('error2');
 
     }
+
+    public function destroy(TravelStory $travel_story)
+    {
+        if ($travel_story->delete()){
+            return redirect()->route('travel-stories.index');
+        }
+    }
 }

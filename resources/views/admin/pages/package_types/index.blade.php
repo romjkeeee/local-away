@@ -32,7 +32,7 @@
                         <tr>
                             <th>id</th>
                             <th>title</th>
-                            <th>image</th>
+{{--                            <th>image</th>--}}
                             <th>gender</th>
                             <th>active</th>
                             <th>Action</th>
@@ -43,7 +43,7 @@
                             <tr>
                                 <td >{{ $data->id }}</td>
                                 <td style="width: 100%">{{ $data->title }}</td>
-                                <td><img class="img-thumbnail" src="{{ asset('storage/'.$data->image) }}"></td>
+{{--                                <td><img class="img-thumbnail" src="{{ asset('storage/'.$data->image) }}"></td>--}}
                                 <td>{{ $data->gender->title ?? '' }}</td>
                                 <x-active-status active="{{ $data->active }}"></x-active-status>
                                 <x-action-buttons show="{{ route('package-types.show',[$data->id]) }}" edit="{{ route('package-types.edit',[$data->id]) }}"></x-action-buttons>

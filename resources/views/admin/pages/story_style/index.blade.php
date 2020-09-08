@@ -33,7 +33,7 @@
                         <tr>
                             <th>id</th>
                             <th>Travel Story</th>
-                            <th>image</th>
+{{--                            <th>image</th>--}}
                             <th>gender</th>
                             <th>Action</th>
                         </tr>
@@ -43,7 +43,7 @@
                             <tr>
                                 <td>{{ $user->id }}</td>
                                 <td style="width: 100%">{{ $user->travelStory->name ?? ''}}</td>
-                                <td><img class="img-thumbnail" src="{{ asset('storage/'.$user->image) }}"></td>
+{{--                                <td><img class="img-thumbnail" src="{{ asset('storage/'.$user->image) }}"></td>--}}
                                 <td>{{ $user->gender->title ?? '' }}</td>
                                 <x-action-buttons show="{{ route('story-styles.show',[$user->id]) }}"
                                                   edit="{{ route('story-styles.edit',[$user->id]) }}"></x-action-buttons>

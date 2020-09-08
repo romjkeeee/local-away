@@ -34,7 +34,7 @@
                             <th>id</th>
                             <th>name</th>
                             <th>alias</th>
-                            <th>image</th>
+{{--                            <th>image</th>--}}
                             <th>products</th>
                             <th>gender</th>
                             <th>Action</th>
@@ -46,7 +46,7 @@
                                 <td>{{ $user->id }}</td>
                                 <td style="width: 100%">{{ $user->name }}</td>
                                 <td>{{ $user->alias }}</td>
-                                <td><img class="img-thumbnail" src="{{ asset('storage/'.$user->image) }}"></td>
+{{--                                <td><img class="img-thumbnail" src="{{ asset('storage/'.$user->image) }}"></td>--}}
                                 <td>
                                     @foreach($user->products as $product)
                                         {{ $product->name }},
