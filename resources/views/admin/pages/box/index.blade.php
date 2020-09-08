@@ -28,7 +28,7 @@
                         <tr>
                             <th>id</th>
                             <th>Name</th>
-                            <th>Image</th>
+{{--                            <th>Image</th>--}}
                             <th>Price</th>
                             <th>Action</th>
                         </tr>
@@ -38,7 +38,7 @@
                             <tr>
                                 <td>{{ $user->id }}</td>
                                 <td style="width: 100%">{{ $user->name }}</td>
-                                <td><img class="img-thumbnail" src="{{ asset('storage/'.$user->image) }}"></td>
+{{--                                <td><img class="img-thumbnail" src="{{ asset('storage/'.$user->image) }}"></td>--}}
                                 <td>${{ $user->price }}</td>
                                 <x-action-buttons show="{{ route('boxs.show',[$user->id]) }}"
                                                   edit="{{ route('boxs.edit',[$user->id]) }}"></x-action-buttons>

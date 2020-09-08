@@ -55,8 +55,15 @@
 {{--                                </td>--}}
                                 <x-active-status active="{{ $user->is_to_homepage }}"></x-active-status>
                                 <x-active-status active="{{ $user->active }}"></x-active-status>
-                                <x-action-buttons show="{{ route('travel-stories.show',[$user->id]) }}"
-                                                  edit="{{ route('travel-stories.edit',[$user->id]) }}"></x-action-buttons>
+                                <td>
+                                    <a href="{{ route('travel-stories.show',[$user->id]) }}"><i class="fas fa-eye"></i></a>
+                                    <a href="{{ route('travel-stories.edit',[$user->id]) }}"><i class="fas fa-edit"></i></a>
+                                            {{ Form::open(['method' => 'DELETE', 'route' => ['travel-stories.destroy',$user->id]]) }}
+                                            {{ Form::button('<i class="fas fa-trash" aria-hidden="true"></i>',
+                                                ['class' => 'btn btn-warning btn-sm', 'type' => 'submit', 'style' => 'padding:0; background: none; border:none; color:#007bff;'] )  }}
+                                            {{ Form::close() }}
+                                </td>
+
                             </tr>
                         @endforeach
                     </table>
