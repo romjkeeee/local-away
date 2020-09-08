@@ -4,6 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class OrderProduct
+ * @property Product $product
+ * @property int $count
+ */
 class OrderProduct extends Model
 {
     public $guarded = ['id'];

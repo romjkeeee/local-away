@@ -8,7 +8,7 @@
     ],
     "license": "MIT",
     "require": {
-        "php": "^7.2.5",
+        "php": "^7.4.0",
         "coderello/laravel-passport-social-grant": "^3.0",
         "doctrine/dbal": "^2.10",
         "facebook/graph-sdk": "^5.7",
@@ -28,7 +28,8 @@
         "php-http/curl-client": "^2.1",
         "santigarcor/laratrust": "^6.1",
         "shippo/shippo-php": "^1.4",
-        "spatie/laravel-medialibrary": "^8.0.0"
+        "spatie/laravel-medialibrary": "^8.0.0",
+        "stripe/stripe-php": "^7.51"
     },
     "require-dev": {
         "facade/ignition": "^2.0",
