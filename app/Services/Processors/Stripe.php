@@ -19,7 +19,7 @@ class Stripe extends Processor
 
     public function extractTransactionToken(): string
     {
-        return request('data.object.client_reference_id');
+        return request('data.object.client_reference_id', '');
     }
 
     public function create(Transaction $transaction, array $items = []): array
