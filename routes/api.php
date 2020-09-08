@@ -31,6 +31,7 @@ Route::group(['namespace' => 'Api\V1', 'as' => 'api.'], function () {
         Route::post('create', 'OrderController@store');
         Route::get('/', 'OrderController@index');
         Route::get('/last', 'OrderController@show_last');
+        Route::get('/refund-list', 'OrderController@refund_list');
     });
 
     //fb-auth
