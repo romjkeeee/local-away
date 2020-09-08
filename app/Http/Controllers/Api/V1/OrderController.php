@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Api\V1;
 
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\RefundReqeust;
 use App\Http\Resources\OrderCollection;
 use App\Order;
+use App\OrderProduct;
 use Illuminate\Http\Request;
 
 /**
@@ -144,12 +146,20 @@ class OrderController extends Controller
      * @authenticated required
      * @response 201
      */
-    public function refund($id)
+    public function refund(RefundReqeust $request, $id)
     {
-        if (Order::query()->where('user_id', auth()->id())->where('id', $id)->update(['status_id', 6])) {
-            return response(['status' => 'success', 'message' => 'Success send request']);
+        $order = Order::query()->where('user_id', auth()->id())->where('id', $id)->first();
+        if ($order) {
+            foreach ($request->get('products_ids') as $key => $value) {
+                $order_product = OrderProduct::query()->where('id', $value)->update(['status_id' =>  6]);
+            }
+            if ($order->update(['status_id' =>  6])) {
+                return response(['status' => 'success', 'message' => 'Success send request']);
+            }else{
+                return response(['status' => 'error', 'message' => 'Something wrong'], 400);
+            }
         } else {
-            return response(['status' => 'error', 'message' => 'Error send request'], 404);
+            return response(['status' => 'error', 'message' => 'Order not found'], 404);
         }
     }
 }

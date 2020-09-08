@@ -27,6 +27,7 @@ Route::group(['namespace' => 'Api\V1', 'as' => 'api.'], function () {
     Route::get('document-about-us', 'DocumentController@about_us');
 
     Route::group(['prefix' => 'orders'], function () {
+        Route::post('/refund/{id}', 'OrderController@refund');
         Route::post('create', 'OrderController@store');
         Route::get('/', 'OrderController@index');
         Route::get('/last', 'OrderController@show_last');

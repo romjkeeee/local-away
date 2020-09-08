@@ -17,6 +17,7 @@ class ProductCollection extends ResourceCollection
         foreach ($this as $item) {
             $data[] = $item->product;
             $item->product['count'] = $item->count;
+            $item->product['order_product_id'] = $item->id;
         }
 
         return $data ?? [];
