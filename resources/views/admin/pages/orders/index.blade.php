@@ -40,6 +40,7 @@
                             <th>id</th>
                             <th>User</th>
                             <th>Sum</th>
+                            <th>Tracking number</th>
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
@@ -50,9 +51,11 @@
                                 <td>{{ $user->id }}</td>
                                 <td style="width: 100%">{{ $user->user->first_name ?? '' .''.$user->user->last_name ?? '' }}</td>
                                 <td>${{ $user->sum }}</td>
+                                <td>@if($user->tracking_number){{ $user->tracking_number }}<a href="{{ route('orders.edit',[$user->id]) }}"><i class="fas fa-edit"></i></a>@else <a href="{{ route('orders.edit',[$user->id]) }}"><i class="fas fa-plus"></i></a> @endif</td>
                                 <td>{{ $user->status->name ?? ''}}</td>
-                                <x-action-buttons show="{{ route('orders.show',[$user->id]) }}"
-                                                  edit="{{ route('orders.edit',[$user->id]) }}"></x-action-buttons>
+                                <td>
+                                <a href="{{ route('orders.show',[$user->id]) }}"><i class="fas fa-eye"></i></a>
+                                </td>
                             </tr>
                         @endforeach
                     </table>

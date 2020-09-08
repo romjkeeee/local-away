@@ -56,7 +56,12 @@ class Order extends Model
 
     public function order_products()
     {
-        return $this->hasMany(OrderProduct::class, 'order_id', 'id');
+        return $this->hasMany(OrderProduct::class, 'order_id', 'id')->whereNull('order_quiz_id');
+    }
+
+    public function quiz_products()
+    {
+        return $this->hasMany(OrderProduct::class, 'order_id', 'id')->whereNotNull('order_quiz_id');
     }
 
     public function transaction()

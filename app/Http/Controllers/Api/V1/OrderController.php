@@ -80,40 +80,40 @@ class OrderController extends Controller
         $user_order = Order::query()->where('user_id', auth()->id())->where('status_id', 1)->first();
         if (!$user_order) {
             $data = $request->all();
-            $decoded_data = json_decode($data, true);
+//            $decoded_data = json_decode($data, true);
 
             $order = new Order([
-                'user_id' => 1,
+                'user_id' => auth()->id(),
                 'sum' => 50,
                 'status_id' => 1
             ]);
             $order->save();
-            foreach ($decoded_data[0] as $settings) {
+            foreach ($data[0] as $settings) {
                 $date_city = $settings;
             }
 
-            foreach ($decoded_data[1] as $settings) {
+            foreach ($data[1] as $settings) {
                 $package_type = $settings;
             }
 
-            foreach ($decoded_data[2] as $settings) {
+            foreach ($data[2] as $settings) {
                 $personal_style_ids = $settings;
             }
-            foreach ($decoded_data[3] as $settings) {
+            foreach ($data[3] as $settings) {
                 $travel_purposes = $settings;
 
             }
-            foreach ($decoded_data[4] as $settings) {
+            foreach ($data[4] as $settings) {
                 $styled_id = $settings;
             }
-            foreach ($decoded_data[5] as $settings) {
+            foreach ($data[5] as $settings) {
                 $preferences = $settings;
                 $body_type = $preferences['body'];
             }
-            foreach ($decoded_data[6] as $settings) {
+            foreach ($data[6] as $settings) {
                 $sizing_info = $settings;
             }
-            foreach ($decoded_data[7] as $settings) {
+            foreach ($data[7] as $settings) {
                 $costs = $settings;
             }
 

@@ -133,7 +133,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($data->order_products as $products)
+                            @foreach($data->quiz_products as $products)
                                 <tr>
                                     <td>{{ $products->product->name }}</td>
                                     <td>{{ $products->size->title ?? '' }}</td>

@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::group(['namespace' => 'Api\V1', 'as' => 'api.'], function () {
+    Route::post('shippo/mister-hook', 'ShippoController@webhook');
     Route::post('contact-form', 'ContactFormController@create');
     Route::post('subscribe', 'SubscribeController@create');
     Route::post('beta-form', 'BetaFormController@store');
@@ -47,6 +48,11 @@ Route::group(['namespace' => 'Api\V1', 'as' => 'api.'], function () {
         Route::post('/delete/{id}', 'UserAddressController@delete');
         Route::post('/{id}/edit', 'UserAddressController@edit');
         Route::post('/create', 'UserAddressController@store');
+    });
+
+    //Products
+    Route::group(['prefix' => 'products'], function () {
+        Route::get('/show/{product}', 'ProductController@show');
     });
 
     //User settings

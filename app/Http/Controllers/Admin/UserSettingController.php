@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\UserPreference;
 use App\UserSetting;
 use Illuminate\Http\Request;
 
@@ -88,7 +89,7 @@ class UserSettingController extends Controller
                 ],
             ],
         );
-        $data = UserSetting::query()->with('bodyType')->get();
+        $data = UserPreference::query()->with('bodyType')->get();
         return view('admin.pages.user_settings.index', compact('data', 'preference'));
     }
 

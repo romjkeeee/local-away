@@ -4,7 +4,7 @@ namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateFounderRequest extends FormRequest
+class UpdateOrderReqeust extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,12 +24,7 @@ class UpdateFounderRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'string',
-            'linkedin' => 'string',
-            'facebook' => 'string',
-            'twitter' => 'string',
-            'photo' => 'image|mimes:jpeg,png,jpg',
-            'status' => 'in:active,disable',
+            'tracking_number' => 'required|string'
         ];
     }
 }
