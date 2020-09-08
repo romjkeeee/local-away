@@ -7,6 +7,7 @@ namespace App\Http\Controllers\Api\V1;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RefundReqeust;
 use App\Http\Resources\OrderCollection;
+use App\Http\Resources\OrderReturnCollection;
 use App\Order;
 use App\OrderProduct;
 use Illuminate\Http\Request;
@@ -23,6 +24,7 @@ class OrderController extends Controller
     {
         $this->middleware('auth:api');
     }
+
     /**
      * Get orders
      *
@@ -56,12 +58,12 @@ class OrderController extends Controller
     public function show_last()
     {
         $order = Order::query()->where('user_id', auth()->id())->where('status_id', 1)->first();
-        if($order) {
+        if ($order) {
             return response([
                 'status' => 'success',
                 'data' => OrderCollection::make($order)
             ]);
-        }else{
+        } else {
             return response([
                 'status' => 'success',
                 'message' => 'You dont have new orders'
@@ -142,6 +144,7 @@ class OrderController extends Controller
 
     /**
      * Request refund
+     * @bodyParam products_ids array
      *
      * @authenticated required
      * @response 201
@@ -151,15 +154,39 @@ class OrderController extends Controller
         $order = Order::query()->where('user_id', auth()->id())->where('id', $id)->first();
         if ($order) {
             foreach ($request->get('products_ids') as $key => $value) {
-                $order_product = OrderProduct::query()->where('id', $value)->update(['status_id' =>  6]);
+                $order_product = OrderProduct::query()->where('id', $value)->update(['status_id' => 6]);
             }
-            if ($order->update(['status_id' =>  6])) {
-                return response(['status' => 'success', 'message' => 'Success send request']);
-            }else{
+            if ($order->update(['status_id' => 6])) {
+                return response(['status' => 'success', 'message' => 'Success send request'], 201);
+            } else {
                 return response(['status' => 'error', 'message' => 'Something wrong'], 400);
             }
         } else {
             return response(['status' => 'error', 'message' => 'Order not found'], 404);
+        }
+    }
+
+    /**
+     * List refund
+     *
+     * @authenticated required
+     * @response 200
+     */
+    public function refund_list()
+    {
+        $order = Order::query()
+            ->where('user_id', 1)
+            ->where('status_id', '>=',6)
+            ->with(['order_products_all'=> function ($q) {
+                $q->where('status_id', '>=', 6);
+            }])->get();
+        if ($order) {
+            return response([
+                'status' => 'success',
+                'data' => OrderReturnCollection::collection($order)
+            ]);
+        }else{
+            return response(['status' => 'error', 'message' => 'No refunds'], 404);
         }
     }
 }
