@@ -10,7 +10,8 @@ use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
-    function __construct() {
+    function __construct()
+    {
         $this->middleware('role:admin|user');
     }
 
@@ -43,7 +44,7 @@ class OrderController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -54,7 +55,7 @@ class OrderController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Order  $order
+     * @param \App\Order $order
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function show(Order $order)
@@ -67,7 +68,7 @@ class OrderController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Order  $order
+     * @param \App\Order $order
      * @return \Illuminate\Http\Response
      */
     public function edit(Order $order)
@@ -79,20 +80,23 @@ class OrderController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Order  $order
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Order $order
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateOrderReqeust $request, Order $order)
     {
         $order->update($request->validated());
+        if ($order->status_id == 3) {
+            $order->update(['status_id' => 4]);
+        }
         return redirect()->route('orders.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Order  $order
+     * @param \App\Order $order
      * @return \Illuminate\Http\Response
      */
     public function destroy(Order $order)
@@ -103,13 +107,16 @@ class OrderController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Order  $order
+     * @param \App\Order $order
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function equip(Order $order)
     {
-        $data = Order::query()->with('quiz','address','order_products.product', 'order_products.size','order_products.color')->where('id',$order->id)->first();
-        $products = Product::all()->pluck('name','id');
+        $data = Order::query()->with('quiz', 'address', 'order_products.product', 'order_products.size', 'order_products.color')->where('id', $order->id)->first();
+        if ($data->status_id == 2) {
+            $data->update(['status_id' => 3]);
+        }
+        $products = Product::all()->pluck('name', 'id');
         $preferences_array = array(
             'measurement' => [
                 [
@@ -183,7 +190,7 @@ class OrderController extends Controller
 
     public function store_equip(Order $order, Request $request)
     {
-        $order = Order::query()->where('id',$order->id)->first();
+        $order = Order::query()->where('id', $order->id)->first();
         if ($request->product_ids) {
             foreach ($request->product_ids as $product) {
                 $order->quiz_products()->create([
