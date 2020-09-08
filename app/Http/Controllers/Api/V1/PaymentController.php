@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Api\V1;
 
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\OrderCreateRequest;
-use App\Order;
-use App\Services\Processors\Processor;
-use App\Transaction;
+use App\{Http\Controllers\Controller,
+    Http\Requests\OrderCreateRequest,
+    Order,
+    Transaction,
+    Services\Processors\Processor};
 
 class PaymentController extends Controller
 {
