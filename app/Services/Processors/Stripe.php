@@ -58,7 +58,7 @@ class Stripe extends Processor
         $event = null;
         try {
 
-            $this->validateCost((int) request('data.object.amount_total'));
+            $this->validateCost((int) (request('data.object.amount_total') / 100));
 
             $event = \Stripe\Webhook::constructEvent(
                 request()->getContent(),
