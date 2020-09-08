@@ -44,6 +44,15 @@ abstract class Processor
         return url(config('app.front_url') . '/payment/' . $case) . '?' . $this->transactionTokenParam .'=' . $token;
     }
 
+    protected function validateCost(int $actual)
+    {
+        if ((int) $this->transaction->cost != (int) request('data.object.amount_total')) {
+            throw new \Exception('Cost not equals: expected: '
+                . (int) $this->transaction->cost . ', actual: '
+                . $actual);
+        }
+    }
+
     public abstract function create(Transaction $transaction, array $items = []): array;
 
     public abstract function verify(): bool;
