@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\OrderCreateRequest;
 use App\Order;
 use App\Services\Processors\Processor;
+use App\Transaction;
 
 class PaymentController extends Controller
 {
@@ -34,14 +35,13 @@ class PaymentController extends Controller
         }
     }
 
-    public function process($processor)
+    public function process(Processor $processor)
     {
         logger()->channel('payment')->debug(json_encode($_POST));
         logger()->channel('payment')->debug(json_encode($_SERVER));
         logger()->channel('payment')->debug(request()->getContent());
 
         try {
-            $processor = Processor::instance($processor);
             $transaction = $processor->retrieveTransaction();
 
             if ($transaction && $transaction->isPending() && $processor->verify()) {
@@ -51,5 +51,15 @@ class PaymentController extends Controller
         } catch (\Exception $e) {
             logger()->channel('payment')->error($e);
         }
+    }
+
+    public function success(Transaction $transaction)
+    {
+        return $transaction->getOperation()->success();
+    }
+
+    public function fail(Transaction $transaction)
+    {
+        return $transaction->getOperation()->fail();
     }
 }

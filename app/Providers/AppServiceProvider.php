@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Contracts\PaymentContract;
 use App\Services\OperatorMenu;
+use App\Services\Processors\Processor;
 use App\Services\SocialUserResolver;
 use App\Services\StripeApi;
 use Coderello\SocialGrant\Resolvers\SocialUserResolverInterface;
@@ -18,6 +19,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public $bindings = [
         SocialUserResolverInterface::class => SocialUserResolver::class,
+    ];
+
+    public $singletons = [
         PaymentContract::class => StripeApi::class,
     ];
 
@@ -28,6 +32,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->app->bind(Processor::class, fn() => Processor::instance(request('processor')));
     }
 
     /**

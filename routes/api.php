@@ -112,5 +112,7 @@ Route::group(['namespace' => 'Api\V1', 'as' => 'api.'], function () {
     Route::group(['prefix' => 'payment'], function () {
         Route::post('create', 'PaymentController@create')->name('payment.create');
         Route::any('process/{processor}', 'PaymentController@process')->name('payment.process');
+        Route::get('success/{transaction:token}', 'PaymentController@success')->name('payment.success');
+        Route::get('fail/{transaction:token}', 'PaymentController@fail')->name('payment.fail');
     });
 });

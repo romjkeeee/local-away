@@ -4,6 +4,7 @@ namespace App\Services\Processors\Operations;
 
 
 use App\Transaction;
+use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Str;
 
 abstract class Operation
@@ -26,4 +27,8 @@ abstract class Operation
     }
 
     abstract public function process();
+
+    abstract public function success(): JsonResource;
+
+    abstract public function fail(): JsonResource;
 }

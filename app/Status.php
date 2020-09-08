@@ -49,4 +49,8 @@ class Status extends Model
         return static::find('PRODUCT_REFUND');
     }
 
+    public static function refunded()
+    {
+        return static::find('REFUNDED');
+    }
 }
