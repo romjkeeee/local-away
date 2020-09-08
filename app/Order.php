@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @property Transaction $transaction
  * @property OrderProduct[] $order_products_all
+ * @property OrderProduct[]|\Illuminate\Database\Eloquent\Collection $quiz_products
  */
 class Order extends Model
 {
@@ -84,7 +85,7 @@ class Order extends Model
             return $this->transaction;
         }
 
-        $serviceFee = config('app.box_fee');
+        $serviceFee = $this->quiz_products->count() > 0 ? config('app.box_fee') : 0;
 
         $transaction = $this->transaction()->create([
             'operation' => 'order',
