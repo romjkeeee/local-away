@@ -61,7 +61,7 @@ class OrderController extends Controller
     public function show(Order $order)
     {
         $data = $order;
-        $product = $order->order_products()->with('product', 'size', 'color')->get();
+        $product = $order->order_products_all()->with('product', 'size', 'color')->get();
         return view('admin.pages.orders.show', compact('data', 'product'));
     }
 

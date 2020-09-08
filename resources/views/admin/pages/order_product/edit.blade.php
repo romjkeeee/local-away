@@ -60,7 +60,8 @@
                         <h4 class="mt-3">Price</h4>
                         <div class="bg-gray py-2 px-3 mt-4">
                             <h2 class="mb-0">
-                                ${{ $data->product->price ?? '123' }}
+                                ${{ $data->product->price ?? 'NOT FOUND' }}
+                                {{Form::hidden('price', $data->product->price, ['class' => 'form-control', 'placeholder' => ''])}}
                             </h2>
                             {{--                            <h4 class="mt-0">--}}
                             {{--                                <small>Ex Tax: $80.00 </small>--}}

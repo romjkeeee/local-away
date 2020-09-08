@@ -33,19 +33,9 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = Order::query()->where('user_id', auth()->id())->get();
-//        foreach ($orders as $order){
-//            if($order->status_id == 5 && $order->has('quiz')->first()){
-//                $data[] = OrderCollection::make($order->with('order_products.product', 'status')->first());
-//            }elseif(!$order->has('quiz')) {
-//                $data[] = OrderCollection::make($order->with('order_products.product', 'status')->first());
-//            }else{
-//                $data[] = OrderCollection::make($order->with('status')->first());
-//            }
-//        }
         return response([
             'status' => 'success',
-            'data' => OrderCollection::collection($orders)
+            'data' => OrderCollection::collection($orders = Order::query()->where('user_id', auth()->id())->get())
         ]);
     }
 
@@ -153,8 +143,13 @@ class OrderController extends Controller
     {
         $order = Order::query()->where('user_id', auth()->id())->where('id', $id)->first();
         if ($order) {
-            foreach ($request->get('products_ids') as $key => $value) {
-                $order_product = OrderProduct::query()->where('order_id',$order->id)->where('id', $value)->update(['status_id' => 6]);
+            $check_order_product = OrderProduct::query()->where('order_id', $order->id)->whereIn('id', $request->get('products_ids'))->get();
+            if (count($check_order_product)) {
+                foreach ($request->get('products_ids') as $key => $value) {
+                    $order_product = OrderProduct::query()->where('order_id', $order->id)->where('id', $value)->update(['status_id' => 6]);
+                }
+            }else{
+                return response(['status' => 'error', 'message' => 'Order product not found'], 404);
             }
             if ($order->update(['status_id' => 6])) {
                 return response(['status' => 'success', 'message' => 'Success send request'], 201);
@@ -176,8 +171,8 @@ class OrderController extends Controller
     {
         $order = Order::query()
             ->where('user_id', auth()->id())
-            ->where('status_id', '>=',6)
-            ->with(['order_products_all'=> function ($q) {
+            ->where('status_id', '>=', 6)
+            ->with(['order_products_all' => function ($q) {
                 $q->where('status_id', '>=', 6);
             }])->get();
         if ($order) {
@@ -185,7 +180,7 @@ class OrderController extends Controller
                 'status' => 'success',
                 'data' => OrderReturnCollection::collection($order)
             ]);
-        }else{
+        } else {
             return response(['status' => 'error', 'message' => 'No refunds'], 404);
         }
     }
