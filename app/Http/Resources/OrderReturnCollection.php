@@ -20,7 +20,7 @@ class OrderReturnCollection extends JsonResource
             'user_id' => $this->user_id,
             'status' => $this->status->name,
             'products' => ProductCollection::make($this->order_products_all) ?? [],
-            'quiz' => (count($this->quiz) ? TravelBox::make($this) : ''),
+//            'quiz' => (count($this->quiz) ? TravelBox::make($this) : ''),
             'created_at' => $this->created_at
         ];
     }
