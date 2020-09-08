@@ -83,7 +83,7 @@ class OrderController extends Controller
 //            $decoded_data = json_decode($data, true);
 
             $order = new Order([
-                'user_id' => 1,
+                'user_id' => auth()->id(),
                 'sum' => 50,
                 'status_id' => 1
             ]);
