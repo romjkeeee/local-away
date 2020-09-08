@@ -17,7 +17,7 @@ class TravelBox extends JsonResource
     {
         return [
             'travel_box' => Box::query()->first(),
-            'products' => $this->status_id == 5 ? ProductCollection::make($this->quiz_products) : [],
+            'products' => $this->status_id >= 5 ? ProductCollection::make($this->quiz_products) : [],
         ];
     }
 }
