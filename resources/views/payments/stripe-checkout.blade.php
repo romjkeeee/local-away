@@ -2,17 +2,13 @@
 /**
  * @var \Collective\Html\FormBuilder $form
  */
-
-//$session = $payment->createSession();
-
-//$sessionId = $session ? $session->id : 0;
 ?>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://js.stripe.com/v3/"></script>
 <script>
     $(function() {
-        $.post('{{ route('api.payment.create') }}', {'order_id': {{ request('order_id') }}, function(res) {
+        $.post('{{ route('api.payment.create') }}', { 'order_id': '{{ request('order_id') }}' }, function(res) {
             console.log(res);
             //return ;
             var stripe = Stripe(res.data.publicKey);

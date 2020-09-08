@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $status_id
  *
  * @property Transaction $transaction
- * @property OrderProduct[] $order_products
+ * @property OrderProduct[] $order_products_all
  */
 class Order extends Model
 {
@@ -105,7 +105,7 @@ class Order extends Model
     {
         $items = [];
 
-        foreach ($this->order_products as $orderProduct) {
+        foreach ($this->order_products_all as $orderProduct) {
             $image = $orderProduct->product->getMedia('images')->first();
 
             $items[] = [

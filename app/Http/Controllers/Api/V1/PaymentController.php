@@ -14,10 +14,9 @@ class PaymentController extends Controller
     public function create(OrderCreateRequest $request)
     {
         $processor = Processor::instance(config('app.default_processor'));
-
         try {
             /** @var Order $order */
-            $order = Order::query()->find($request->get('order_id'));
+            $order = Order::query()->find($request->post('order_id'));
             if (!$order) {
                 throw new \Exception('Order not exists');
             }
