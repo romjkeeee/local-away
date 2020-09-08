@@ -29,7 +29,8 @@ class ShippoController extends Controller
                 'transaction' => $data['data']['transaction'],
                 'test' => $data['data']['test'],
             ]);
-            if ($shippo->tracking_status == 'DELIVERED') {
+            $status = $data['data']['tracking_status'];
+            if ($status['status'] == 'DELIVERED') {
                 $order = Order::query()->where('tracking_number', $shippo->tracking_number)->first();
                 if ($order) {
                     $order->update(['status_id', 5]);
