@@ -61,6 +61,10 @@ class Stripe extends Processor
 
         $event = null;
         try {
+            if ((int) $this->transaction->cost != (int) request('data.object.amount_total')) {
+                throw new \Exception('Cost not equals');
+            }
+
             $event = \Stripe\Webhook::constructEvent(
                 request()->getContent(),
                 $_SERVER['HTTP_STRIPE_SIGNATURE'] ?? '',

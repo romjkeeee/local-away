@@ -4,20 +4,23 @@ namespace App\Http\Controllers\Api\V1;
 
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\PaymentCreateRequest;
+use App\Http\Requests\OrderCreateRequest;
 use App\Order;
 use App\Services\Processors\Processor;
 
 class PaymentController extends Controller
 {
-    public function create(PaymentCreateRequest $request)
+    public function create(OrderCreateRequest $request)
     {
         $processor = Processor::instance(config('app.default_processor'));
 
-        /** @var Order $order */
-        $order = Order::query()->find($request->get('order_id'));
-
         try {
+            /** @var Order $order */
+            $order = Order::query()->find($request->get('order_id'));
+            if (!$order) {
+                throw new \Exception('Order not exists');
+            }
+
             return $this->successResponse(
                 $processor->create(
                     $order->getTransaction($processor->getAlias()),

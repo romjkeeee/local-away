@@ -11,6 +11,7 @@ abstract class Processor
 {
     protected string $alias;
     protected string $transactionTokenParam = 'trans_token';
+    protected ?Transaction $transaction = null;
 
     public static function instance($alias): ?Processor
     {
@@ -49,6 +50,10 @@ abstract class Processor
      */
     public function retrieveTransaction(): ?Transaction
     {
-        return Transaction::findByToken($this->extractTransactionToken());
+        if (!$this->transaction) {
+            $this->transaction = Transaction::findByToken($this->extractTransactionToken());
+        }
+
+        return $this->transaction;
     }
 }

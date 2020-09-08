@@ -24,7 +24,7 @@ class CreateTransactionsTable extends Migration
             $table->char('currency', 3);
             $table->string('description')->nullable();
             $table->integer('status_id')->nullable();
-            $table->integer('external_id')->nullable();
+            $table->string('external_id', 128)->nullable();
             $table->json('response')->nullable();
             $table->timestamps();
         });

@@ -15,6 +15,7 @@ class OrderOperation extends Operation
         $order->save();
 
         $this->transaction->status_id = Status::payed()->id;
+        $this->transaction->external_id = request('data.object.id');
         $this->transaction->save();
     }
 }
