@@ -18,7 +18,6 @@ class ProductCollection extends ResourceCollection
             $data[] = $item->product;
             $item->product['count'] = $item->count;
             $item->product['order_product_id'] = $item->id;
-            dd($item->status_id);
             if ($item->status_id >= 6) {
                 $item->product['return'] = true;
             } else {
