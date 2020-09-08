@@ -12,7 +12,7 @@
 <script src="https://js.stripe.com/v3/"></script>
 <script>
     $(function() {
-        $.post('{{ route('api.payment.create') }}', {'order_id': 2}, function(res) {
+        $.post('{{ route('api.payment.create') }}', {'order_id': {{ request('order_id') }}, function(res) {
             console.log(res);
             //return ;
             var stripe = Stripe(res.data.publicKey);
