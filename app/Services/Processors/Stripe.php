@@ -37,15 +37,11 @@ class Stripe extends Processor
             ];
         }
 
-        $urlParams = [
-            $this->transactionTokenParam => $transaction->token
-        ];
-
         $session = \Stripe\Checkout\Session::create([
             'payment_method_types' => ['card'],
             'line_items' => $lineItems,
-            'success_url' => url(config('app.front_url') . '/payment/success', $urlParams),
-            'cancel_url' => url(config('app.front_url') . '/payment/fail', $urlParams),
+            'success_url' => $this->createUrl($transaction->token, 'success'),
+            'cancel_url' => $this->createUrl($transaction->token, 'fail'),
             'client_reference_id' => $transaction->token,
         ]);
 

@@ -39,6 +39,11 @@ abstract class Processor
         return $this->alias;
     }
 
+    protected function createUrl(string $token, string $case): string
+    {
+        return url(config('app.front_url') . '/payment/' . $case) . '?' . $this->transactionTokenParam .'=' . $token;
+    }
+
     public abstract function create(Transaction $transaction, array $items = []): array;
 
     public abstract function verify(): bool;
