@@ -15,11 +15,19 @@ class OrderReturnCollection extends JsonResource
      */
     public function toArray($request)
     {
+        $price_product = 0;
+        if (count($this->order_products_all)) {
+            foreach ($this->order_products_all as $product) {
+                $price_product += $product->price * $product->count;
+            }
+        }
+
         return [
             'id' => $this->id,
             'user_id' => $this->user_id,
             'status' => $this->status->name,
             'products' => ProductCollection::make($this->order_products_all) ?? [],
+            'sum' => $price_product,
 //            'quiz' => (count($this->quiz) ? TravelBox::make($this) : ''),
             'created_at' => $this->created_at
         ];
