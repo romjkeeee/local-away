@@ -3,7 +3,22 @@
 @extends('adminlte::page')
 
 @section('title', 'Dashboard')
-
+@section('content_header')
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Order product</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('orders.index') }}">Orders</a></li>
+                    <li class="breadcrumb-item active">Orders product edit</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+@stop
 @section('content')
     @if(count($errors) > 0)
         @foreach($errors->all() as $error)
@@ -68,7 +83,7 @@
                             {{--                            </h4>--}}
                         </div>
 
-                        <x-footer-button route="{{ route('genders.index') }}"></x-footer-button>
+                        <x-footer-button route="{{ route('orders.index') }}"></x-footer-button>
 
                     </div>
                 </div>
