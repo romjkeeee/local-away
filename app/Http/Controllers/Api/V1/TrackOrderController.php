@@ -8,7 +8,7 @@ use App\Shipping;
 use Illuminate\Http\Request;
 
 /**
- * @group Subscribe
+ * @group Tracking Status
  *
  * APIs for
  */
