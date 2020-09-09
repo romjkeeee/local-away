@@ -61,9 +61,9 @@ class OrderProductController extends Controller
      */
     public function edit(OrderProduct $order_product)
     {
-        $data = OrderProduct::query()->where('id',$order_product->id)->with('product')->first();
-        $sizes = Sizing::all()->pluck('title', 'id');
-        $colors = Color::all()->pluck('name','id');
+        $data = OrderProduct::query()->where('id',$order_product->id)->with('product','product.sizes')->first();
+        $sizes = $data->product->sizes->pluck('title','id');
+        $colors = $data->product->colors->pluck('name','id');
         return view('admin.pages.order_product.edit', compact('data','colors','sizes'));
     }
 
