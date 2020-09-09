@@ -116,7 +116,7 @@ class OrderController extends Controller
         if ($data->status_id == 2) {
             $data->update(['status_id' => 3]);
         }
-        $products = Product::all()->pluck('name', 'id');
+        $products = Product::query()->where('status', 'active')->pluck('name', 'id');
         $preferences_array = array(
             'measurement' => [
                 [
