@@ -37,27 +37,27 @@
                         <div class="form-group">
                             <label for="inputName">Package type</label>
                             <input type="text" id="inputName" class="form-control"
-                                   value="{{ \App\PackageType::find($data->quiz->first()->package_type_id)->title ?? '' }}">
+                                   value="{{ \App\PackageType::find($data->quiz->first()->package_type_id)->title ?? '' }}" disabled>
                         </div>
                         <div class="form-group">
                             <label for="inputName">Travel purposes</label>
                             @foreach(json_decode($data->quiz->first()->travel_purposes) as $travel)
                                 <input type="text" id="inputName" class="form-control"
-                                       value="{{ \App\TravelPurpose::find($travel)->title ?? ''}}">
+                                       value="{{ \App\TravelPurpose::find($travel)->title ?? ''}}" disabled>
                             @endforeach
                         </div>
                         <div class="form-group">
                             <label for="inputName">Personal style</label>
                             @foreach(json_decode($data->quiz->first()->personal_style_ids) as $personal_style)
                                 <input type="text" id="inputName" class="form-control"
-                                       value="{{ \App\PersonalStyle::find($personal_style)->title }}">
+                                       value="{{ \App\PersonalStyle::find($personal_style)->title }}" disabled>
                             @endforeach
                         </div>
                         <div class="form-group">
                             <label for="inputName">Styled</label>
                             @foreach(json_decode($data->quiz->first()->styled_id) as $styled)
                                 <input type="text" id="inputName" class="form-control"
-                                       value="{{ \App\Styled::find($styled)->title ?? ''}}">
+                                       value="{{ \App\Styled::find($styled)->title ?? ''}}" disabled>
                             @endforeach
                         </div>
                         <div class="form-group">
@@ -70,7 +70,7 @@
                                             @if($value2['id'] == $value)
                                                 <label for="inputName">{{ $key }}</label>
                                                 <input type="text" id="inputName" class="form-control"
-                                                       value="{{ $value2['name'] }}">
+                                                       value="{{ $value2['name'] }}" disabled>
                                             @endif
                                         @endforeach
 
@@ -79,7 +79,7 @@
                                     @if($key == 'height')
                                         <label for="inputName">{{ $key }}</label>
                                         <input type="text" id="inputName" class="form-control"
-                                               value="{{ $value }}">
+                                               value="{{ $value }}" disabled>
                                     @endif
                                 <hr>
                             @endforeach
@@ -89,7 +89,7 @@
                             @foreach(json_decode($data->quiz->first()->sizing_info, true) as $key => $value)
 
                                     <label for="inputName">Sizing category - {{ \App\SizingCategory::query()->where('id', $value['sizing_category_id'])->first()->title ?? 'no name'}}</label>
-                                    <input type="text" id="inputName" class="form-control" value="{{ \App\Sizing::query()->where('id',$value['sizing_types'])->first()->title ?? 'no name'}}">
+                                    <input type="text" id="inputName" class="form-control" value="{{ \App\Sizing::query()->where('id',$value['sizing_types'])->first()->title ?? 'no name'}}" disabled>
                                     <hr>
                             @endforeach
                         </div>
@@ -98,7 +98,7 @@
                                 @if($key == 'selectForm')
                                     @foreach($value as $key1 => $value1)
                                         <label for="inputName">Cost category - {{ \App\ClothesCategory::query()->where('id', $value1['category_id'])->first()->title ?? 'no name'}}</label>
-                                        <input type="text" id="inputName" class="form-control" value="{{ $value1['cost_from'] }} - {{ $value1['cost_to'] }}">
+                                        <input type="text" id="inputName" class="form-control" value="{{ $value1['cost_from'] }} - {{ $value1['cost_to'] }}" disabled>
                                         <hr>
                                     @endforeach
                                 @endif
@@ -152,6 +152,7 @@
                                 <th>Size</th>
                                 <th>Color</th>
                                 <th>Count</th>
+                                <th>Price</th>
                                 <th>Price</th>
                                 <th></th>
                             </tr>

@@ -69,6 +69,7 @@
                         <th>Count</th>
                         <th>Price</th>
                         <th>Subtotal</th>
+                        <th>Status</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -80,6 +81,7 @@
                             <td>1</td>
                             <td>$50</td>
                             <td>$50</td>
+                            <td>- - -</td>
                         </tr>
                         <?php $total = 50; ?>
                     @else
@@ -96,6 +98,7 @@
                             <td>{{ $products->count }}</td>
                             <td>${{ $products->price ?? ''}}</td>
                             <td>${{ $products->price * $products->count ?? ''}}</td>
+                            <td>{{ $products->status->name ?? ''}}</td>
                         </tr>
                     @endforeach
                     </tbody>
