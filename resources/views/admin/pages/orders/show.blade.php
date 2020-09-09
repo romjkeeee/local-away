@@ -137,7 +137,7 @@
         <!-- this row will not appear when printing -->
         <div class="row no-print">
             <div class="col-12">
-                @if(count($data->quiz))
+                @if(count($data->quiz) && $data->status_id < 4)
                     <a class="btn btn-primary float-right" href="{{ route('orders.equip', $data->id) }}"><i
                             class="fas fa-download"></i> Equip</a>
                 @endif
