@@ -26,7 +26,7 @@
                 <div class="card card-primary">
                     <div class="card-header">
                         <h3 class="card-title">Quiz Settings</h3>
-{{--                        @dd($data->quiz->first())--}}
+                        {{--                        @dd($data->quiz->first())--}}
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip"
                                     title="Collapse">
@@ -61,25 +61,49 @@
                             @endforeach
                         </div>
                         <div class="form-group">
-                            <label for="inputName">Preferences</label>
+                            <label for="inputName">Preferences</label><br>
                             @foreach(json_decode($data->quiz->first()->preferences, true) as $key => $value)
-                                <label for="inputName">{{ $key }}</label>
-                                <input type="text" id="inputName" class="form-control" value="{{ $value }}">
+                                @foreach($preferences_array as $key1 => $value1)
+                                    @if($key1 == $key)
+
+                                        @foreach($value1 as $value2)
+                                            @if($value2['id'] == $value)
+                                                <label for="inputName">{{ $key }}</label>
+                                                <input type="text" id="inputName" class="form-control"
+                                                       value="{{ $value2['name'] }}">
+                                            @endif
+                                        @endforeach
+
+                                    @endif
+                                @endforeach
+                                    @if($key == 'height')
+                                        <label for="inputName">{{ $key }}</label>
+                                        <input type="text" id="inputName" class="form-control"
+                                               value="{{ $value }}">
+                                    @endif
+                                <hr>
                             @endforeach
                         </div>
                         <div class="form-group">
                             <label for="inputName">Sizing info</label>
                             @foreach(json_decode($data->quiz->first()->sizing_info, true) as $key => $value)
-                                @foreach($value as $key => $value)
-                                <label for="inputName">{{ $key }}</label>
-                                <input type="text" id="inputName" class="form-control" value="{{ $value }}">
+
+                                    <label for="inputName">Sizing category - {{ \App\SizingCategory::query()->where('id', $value['sizing_category_id'])->first()->title ?? 'no name'}}</label>
+                                    <input type="text" id="inputName" class="form-control" value="{{ \App\Sizing::query()->where('id',$value['sizing_types'])->first()->title ?? 'no name'}}">
                                     <hr>
-                            @endforeach
                             @endforeach
                         </div>
                         <div class="form-group">
-                            <label for="inputName">Costs</label>
-                            <input type="text" id="inputName" class="form-control" value="AdminLTE">
+                            @foreach(json_decode($data->quiz->first()->costs, true) as $key => $value)
+                                @if($key == 'selectForm')
+                                    @foreach($value as $key1 => $value1)
+                                        <label for="inputName">Cost category - {{ \App\ClothesCategory::query()->where('id', $value1['category_id'])->first()->title ?? 'no name'}}</label>
+                                        <input type="text" id="inputName" class="form-control" value="{{ $value1['cost_from'] }} - {{ $value1['cost_to'] }}">
+                                        <hr>
+                                    @endforeach
+                                @endif
+
+                            @endforeach
                         </div>
                     </div>
                     <!-- /.card-body -->
@@ -139,7 +163,7 @@
                                     <td>{{ $products->size->title ?? '' }}</td>
                                     <td>{{ $products->color->name ?? '' }}</td>
                                     <td>{{ $products->count }}</td>
-                                    <td>${{ $products->price }}</td>
+                                    <td>${{ $products->count * $products->price }}</td>
                                     <td class="text-right py-0 align-middle">
                                         <div class="btn-group btn-group-sm">
                                             <a href="{{ route('order-products.edit', $products->id) }}"
