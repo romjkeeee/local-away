@@ -91,10 +91,10 @@ class OrderController extends Controller
             }
 
             foreach ($data[2] as $settings) {
-                $personal_style_ids = $settings;
+                $travel_purposes = $settings;
             }
             foreach ($data[3] as $settings) {
-                $travel_purposes = $settings;
+                $personal_style_ids = $settings;
 
             }
             foreach ($data[4] as $settings) {
