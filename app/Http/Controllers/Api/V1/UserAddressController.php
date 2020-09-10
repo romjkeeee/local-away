@@ -116,4 +116,34 @@ class UserAddressController extends Controller
             ], 404);
         }
     }
+
+    /**
+     * Set default address
+     *
+     * @authenticated required
+     * @response 204
+     *
+     */
+    public function set_default($id)
+    {
+        $user_address = auth()->user()->userAddress()->where('id', $id)->first();
+        if($user_address) {
+            if($user_address->update(['default' => true])) {
+                return response([
+                    'status' => 'success',
+                    'message' => 'Successful set'
+                ], 204);
+            }else{
+                return response([
+                    'status' => 'error',
+                    'message' => 'something wrong'
+                ], 422);
+            }
+        }else {
+            return response([
+                'status' => 'error',
+                'message' => 'Not found'
+            ], 422);
+        }
+    }
 }

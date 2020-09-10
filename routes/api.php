@@ -51,6 +51,7 @@ Route::group(['namespace' => 'Api\V1', 'as' => 'api.'], function () {
         Route::post('/delete/{id}', 'UserAddressController@delete');
         Route::post('/{id}/edit', 'UserAddressController@edit');
         Route::post('/create', 'UserAddressController@store');
+        Route::get('/set-default', 'UserAddressController@set_default');
     });
 
     //Products

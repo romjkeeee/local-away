@@ -30,6 +30,7 @@ class UpdateUserAddress extends FormRequest
             'state' => 'string',
             'country' => 'string',
             'apartment' => 'string',
+            'default' => 'boolean'
         ];
     }
 }
