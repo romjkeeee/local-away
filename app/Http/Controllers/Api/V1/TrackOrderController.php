@@ -29,7 +29,7 @@ class TrackOrderController extends Controller
     {
         $order = Order::query()->where('user_id', auth()->id())->where('id',$id)->first();
         if ($order){
-            if ($order->tracking_number) {
+            if (isset($order->tracking_number)) {
                 $track_status = Shipping::query()->where('tracking_number', $order->tracking_number)->first()->tracking_history;
             }else{
                 return response(['status' => 'error', 'message' => 'Tracking info not found'], 404);
