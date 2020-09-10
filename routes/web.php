@@ -71,6 +71,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::get('profile','UserController@adminProfile');
 });
 
-Route::get('stripe-checkout', function() {
-    return view('payments.stripe-checkout');
-});
+//Route::get('stripe-checkout', function() {
+//    return view('payments.stripe-checkout');
+//});
+Route::get('stripe-checkout', 'Admin\HomeController@stripe');

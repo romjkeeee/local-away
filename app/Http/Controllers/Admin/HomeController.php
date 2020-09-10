@@ -31,4 +31,9 @@ class HomeController extends Controller
     {
         return redirect('login');
     }
+
+    public function stripe()
+    {
+        return view('payments.stripe-checkout');
+    }
 }
