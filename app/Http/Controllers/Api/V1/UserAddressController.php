@@ -45,6 +45,7 @@ class UserAddressController extends Controller
      * @bodyParam state required string
      * @bodyParam country required string
      * @bodyParam apartment required string
+     * @bodyParam default boolean
      *
      * @authenticated required
      * @response 200
@@ -67,6 +68,7 @@ class UserAddressController extends Controller
      * @bodyParam state string
      * @bodyParam country string
      * @bodyParam apartment string
+     * @bodyParam default boolean
      *
      * @authenticated required
      * @response 200

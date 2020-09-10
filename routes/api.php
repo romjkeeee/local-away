@@ -47,11 +47,11 @@ Route::group(['namespace' => 'Api\V1', 'as' => 'api.'], function () {
 
     //User address
     Route::group(['prefix' => 'user-address'], function () {
+        Route::get('/set-default', 'UserAddressController@set_default');
         Route::get('/', 'UserAddressController@index');
         Route::post('/delete/{id}', 'UserAddressController@delete');
         Route::post('/{id}/edit', 'UserAddressController@edit');
         Route::post('/create', 'UserAddressController@store');
-        Route::get('/set-default', 'UserAddressController@set_default');
     });
 
     //Products

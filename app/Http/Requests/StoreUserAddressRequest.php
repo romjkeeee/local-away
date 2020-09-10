@@ -30,6 +30,7 @@ class StoreUserAddressRequest extends FormRequest
             'state' => 'nullable|string',
             'country' => 'required|string',
             'apartment' => 'required|string',
+            'default' => 'boolean'
         ];
     }
 }
