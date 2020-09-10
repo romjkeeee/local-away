@@ -14,10 +14,10 @@ use Illuminate\Http\Request;
  */
 class TrackOrderController extends Controller
 {
-//    public function __construct()
-//    {
-//        $this->middleware('auth:api');
-//    }
+    public function __construct()
+    {
+        $this->middleware('auth:api');
+    }
 
     /**
      * List
@@ -27,7 +27,7 @@ class TrackOrderController extends Controller
      */
     public function show($id)
     {
-        $order = Order::query()->where('user_id', 1)->where('id',$id)->first();
+        $order = Order::query()->where('user_id', auth()->id())->where('id',$id)->first();
         if ($order){
             if (isset($order->tracking_number) && $order->tracking_number != '') {
                 $track_status = Shipping::query()->where('tracking_number', $order->tracking_number)->first()->tracking_history;
