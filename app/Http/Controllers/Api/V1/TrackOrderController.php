@@ -30,12 +30,17 @@ class TrackOrderController extends Controller
         $order = Order::query()->where('user_id', auth()->id())->where('id',$id)->first();
         if ($order){
             if (isset($order->tracking_number) && $order->tracking_number != '') {
-                $track_status = Shipping::query()->where('tracking_number', $order->tracking_number)->first()->tracking_history;
+                $track_status = Shipping::query()->where('tracking_number', $order->tracking_number)->first();
+                if ($track_status){
+                    $tracking_history = $track_status->tracking_history;
+                }else{
+                    return response(['status' => 'error', 'message' => 'Tracking info not found'], 404);
+                }
             }else{
                 return response(['status' => 'error', 'message' => 'Tracking info not found'], 404);
             }
-            if ($track_status){
-                return response(['status' => 'success', 'data' => json_decode($track_status, true)]);
+            if ($tracking_history){
+                return response(['status' => 'success', 'data' => json_decode($tracking_history, true)]);
             }else{
                 return response(['status' => 'error', 'message' => 'Tracking info not found'], 404);
             }
