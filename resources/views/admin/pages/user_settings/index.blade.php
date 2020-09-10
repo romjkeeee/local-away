@@ -39,7 +39,7 @@
                         @foreach ($data as $user)
                             <tr>
                                 <td>{{ $user->id }}</td>
-                                <td>{{ $user->user->first_name . $user->user->first_name ?? '' }}</td>
+                                <td>{{ $user->user->first_name . ' ' . $user->user->last_name ?? '' }}</td>
                                 @foreach($preference['measurement'] as $data)
                                     @if($data['id'] == $user->measurement)
                                         <td style="width: 100%">{{ $data['name'] }}</td>
