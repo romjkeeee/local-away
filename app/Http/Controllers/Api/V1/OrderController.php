@@ -4,6 +4,7 @@
 namespace App\Http\Controllers\Api\V1;
 
 
+use App\Box;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RefundReqeust;
 use App\Http\Resources\OrderCollection;
@@ -76,10 +77,10 @@ class OrderController extends Controller
             $data = $request->all();
 //            $decoded_data = json_decode($data, true);
 
+            $travel_box = Box::query()->first();
             $order = new Order([
                 'user_id' => auth()->id(),
-                'sum' => 50,
-                'status_id' => 1
+                'sum' => $travel_box->price,
             ]);
             $order->save();
             foreach ($data[0] as $settings) {
