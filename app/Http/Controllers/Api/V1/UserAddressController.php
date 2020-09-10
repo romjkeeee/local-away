@@ -81,7 +81,7 @@ class UserAddressController extends Controller
                 'status' => 'success',
                 'data' => auth()->user()->userAddress()->where('id', $id)->first()->update($request->validated())
             ]);
-        }else{
+        } else {
             return response([
                 'status' => 'error',
                 'message' => 'Not found'
@@ -99,19 +99,19 @@ class UserAddressController extends Controller
     public function delete($id)
     {
         $user_address = auth()->user()->userAddress()->where('id', $id)->first();
-        if($user_address) {
-            if($user_address->update(['status' => 'hide'])) {
+        if ($user_address) {
+            if ($user_address->update(['status' => 'hide'])) {
                 return response([
                     'status' => 'success',
                     'message' => 'Successful deleted'
                 ], 204);
-            }else{
+            } else {
                 return response([
                     'status' => 'error',
                     'message' => 'something wrong'
                 ], 422);
             }
-        }else {
+        } else {
             return response([
                 'status' => 'error',
                 'message' => 'Not found'
@@ -129,19 +129,23 @@ class UserAddressController extends Controller
     public function set_default($id)
     {
         $user_address = auth()->user()->userAddress()->where('id', $id)->first();
-        if($user_address) {
-            if($user_address->update(['default' => true])) {
+        if ($user_address) {
+            $user_address_default = auth()->user()->userAddress()->where('default', true)->first();
+            if ($user_address_default) {
+                $user_address_default->update(['default' => false]);
+            }
+            if ($user_address->update(['default' => true])) {
                 return response([
                     'status' => 'success',
                     'message' => 'Successful set'
                 ], 200);
-            }else{
+            } else {
                 return response([
                     'status' => 'error',
                     'message' => 'something wrong'
                 ], 422);
             }
-        }else {
+        } else {
             return response([
                 'status' => 'error',
                 'message' => 'Not found'
