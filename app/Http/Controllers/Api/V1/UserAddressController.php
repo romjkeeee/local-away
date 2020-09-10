@@ -134,7 +134,7 @@ class UserAddressController extends Controller
                 return response([
                     'status' => 'success',
                     'message' => 'Successful set'
-                ], 204);
+                ], 200);
             }else{
                 return response([
                     'status' => 'error',
