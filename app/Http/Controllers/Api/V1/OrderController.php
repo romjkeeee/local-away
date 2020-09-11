@@ -164,7 +164,7 @@ class OrderController extends Controller
                 if (!$quiz_product) {
                     $travel_box = Box::query()->first();
                     $order = new Order([
-                        'user_id' => 1,
+                        'user_id' => auth()->id(),
                         'sum' => $travel_box->price,
                         'address_id' => $data['address_id']
                     ]);
