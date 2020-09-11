@@ -100,7 +100,7 @@ class OrderController extends Controller
                         $good_status[] = $quiz;
                     }
                 }
-                if (count($good_status) == count($order->quiz->get())) {
+                if (count($good_status) == count($order->quiz)) {
                     $order->update(['status_id' => 4]);
                     $order->update($request->validated());
                     foreach ($order->order_products_all as $product) {
