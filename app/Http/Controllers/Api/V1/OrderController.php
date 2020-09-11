@@ -81,6 +81,7 @@ class OrderController extends Controller
                 $order = new Order([
                     'user_id' => auth()->id(),
                     'sum' => $travel_box->price,
+                    'address_id' => $data['address_id']
                 ]);
                 $order->save();
                 foreach ($data['quiz'][0] as $settings) {
