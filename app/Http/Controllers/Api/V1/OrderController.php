@@ -191,7 +191,7 @@ class OrderController extends Controller
                     }
 
 
-                    $user_order->quiz()->update([
+                    $user_order->quiz()->create([
                         'date_city' => json_encode($date_city),
                         'body_type_id' => $body_type,
                         'package_type_id' => $package_type,
