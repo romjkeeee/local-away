@@ -136,6 +136,11 @@ class OrderController extends Controller
         $data = Order::query()->with('quiz', 'address', 'order_products.product', 'order_products.size', 'order_products.color')->where('id', $order->id)->first();
         if ($data->status_id == 2) {
             $data->update(['status_id' => 3]);
+            if ($data->quiz()){
+                foreach ($data->quiz() as $quiz){
+                    $quiz->update(['status_id'=>3]);
+                }
+            }
         }
         $products = Product::query()->where('status', 'active')->pluck('name', 'id');
         $preferences_array = array(
