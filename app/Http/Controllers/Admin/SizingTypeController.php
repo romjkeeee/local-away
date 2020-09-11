@@ -18,7 +18,7 @@ use Illuminate\View\View;
 class SizingTypeController extends Controller
 {
     function __construct() {
-        $this->middleware('role:admin|user');
+        $this->middleware('role:admin');
     }
 
     /**

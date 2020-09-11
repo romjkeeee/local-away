@@ -19,7 +19,7 @@ use Illuminate\Http\RedirectResponse;
 class CityController extends Controller
 {
     function __construct() {
-        $this->middleware('role:admin|user');
+        $this->middleware('role:admin');
     }
 
     /**

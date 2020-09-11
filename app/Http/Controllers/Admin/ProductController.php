@@ -25,7 +25,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 class ProductController extends Controller
 {
     function __construct() {
-        $this->middleware('role:admin|user');
+        $this->middleware('role:admin');
     }
 
     /**

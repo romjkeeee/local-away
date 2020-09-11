@@ -20,7 +20,7 @@ use Illuminate\View\View;
 class UserController extends Controller
 {
     function __construct() {
-        $this->middleware('role:admin|user');
+        $this->middleware('role:admin');
     }
 
     /**
