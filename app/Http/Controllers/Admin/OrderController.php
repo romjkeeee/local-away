@@ -86,10 +86,10 @@ class OrderController extends Controller
      */
     public function update(UpdateOrderReqeust $request, Order $order)
     {
-        $order->update($request->validated());
         if ($order->status_id == 2 || $order->status_id == 3) {
             if (!$order->quiz()) {
                 $order->update(['status_id' => 4]);
+                $order->update($request->validated());
                 foreach ($order->order_products_all as $product){
                     $product->update(['status_id'=>4]);
                 }
@@ -102,6 +102,7 @@ class OrderController extends Controller
                 }
                 if (count($good_status) == count($order->quiz()->get())){
                     $order->update(['status_id'=>4]);
+                    $order->update($request->validated());
                     foreach ($order->order_products_all as $product){
                         $product->update(['status_id'=>4]);
                     }
