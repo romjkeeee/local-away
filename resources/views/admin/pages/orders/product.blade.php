@@ -50,7 +50,7 @@
                             <label for="inputName">Personal style</label>
                             @foreach(json_decode($data->quiz->first()->personal_style_ids) as $personal_style)
                                 <input type="text" id="inputName" class="form-control"
-                                       value="{{ \App\PersonalStyle::find($personal_style)->title ?? ''}}" disabled>
+                                       value="{{ \App\PersonalStyle::find($personal_style)->title ?? 'no name'}}" disabled>
                             @endforeach
                         </div>
                         <div class="form-group">
@@ -81,6 +81,11 @@
                                         <input type="text" id="inputName" class="form-control"
                                                value="{{ $value }}" disabled>
                                     @endif
+                                    @if($key == 'body')
+                                        <label for="inputName">{{ $key }}</label>
+                                        <input type="text" id="inputName" class="form-control"
+                                               value="{{ \App\BodyType::query()->where('id', $value)->first()->title ?? 'no name' }}" disabled>
+                                    @endif
                                 <hr>
                             @endforeach
                         </div>
@@ -88,8 +93,9 @@
                             <label for="inputName">Sizing info</label>
                             @foreach(json_decode($data->quiz->first()->sizing_info, true) as $key => $value)
 
-                                    <label for="inputName">Sizing category - {{ \App\SizingCategory::query()->where('id', $value['sizing_category_id'])->first()->title ?? 'no name'}}</label>
-                                    <input type="text" id="inputName" class="form-control" value="{{ \App\Sizing::query()->where('id',$value['sizing_types'])->first()->title ?? 'no name'}}" disabled>
+                                    <label for="inputName">Sizing category - {{ \App\SizingCategory::query()->where('id', $value['sizing_category_id'])->first()->title ?? 'no name'}}</label><br>
+                                    <label for="inputName">Sizing Type - {{ \App\SizingType::query()->where('id',$value['sizing_types'])->first()->title ?? 'no name'}}</label>
+                                    <input type="text" id="inputName" class="form-control" value="{{ \App\Sizing::query()->where('id',$value['id'])->first()->title ?? 'no name'}}" disabled>
                                     <hr>
                             @endforeach
                         </div>
@@ -153,7 +159,6 @@
                                 <th>Color</th>
                                 <th>Count</th>
                                 <th>Price</th>
-                                <th>Price</th>
                                 <th></th>
                             </tr>
                             </thead>
@@ -164,12 +169,12 @@
                                     <td>{{ $products->size->title ?? '' }}</td>
                                     <td>{{ $products->color->name ?? '' }}</td>
                                     <td>{{ $products->count }}</td>
-                                    <td>${{ $products->count * $products->price }}</td>
+                                    <td>${{ $products->price }}</td>
                                     <td class="text-right py-0 align-middle">
                                         <div class="btn-group btn-group-sm">
                                             <a href="{{ route('order-products.edit', $products->id) }}"
-                                               class="btn btn-info"><i class="fas fa-eye"></i></a>
-                                            {{--                                <a href="{{ route('order-products.destroy', $products->id, ['method' => 'DELETE']) }}" class="btn btn-danger"><i class="fas fa-trash"></i></a>--}}
+                                               class="btn btn-info"><i class="fas fa-eye"></i>
+                                            </a>
                                             {{ Form::open(['method' => 'DELETE', 'route' => ['order-products.destroy', $products->id]]) }}
                                             {{ Form::button('<i class="fas fa-trash"></i>',
                                                 ['class' => 'btn btn-danger', 'type' => 'submit'] )  }}
