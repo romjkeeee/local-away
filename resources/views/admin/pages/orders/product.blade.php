@@ -50,7 +50,7 @@
                             <label for="inputName">Personal style</label>
                             @foreach(json_decode($data->quiz->first()->personal_style_ids) as $personal_style)
                                 <input type="text" id="inputName" class="form-control"
-                                       value="{{ \App\PersonalStyle::find($personal_style)->title }}" disabled>
+                                       value="{{ \App\PersonalStyle::find($personal_style)->title ?? ''}}" disabled>
                             @endforeach
                         </div>
                         <div class="form-group">
