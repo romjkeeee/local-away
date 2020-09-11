@@ -88,7 +88,7 @@ class OrderController extends Controller
     {
         $order->update($request->validated());
         if ($order->status_id == 2) {
-            $order->update(['status_id' => 3]);
+            $order->update(['status_id' => 4]);
         }
         return redirect()->route('orders.index');
     }
