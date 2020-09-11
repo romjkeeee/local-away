@@ -70,7 +70,7 @@
                                 <td>${{ $user->price }}</td>
                                 <td>{{ $user->boutique->name ?? '' }}</td>
                                 <td>{{ $user->gender->title ?? '' }}</td>
-                                <td style="text-align: center">@if($user->status == 'active')<i class="fas fa-toggle-on fa-2x"></i>@else<i class="fa fa-toggle-off fa-2x"></i>@endif</td>
+                                <td style="text-align: center">@if($user->status == 'active')<i class="fas fa fa-check 2x"></i>@else<i class="fas fa fa-times"></i>@endif</td>
                                 <x-action-buttons show="{{ route('products.show',[$user->id]) }}"
                                                   edit="{{ route('products.edit',[$user->id]) }}"></x-action-buttons>
                             </tr>

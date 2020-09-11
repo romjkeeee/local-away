@@ -50,7 +50,7 @@
                                 <td>{{ $user->facebook }}</td>
                                 <td>{{ $user->twitter }}</td>
 {{--                                <td><img class="img-thumbnail" src="{{ asset('storage/'.$user->photo) }}"></td>--}}
-                                <td style="text-align: center">@if($user->status == 'active')<i class="fas fa-toggle-on fa-2x"></i>@else<i class="fa fa-toggle-off fa-2x"></i>@endif</td>
+                                <td style="text-align: center">@if($user->status == 'active')<i class="fas fa fa-check 2x"></i>@else<i class="fas fa fa-times"></i>@endif</td>
                                 <x-action-buttons show="{{ route('founders.show',[$user->id]) }}"
                                                   edit="{{ route('founders.edit',[$user->id]) }}"></x-action-buttons>
                             </tr>
