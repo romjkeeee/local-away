@@ -84,7 +84,7 @@
                             <td>{{ $box->price }}</td>
                             <td>- - -</td>
                         </tr>
-                        <?php $total = 50; ?>
+                        <?php $total = $box->price; ?>
                     @else
                         <?php $total = 0; ?>
                     @endif
