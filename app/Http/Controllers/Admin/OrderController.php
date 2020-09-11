@@ -87,26 +87,26 @@ class OrderController extends Controller
     public function update(UpdateOrderReqeust $request, Order $order)
     {
         if ($order->status_id == 2 || $order->status_id == 3) {
-            if (!$order->quiz()) {
+            if (count($order->quiz) > 0) {
                 $order->update(['status_id' => 4]);
                 $order->update($request->validated());
-                foreach ($order->order_products_all as $product){
-                    $product->update(['status_id'=>4]);
+                foreach ($order->order_products_all as $product) {
+                    $product->update(['status_id' => 4]);
                 }
-            }else{
+            } else {
                 $good_status = [];
-                foreach ($order->quiz() as $quiz){
-                    if ($quiz->status_id == 3){
+                foreach ($order->quiz as $quiz) {
+                    if ($quiz->status_id == 3) {
                         $good_status[] = $quiz;
                     }
                 }
-                if (count($good_status) == count($order->quiz()->get())){
-                    $order->update(['status_id'=>4]);
+                if (count($good_status) == count($order->quiz->get())) {
+                    $order->update(['status_id' => 4]);
                     $order->update($request->validated());
-                    foreach ($order->order_products_all as $product){
-                        $product->update(['status_id'=>4]);
+                    foreach ($order->order_products_all as $product) {
+                        $product->update(['status_id' => 4]);
                     }
-                }else{
+                } else {
                     return redirect()->route('orders.index')->withErrors(['Quiz products must be loading']);
                 }
             }
@@ -136,9 +136,9 @@ class OrderController extends Controller
         $data = Order::query()->with('quiz', 'address', 'order_products.product', 'order_products.size', 'order_products.color')->where('id', $order->id)->first();
         if ($data->status_id == 2) {
             $data->update(['status_id' => 3]);
-            if ($data->quiz()){
-                foreach ($data->quiz() as $quiz){
-                    $quiz->update(['status_id'=>3]);
+            if (count($data->quiz)) {
+                foreach ($data->quiz as $quiz) {
+                    $quiz->update(['status_id' => 3]);
                 }
             }
         }
@@ -221,7 +221,8 @@ class OrderController extends Controller
             foreach ($request->product_ids as $product) {
                 $order->quiz_products()->create([
                     'product_id' => $product,
-                    'order_quiz_id' => $order->quiz->first()->id
+                    'order_quiz_id' => $order->quiz->first()->id,
+                    'status_id' => 3
                 ]);
             }
         }
