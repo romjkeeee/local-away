@@ -49,7 +49,7 @@ class ProductController extends Controller
         $gender = Gender::all()->pluck('title', 'id');
         $sizes = Sizing::all();
         $colors = Color::all();
-        $category = ProductCategory::all()->pluck('name','id');
+        $category = ProductCategory::query()->where('status',1)->pluck('name','id');
         $boutiques = Boutique::all()->pluck('name','id');
         return view('admin.pages.products.create', compact('gender','sizes','colors','category','boutiques'));
     }
