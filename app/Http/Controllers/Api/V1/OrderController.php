@@ -315,9 +315,8 @@ class OrderController extends Controller
                 }
             }
             if ($data['products']) {
+                $user_order->order_products()->delete();
                 foreach ($data['products'] as $product) {
-                    $order_product = OrderProduct::query()->where('order_id', $user_order->id)->where('product_id', $product['product_id'])->first();
-                    if (!$order_product) {
                         $user_order->order_products()->create([
                             'product_id' => $product['product_id'],
                             'size_id' => $product['size_id'],
@@ -325,14 +324,6 @@ class OrderController extends Controller
                             'count' => $product['count'],
                             'price' => $product['price'],
                         ]);
-                    } else {
-                        $order_product->update([
-                            'size_id' => $product['size_id'],
-                            'color_id' => $product['color_id'],
-                            'count' => $product['count'],
-                            'price' => $product['price'],
-                        ]);
-                    }
                 }
                 $user_order->update([
                     'sum' => $data['sum'],
