@@ -88,7 +88,27 @@ class OrderController extends Controller
     {
         $order->update($request->validated());
         if ($order->status_id == 2 || $order->status_id == 3) {
-            $order->update(['status_id' => 4]);
+            if (!$order->quiz()) {
+                $order->update(['status_id' => 4]);
+                foreach ($order->order_products_all as $product){
+                    $product->update(['status_id'=>4]);
+                }
+            }else{
+                $good_status = [];
+                foreach ($order->quiz() as $quiz){
+                    if ($quiz->status_id == 3){
+                        $good_status[] = $quiz;
+                    }
+                }
+                if (count($good_status) == count($order->quiz()->get())){
+                    $order->update(['status_id'=>4]);
+                    foreach ($order->order_products_all as $product){
+                        $product->update(['status_id'=>4]);
+                    }
+                }else{
+                    return redirect()->route('orders.index')->withErrors(['Quiz products must be loading']);
+                }
+            }
         }
         return redirect()->route('orders.index');
     }

@@ -18,6 +18,11 @@
 @stop
 
 @section('content')
+    @if(count($errors) > 0)
+        @foreach($errors->all() as $error)
+            <x-validation-error errors="{{ $error }}"></x-validation-error>
+        @endforeach
+    @endif
     <div class="primary">
         <p>
             <a href="{{ route('orders.index') }}" class="btn btn-default btn-sm">ALL ({{ \App\Order::query()->count() }})</a>
