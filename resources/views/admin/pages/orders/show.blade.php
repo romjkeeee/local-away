@@ -74,13 +74,14 @@
                     </thead>
                     <tbody>
                     @if(count($data->quiz))
+                        @php($box = \App\Box::query()->first())
                         <tr>
                             <td>Travel box</td>
                             <td></td>
                             <td></td>
                             <td>1</td>
-                            <td>$50</td>
-                            <td>$50</td>
+                            <td>{{ $box->price }}</td>
+                            <td>{{ $box->price }}</td>
                             <td>- - -</td>
                         </tr>
                         <?php $total = 50; ?>
