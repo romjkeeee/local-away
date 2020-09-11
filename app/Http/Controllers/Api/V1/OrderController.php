@@ -256,6 +256,12 @@ class OrderController extends Controller
                             'costs' => json_encode($costs),
                             'status_id' => 1,
                         ]);
+                        $user_order = new Order([
+                            'user_id' => auth()->id(),
+                            'sum' => $data['sum'],
+                            'address_id' => $data['address_id']
+                        ]);
+                        $user_order->save();
                     }
                 }else{
                     foreach ($data['quiz'][0] as $settings) {
