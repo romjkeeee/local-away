@@ -74,8 +74,8 @@
                     </tr>
                     </thead>
                     <tbody>
+                    <?php $total = 0; ?>
                     @if(count($data->quiz))
-                        <?php $total = 0; ?>
                         @php($box = \App\Box::query()->first())
                         @foreach($data->quiz as $quiz)
                         <tr>
