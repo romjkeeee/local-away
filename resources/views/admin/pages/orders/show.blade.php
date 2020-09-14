@@ -39,7 +39,7 @@
                 <address>
                     <strong>{{ $data->user->first_name. ' ' . $data->user->last_name ?? '' }}</strong><br>
                     {{ $data->address->address ?? '' }}<br>
-                    {{ $data->address->state ?? '' }},{{ $data->address->city ?? '' }}
+                    {{ $data->address->state ?? '' }},{{ $data->address->city->name ?? '' }}
                     , {{ $data->address->zip_code ?? '' }}<br>
                 </address>
             </div>
