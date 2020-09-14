@@ -8,6 +8,7 @@ use App\Box;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RefundReqeust;
 use App\Http\Resources\OrderCollection;
+use App\Http\Resources\OrderLast;
 use App\Http\Resources\OrderReturnCollection;
 use App\Order;
 use App\OrderProduct;
@@ -53,7 +54,7 @@ class OrderController extends Controller
         if ($order) {
             return response([
                 'status' => 'success',
-                'data' => OrderCollection::make($order)
+                'data' => OrderLast::make($order)
             ]);
         } else {
             return response([
