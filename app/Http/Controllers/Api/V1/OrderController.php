@@ -111,6 +111,10 @@ class OrderController extends Controller
                     'address_id' => $data['address_id']
                 ]);
                 $user_order->save();
+            }else{
+                if (count($user_order->quiz)){
+                    $user_order->quiz()->delete();
+                }
             }
             if ($data['products']) {
                 $this->products_create($data['products'], $user_order);
@@ -215,7 +219,7 @@ class OrderController extends Controller
             $costs = $settings;
         }
 
-
+        $order->quiz()->delete();
         $order->quiz()->create([
             'date_city' => json_encode($date_city),
             'body_type_id' => $body_type,
