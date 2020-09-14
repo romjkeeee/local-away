@@ -87,7 +87,7 @@
                             <td>${{ $box->price }}</td>
                             <td>{{ $quiz->status->name ?? '' }}</td>
                             <td>
-                            @if(count($data->quiz) && $data->status_id < 4)
+                            @if(count($data->quiz) && $data->status_id < 4 && $data->status_id != 1)
                                 <a class="btn btn-primary float-right" href="{{ route('orders.equip', $quiz->id) }}"><i
                                         class="fas fa-download"></i> Equip</a>
                             @endif
