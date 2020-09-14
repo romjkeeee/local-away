@@ -34,7 +34,7 @@
         <!-- info row -->
         <div class="row invoice-info">
             <!-- /.col -->
-            <div class="col-sm-6 invoice-col">
+            <div class="col-md-4 invoice-col">
                 To
                 <address>
                     <strong>{{ $data->user->first_name. ' ' . $data->user->last_name ?? '' }}</strong><br>
