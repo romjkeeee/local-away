@@ -12,4 +12,9 @@ class UserAddress extends Model
     {
         return $this->hasOne(User::class, 'id', 'user_id');
     }
+
+    public function cities()
+    {
+        return $this->hasOne(City::class, 'id', 'city');
+    }
 }

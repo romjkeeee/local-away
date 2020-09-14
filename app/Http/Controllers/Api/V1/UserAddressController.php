@@ -53,6 +53,10 @@ class UserAddressController extends Controller
      */
     public function store(StoreUserAddressRequest $request)
     {
+        $user_address_default = auth()->user()->userAddress()->where('default', true)->first();
+        if ($user_address_default) {
+            $user_address_default->update(['default' => false]);
+        }
         return response([
             'status' => 'success',
             'data' => auth()->user()->userAddress()->create($request->validated())
@@ -115,7 +119,7 @@ class UserAddressController extends Controller
             return response([
                 'status' => 'error',
                 'message' => 'Not found'
-            ], 404);
+            ], 422);
         }
     }
 

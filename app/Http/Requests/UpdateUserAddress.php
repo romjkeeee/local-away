@@ -26,7 +26,7 @@ class UpdateUserAddress extends FormRequest
         return [
             'address' => 'string',
             'zip_code' => 'numeric',
-            'city' => 'string',
+            'city' => 'exists:cities,id',
             'state' => 'string',
             'country' => 'string',
             'apartment' => 'string',

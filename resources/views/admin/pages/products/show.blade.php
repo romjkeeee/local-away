@@ -6,7 +6,7 @@
 
 @section('content')
     <div class="card card-secondary">
-        <x-card-header title="Create Body Type"></x-card-header>
+        <x-card-header title="Show product"></x-card-header>
         <!-- /.card-header -->
         <!-- form start -->
         <form role="form" action="">
@@ -39,16 +39,18 @@
                         <div class="form-group">
                         <div class="row-cols-3">
                         <span class="badge badge-primary badge-pill">{{ $color->name ?? ''}}</span><br>
-                        @foreach($data->colorImage()->where('color_id',$color->id)->get() as $image)
-                            <img style="height: 100px" class="img-thumbnail"
-                                 src="{{ $data->getMedia('images')->where('id',$image->media_id)->first()->getFullUrl()  }}"
-                                 disabled>
-                        @endforeach
+                                    @foreach($data->colorImage()->where('color_id',$color->id)->get() as $image)
+                                        <a href="{{ url('admin/image/'.$image->media_id.'/delete') }}"><i
+                                                class="fas fa-trash"></i></a>
+                                        <img style="height: 100px" class="img-thumbnail"
+                                             src="{{ $data->getMedia('images')->where('id',$image->media_id)->first()->getFullUrl()  }}"
+                                             disabled>
+                                    @endforeach
+                                </div>
+                            </div>
                     @endforeach
                 </div>
                 </div>
-                </div>
-            </div>
             <!-- /.card-body -->
             <a href="{{ route('products.index') }}" class="btn btn-default">Back to list</a>
         </form>

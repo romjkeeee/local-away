@@ -45,7 +45,7 @@
                                 <td>{{ $user->user->first_name ?? '' }}</td>
                                 <td style="width: 100%">{{ $user->address }}</td>
                                 <td>{{ $user->zip_code }}</td>
-                                <td>{{ $user->city }}</td>
+                                <td>{{ $user->cities->name ?? ''}}</td>
                                 <td>{{ $user->state }}</td>
                                 <td>{{ $user->country }}</td>
                                 <td>{{ $user->apartment }}</td>
