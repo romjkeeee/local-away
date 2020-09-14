@@ -41,6 +41,11 @@ class ShippoController extends Controller
                         $product->update(['status_id'=> 5]);
                     }
                 }
+                if ($order->quiz) {
+                    foreach ($order->quiz as $quiz) {
+                        $quiz->update(['status_id'=> 5]);
+                    }
+                }
             }
         } else {
             Shipping::query()->create([
