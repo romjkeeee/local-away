@@ -17,4 +17,9 @@ class UserAddress extends Model
     {
         return $this->hasOne(City::class, 'id', 'city');
     }
+
+    public function countries()
+    {
+        return $this->hasOne(Country::class, 'id', 'country');
+    }
 }
