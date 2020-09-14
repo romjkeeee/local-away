@@ -118,6 +118,10 @@ class OrderController extends Controller
                     'sum' => $data['sum'],
                     'address_id' => $data['address_id']
                 ]);
+            }else{
+                if ($user_order->order_prodicts){
+                    $user_order->order_prodicts()->delete();
+                }
             }
             $user_order->update([
                 'sum' => $data['sum'],
