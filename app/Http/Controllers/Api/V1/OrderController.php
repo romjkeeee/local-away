@@ -84,61 +84,12 @@ class OrderController extends Controller
                     'address_id' => $data['address_id']
                 ]);
                 $order->save();
-                foreach ($data['quiz'][0] as $settings) {
-                    $date_city = $settings;
-                }
-
-                foreach ($data['quiz'][1] as $settings) {
-                    $package_type = $settings;
-                }
-
-                foreach ($data['quiz'][2] as $settings) {
-                    $travel_purposes = $settings;
-                }
-                foreach ($data['quiz'][3] as $settings) {
-                    $personal_style_ids = $settings;
-
-                }
-                foreach ($data['quiz'][4] as $settings) {
-                    $styled_id = $settings;
-                }
-                foreach ($data['quiz'][5] as $settings) {
-                    $preferences = $settings;
-                    $body_type = $preferences['body'];
-                }
-                foreach ($data['quiz'][6] as $settings) {
-                    $sizing_info = $settings;
-                }
-                foreach ($data['quiz'][7] as $settings) {
-                    $costs = $settings;
-                }
-
-
-                $order->quiz()->create([
-                    'date_city' => json_encode($date_city),
-                    'body_type_id' => $body_type,
-                    'package_type_id' => $package_type,
-                    'personal_style_ids' => json_encode($personal_style_ids),
-                    'travel_purposes' => json_encode($travel_purposes),
-                    'styled_id' => json_encode($styled_id),
-                    'preferences' => json_encode($preferences),
-                    'sizing_info' => json_encode($sizing_info),
-                    'costs' => json_encode($costs),
-                    'status_id' => 1,
-                ]);
+                $this->quiz_create($data, $order);
             }
 
             if ($data['products']) {
                 if (isset($order)) {
-                    foreach ($data['products'] as $product) {
-                        $order->order_products()->create([
-                            'product_id' => $product['product_id'],
-                            'size_id' => $product['size_id'],
-                            'color_id' => $product['color_id'],
-                            'count' => $product['count'],
-                            'price' => $product['price'],
-                        ]);
-                    }
+                    $this->products_create($data['products'], $order);
                 } else {
                     $order = new Order([
                         'user_id' => auth()->id(),
@@ -146,81 +97,23 @@ class OrderController extends Controller
                         'address_id' => $data['address_id']
                     ]);
                     $order->save();
-                    foreach ($data['products'] as $product) {
-                        $order->order_products()->create([
-                            'product_id' => $product['product_id'],
-                            'size_id' => $product['size_id'],
-                            'color_id' => $product['color_id'],
-                            'count' => $product['count'],
-                            'price' => $product['price'],
-                        ]);
-                    }
+                    $this->products_create($data['products'], $order);
                 }
             }
 
             return response(['status' => 'success', 'message' => 'created'], 201);
         } else {
             if (count($data['quiz'])) {
-                    foreach ($data['quiz'][0] as $settings) {
-                        $date_city = $settings;
-                    }
-
-                    foreach ($data['quiz'][1] as $settings) {
-                        $package_type = $settings;
-                    }
-
-                    foreach ($data['quiz'][2] as $settings) {
-                        $travel_purposes = $settings;
-                    }
-                    foreach ($data['quiz'][3] as $settings) {
-                        $personal_style_ids = $settings;
-
-                    }
-                    foreach ($data['quiz'][4] as $settings) {
-                        $styled_id = $settings;
-                    }
-                    foreach ($data['quiz'][5] as $settings) {
-                        $preferences = $settings;
-                        $body_type = $preferences['body'];
-                    }
-                    foreach ($data['quiz'][6] as $settings) {
-                        $sizing_info = $settings;
-                    }
-                    foreach ($data['quiz'][7] as $settings) {
-                        $costs = $settings;
-                    }
-
-
-                    $user_order->quiz()->create([
-                        'date_city' => json_encode($date_city),
-                        'body_type_id' => $body_type,
-                        'package_type_id' => $package_type,
-                        'personal_style_ids' => json_encode($personal_style_ids),
-                        'travel_purposes' => json_encode($travel_purposes),
-                        'styled_id' => json_encode($styled_id),
-                        'preferences' => json_encode($preferences),
-                        'sizing_info' => json_encode($sizing_info),
-                        'costs' => json_encode($costs),
-                        'status_id' => 1,
-                    ]);
-                    $user_order->update([
-                        'user_id' => auth()->id(),
-                        'sum' => $data['sum'],
-                        'address_id' => $data['address_id']
-                    ]);
-                    $user_order->save();
+                $this->quiz_create($data, $user_order);
+                $user_order->update([
+                    'user_id' => auth()->id(),
+                    'sum' => $data['sum'],
+                    'address_id' => $data['address_id']
+                ]);
+                $user_order->save();
             }
             if ($data['products']) {
-                $user_order->order_products()->delete();
-                foreach ($data['products'] as $product) {
-                        $user_order->order_products()->create([
-                            'product_id' => $product['product_id'],
-                            'size_id' => $product['size_id'],
-                            'color_id' => $product['color_id'],
-                            'count' => $product['count'],
-                            'price' => $product['price'],
-                        ]);
-                }
+                $this->products_create($data['products'], $user_order);
                 $user_order->update([
                     'sum' => $data['sum'],
                     'address_id' => $data['address_id']
@@ -284,6 +177,66 @@ class OrderController extends Controller
             ]);
         } else {
             return response(['status' => 'error', 'message' => 'No refunds'], 404);
+        }
+    }
+
+    public function quiz_create($data, $order = null)
+    {
+        foreach ($data['quiz'][0] as $settings) {
+            $date_city = $settings;
+        }
+
+        foreach ($data['quiz'][1] as $settings) {
+            $package_type = $settings;
+        }
+
+        foreach ($data['quiz'][2] as $settings) {
+            $travel_purposes = $settings;
+        }
+        foreach ($data['quiz'][3] as $settings) {
+            $personal_style_ids = $settings;
+
+        }
+        foreach ($data['quiz'][4] as $settings) {
+            $styled_id = $settings;
+        }
+        foreach ($data['quiz'][5] as $settings) {
+            $preferences = $settings;
+            $body_type = $preferences['body'];
+        }
+        foreach ($data['quiz'][6] as $settings) {
+            $sizing_info = $settings;
+        }
+        foreach ($data['quiz'][7] as $settings) {
+            $costs = $settings;
+        }
+
+
+        $order->quiz()->create([
+            'date_city' => json_encode($date_city),
+            'body_type_id' => $body_type,
+            'package_type_id' => $package_type,
+            'personal_style_ids' => json_encode($personal_style_ids),
+            'travel_purposes' => json_encode($travel_purposes),
+            'styled_id' => json_encode($styled_id),
+            'preferences' => json_encode($preferences),
+            'sizing_info' => json_encode($sizing_info),
+            'costs' => json_encode($costs),
+            'status_id' => 1,
+        ]);
+    }
+
+    public function products_create($products, $order)
+    {
+        $order->order_products()->delete();
+        foreach ($products as $product) {
+            $order->order_products()->create([
+                'product_id' => $product['product_id'],
+                'size_id' => $product['size_id'],
+                'color_id' => $product['color_id'],
+                'count' => $product['count'],
+                'price' => $product['price'],
+            ]);
         }
     }
 }

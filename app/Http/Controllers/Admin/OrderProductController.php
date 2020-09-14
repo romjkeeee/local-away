@@ -77,7 +77,7 @@ class OrderProductController extends Controller
     public function update(UpdateOrderProductRequest $request, OrderProduct $order_product)
     {
         $order_product->update($request->validated());
-        return redirect()->route('orders.equip', $order_product->order_id);
+        return redirect()->route('orders.equip', $order_product->order_quiz_id);
     }
 
     /**

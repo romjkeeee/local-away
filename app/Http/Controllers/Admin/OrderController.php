@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\UpdateOrderReqeust;
 use App\Order;
+use App\OrderQuizSetting;
 use App\Product;
 use Illuminate\Http\Request;
 
@@ -103,6 +104,9 @@ class OrderController extends Controller
                 if (count($good_status) == count($order->quiz)) {
                     $order->update(['status_id' => 4]);
                     $order->update($request->validated());
+                    foreach ($order->quiz as $quiz){
+                        $quiz->update(['status_id' => 4]);
+                    }
                     foreach ($order->order_products_all as $product) {
                         $product->update(['status_id' => 4]);
                     }
@@ -131,14 +135,14 @@ class OrderController extends Controller
      * @param \App\Order $order
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function equip(Order $order)
+    public function equip($id)
     {
-        $data = Order::query()->with('quiz', 'address', 'order_products.product', 'order_products.size', 'order_products.color')->where('id', $order->id)->first();
-        if ($data->status_id == 2) {
-            $data->update(['status_id' => 3]);
-            if (count($data->quiz)) {
-                foreach ($data->quiz as $quiz) {
-                    $quiz->update(['status_id' => 3]);
+        $data = OrderQuizSetting::query()->with('quiz_products.product', 'quiz_products.size', 'quiz_products.color', 'order')->where('id', $id)->first();
+        if ($data) {
+            if ($data->status_id == 2) {
+                $data->update(['status_id' => 3]);
+                if ($data->order){
+                    $data->order->update(['status_id' => 3]);
                 }
             }
         }
@@ -214,14 +218,14 @@ class OrderController extends Controller
         return view('admin.pages.orders.product', compact('data', 'products', 'preferences_array'));
     }
 
-    public function store_equip(Order $order, Request $request)
+    public function store_equip($id, Request $request)
     {
-        $order = Order::query()->where('id', $order->id)->first();
+        $order = OrderQuizSetting::query()->where('id', $id)->first();
         if ($request->product_ids) {
             foreach ($request->product_ids as $product) {
                 $order->quiz_products()->create([
                     'product_id' => $product,
-                    'order_quiz_id' => $order->quiz->first()->id,
+                    'order_id' => $order->order_id,
                     'status_id' => 3
                 ]);
             }

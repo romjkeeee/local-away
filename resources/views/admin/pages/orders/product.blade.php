@@ -11,7 +11,7 @@
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
                     <li class="breadcrumb-item"><a href="{{ route('orders.index') }}">Orders</a></li>
-                    <li class="breadcrumb-item"><a href="{{ route('orders.show', $data->id) }}">Orders Show</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('orders.show', $data->order_id) }}">Orders Show</a></li>
                     <li class="breadcrumb-item active">Orders Equip</li>
                 </ol>
             </div>
@@ -20,7 +20,7 @@
 @stop
 
 @section('content')
-    @if($data->quiz)
+    @if($data)
         <div class="row">
             <div class="col-md-6">
                 <div class="card card-primary">
@@ -37,32 +37,32 @@
                         <div class="form-group">
                             <label for="inputName">Package type</label>
                             <input type="text" id="inputName" class="form-control"
-                                   value="{{ \App\PackageType::find($data->quiz->first()->package_type_id)->title ?? '' }}" disabled>
+                                   value="{{ \App\PackageType::find($data->package_type_id)->title ?? '' }}" disabled>
                         </div>
                         <div class="form-group">
                             <label for="inputName">Travel purposes</label>
-                            @foreach(json_decode($data->quiz->first()->travel_purposes) as $travel)
+                            @foreach(json_decode($data->travel_purposes) as $travel)
                                 <input type="text" id="inputName" class="form-control"
                                        value="{{ \App\TravelPurpose::find($travel)->title ?? ''}}" disabled>
                             @endforeach
                         </div>
                         <div class="form-group">
                             <label for="inputName">Personal style</label>
-                            @foreach(json_decode($data->quiz->first()->personal_style_ids) as $personal_style)
+                            @foreach(json_decode($data->personal_style_ids) as $personal_style)
                                 <input type="text" id="inputName" class="form-control"
                                        value="{{ \App\PersonalStyle::find($personal_style)->title ?? 'no name'}}" disabled>
                             @endforeach
                         </div>
                         <div class="form-group">
                             <label for="inputName">Styled</label>
-                            @foreach(json_decode($data->quiz->first()->styled_id) as $styled)
+                            @foreach(json_decode($data->styled_id) as $styled)
                                 <input type="text" id="inputName" class="form-control"
                                        value="{{ \App\Styled::find($styled)->title ?? ''}}" disabled>
                             @endforeach
                         </div>
                         <div class="form-group">
                             <label for="inputName">Preferences</label><br>
-                            @foreach(json_decode($data->quiz->first()->preferences, true) as $key => $value)
+                            @foreach(json_decode($data->preferences, true) as $key => $value)
                                 @foreach($preferences_array as $key1 => $value1)
                                     @if($key1 == $key)
 
@@ -91,7 +91,7 @@
                         </div>
                         <div class="form-group">
                             <label for="inputName">Sizing info</label>
-                            @foreach(json_decode($data->quiz->first()->sizing_info, true) as $key => $value)
+                            @foreach(json_decode($data->sizing_info, true) as $key => $value)
 
                                     <label for="inputName">Sizing category - {{ \App\SizingCategory::query()->where('id', $value['sizing_category_id'])->first()->title ?? 'no name'}}</label><br>
                                     <label for="inputName">Sizing Type - {{ \App\SizingType::query()->where('id',$value['sizing_types'])->first()->title ?? 'no name'}}</label>
@@ -100,7 +100,7 @@
                             @endforeach
                         </div>
                         <div class="form-group">
-                            @foreach(json_decode($data->quiz->first()->costs, true) as $key => $value)
+                            @foreach(json_decode($data->costs, true) as $key => $value)
                                 @if($key == 'selectForm')
                                     @foreach($value as $key1 => $value1)
                                         <label for="inputName">Cost category - {{ \App\ClothesCategory::query()->where('id', $value1['category_id'])->first()->title ?? 'no name'}}</label>

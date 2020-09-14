@@ -70,23 +70,31 @@
                         <th>Price</th>
                         <th>Subtotal</th>
                         <th>Status</th>
+                        <th></th>
                     </tr>
                     </thead>
                     <tbody>
                     @if(count($data->quiz))
+                        <?php $total = 0; ?>
                         @php($box = \App\Box::query()->first())
+                        @foreach($data->quiz as $quiz)
                         <tr>
                             <td>Travel box</td>
                             <td></td>
                             <td></td>
                             <td>1</td>
-                            <td>{{ $box->price }}</td>
-                            <td>{{ $box->price }}</td>
-                            <td>- - -</td>
+                            <td>${{ $box->price }}</td>
+                            <td>${{ $box->price }}</td>
+                            <td>{{ $quiz->status->name ?? '' }}</td>
+                            <td>
+                            @if(count($data->quiz) && $data->status_id < 4)
+                                <a class="btn btn-primary float-right" href="{{ route('orders.equip', $quiz->id) }}"><i
+                                        class="fas fa-download"></i> Equip</a>
+                            @endif
+                            </td>
                         </tr>
-                        <?php $total = $box->price; ?>
-                    @else
-                        <?php $total = 0; ?>
+                        <?php $total += $box->price; ?>
+                        @endforeach
                     @endif
                     @foreach($product as $products)
 
@@ -100,6 +108,7 @@
                             <td>${{ $products->price ?? ''}}</td>
                             <td>${{ $products->price * $products->count ?? ''}}</td>
                             <td>{{ $products->status->name ?? ''}}</td>
+                            <td></td>
                         </tr>
                     @endforeach
                     </tbody>
@@ -127,6 +136,10 @@
                             <th>Total:</th>
                             <td>${{$total}}</td>
                         </tr>
+                        <tr>
+                            <th>Sum from customer:</th>
+                            <td>${{$data->sum}}</td>
+                        </tr>
                         </tbody>
                     </table>
                 </div>
@@ -135,14 +148,6 @@
         </div>
         <!-- /.row -->
 
-        <!-- this row will not appear when printing -->
-        <div class="row no-print">
-            <div class="col-12">
-                @if(count($data->quiz) && $data->status_id < 4)
-                    <a class="btn btn-primary float-right" href="{{ route('orders.equip', $data->id) }}"><i
-                            class="fas fa-download"></i> Equip</a>
-                @endif
-            </div>
-        </div>
+
     </div>
 @stop
