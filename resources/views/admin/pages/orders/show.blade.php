@@ -37,8 +37,9 @@
             <div class="col-sm-4 invoice-col">
                 To
                 <address>
-                    @dd($data->address->country)
-                    @php($country = \App\Country::query()->where('id',$data->address->country)->first())
+                    @if($data->address->country)
+                        @php($country = \App\Country::query()->where('id',$data->address->country)->first())
+                    @endif
                     <strong>{{ $data->user->first_name. ' ' . $data->user->last_name ?? '' }}</strong><br>
                     {{ $data->address->address ?? '' }}, {{ $data->address->apartment ?? '' }}<br>
                     {{ isset($country) ? $country->name  : '' }}, {{ \App\City::query()->where('id',$data->address->city)->first()->name ?? '' }}<br>
