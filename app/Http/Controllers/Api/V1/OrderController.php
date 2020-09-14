@@ -119,8 +119,8 @@ class OrderController extends Controller
                     'address_id' => $data['address_id']
                 ]);
             }else{
-                if ($user_order->order_prodicts){
-                    $user_order->order_prodicts()->delete();
+                if ($user_order->order_products){
+                    $user_order->order_products()->delete();
                 }
             }
             $user_order->update([
