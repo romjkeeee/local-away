@@ -20,6 +20,7 @@ class OrderLast extends JsonResource
             'sum' => $this->sum,
             'products' => ProductCollection::make($this->order_products) ?? [],
             'quiz' => $this->quiz ?? [],
+            'address_id' => $this->address_id,
 //            'quiz_products' => $this->status_id == 5 ? ProductCollection::make($this->quiz_products) : [],
             'created_at' => $this->created_at
         ];
