@@ -196,13 +196,13 @@ class OrderController extends Controller
             $order->quiz()->create([
                 'date_city' => $quiz['date_city'],
                 'body_type_id' => $quiz['body_type_id'],
-                'package_type_id' => $quiz['package_type'],
-                'personal_style_ids' => $quiz['personal_style'],
+                'package_type_id' => $quiz['package_type_id'],
+                'personal_style_ids' => $quiz['personal_style_ids'],
                 'travel_purposes' => $quiz['travel_purposes'],
-                'styled_id' => $quiz['styled'],
+                'styled_id' => $quiz['styled_id'],
                 'preferences' => $quiz['preferences'],
                 'sizing_info' => $quiz['sizing_info'],
-                'costs' => $quiz['budgets'],
+                'costs' => $quiz['costs'],
                 'status_id' => 1,
             ]);
         }
