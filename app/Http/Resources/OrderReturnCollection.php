@@ -17,8 +17,10 @@ class OrderReturnCollection extends JsonResource
     {
         $price_product = 0;
         if (count($this->order_products_all)) {
-            foreach ($this->order_products_all->where('status_id','>=',6)->get() as $product) {
-                $price_product += $product->price * $product->count;
+            foreach ($this->order_products_all as $product) {
+                if ($product->return) {
+                    $price_product += $product->price * $product->count;
+                }
             }
         }
 
