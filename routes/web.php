@@ -19,6 +19,7 @@ Auth::routes();
 
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::get('home', 'HomeController@index')->name('home');
+    Route::get('logout', 'HomeController@logout');
 
     Route::resource('users', 'UserController');
     Route::resource('package-types', 'PackageTypeController');

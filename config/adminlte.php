@@ -468,6 +468,11 @@ return [
             'url'  => 'admin/change_password',
             'icon' => 'fas fa-fw fa-lock',
         ],
+        [
+            'text' => 'Logout',
+            'url'  => 'admin/logout',
+            'icon' => 'fas fa-fw fa-power-off',
+        ],
     ],
 
     /*
