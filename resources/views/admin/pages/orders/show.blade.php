@@ -75,6 +75,7 @@
                         <th>Count</th>
                         <th>Price</th>
                         <th>Subtotal</th>
+                        <th>Gift</th>
                         <th>Status</th>
                         <th></th>
                     </tr>
@@ -92,6 +93,7 @@
                                 <td>${{ $box->price }}</td>
                                 <td>${{ $box->price }}</td>
                                 <td>{{ $quiz->status->name ?? '' }}</td>
+                                <td>{{ $quiz->as_gift ? 'Yes' : 'No' }}</td>
                                 <td>
                                     @if(count($data->quiz) && $data->status_id < 4 && $data->status_id != 1)
                                         <a class="btn btn-primary float-right"

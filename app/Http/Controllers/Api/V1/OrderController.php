@@ -203,6 +203,7 @@ class OrderController extends Controller
                 'preferences' => $quiz['preferences'],
                 'sizing_info' => $quiz['sizing_info'],
                 'costs' => $quiz['costs'],
+                'as_gift' => $quiz['as_gift'],
                 'status_id' => 1,
             ]);
         }
