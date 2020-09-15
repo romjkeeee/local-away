@@ -120,10 +120,11 @@
                                 @endif
                                 @if($key == 'text')
 
-                                            <label for="inputName">Text</label>
+                                    <label for="inputName">Text</label>
 
-                                        <textarea class="form-control" name="" id="" cols="30" rows="10" disabled>{{ $value }}</textarea>
-                                            <hr>
+                                    <textarea class="form-control" name="" id="" cols="30" rows="10"
+                                              disabled>{{ $value }}</textarea>
+                                    <hr>
                                 @endif
 
 
@@ -158,13 +159,24 @@
                     </div>
                     <!-- /.card-body -->
                 </div>
-                <div class="form-control">
-                @foreach($data->quiz_products as $product)
-                    @if(isset($product->price) && isset($product->count))
-                        {{ $data = $product->price + $product->count }}
-                    @endif
-                @endforeach
-            </div>
+                    @php($counters = 0)
+                    @foreach($data->quiz_products as $product)
+                        @if(isset($product->price) && isset($product->count))
+                            @php($counters += $product->price * $product->count)
+                        @else
+                            @php($counters += 0)
+                        @endif
+                    @endforeach
+                    @php($pref = json_decode($data->costs, true))
+                    <?php $percentChange = round($counters / ($pref['all_cost_to'] / 100),2); ?>
+
+                <div class="progress-group">
+                        Add Products to Quiz
+                        <span class="float-right"><b>${{$counters}}</b>/${{ $pref['all_cost_to'] }}</span>
+                        <div class="progress progress-sm">
+                            <div class="progress-bar bg-primary" style="width: <?=$percentChange ?>%"></div>
+                        </div>
+                    </div>
                 <!-- /.card -->
                 <div class="card card-info">
                     <div class="card-header">
