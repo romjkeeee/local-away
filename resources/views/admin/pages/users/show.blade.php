@@ -27,7 +27,7 @@
                 </div>
                 <div class="form-group">
                     <label>Preview image</label>
-                    <img style="height: 100px" class="img-thumbnail" src="{{ asset('storage/'.$data->avatar) }}" disabled>
+                    <img style="height: 100px" class="img-thumbnail" src="{{ asset('storage/'.$user->avatar) }}" disabled>
                 </div>
                 <div class="form-group">
                     <label>Role</label>
