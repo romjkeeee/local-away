@@ -9,6 +9,7 @@ use App\Http\Requests\Admin\StoreBoutiqe;
 use App\Http\Requests\Admin\UpdateBoutique;
 use App\Http\Requests\AdminStoreGender;
 use App\Http\Requests\AdminUpdateGender;
+use App\Product;
 use Illuminate\Contracts\View\View;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -89,6 +90,14 @@ class BoutiqueController extends Controller
     {
         if ($boutique->update($request->validated()))
         {
+            if ($boutique->status == 0){
+                $products = Product::query()->where('boutiques_id',$boutique->id)->get();
+                if ($products) {
+                    foreach ($products as $product) {
+                        $product->update(['status' => 'disable']);
+                    }
+                }
+            }
             return redirect()->route('boutiques.index');
         }
     }

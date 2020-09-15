@@ -193,45 +193,46 @@ class OrderController extends Controller
     {
         $order->quiz()->delete();
         foreach ($data['quiz'] as $quiz) {
-            foreach ($quiz[0] as $settings) {
-                $date_city = $settings;
+//            foreach ($quiz[0] as $settings) {
+//                $date_city = $settings;
+//            }
+//
+//            foreach ($quiz[1] as $settings) {
+//                $package_type = $settings;
+//            }
+//
+//            foreach ($quiz[2] as $settings) {
+//                $travel_purposes = $settings;
+//            }
+//            foreach ($quiz[3] as $settings) {
+//                $personal_style_ids = $settings;
+//
+//            }
+//            foreach ($quiz[4] as $settings) {
+//                $styled_id = $settings;
+//            }
+            foreach ($quiz['preferences'] as $key => $value) {
+                if ($key == 'body') {
+                    $body_type = $value;
+                }
             }
-
-            foreach ($quiz[1] as $settings) {
-                $package_type = $settings;
-            }
-
-            foreach ($quiz[2] as $settings) {
-                $travel_purposes = $settings;
-            }
-            foreach ($quiz[3] as $settings) {
-                $personal_style_ids = $settings;
-
-            }
-            foreach ($quiz[4] as $settings) {
-                $styled_id = $settings;
-            }
-            foreach ($quiz[5] as $settings) {
-                $preferences = $settings;
-                $body_type = $preferences['body'];
-            }
-            foreach ($quiz[6] as $settings) {
-                $sizing_info = $settings;
-            }
-            foreach ($quiz[7] as $settings) {
-                $costs = $settings;
-            }
+//            foreach ($quiz[6] as $settings) {
+//                $sizing_info = $settings;
+//            }
+//            foreach ($quiz[7] as $settings) {
+//                $costs = $settings;
+//            }
 
             $order->quiz()->create([
-                'date_city' => json_encode($date_city),
+                'date_city' => json_encode($quiz['dateCity']),
                 'body_type_id' => $body_type,
-                'package_type_id' => $package_type,
-                'personal_style_ids' => json_encode($personal_style_ids),
-                'travel_purposes' => json_encode($travel_purposes),
-                'styled_id' => json_encode($styled_id),
-                'preferences' => json_encode($preferences),
-                'sizing_info' => json_encode($sizing_info),
-                'costs' => json_encode($costs),
+                'package_type_id' => $quiz['package_type'],
+                'personal_style_ids' => json_encode($quiz['personal_style']),
+                'travel_purposes' => json_encode($quiz['travel_purposes']),
+                'styled_id' => json_encode($quiz['styled']),
+                'preferences' => json_encode($quiz['preferences']),
+                'sizing_info' => json_encode($quiz['sizing_info']),
+                'costs' => json_encode($quiz['budgets']),
                 'status_id' => 1,
             ]);
         }
