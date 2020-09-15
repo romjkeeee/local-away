@@ -115,7 +115,7 @@
                             <td>${{ $products->price ?? ''}}</td>
                             <td>${{ $products->price * $products->count ?? ''}}</td>
                             <td>{{ $products->status->name ?? ''}}</td>
-                            <td></td>
+                            <td>{{ $products->product->status == 'disable' && $data->status_id <= 3? 'Attention this product is disable' : '' }}</td>
                         </tr>
                     @endforeach
                     </tbody>
