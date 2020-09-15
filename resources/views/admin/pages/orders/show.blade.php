@@ -37,12 +37,15 @@
             <div class="col-sm-4 invoice-col">
                 To
                 <address>
-                    @if($data->address->country)
+                    @if(isset($data->address->country))
                         @php($country = \App\Country::query()->where('id',$data->address->country)->first())
+                    @endif
+                    @if(isset($data->address->city))
+                        @php($city = \App\City::query()->where('id',$data->address->city)->first())
                     @endif
                     <strong>{{ $data->user->first_name. ' ' . $data->user->last_name ?? '' }}</strong><br>
                     {{ $data->address->address ?? '' }}, {{ $data->address->apartment ?? '' }}<br>
-                    {{ isset($country) ? $country->name  : '' }}, {{ \App\City::query()->where('id',$data->address->city)->first()->name ?? '' }}<br>
+                    {{ isset($country) ? $country->name  : 'no data' }}, {{ isset($city) ? $city->name : 'no data' }}<br>
                     {{ $data->address->zip_code ?? '' }}<br>
                 </address>
             </div>
@@ -81,22 +84,23 @@
                     @if(count($data->quiz))
                         @php($box = \App\Box::query()->first())
                         @foreach($data->quiz as $quiz)
-                        <tr>
-                            <td>Travel box</td>
-                            <td></td>
-                            <td></td>
-                            <td>1</td>
-                            <td>${{ $box->price }}</td>
-                            <td>${{ $box->price }}</td>
-                            <td>{{ $quiz->status->name ?? '' }}</td>
-                            <td>
-                            @if(count($data->quiz) && $data->status_id < 4 && $data->status_id != 1)
-                                <a class="btn btn-primary float-right" href="{{ route('orders.equip', $quiz->id) }}"><i
-                                        class="fas fa-download"></i> Equip</a>
-                            @endif
-                            </td>
-                        </tr>
-                        <?php $total += $box->price; ?>
+                            <tr>
+                                <td>Travel box</td>
+                                <td></td>
+                                <td></td>
+                                <td>1</td>
+                                <td>${{ $box->price }}</td>
+                                <td>${{ $box->price }}</td>
+                                <td>{{ $quiz->status->name ?? '' }}</td>
+                                <td>
+                                    @if(count($data->quiz) && $data->status_id < 4 && $data->status_id != 1)
+                                        <a class="btn btn-primary float-right"
+                                           href="{{ route('orders.equip', $quiz->id) }}"><i
+                                                class="fas fa-download"></i> Equip</a>
+                                    @endif
+                                </td>
+                            </tr>
+                            <?php $total += $box->price; ?>
                         @endforeach
                     @endif
                     @foreach($product as $products)
