@@ -11,7 +11,8 @@
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
                     <li class="breadcrumb-item"><a href="{{ route('orders.index') }}">Orders</a></li>
-                    <li class="breadcrumb-item"><a href="{{ route('orders.show', $data->order_id) }}">Orders Show</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('orders.show', $data->order_id) }}">Orders Show</a>
+                    </li>
                     <li class="breadcrumb-item active">Orders Equip</li>
                 </ol>
             </div>
@@ -50,7 +51,8 @@
                             <label for="inputName">Personal style</label>
                             @foreach(json_decode($data->personal_style_ids) as $personal_style)
                                 <input type="text" id="inputName" class="form-control"
-                                       value="{{ \App\PersonalStyle::find($personal_style)->title ?? 'no name'}}" disabled>
+                                       value="{{ \App\PersonalStyle::find($personal_style)->title ?? 'no name'}}"
+                                       disabled>
                             @endforeach
                         </div>
                         <div class="form-group">
@@ -76,38 +78,55 @@
 
                                     @endif
                                 @endforeach
-                                    @if($key == 'height')
-                                        <label for="inputName">{{ $key }}</label>
-                                        <input type="text" id="inputName" class="form-control"
-                                               value="{{ $value }}" disabled>
-                                    @endif
-                                    @if($key == 'body')
-                                        <label for="inputName">{{ $key }}</label>
-                                        <input type="text" id="inputName" class="form-control"
-                                               value="{{ \App\BodyType::query()->where('id', $value)->first()->title ?? 'no name' }}" disabled>
-                                    @endif
+                                @if($key == 'height')
+                                    <label for="inputName">{{ $key }}</label>
+                                    <input type="text" id="inputName" class="form-control"
+                                           value="{{ $value }}" disabled>
+                                @endif
+                                @if($key == 'body')
+                                    <label for="inputName">{{ $key }}</label>
+                                    <input type="text" id="inputName" class="form-control"
+                                           value="{{ \App\BodyType::query()->where('id', $value)->first()->title ?? 'no name' }}"
+                                           disabled>
+                                @endif
                                 <hr>
                             @endforeach
                         </div>
                         <div class="form-group">
-                            <label for="inputName">Sizing info</label>
+                            <label for="inputName">Sizing info</label><br>
                             @foreach(json_decode($data->sizing_info, true) as $key => $value)
 
-                                    <label for="inputName">Sizing category - {{ \App\SizingCategory::query()->where('id', $value['sizing_category_id'])->first()->title ?? 'no name'}}</label><br>
-                                    <label for="inputName">Sizing Type - {{ \App\SizingType::query()->where('id',$value['sizing_types'])->first()->title ?? 'no name'}}</label>
-                                    <input type="text" id="inputName" class="form-control" value="{{ \App\Sizing::query()->where('id',$value['id'])->first()->title ?? 'no name'}}" disabled>
-                                    <hr>
+                                <label for="inputName">Sizing category
+                                    - {{ \App\SizingCategory::query()->where('id', $value['sizing_category_id'])->first()->title ?? 'no name'}}</label>
+                                <br>
+                                <label for="inputName">Sizing Type
+                                    - {{ \App\SizingType::query()->where('id',$value['sizing_types'])->first()->title ?? 'no name'}}</label>
+                                <input type="text" id="inputName" class="form-control"
+                                       value="{{ \App\Sizing::query()->where('id',$value['id'])->first()->title ?? 'no name'}}"
+                                       disabled>
+                                <hr>
                             @endforeach
                         </div>
                         <div class="form-group">
                             @foreach(json_decode($data->costs, true) as $key => $value)
                                 @if($key == 'selectForm')
                                     @foreach($value as $key1 => $value1)
-                                        <label for="inputName">Cost category - {{ \App\ClothesCategory::query()->where('id', $value1['category_id'])->first()->title ?? 'no name'}}</label>
-                                        <input type="text" id="inputName" class="form-control" value="{{ $value1['cost_from'] }} - {{ $value1['cost_to'] }}" disabled>
+                                        <label for="inputName">Cost category
+                                            - {{ \App\ClothesCategory::query()->where('id', $value1['category_id'])->first()->title ?? 'no name'}}</label>
+                                        <input type="text" id="inputName" class="form-control"
+                                               value="{{ $value1['cost_from'] }} - {{ $value1['cost_to'] }}" disabled>
                                         <hr>
                                     @endforeach
                                 @endif
+                                @if($key == 'text')
+
+                                            <label for="inputName">Text</label>
+
+                                        <textarea class="form-control" name="" id="" cols="30" rows="10" disabled>{{ $value }}</textarea>
+                                            <hr>
+                                @endif
+
+
 
                             @endforeach
                         </div>

@@ -26,7 +26,7 @@ class UpdateUserInfo extends FormRequest
         return [
             'first_name' => 'string',
             'last_name' => 'string',
-            'email' => 'string|email'
+            'email' => 'string|email|unique:users,email,'.auth()->id()
         ];
     }
 }
