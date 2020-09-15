@@ -21,6 +21,7 @@ class ProductCollection extends ResourceCollection
                 $image = $item->product->getMedia('images')->where('id', $media->media_id)->first()->getFullUrl();
             }
             $data[] = $item->product;
+            $item->product['price'] = $item->price;
             $item->product['count'] = $item->count;
             $item->product['order_product_id'] = $item->id;
             $item->product['color_id'] = $item->color_id;
