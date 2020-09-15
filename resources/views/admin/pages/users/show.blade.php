@@ -7,7 +7,7 @@
 @section('content')
     <div class="card card-secondary">
         <div class="card-header">
-            <h3 class="card-title">Users</h3>
+            <h3 class="card-title">Users Show</h3>
         </div>
         <!-- /.card-header -->
         <!-- form start -->
@@ -24,6 +24,10 @@
                 <div class="form-group">
                     <label>Email</label>
                     <input class="form-control" value="{{ $user->email }}" disabled>
+                </div>
+                <div class="form-group">
+                    <label>Preview image</label>
+                    <img style="height: 100px" class="img-thumbnail" src="{{ asset('storage/'.$data->avatar) }}" disabled>
                 </div>
                 <div class="form-group">
                     <label>Role</label>
