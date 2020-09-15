@@ -159,24 +159,30 @@
                     </div>
                     <!-- /.card-body -->
                 </div>
-                    @php($counters = 0)
-                    @foreach($data->quiz_products as $product)
-                        @if(isset($product->price) && isset($product->count))
-                            @php($counters += $product->price * $product->count)
-                        @else
-                            @php($counters += 0)
-                        @endif
-                    @endforeach
-                    @php($pref = json_decode($data->costs, true))
-                    <?php $percentChange = round($counters / ($pref['all_cost_to'] / 100),2); ?>
-
-                <div class="progress-group">
-                        Add Products to Quiz
-                        <span class="float-right"><b>${{$counters}}</b>/${{ $pref['all_cost_to'] }}</span>
-                        <div class="progress progress-sm">
-                            <div class="progress-bar bg-primary" style="width: <?=$percentChange ?>%"></div>
-                        </div>
+                @php($counters = 0)
+                @foreach($data->quiz_products as $product)
+                    @if(isset($product->price) && isset($product->count))
+                        @php($counters += $product->price * $product->count)
+                    @else
+                        @php($counters += 0)
+                    @endif
+                @endforeach
+                @php($pref = json_decode($data->costs, true))
+                <?php $percentChange = round($counters / ($pref['all_cost_to'] / 100), 2); ?>
+                @if($counters > $pref['all_cost_to'])
+                    <div class="alert alert-warning alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        <h5><i class="icon fas fa-exclamation-triangle"></i> Alert!</h5>
+                        Attention! You have exceeded the client's budget! Please delete unnecessary items!
                     </div>
+                @endif
+                <div class="progress-group">
+                    Add Products to Quiz
+                    <span class="float-right"><b>${{$counters}}</b>/${{ $pref['all_cost_to'] }}</span>
+                    <div class="progress progress-sm">
+                        <div class="progress-bar bg-primary" style="width: <?=$percentChange ?>%"></div>
+                    </div>
+                </div>
                 <!-- /.card -->
                 <div class="card card-info">
                     <div class="card-header">
