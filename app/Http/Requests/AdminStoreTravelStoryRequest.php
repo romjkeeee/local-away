@@ -29,6 +29,7 @@ class AdminStoreTravelStoryRequest extends FormRequest
             'preview_image' => 'required|image|mimes:jpeg,png,jpg',
             'full_image_path' => 'required|image|mimes:jpeg,png,jpg',
             'is_to_homepage' => 'required|boolean',
+            'active' => 'boolean',
             'product_ids' => 'required|exists:products,id',
         ];
     }

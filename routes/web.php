@@ -70,6 +70,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::resource('documents', 'DocumentController');
 
     Route::get('profile','UserController@adminProfile');
+    Route::get('edit-profile','UserController@adminEdit');
 });
 
 //Route::get('stripe-checkout', function() {

@@ -465,7 +465,7 @@ return [
         ],
         [
             'text' => 'change_password',
-            'url'  => 'admin/change_password',
+            'url'  => 'admin/edit-profile',
             'icon' => 'fas fa-fw fa-lock',
         ],
         [

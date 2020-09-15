@@ -131,4 +131,10 @@ class UserController extends Controller
         $user = auth()->user();
         return redirect()->route('users.show', $user->id);
     }
+
+    public function adminEdit()
+    {
+        $user = auth()->user();
+        return redirect()->route('users.edit', $user->id);
+    }
 }
