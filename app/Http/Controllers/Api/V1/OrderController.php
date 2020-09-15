@@ -194,7 +194,7 @@ class OrderController extends Controller
         $order->quiz()->delete();
         foreach ($data['quiz'] as $quiz) {
             $order->quiz()->create([
-                'date_city' => $quiz['dateCity'],
+                'date_city' => $quiz['date_city'],
                 'body_type_id' => $quiz['body_type_id'],
                 'package_type_id' => $quiz['package_type'],
                 'personal_style_ids' => $quiz['personal_style'],
