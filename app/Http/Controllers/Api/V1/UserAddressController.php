@@ -156,4 +156,19 @@ class UserAddressController extends Controller
             ], 422);
         }
     }
+
+    /**
+     * get default address
+     *
+     * @authenticated required
+     * @response 200
+     *
+     */
+    public function get_default()
+    {
+        return response([
+            'status' => 'error',
+            'data' => auth()->user()->userAddress()->where('default', true)->first()
+        ]);
+    }
 }

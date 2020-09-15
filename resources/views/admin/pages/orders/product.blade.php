@@ -158,6 +158,13 @@
                     </div>
                     <!-- /.card-body -->
                 </div>
+                <div class="form-control">
+                @foreach($data->quiz_products as $product)
+                    @if(isset($product->price) && isset($product->count))
+                        {{ $data = $product->price + $product->count }}
+                    @endif
+                @endforeach
+            </div>
                 <!-- /.card -->
                 <div class="card card-info">
                     <div class="card-header">
@@ -169,6 +176,7 @@
                                 <i class="fas fa-minus"></i></button>
                         </div>
                     </div>
+
                     <div class="card-body p-0">
                         <table class="table">
                             <thead>

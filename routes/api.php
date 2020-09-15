@@ -48,6 +48,7 @@ Route::group(['namespace' => 'Api\V1', 'as' => 'api.'], function () {
     //User address
     Route::group(['prefix' => 'user-address'], function () {
         Route::get('/set-default/{id}', 'UserAddressController@set_default');
+        Route::get('/get-default', 'UserAddressController@get_default');
         Route::get('/', 'UserAddressController@index');
         Route::post('/delete/{id}', 'UserAddressController@delete');
         Route::post('/{id}/edit', 'UserAddressController@edit');
