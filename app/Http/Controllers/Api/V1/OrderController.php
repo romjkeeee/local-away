@@ -191,6 +191,7 @@ class OrderController extends Controller
 
     public function quiz_create($data, $order = null)
     {
+        $travel_box = Box::query()->first();
         $order->quiz()->delete();
         foreach ($data['quiz'] as $quiz) {
             $order->quiz()->create([
@@ -204,6 +205,7 @@ class OrderController extends Controller
                 'sizing_info' => $quiz['sizing_info'],
                 'costs' => $quiz['costs'],
                 'as_gift' => $quiz['as_gift'],
+                'price' => $travel_box->price,
                 'status_id' => 1,
             ]);
         }

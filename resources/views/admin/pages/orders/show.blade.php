@@ -90,8 +90,8 @@
                                 <td></td>
                                 <td></td>
                                 <td>1</td>
-                                <td>${{ $box->price }}</td>
-                                <td>${{ $box->price }}</td>
+                                <td>${{ $quiz->price ?? '' }}</td>
+                                <td>${{ $quiz->price ?? ''}}</td>
                                 <td>{{ $quiz->as_gift ? 'Yes' : 'No' }}</td>
                                 <td>{{ $quiz->status->name ?? '' }}</td>
                                 <td>
