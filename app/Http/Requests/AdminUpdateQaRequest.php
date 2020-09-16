@@ -27,6 +27,7 @@ class AdminUpdateQaRequest extends FormRequest
             'city_id' => 'exists:cities,id',
             'location_image' => 'image|mimes:jpeg,png,jpg',
             'lead_description' => 'string',
+            'email' => 'string|email',
             'lead_image' => 'image|mimes:jpeg,png,jpg',
             'lead_lower_image' => 'image|mimes:jpeg,png,jpg',
         ];

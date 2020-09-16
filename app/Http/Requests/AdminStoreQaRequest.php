@@ -27,6 +27,7 @@ class AdminStoreQaRequest extends FormRequest
             'city_id' => 'required|exists:cities,id',
             'location_image' => 'required|image|mimes:jpeg,png,jpg',
             'lead_description' => 'required|string',
+            'email' => 'required|string|email',
             'lead_image' => 'required|image|mimes:jpeg,png,jpg',
             'lead_lower_image' => 'required|image|mimes:jpeg,png,jpg',
         ];

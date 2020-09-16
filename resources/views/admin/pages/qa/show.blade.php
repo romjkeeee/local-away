@@ -45,6 +45,10 @@
                     <textarea class="form-control" disabled>{{ $data->lead_description }}</textarea>
                 </div>
                 <div class="form-group">
+                    <label>Email</label>
+                    <input class="form-control" value="{{ $data->email }}" disabled>
+                </div>
+                <div class="form-group">
                     <label>Lead Image</label>
                     <img class="img-thumbnail" style="height: 250px" src="{{ asset('storage/'.$data->lead_image) }}" disabled>
                 </div>

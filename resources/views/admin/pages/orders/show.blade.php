@@ -146,10 +146,6 @@
                             <th>Total:</th>
                             <td>${{$total}}</td>
                         </tr>
-                        <tr>
-                            <th>Sum from customer:</th>
-                            <td>${{$data->sum}}</td>
-                        </tr>
                         </tbody>
                     </table>
                 </div>

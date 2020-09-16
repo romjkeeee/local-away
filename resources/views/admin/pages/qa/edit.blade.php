@@ -61,6 +61,10 @@
                     {{ Form::textarea('lead_description', old('lead_description'),['class' => 'form-control']) }}
                 </div>
                 <div class="form-group">
+                    {{ Form::label('email') }}
+                    {{ Form::text('email', old('email'),['class' => 'form-control']) }}
+                </div>
+                <div class="form-group">
                     <label for="exampleInputImage">Lead Image</label>
                     <div class="input-group">
                         <div class="custom-file">
