@@ -50,7 +50,7 @@ class ProductController extends Controller
         $sizes = Sizing::all();
         $colors = Color::all();
         $category = ProductCategory::query()->where('status',1)->pluck('name','id');
-        $boutiques = Boutique::all()->pluck('name','id');
+        $boutiques = Boutique::query()->where('status',1)->pluck('name','id');
         return view('admin.pages.products.create', compact('gender','sizes','colors','category','boutiques'));
     }
 
@@ -103,7 +103,7 @@ class ProductController extends Controller
         $colors = Color::all();
         $data = $product;
         $category = ProductCategory::all()->pluck('name','id');
-        $boutiques = Boutique::all()->pluck('name','id');
+        $boutiques = Boutique::query()->where('status',1)->pluck('name','id');
         return view('admin.pages.products.edit', compact('data','gender','sizes','colors','category', 'boutiques'));
     }
 
@@ -116,17 +116,20 @@ class ProductController extends Controller
      */
     public function update(AdminUpdateProductRequest $request, Product $product)
     {
-        if ($product->update($request->validated()))
-        {
-            if($request->hasFile('images') && $request->file('images'))
-            {
-                foreach ($request->file('images') as $images) {
-                    $product->addMedia($images)->toMediaCollection('images');
+        $boutiques = Boutique::query()->where('id',$request->boutiques_id)->where('status',1)->first();
+        if ($boutiques) {
+            if ($product->update($request->validated())) {
+                if ($request->hasFile('images') && $request->file('images')) {
+                    foreach ($request->file('images') as $images) {
+                        $product->addMedia($images)->toMediaCollection('images');
+                    }
                 }
+                $product->sizes()->sync($request->get('sizing_id'));
+                $product->colors()->sync($request->get('color_id'));
+                return redirect()->route('products.index');
             }
-            $product->sizes()->sync($request->get('sizing_id'));
-            $product->colors()->sync($request->get('color_id'));
-            return redirect()->route('products.index');
+        }else{
+            return redirect()->back()->withErrors('This boutiques is disable');
         }
     }
 
