@@ -27,7 +27,7 @@ class OrderReturnCollection extends JsonResource
         return [
             'id' => $this->id,
             'user_id' => $this->user_id,
-            'status' => $this->status->name,
+            'status' => $this->status,
             'products' => ProductCollection::make($this->order_products_all) ?? [],
             'sum' => $price_product,
 //            'quiz' => (count($this->quiz) ? TravelBox::make($this) : ''),
