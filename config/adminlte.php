@@ -321,11 +321,11 @@ return [
                     'url'         => 'admin/subscribes',
                     'icon'        => 'far fa-fw fa-circle nav-icon',
                 ],
-                [
-                    'text'        => 'Complains',
-                    'url'         => 'admin/complains',
-                    'icon'        => 'far fa-fw fa-circle nav-icon',
-                ],
+//                [
+//                    'text'        => 'Complains',
+//                    'url'         => 'admin/complains',
+//                    'icon'        => 'far fa-fw fa-circle nav-icon',
+//                ],
                 [
                     'text'        => 'Beta Form',
                     'url'         => 'admin/beta-forms',
@@ -422,11 +422,11 @@ return [
                 ],
             ],
         ],
-        [
-            'text'        => 'Complain Types',
-            'url'         => 'admin/complain-types',
-            'icon'        => 'fas fa-fw fa-angry',
-        ],
+//        [
+//            'text'        => 'Complain Types',
+//            'url'         => 'admin/complain-types',
+//            'icon'        => 'fas fa-fw fa-angry',
+//        ],
         [
             'text'        => 'Q&A',
             'url'         => 'admin/qas',

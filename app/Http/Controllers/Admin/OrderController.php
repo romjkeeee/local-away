@@ -212,77 +212,77 @@ class OrderController extends Controller
                     'name' => '40'
                 ],
                 [
-                    'id' => 6,
+                    'id' => 7,
                     'measurement_id' => 2,
                     'name' => '41'
                 ],
                 [
-                    'id' => 7,
+                    'id' => 8,
                     'measurement_id' => 2,
                     'name' => '42'
                 ],
                 [
-                    'id' => 8,
+                    'id' => 9,
                     'measurement_id' => 1,
                     'name' => '5.5'
                 ],
                 [
-                    'id' => 9,
+                    'id' => 10,
                     'measurement_id' => 1,
                     'name' => '6'
                 ],
                 [
-                    'id' => 10,
+                    'id' => 11,
                     'measurement_id' => 1,
                     'name' => '6.5'
                 ],
                 [
-                    'id' => 11,
+                    'id' => 12,
                     'measurement_id' => 1,
                     'name' => '7'
                 ],
                 [
-                    'id' => 12,
+                    'id' => 13,
                     'measurement_id' => 1,
                     'name' => '7.5'
                 ],
                 [
-                    'id' => 13,
+                    'id' => 14,
                     'measurement_id' => 1,
                     'name' => '8'
                 ],
                 [
-                    'id' => 14,
+                    'id' => 15,
                     'measurement_id' => 1,
                     'name' => '8.5'
                 ],
                 [
-                    'id' => 15,
+                    'id' => 16,
                     'measurement_id' => 1,
                     'name' => '9'
                 ],
                 [
-                    'id' => 16,
+                    'id' => 17,
                     'measurement_id' => 1,
                     'name' => '9.5'
                 ],
                 [
-                    'id' => 17,
+                    'id' => 18,
                     'measurement_id' => 1,
                     'name' => '10'
                 ],
                 [
-                    'id' => 18,
+                    'id' => 19,
                     'measurement_id' => 1,
                     'name' => '10.5'
                 ],
                 [
-                    'id' => 19,
+                    'id' => 20,
                     'measurement_id' => 1,
                     'name' => '11'
                 ],
                 [
-                    'id' => 20,
+                    'id' => 21,
                     'measurement_id' => 1,
                     'name' => '11.5'
                 ],
