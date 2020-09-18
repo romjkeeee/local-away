@@ -38,7 +38,7 @@ class CityController extends Controller
     {
         return response([
             'status'=>'success',
-            'data' => Country::query()->get()
+            'data' => Country::query()->where('status',1)->get()
         ]);
     }
 }

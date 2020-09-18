@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\City;
 use App\Country;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreCountryRequest;
@@ -84,6 +85,12 @@ class CountryController extends Controller
     {
         if ($country->update($request->validated()))
         {
+            if ($country->status == 0) {
+                $cities = City::query()->where('country_id', $country->id)->get();
+                foreach ($cities as $city){
+                    $city->update(['status' => 0]);
+                }
+            }
             return redirect()->route('countries.index');
         }
     }

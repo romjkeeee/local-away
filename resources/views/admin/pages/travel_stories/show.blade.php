@@ -33,11 +33,13 @@
                 </div>
                 <div class="form-group">
                     <label>Products</label>
+                    @if($data->product_ids)
                     @php($products_ids = str_split(str_replace(',','', $data->product_ids)))
                     @foreach($products_ids as $product)
                         @php($data_products = \App\Product::query()->where('id',$product)->first())
                         <span class="badge badge-primary badge-pill">{{ $data_products->name ?? 'NO NAME' }}</span>
                     @endforeach
+                        @endif
                 </div>
                 <div class="form-group">
                     <label>Home page</label><br>

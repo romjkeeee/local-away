@@ -550,6 +550,21 @@ return [
                 ],
             ],
         ],
+        'Summernote' => [
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'js',
+                    'asset' => false,
+                    'location' => 'https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js',
+                ],
+                [
+                    'type' => 'css',
+                    'asset' => false,
+                    'location' => 'https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css',
+                ],
+            ],
+        ],
         'MyScript' => [
             'active' => true,
             'files' => [

@@ -21,6 +21,11 @@
                         {{ Form::label('name') }}
                         {{ Form::text('name', old('name'), ['class' => 'form-control', 'maxlength' => '190', 'placeholder' => '']) }}
                     </div>
+                <div class="form-group">
+                    {{ Form::label('status','active') }}<br>
+                    {{ Form::radio('status',0, null) }}No <br>
+                    {{ Form::radio('status',1, null) }}Yes
+                </div>
                 <x-footer-button route="{{ route('countries.index') }}"></x-footer-button>
                 {{ Form::close() }}
             </div>

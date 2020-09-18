@@ -1,6 +1,8 @@
 {{-- resources/views/admin/dashboard.blade.php --}}
 
 @extends('adminlte::page')
+<link rel="stylesheet" href="{{ asset('redactor/redactor.css') }}" />
+<link rel="stylesheet" href="{{ asset('editor-md/css/editormd.min.css') }}" />
 
 @section('title', 'Dashboard')
 
@@ -62,8 +64,12 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    {{ Form::label('description') }}
-                    {{ Form::textarea('description', old('description'), ['class' => 'form-control', 'placeholder' => '']) }}
+                    <label for="description">Description</label>
+                    <div id="editor">
+                        <!-- Tips: Editor.md can auto append a `<textarea>` tag -->
+                        <textarea name="description" style="display:none;">{{$data->description}}</textarea>
+                    </div>
+
                 </div>
                 <div class="form-group">
                     {{ Form::label('Products') }}<br>
@@ -86,14 +92,67 @@
 @stop
 
         @section('js')
+            <script src="{{ asset('/editor-md/editormd.js') }}"></script>
+            <script type="text/javascript">
+                $(function() {
+                    var editor = editormd("editor", {
+                        // width: "100%",
+                        // height: "100%",
+                        // markdown: "xxxx",     // dynamic set Markdown text
+                        path : "{{ asset('editor-md/lib/') }}/",  // Autoload modules mode, codemirror, marked... dependents libs path
+
+                    });
+                });
+            </script>
             <script type="text/javascript">
 
                 $(document).ready(function () {
-                    $('.js-example-basic-multiple').select2({ width: '100%' });
+                    $('.js-example-basic-multiple').select2({
+                        width: '100%',
+                        // templateResult: formatState,
+                        // templateSelection: formatState
+                    });
                     bsCustomFileInput.init();
+
+                    $('.summernote').summernote({
+                        airMode: true
+                    });
+
+                    // function formatState (state) {
+                    //     if (!state.id) { return state.text; }
+                    //     var $url = httpGet('http://localhost:8888/peiko/first/laravel/public/admin/image/'+ state.id);
+                    //     var $state = $(
+                    //         '<span >' + $url + state.text + '</span>'
+                    //     );
+                    //     return $state;
+                    // }
+                    //
+                    // function httpGet(theUrl)
+                    // {
+                    //     if (window.XMLHttpRequest)
+                    //     {// code for IE7+, Firefox, Chrome, Opera, Safari
+                    //         xmlhttp=new XMLHttpRequest();
+                    //     }
+                    //     else
+                    //     {// code for IE6, IE5
+                    //         xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+                    //     }
+                    //     xmlhttp.onreadystatechange=function()
+                    //     {
+                    //         if (xmlhttp.readyState==4 && xmlhttp.status==200)
+                    //         {
+                    //             return xmlhttp.responseText;
+                    //         }
+                    //     }
+                    //     xmlhttp.open("GET", theUrl, false );
+                    //     xmlhttp.send();
+                    //     return xmlhttp.response;
+                    //
+                    // }
 
                 })
 
             </script>
+
 
 @endsection()
