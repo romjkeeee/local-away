@@ -81,7 +81,7 @@ class OrderController extends Controller
                 $travel_box = Box::query()->first();
                 $order = new Order([
                     'user_id' => auth()->id(),
-                    'sum' => $travel_box->price,
+                    'sum' => $data['sum'],
                     'address_id' => $data['address_id']
                 ]);
                 $order->save();
