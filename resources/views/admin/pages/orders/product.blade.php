@@ -36,6 +36,23 @@
                     </div>
                     <div class="card-body">
                         <div class="form-group">
+                            @php($date = json_decode($data->date_city, true))
+                            <label for="inputName">Travel to</label>
+                            <input type="text" id="inputName" class="form-control"
+                                   value="{{ \App\City::query()->where('id', $date['city'])->first()->name ?? ''}}" disabled>
+                         <label for="inputName">On date</label><br>
+                            @foreach($date as $key => $value)
+                             @if($key == 'date')
+                                    <label for="inputName">Start</label>
+                                    <input type="text" id="inputName" class="form-control"
+                                   value="{{ $value['start'] }}" disabled>
+                                    <label for="inputName">End</label>
+                                    <input type="text" id="inputName" class="form-control"
+                                   value="{{ $value['end'] }}" disabled>
+                            @endif
+                            @endforeach
+                        </div>
+                        <div class="form-group">
                             <label for="inputName">Package type</label>
                             <input type="text" id="inputName" class="form-control"
                                    value="{{ \App\PackageType::find($data->package_type_id)->title ?? '' }}" disabled>
