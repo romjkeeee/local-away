@@ -95,7 +95,8 @@
             <script src="{{ asset('/editor-md/editormd.js') }}"></script>
             <script src="{{ asset('/editor-md/languages/en.js') }}"></script>
             <script type="text/javascript">
-                $(function() {
+
+                $(document).ready(function () {
                     var editor = editormd("editor", {
                         width: "100%",
                         height: "100%",
@@ -103,11 +104,6 @@
                         path : "{{ asset('editor-md/lib/') }}/",  // Autoload modules mode, codemirror, marked... dependents libs path
 
                     });
-                });
-            </script>
-            <script type="text/javascript">
-
-                $(document).ready(function () {
                     $('.js-example-basic-multiple').select2({
                         width: '100%',
                         // templateResult: formatState,
