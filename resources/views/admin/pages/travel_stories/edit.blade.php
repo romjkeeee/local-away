@@ -91,11 +91,9 @@
 @stop
 
         @section('js')
-            <script src="{{ asset('/editor-md/languages/en.js') }}"></script>
-            <script src="{{ asset('/editor-md/editormd.js') }}"></script>
             <script type="text/javascript">
                 $(function() {
-                    var editormd = editormd("editor", {
+                    var editor = editormd("editor", {
                         width: "100%",
                         height: "100%",
                         toolbarIcons: "simple",
@@ -104,6 +102,10 @@
                     });
                 });
             </script>
+            <script src="{{ asset('/editor-md/editormd.js') }}"></script>
+
+            <script src="{{ asset('/editor-md/languages/en.js') }}"></script>
+
             <script type="text/javascript">
 
                 $(document).ready(function () {
