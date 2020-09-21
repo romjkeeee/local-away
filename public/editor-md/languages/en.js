@@ -41,7 +41,7 @@
                 clear            : "Clear",
                 search           : "Search",
                 help             : "Help",
-                info             : "About " + exports.title
+                info             : "About " + editormd.title
             },
             buttons : {
                 enter  : "Enter",
