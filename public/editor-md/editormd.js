@@ -13,26 +13,26 @@
 ;(function(factory) {
     "use strict";
 
-	// CommonJS/Node.js
-	if (typeof require === "function" && typeof exports === "object" && typeof module === "object")
+    // CommonJS/Node.js
+    if (typeof require === "function" && typeof exports === "object" && typeof module === "object")
     {
         module.exports = factory;
     }
-	else if (typeof define === "function")  // AMD/CMD/Sea.js
-	{
+    else if (typeof define === "function")  // AMD/CMD/Sea.js
+    {
         if (define.amd) // for Require.js
         {
             /* Require.js define replace */
         }
         else
         {
-		    define(["jquery"], factory);  // for Sea.js
+            define(["jquery"], factory);  // for Sea.js
         }
-	}
-	else
-	{
+    }
+    else
+    {
         window.editormd = factory();
-	}
+    }
 
 }(function() {
 
@@ -42,9 +42,9 @@
 
     var $ = (typeof (jQuery) !== "undefined") ? jQuery : Zepto;
 
-	if (typeof ($) === "undefined") {
-		return ;
-	}
+    if (typeof ($) === "undefined") {
+        return ;
+    }
 
     /**
      * editormd
@@ -108,20 +108,20 @@
         gotoLine             : true,
         codeFold             : false,
         autoHeight           : false,
-		autoFocus            : true,
+        autoFocus            : true,
         autoCloseTags        : true,
         searchReplace        : true,
         syncScrolling        : true,           // true | false | "single", default true
         readOnly             : false,
         tabSize              : 4,
-		indentUnit           : 4,
+        indentUnit           : 4,
         lineNumbers          : true,
-		lineWrapping         : true,
-		autoCloseBrackets    : true,
-		showTrailingSpace    : true,
-		matchBrackets        : true,
-		indentWithTabs       : true,
-		styleSelectedText    : true,
+        lineWrapping         : true,
+        autoCloseBrackets    : true,
+        showTrailingSpace    : true,
+        matchBrackets        : true,
+        indentWithTabs       : true,
+        styleSelectedText    : true,
         matchWordHighlight   : true,           // options: true, false, "onselected"
         styleActiveLine      : true,           // Highlight the current line
         dialogLockScreen     : true,
@@ -227,99 +227,98 @@
         toolbarIconTexts     : {},
 
         lang : {
-            name : "en",
-            description : "Open source online Markdown editor.",
-            tocTitle    : "Table of Contents",
-            toolbar : {
-                undo             : "Undo(Ctrl+Z)",
-                redo             : "Redo(Ctrl+Y)",
-                bold             : "Bold",
-                del              : "Strikethrough",
-                italic           : "Italic",
-                quote            : "Block quote",
-                ucwords          : "Words first letter convert to uppercase",
-                uppercase        : "Selection text convert to uppercase",
-                lowercase        : "Selection text convert to lowercase",
-                h1               : "Heading 1",
-                h2               : "Heading 2",
-                h3               : "Heading 3",
-                h4               : "Heading 4",
-                h5               : "Heading 5",
-                h6               : "Heading 6",
-                "list-ul"        : "Unordered list",
-                "list-ol"        : "Ordered list",
-                hr               : "Horizontal rule",
-                link             : "Link",
-                "reference-link" : "Reference link",
-                image            : "Image",
-                code             : "Code inline",
-                "preformatted-text" : "Preformatted text / Code block (Tab indent)",
-                "code-block"     : "Code block (Multi-languages)",
-                table            : "Tables",
-                datetime         : "Datetime",
-                emoji            : "Emoji",
-                "html-entities"  : "HTML Entities",
-                pagebreak        : "Page break",
-                watch            : "Unwatch",
-                unwatch          : "Watch",
-                preview          : "HTML Preview (Press Shift + ESC exit)",
-                fullscreen       : "Fullscreen (Press ESC exit)",
-                clear            : "Clear",
-                search           : "Search",
-                help             : "Help",
-                info             : "About " + exports.title
+            name        : "zh-cn",
+            description : "开源在线Markdown编辑器<br/>Open source online Markdown editor.",
+            tocTitle    : "目录",
+            toolbar     : {
+                undo             : "撤销（Ctrl+Z）",
+                redo             : "重做（Ctrl+Y）",
+                bold             : "粗体",
+                del              : "删除线",
+                italic           : "斜体",
+                quote            : "引用",
+                ucwords          : "将每个单词首字母转成大写",
+                uppercase        : "将所选转换成大写",
+                lowercase        : "将所选转换成小写",
+                h1               : "标题1",
+                h2               : "标题2",
+                h3               : "标题3",
+                h4               : "标题4",
+                h5               : "标题5",
+                h6               : "标题6",
+                "list-ul"        : "无序列表",
+                "list-ol"        : "有序列表",
+                hr               : "横线",
+                link             : "链接",
+                "reference-link" : "引用链接",
+                image            : "添加图片",
+                code             : "行内代码",
+                "preformatted-text" : "预格式文本 / 代码块（缩进风格）",
+                "code-block"     : "代码块（多语言风格）",
+                table            : "添加表格",
+                datetime         : "日期时间",
+                emoji            : "Emoji表情",
+                "html-entities"  : "HTML实体字符",
+                pagebreak        : "插入分页符",
+                "goto-line"      : "跳转到行",
+                watch            : "关闭实时预览",
+                unwatch          : "开启实时预览",
+                preview          : "全窗口预览HTML（按 Shift + ESC还原）",
+                fullscreen       : "全屏（按ESC还原）",
+                clear            : "清空",
+                search           : "搜索",
+                help             : "使用帮助",
+                info             : "关于" + editormd.title
             },
             buttons : {
-                enter  : "Enter",
-                cancel : "Cancel",
-                close  : "Close"
+                enter  : "确定",
+                cancel : "取消",
+                close  : "关闭"
             },
             dialog : {
                 link : {
-                    title    : "Link",
-                    url      : "Address",
-                    urlTitle : "Title",
-                    urlEmpty : "Error: Please fill in the link address."
+                    title    : "添加链接",
+                    url      : "链接地址",
+                    urlTitle : "链接标题",
+                    urlEmpty : "错误：请填写链接地址。"
                 },
                 referenceLink : {
-                    title    : "Reference link",
-                    name     : "Name",
-                    url      : "Address",
-                    urlId    : "ID",
-                    urlTitle : "Title",
-                    nameEmpty: "Error: Reference name can't be empty.",
-                    idEmpty  : "Error: Please fill in reference link id.",
-                    urlEmpty : "Error: Please fill in reference link url address."
+                    title    : "添加引用链接",
+                    name     : "引用名称",
+                    url      : "链接地址",
+                    urlId    : "链接ID",
+                    urlTitle : "链接标题",
+                    nameEmpty: "错误：引用链接的名称不能为空。",
+                    idEmpty  : "错误：请填写引用链接的ID。",
+                    urlEmpty : "错误：请填写引用链接的URL地址。"
                 },
                 image : {
-                    title    : "Image",
-                    url      : "Address",
-                    link     : "Link",
-                    alt      : "Title",
-                    uploadButton     : "Upload",
-                    imageURLEmpty    : "Error: picture url address can't be empty.",
-                    uploadFileEmpty  : "Error: upload pictures cannot be empty!",
-                    formatNotAllowed : "Error: only allows to upload pictures file, upload allowed image file format:"
+                    title    : "添加图片",
+                    url      : "图片地址",
+                    link     : "图片链接",
+                    alt      : "图片描述",
+                    uploadButton     : "本地上传",
+                    imageURLEmpty    : "错误：图片地址不能为空。",
+                    uploadFileEmpty  : "错误：上传的图片不能为空。",
+                    formatNotAllowed : "错误：只允许上传图片文件，允许上传的图片文件格式有："
                 },
                 preformattedText : {
-                    title             : "Preformatted text / Codes",
-                    emptyAlert        : "Error: Please fill in the Preformatted text or content of the codes.",
-                    placeholder       : "coding now...."
+                    title             : "添加预格式文本或代码块",
+                    emptyAlert        : "错误：请填写预格式文本或代码的内容。"
                 },
                 codeBlock : {
-                    title             : "Code block",
-                    selectLabel       : "Languages: ",
-                    selectDefaultText : "select a code language...",
-                    otherLanguage     : "Other languages",
-                    unselectedLanguageAlert : "Error: Please select the code language.",
-                    codeEmptyAlert    : "Error: Please fill in the code content.",
-                    placeholder       : "coding now...."
+                    title             : "添加代码块",
+                    selectLabel       : "代码语言：",
+                    selectDefaultText : "请选择代码语言",
+                    otherLanguage     : "其他语言",
+                    unselectedLanguageAlert : "错误：请选择代码所属的语言类型。",
+                    codeEmptyAlert    : "错误：请填写代码内容。"
                 },
                 htmlEntities : {
-                    title : "HTML Entities"
+                    title : "HTML 实体字符"
                 },
                 help : {
-                    title : "Help"
+                    title : "使用帮助"
                 }
             }
         }
@@ -703,10 +702,10 @@
                 lineNumbers               : settings.lineNumbers,
                 lineWrapping              : settings.lineWrapping,
                 extraKeys                 : {
-                                                "Ctrl-Q": function(cm) {
-                                                    cm.foldCode(cm.getCursor());
-                                                }
-                                            },
+                    "Ctrl-Q": function(cm) {
+                        cm.foldCode(cm.getCursor());
+                    }
+                },
                 foldGutter                : settings.codeFold,
                 gutters                   : ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
                 matchBrackets             : settings.matchBrackets,
@@ -1136,7 +1135,7 @@
             toolbar.show();
 
             var icons       = (typeof settings.toolbarIcons === "function") ? settings.toolbarIcons()
-                            : ((typeof settings.toolbarIcons === "string")  ? editormd.toolbarModes[settings.toolbarIcons] : settings.toolbarIcons);
+                : ((typeof settings.toolbarIcons === "string")  ? editormd.toolbarModes[settings.toolbarIcons] : settings.toolbarIcons);
 
             var toolbarMenu = toolbar.find("." + this.classPrefix + "menu"), menu = "";
             var pullRight   = false;
@@ -1307,7 +1306,7 @@
 
         createInfoDialog : function() {
             var _this        = this;
-			var editor       = this.editor;
+            var editor       = this.editor;
             var classPrefix  = this.classPrefix;
 
             var infoDialogHTML = [
@@ -1347,16 +1346,16 @@
         infoDialogPosition : function() {
             var infoDialog = this.infoDialog;
 
-			var _infoDialogPosition = function() {
-				infoDialog.css({
-					top  : ($(window).height() - infoDialog.height()) / 2 + "px",
-					left : ($(window).width()  - infoDialog.width()) / 2  + "px"
-				});
-			};
+            var _infoDialogPosition = function() {
+                infoDialog.css({
+                    top  : ($(window).height() - infoDialog.height()) / 2 + "px",
+                    left : ($(window).width()  - infoDialog.width()) / 2  + "px"
+                });
+            };
 
-			_infoDialogPosition();
+            _infoDialogPosition();
 
-			$(window).resize(_infoDialogPosition);
+            $(window).resize(_infoDialogPosition);
 
             return this;
         },
@@ -1373,9 +1372,9 @@
             $("html,body").css("overflow-x", "hidden");
 
             var _this       = this;
-			var editor      = this.editor;
+            var editor      = this.editor;
             var settings    = this.settings;
-			var infoDialog  = this.infoDialog = editor.children("." + this.classPrefix + "dialog-info");
+            var infoDialog  = this.infoDialog = editor.children("." + this.classPrefix + "dialog-info");
 
             if (infoDialog.length < 1)
             {
@@ -1385,13 +1384,13 @@
             this.lockScreen(true);
 
             this.mask.css({
-						opacity         : settings.dialogMaskOpacity,
-						backgroundColor : settings.dialogMaskBgColor
-					}).show();
+                opacity         : settings.dialogMaskOpacity,
+                backgroundColor : settings.dialogMaskBgColor
+            }).show();
 
-			infoDialog.css("z-index", editormd.dialogZindex).show();
+            infoDialog.css("z-index", editormd.dialogZindex).show();
 
-			this.infoDialogPosition();
+            this.infoDialogPosition();
 
             return this;
         },
@@ -1629,18 +1628,18 @@
                         switch (event.keyCode)
                         {
                             case 120:
-                                    $.proxy(toolbarHandlers["watch"], _this)();
-                                    return false;
+                                $.proxy(toolbarHandlers["watch"], _this)();
+                                return false;
                                 break;
 
                             case 121:
-                                    $.proxy(toolbarHandlers["preview"], _this)();
-                                    return false;
+                                $.proxy(toolbarHandlers["preview"], _this)();
+                                return false;
                                 break;
 
                             case 122:
-                                    $.proxy(toolbarHandlers["fullscreen"], _this)();
-                                    return false;
+                                $.proxy(toolbarHandlers["fullscreen"], _this)();
+                                return false;
                                 break;
 
                             default:
@@ -1737,23 +1736,23 @@
                 preview.unbind(mouseOrTouch("scroll", "touchmove"));
             };
 
-			codeMirror.bind({
-				mouseover  : cmBindScroll,
-				mouseout   : cmUnbindScroll,
-				touchstart : cmBindScroll,
-				touchend   : cmUnbindScroll
-			});
+            codeMirror.bind({
+                mouseover  : cmBindScroll,
+                mouseout   : cmUnbindScroll,
+                touchstart : cmBindScroll,
+                touchend   : cmUnbindScroll
+            });
 
             if (settings.syncScrolling === "single") {
                 return this;
             }
 
-			preview.bind({
-				mouseover  : previewBindScroll,
-				mouseout   : previewUnbindScroll,
-				touchstart : previewBindScroll,
-				touchend   : previewUnbindScroll
-			});
+            preview.bind({
+                mouseover  : previewBindScroll,
+                mouseout   : previewUnbindScroll,
+                touchstart : previewBindScroll,
+                touchend   : previewUnbindScroll
+            });
 
             return this;
         },
@@ -3617,7 +3616,7 @@
             var tocHTML = "<div class=\"markdown-toc editormd-markdown-toc\">" + text + "</div>";
 
             return (isToC) ? ( (isToCMenu) ? "<div class=\"editormd-toc-menu\">" + tocHTML + "</div><br/>" : tocHTML )
-                           : ( (pageBreakReg.test(text)) ? this.pageBreak(text) : "<p" + isTeXAddClass + ">" + this.atLink(this.emoji(text)) + "</p>\n" );
+                : ( (pageBreakReg.test(text)) ? this.pageBreak(text) : "<p" + isTeXAddClass + ">" + this.atLink(this.emoji(text)) + "</p>\n" );
         };
 
         markedRenderer.code = function (code, lang, escaped) {
@@ -3652,7 +3651,7 @@
             if (settings.taskList && /^\s*\[[x\s]\]\s*/.test(text))
             {
                 text = text.replace(/^\s*\[\s\]\s*/, "<input type=\"checkbox\" class=\"task-list-item-checkbox\" /> ")
-                           .replace(/^\s*\[x\]\s*/,  "<input type=\"checkbox\" class=\"task-list-item-checkbox\" checked disabled /> ");
+                    .replace(/^\s*\[x\]\s*/,  "<input type=\"checkbox\" class=\"task-list-item-checkbox\" checked disabled /> ");
 
                 return "<li style=\"list-style: none;\">" + this.atLink(this.emoji(text)) + "</li>";
             }
@@ -3958,7 +3957,7 @@
             smartypants : true
         };
 
-		markdownDoc = new String(markdownDoc);
+        markdownDoc = new String(markdownDoc);
 
         var markdownParsed = marked(markdownDoc, markedOptions);
 
@@ -4514,80 +4513,80 @@
         switch (format)
         {
             case "UNIX Time" :
-                    datefmt = date.getTime();
+                datefmt = date.getTime();
                 break;
 
             case "UTC" :
-                    datefmt = date.toUTCString();
+                datefmt = date.toUTCString();
                 break;
 
             case "yy" :
-                    datefmt = year2;
+                datefmt = year2;
                 break;
 
             case "year" :
             case "yyyy" :
-                    datefmt = year;
+                datefmt = year;
                 break;
 
             case "month" :
             case "mm" :
-                    datefmt = month;
+                datefmt = month;
                 break;
 
             case "cn-week-day" :
             case "cn-wd" :
-                    var cnWeekDays = ["日", "一", "二", "三", "四", "五", "六"];
-                    datefmt = "星期" + cnWeekDays[weekDay];
+                var cnWeekDays = ["日", "一", "二", "三", "四", "五", "六"];
+                datefmt = "星期" + cnWeekDays[weekDay];
                 break;
 
             case "week-day" :
             case "wd" :
-                    var weekDays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-                    datefmt = weekDays[weekDay];
+                var weekDays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+                datefmt = weekDays[weekDay];
                 break;
 
             case "day" :
             case "dd" :
-                    datefmt = day;
+                datefmt = day;
                 break;
 
             case "hour" :
             case "hh" :
-                    datefmt = hour;
+                datefmt = hour;
                 break;
 
             case "min" :
             case "ii" :
-                    datefmt = min;
+                datefmt = min;
                 break;
 
             case "second" :
             case "ss" :
-                    datefmt = second;
+                datefmt = second;
                 break;
 
             case "ms" :
-                    datefmt = ms;
+                datefmt = ms;
                 break;
 
             case "yy-mm-dd" :
-                    datefmt = ymd;
+                datefmt = ymd;
                 break;
 
             case "yyyy-mm-dd" :
-                    datefmt = fymd;
+                datefmt = fymd;
                 break;
 
             case "yyyy-mm-dd h:i:s ms" :
             case "full + ms" :
-                    datefmt = fymd + " " + hms + " " + ms;
+                datefmt = fymd + " " + hms + " " + ms;
                 break;
 
             case "full" :
             case "yyyy-mm-dd h:i:s" :
-                default:
-                    datefmt = fymd + " " + hms;
+            default:
+                datefmt = fymd + " " + hms;
                 break;
         }
 
