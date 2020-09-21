@@ -92,10 +92,13 @@
 
         @section('js')
             <script type="text/javascript">
+                var testEditor;
+
                 $(function() {
-                    var editor = editormd("editor", {
-                        width: "100%",
-                        height: "100%",
+                    var testEditor = editormd("editor", {
+                        width   : "100%",
+                        height  : 500,
+                        syncScrolling : "single",
                         toolbarIcons: "simple",
                         path : "{{ asset('editor-md/lib/') }}/",  // Autoload modules mode, codemirror, marked... dependents libs path
 
