@@ -92,7 +92,6 @@
 
         @section('js')
             <script src="{{ asset('/editor-md/editormd.js') }}"></script>
-            <script src="{{ asset('/editor-md/languages/en.js') }}"></script>
             <script type="text/javascript">
                 $(function() {
                     var editor = editormd("editor", {
@@ -104,6 +103,7 @@
                     });
                 });
             </script>
+            <script src="{{ asset('/editor-md/languages/en.js') }}"></script>
             <script type="text/javascript">
 
                 $(document).ready(function () {
