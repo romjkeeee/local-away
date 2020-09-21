@@ -107,7 +107,7 @@
             </script>
             <script src="{{ asset('/editor-md/editormd.js') }}"></script>
 
-            <script src="{{ asset('/editor-md/languages/en.js') }}"></script>
+{{--            <script src="{{ asset('/editor-md/languages/en.js') }}"></script>--}}
 
             <script type="text/javascript">
 
