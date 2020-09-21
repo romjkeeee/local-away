@@ -27,6 +27,7 @@ class AdminUpdatePackageType extends FormRequest
             'title' => 'string',
             'image' => 'image|mimes:jpeg,png,jpg',
             'active' => '',
+            'gender_id' => 'exists:genders,id',
         ];
     }
 }

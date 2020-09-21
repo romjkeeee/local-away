@@ -19,6 +19,10 @@
                     <input class="form-control" value="{{ $data->title }}" disabled>
                 </div>
                 <div class="form-group">
+                    <label>Gender</label>
+                    <input class="form-control" value="{{ $data->gender->title ?? '' }}" disabled>
+                </div>
+                <div class="form-group">
                     <label>Image</label>
                     <img class="img-fluid" src="{{ asset('storage/'.$data->image) }}" disabled>
                 </div>

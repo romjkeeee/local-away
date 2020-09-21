@@ -3,6 +3,7 @@
 @extends('adminlte::page')
 
 @section('title', 'Dashboard')
+<link rel="stylesheet" href="{{ asset('editor-md/css/editormd.min.css') }}" />
 
 @section('content')
     @if(count($errors) > 0)
@@ -41,8 +42,12 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    {{ Form::label('description') }}
-                    {{ Form::textarea('description', old('description'), ['class' => 'form-control', 'placeholder' => '']) }}
+                    <label for="description">Description</label>
+                    <div id="editor">
+                        <!-- Tips: Editor.md can auto append a `<textarea>` tag -->
+                        <textarea name="description"></textarea>
+                    </div>
+
                 </div>
                 <div class="form-group">
                     {{ Form::label('Products') }}<br>
@@ -64,6 +69,19 @@
         </div>
         @stop
         @section('js')
+            <script src="{{ asset('/editor-md/editormd.js') }}"></script>
+            <script src="{{ asset('/editor-md/languages/en.js') }}"></script>
+            <script type="text/javascript">
+                $(function() {
+                    var editor = editormd("editor", {
+                        width: "100%",
+                        height: "100%",
+                        toolbarIcons: "simple",
+                        path : "{{ asset('editor-md/lib/') }}/",  // Autoload modules mode, codemirror, marked... dependents libs path
+
+                    });
+                });
+            </script>
             <script type="text/javascript">
 
                 $(document).ready(function () {

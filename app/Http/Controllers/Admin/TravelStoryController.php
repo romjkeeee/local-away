@@ -60,7 +60,7 @@ class TravelStoryController extends Controller
             'active' => $request->active,
             'preview_image' => $request->preview_image,
             'full_image_path' => $request->full_image_path,
-            'product_ids' => implode(",", $request->product_ids),
+            'product_ids' => $request->product_ids ? implode(",", $request->product_ids) : null,
         ]);
         if ($request->file('preview_image')) {
             $travel->preview_image = $request->file('preview_image')->store('travel-stories');
