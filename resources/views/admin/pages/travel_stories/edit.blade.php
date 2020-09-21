@@ -66,7 +66,7 @@
                     <label for="description">Description</label>
                     <div id="editor">
                         <!-- Tips: Editor.md can auto append a `<textarea>` tag -->
-                        <textarea name="description" style="display:none;">{{$data->description}}</textarea>
+                        <textarea name="description">{{$data->description}}</textarea>
                     </div>
 
                 </div>
@@ -88,21 +88,25 @@
                 {{ Form::close() }}
             </div>
         </div>
-        @stop
+@stop
 
         @section('js')
-            <script src="{{ asset('/editor-md/editormd.js') }}"></script>
+            <script src="{{ asset('/editor-md/editormd.min.js') }}"></script>
+            <script src="{{ asset('/editor-md/languages/en.js') }}"></script>
             <script type="text/javascript">
                 $(function() {
-                    var editor = editormd("editor", {
-                        // width: "100%",
-                        // height: "100%",
-                        // markdown: "xxxx",     // dynamic set Markdown text
+                    var testEditor = editormd("editor", {
+                        width   : "100%",
+                        height  : 500,
+                        syncScrolling : "single",
+                        toolbarIcons: "simple",
                         path : "{{ asset('editor-md/lib/') }}/",  // Autoload modules mode, codemirror, marked... dependents libs path
 
                     });
                 });
             </script>
+
+
             <script type="text/javascript">
 
                 $(document).ready(function () {
