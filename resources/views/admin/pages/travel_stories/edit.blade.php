@@ -95,7 +95,7 @@
             <script src="{{ asset('/editor-md/editormd.js') }}"></script>
             <script type="text/javascript">
                 $(function() {
-                    var editor = editormd("editor", {
+                    var editormd = editormd("editor", {
                         width: "100%",
                         height: "100%",
                         toolbarIcons: "simple",
