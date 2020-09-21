@@ -1,7 +1,6 @@
 {{-- resources/views/admin/dashboard.blade.php --}}
 
 @extends('adminlte::page')
-<link rel="stylesheet" href="{{ asset('redactor/redactor.css') }}" />
 <link rel="stylesheet" href="{{ asset('editor-md/css/editormd.min.css') }}" />
 
 @section('title', 'Dashboard')
@@ -95,8 +94,7 @@
             <script src="{{ asset('/editor-md/editormd.js') }}"></script>
             <script src="{{ asset('/editor-md/languages/en.js') }}"></script>
             <script type="text/javascript">
-
-                $(document).ready(function () {
+                $(function() {
                     var editor = editormd("editor", {
                         width: "100%",
                         height: "100%",
@@ -104,6 +102,11 @@
                         path : "{{ asset('editor-md/lib/') }}/",  // Autoload modules mode, codemirror, marked... dependents libs path
 
                     });
+                });
+            </script>
+            <script type="text/javascript">
+
+                $(document).ready(function () {
                     $('.js-example-basic-multiple').select2({
                         width: '100%',
                         // templateResult: formatState,
