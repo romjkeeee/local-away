@@ -27,7 +27,7 @@ class OrderCollection extends JsonResource
         return [
             'id' => $this->id,
             'user_id' => $this->user_id,
-            'sum' => (isset($this->quiz) && $this->status_id != 5 ? $this->sum + 50 * count($this->quiz) : $this->sum + count($this->quiz) + $price_product),
+            'sum' => $this->sum,
             'status' => $this->status,
             'products' => ProductCollection::make($this->order_products) ?? [],
             'travel_box_price' => Box::query()->first(),

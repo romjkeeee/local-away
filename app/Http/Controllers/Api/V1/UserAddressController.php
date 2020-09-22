@@ -105,6 +105,10 @@ class UserAddressController extends Controller
         $user_address = auth()->user()->userAddress()->where('id', $id)->first();
         if ($user_address) {
             if ($user_address->update(['status' => 'hide'])) {
+                if ($user_address->default == 1){
+                    $user_address->default = 0;
+                    $user_address->update();
+                }
                 return response([
                     'status' => 'success',
                     'message' => 'Successful deleted'

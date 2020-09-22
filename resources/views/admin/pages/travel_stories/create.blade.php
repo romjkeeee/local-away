@@ -47,7 +47,6 @@
                         <!-- Tips: Editor.md can auto append a `<textarea>` tag -->
                         <textarea name="description"></textarea>
                     </div>
-
                 </div>
                 <div class="form-group">
                     {{ Form::label('Products') }}<br>
@@ -78,9 +77,23 @@
                         height  : 500,
                         syncScrolling : "single",
                         toolbarIcons: "simple",
+                        placeholder: "",
+
                         path : "{{ asset('editor-md/lib/') }}/",  // Autoload modules mode, codemirror, marked... dependents libs path
 
                     });
+
+                    editormd.toolbarModes = {
+                        simple : [
+                            "undo", "redo", "|",
+                            "bold", "del", "italic", "quote", "uppercase", "lowercase", "|",
+                            "h1", "h2", "h3", "h4", "h5", "h6", "|",
+                            "list-ul", "list-ol", "hr","|",
+
+                        ],
+                    };
+
+                    $( ".editormd-preview-close-btn" ).remove();
                 });
             </script>
             <script type="text/javascript">
