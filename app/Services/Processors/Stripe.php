@@ -32,7 +32,7 @@ class Stripe extends Processor
                 'name' => e($item['name']),
                 'images' => $item['image'] ? [$item['image']] : [],
                 'quantity' => $item['quantity'],
-                'amount' => $transaction->price,
+                'amount' => $item['price'],
                 'currency' => $transaction->currency,
             ];
         }
