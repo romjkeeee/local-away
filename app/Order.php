@@ -113,6 +113,7 @@ class Order extends Model
                 'name' => $orderProduct->product->name,
                 'image' => $image ? $image->getFullUrl() : '',
                 'quantity' => $orderProduct->count,
+                'price' => $orderProduct->price,
             ];
         }
 
