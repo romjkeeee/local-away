@@ -41,7 +41,7 @@ abstract class Processor
 
     protected function createUrl(string $token, string $case): string
     {
-        return url(config('app.front_url') . '/payment/' . $case) . '?' . $this->transactionTokenParam .'=' . $token;
+        return url(config('app.front_url') . '/bag/' . $case) . '?' . $this->transactionTokenParam .'=' . $token;
     }
 
     protected function validateCost(int $actual)
