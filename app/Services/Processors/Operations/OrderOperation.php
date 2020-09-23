@@ -18,6 +18,18 @@ class OrderOperation extends Operation
         $order = $this->findOrder();
         $order->status_id = Status::payed()->id;
         $order->save();
+        if (count($order->order_products_all()->get())){
+            foreach ($order->order_products_all()->get() as $products){
+                $products->status_id = Status::payed()->id;
+                $products->update();
+            }
+        }
+        if (count($order->quiz()->get())){
+            foreach ($this->quiz()->get() as $quiz){
+                $quiz->status_id = Status::payed()->id;
+                $quiz->update();
+            }
+        }
 
         $this->transaction->status_id = Status::payed()->id;
         $this->transaction->external_id = request('data.object.id');
