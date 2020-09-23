@@ -25,7 +25,7 @@ class OrderOperation extends Operation
             }
         }
         if (count($order->quiz()->get())){
-            foreach ($this->quiz()->get() as $quiz){
+            foreach ($order->quiz()->get() as $quiz){
                 $quiz->status_id = Status::payed()->id;
                 $quiz->update();
             }
