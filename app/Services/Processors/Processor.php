@@ -39,7 +39,7 @@ abstract class Processor
         return $this->alias;
     }
 
-    protected function createUrl(string $token, string $case): string
+    protected function createUrl(string $token, string $case = null): string
     {
         return url(config('app.front_url') . '/bag/' . $case) . '?' . $this->transactionTokenParam .'=' . $token;
     }
