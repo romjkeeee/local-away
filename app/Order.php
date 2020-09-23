@@ -92,7 +92,7 @@ class Order extends Model
             'origin_cost' => $this->sum,
             'service_fee' => $serviceFee,
             'processor' => $processor,
-            'cost' => $this->sum + $serviceFee,
+            'cost' => $this->sum,
             'description' => 'Pay for products',
         ]);
 
@@ -119,16 +119,16 @@ class Order extends Model
 
         if (count($this->quiz()->get())) {
             foreach ($this->quiz()->get() as $quiz) {
+                $cost_box_client = json_decode($quiz->costs, true);
                 $data = [
                     'name' => 'Travel box',
                     'image' => Box::query()->first()->image,
                     'quantity' => 1,
-                    'price' => $quiz->price,
+                    'price' => $quiz->price + $cost_box_client['all_cost_to'],
                 ];
                 array_push($items,$data);
             }
         }
-
         return $items;
     }
 }
