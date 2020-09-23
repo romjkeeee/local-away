@@ -17,8 +17,11 @@ class TravelBox extends JsonResource
     {
         $box = Box::query()->first();
         $box['price'] = $this->price;
+$cost =  json_decode($this->costs, true);
+        $quiz_price_to = $cost['all_cost_to'];
         return [
             'travel_box' => $box,
+            'travel_box_cost_to' => $quiz_price_to,
             'products' => $this->status_id >= 5 ? ProductCollection::make($this->quiz_products) : [],
         ];
     }
