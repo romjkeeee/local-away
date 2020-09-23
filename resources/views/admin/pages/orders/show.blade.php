@@ -85,13 +85,14 @@
                     @if(count($data->quiz))
                         @php($box = \App\Box::query()->first())
                         @foreach($data->quiz as $quiz)
+                            @php($cost = json_decode($quiz->costs, true))
                             <tr>
                                 <td>Travel box</td>
                                 <td></td>
                                 <td></td>
                                 <td>1</td>
-                                <td>${{ $quiz->price ?? '' }}</td>
-                                <td>${{ $quiz->price ?? ''}}</td>
+                                <td>${{ $cost['all_cost_to'] ?? '' }}</td>
+                                <td>${{ $cost['all_cost_to'] ?? ''}}</td>
                                 <td>{{ $quiz->as_gift ? 'Yes' : 'No' }}</td>
                                 <td>{{ $quiz->status->name ?? '' }}</td>
                                 <td>
@@ -138,10 +139,16 @@
                 <div class="table-responsive">
                     <table class="table">
                         <tbody>
+{{--                        <tr>--}}
+{{--                            <th style="width:50%">Subtotal:</th>--}}
+{{--                            <td>${{$total}}</td>--}}
+{{--                        </tr>--}}
+                        @if(count($data->quiz))
                         <tr>
-                            <th style="width:50%">Subtotal:</th>
-                            <td>${{$total}}</td>
+                            <th>Commission:</th>
+                            <td>${{$quiz->price * count($data->quiz)}}</td>
                         </tr>
+                        @endif
                         <tr>
                             <th>Total:</th>
                             <td>${{$total}}</td>
