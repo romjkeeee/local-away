@@ -45,7 +45,8 @@
                     @endif
                     <strong>{{ $data->user->first_name. ' ' . $data->user->last_name ?? '' }}</strong><br>
                     {{ $data->address->address ?? '' }}, {{ $data->address->apartment ?? '' }}<br>
-                    {{ isset($country) ? $country->name  : 'no data' }}, {{ isset($city) ? $city->name : 'no data' }}<br>
+                    {{ isset($country) ? $country->name  : 'no data' }}, {{ isset($city) ? $city->name : 'no data' }}
+                    <br>
                     {{ $data->address->zip_code ?? '' }}<br>
                 </address>
             </div>
@@ -82,10 +83,14 @@
                     </thead>
                     <tbody>
                     <?php $total = 0; ?>
+                    @php($total_cost = 0)
+
                     @if(count($data->quiz))
                         @php($box = \App\Box::query()->first())
+                        @php($total_cost = 0)
                         @foreach($data->quiz as $quiz)
                             @php($cost = json_decode($quiz->costs, true))
+                            @php($total_cost += $cost['all_cost_to'])
                             <tr>
                                 <td>Travel box</td>
                                 <td></td>
@@ -139,20 +144,33 @@
                 <div class="table-responsive">
                     <table class="table">
                         <tbody>
-{{--                        <tr>--}}
-{{--                            <th style="width:50%">Subtotal:</th>--}}
-{{--                            <td>${{$total}}</td>--}}
-{{--                        </tr>--}}
+                        {{--                        <tr>--}}
+                        {{--                            <th style="width:50%">Subtotal:</th>--}}
+                        {{--                            <td>${{$total}}</td>--}}
+                        {{--                        </tr>--}}
                         @if(count($data->quiz))
-                        <tr>
-                            <th>Commission:</th>
-                            <td>${{$quiz->price * count($data->quiz)}}</td>
-                        </tr>
+                            <tr>
+                                <th>Commission:</th>
+                                <td>${{$quiz->price * count($data->quiz)}}</td>
+                            </tr>
                         @endif
                         <tr>
                             <th>Total:</th>
                             <td>${{$total}}</td>
                         </tr>
+                        @if($data->status_id >= 4)
+
+                            <tr>
+                                @if(count($data->quiz_products()->get()))
+                                    @php($total_cost_prod = 0)
+                                    @foreach($data->quiz_products()->get() as $quiz_prod)
+                                        @php($total_cost_prod += $quiz_prod->price)
+                                    @endforeach
+                                @endif
+                                <th>Cost to return:</th>
+                                <td>${{ abs($total_cost - $total_cost_prod) }}</td>
+                            </tr>
+                        @endif
                         </tbody>
                     </table>
                 </div>
