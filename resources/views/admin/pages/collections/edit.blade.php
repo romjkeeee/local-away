@@ -41,10 +41,10 @@
                         @endif
                     </div>
                 </div>
-                <div class="form-group">
-                    {{ Form::label('Products') }}<br>
-                    {{ Form::select('product_id[]',$products, $data->products, ['class' => 'js-example-basic-multiple',  'multiple'=>true]) }}
-                </div>
+{{--                <div class="form-group">--}}
+{{--                    {{ Form::label('Products') }}<br>--}}
+{{--                    {{ Form::select('product_id[]',$products, $data->products, ['class' => 'js-example-basic-multiple',  'multiple'=>true]) }}--}}
+{{--                </div>--}}
                 <div class="form-group">
                     {{ Form::label('Gender') }}
                     {{ Form::select('gender_id',$gender, old('gender'),['class' => 'form-control',  'placeholder' => 'Choose a gender...']) }}

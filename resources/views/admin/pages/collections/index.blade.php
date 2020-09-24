@@ -35,7 +35,7 @@
                             <th>name</th>
                             <th>alias</th>
 {{--                            <th>image</th>--}}
-                            <th>products</th>
+{{--                            <th>products</th>--}}
                             <th>gender</th>
                             <th>Action</th>
                         </tr>
@@ -47,11 +47,11 @@
                                 <td style="width: 100%">{{ $user->name }}</td>
                                 <td>{{ $user->alias }}</td>
 {{--                                <td><img class="img-thumbnail" src="{{ asset('storage/'.$user->image) }}"></td>--}}
-                                <td>
-                                    @foreach($user->products as $product)
-                                        {{ $product->name }},
-                                    @endforeach
-                                </td>
+{{--                                <td>--}}
+{{--                                    @foreach($user->products as $product)--}}
+{{--                                        {{ $product->name }},--}}
+{{--                                    @endforeach--}}
+{{--                                </td>--}}
                                 <td>{{ $user->gender->title ?? '' }}</td>
 {{--                                <x-active-status active="{{ $user->is_to_homepage }}"></x-active-status>--}}
                                 <x-action-buttons show="{{ route('collections.show',[$user->id]) }}"

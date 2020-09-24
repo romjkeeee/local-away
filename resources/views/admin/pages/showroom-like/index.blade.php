@@ -41,7 +41,7 @@
                                     <a href="{{ route('users.show', $user->user_id) }}">{{ $user->user->first_name ?? 'NO NAME' }} {{ $user->user->last_name ?? 'NO LAST NAME'}}</a>
                                 </td>
                                 <td>
-                                    <a href="{{ route('products.show', $user->product_id) }}">{{ $user->product->name ?? '' }}</a>
+                                    <a href="{{ route('products.show', $user->product_id) }}">{{ $user->products->id ?? '1' }}</a>
                                 </td>
                                 <td>{{ $user->type }}</td>
                                 <td>{{ $user->created_at }}</td>

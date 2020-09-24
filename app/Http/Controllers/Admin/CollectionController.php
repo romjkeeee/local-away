@@ -56,7 +56,7 @@ class CollectionController extends Controller
     public function store(AdminStoreCollectionRequest $request)
     {
         $collection = Collection::query()->create($request->validated());
-        $collection->products()->attach($request->get('product_id'));
+//        $collection->products()->attach($request->get('product_id'));
         if ($request->file('image')) {
             $collection->image = $request->file('image')->store('collection');
             $collection->update();
@@ -106,7 +106,7 @@ class CollectionController extends Controller
                 $collection->image = $request->file('image')->store('collection');
                 $collection->update();
             }
-            $collection->products()->sync($request->get('product_id'));
+//            $collection->products()->sync($request->get('product_id'));
             return redirect()->route('collections.index');
         }
     }

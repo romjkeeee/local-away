@@ -23,12 +23,12 @@
                     <label>Image</label>
                     <img class="img-fluid" src="{{ asset('storage/'.$data->image) }}" disabled>
                 </div>
-                <div class="form-group">
-                    {{ Form::label('product') }}<br>
-                    @foreach($data->products as $product)
-                        <span class="badge badge-primary badge-pill">{{ $product->name ?? '' }}</span>
-                    @endforeach
-                </div>
+{{--                <div class="form-group">--}}
+{{--                    {{ Form::label('product') }}<br>--}}
+{{--                    @foreach($data->products as $product)--}}
+{{--                        <span class="badge badge-primary badge-pill">{{ $product->name ?? '' }}</span>--}}
+{{--                    @endforeach--}}
+{{--                </div>--}}
                 <div class="form-group">
                     <label>Gender</label>
                     <input class="form-control" value="{{ $data->gender->title ?? '' }}" disabled>

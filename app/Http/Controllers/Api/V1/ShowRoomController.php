@@ -15,6 +15,11 @@ use Illuminate\Http\Request;
  */
 class ShowRoomController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:api')->except('last_collection');
+    }
+
     /**
      * List
      * Show room list
