@@ -9,9 +9,14 @@ class Collection extends Model
 {
     public $fillable = ['alias','name', 'gender_id','image'];
 
+//    public function products()
+//    {
+//        return $this->belongsToMany(Product::class, 'collection_products','collection_id','product_id');
+//    }
+
     public function products()
     {
-        return $this->belongsToMany(Product::class, 'collection_products','collection_id','product_id');
+        return $this->hasMany(ShowRoomProduct::class, 'collection_id', 'id');
     }
 
     public function gender()
