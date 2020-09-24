@@ -25,7 +25,7 @@ class ShowRoomController extends Controller
     {
         return response([
             'status' => 'success',
-            'pagination' => Collection::query()->paginate($request->perPage ?? 5)
+            'pagination' => Collection::query()->with('products')->paginate($request->perPage ?? 5)
         ]);
     }
 
