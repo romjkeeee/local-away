@@ -12,29 +12,31 @@ class ShowRoomProduct extends Model
 
     public function getLikedAttribute()
     {
-        $userId = auth()->id();
-        $like = $this->like->first(function ($key, $value) use ($userId) {
-            return $key->user_id == $userId;
-        });
-        if ($like) {
-            return true;
-        }
+        $userId = auth('api')->user();
+        if ($userId) {
+            $like = $this->like->first(function ($key, $value) use ($userId) {
+                return $key->user_id == $userId->id;
+            });
 
+            if ($like) {
+                return true;
+            }
+        }
         return false;
     }
 
     public function getDislikedAttribute()
     {
-        $userId = auth()->id();
+        $userId = auth('api')->user();
+        if ($userId) {
+            $like = $this->dislike->first(function ($key, $value) use ($userId) {
+                return $key->user_id === $userId->id;
+            });
 
-        $like = $this->dislike->first(function ($key, $value) use ($userId) {
-            return $key->user_id === $userId;
-        });
-
-        if ($like) {
-            return true;
+            if ($like) {
+                return true;
+            }
         }
-
         return false;
     }
 
