@@ -171,6 +171,10 @@
                                 <td>${{ abs($total_cost - $total_cost_prod) }}</td>
                             </tr>
                         @endif
+                        <tr>
+                            <th>Order amount:</th>
+                            <td>${{$data->sum}}</td>
+                        </tr>
                         </tbody>
                     </table>
                 </div>
