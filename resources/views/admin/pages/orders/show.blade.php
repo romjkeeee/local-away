@@ -166,9 +166,9 @@
                                     @foreach($data->quiz_products()->get() as $quiz_prod)
                                         @php($total_cost_prod += $quiz_prod->price)
                                     @endforeach
-                                @endif
                                 <th>Cost to return:</th>
                                 <td>${{ abs($total_cost - $total_cost_prod) }}</td>
+                                @endif
                             </tr>
                         @endif
                         <tr>
