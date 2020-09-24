@@ -81,13 +81,13 @@ class Order extends Model
      */
     public function getTransaction(string $processor): Transaction
     {
-        if ($this->transaction->id) {
-            return $this->transaction;
-        }
+//        if ($this->transaction->id) {
+//            return $this->transaction;
+//        }
 
-        $serviceFee = $this->quiz_products->count() > 0 ? config('app.box_fee') : 0;
+        $serviceFee = 0;
 
-        $transaction = $this->transaction()->create([
+        $transaction = $this->transaction()->updateOrCreate([
             'operation' => 'order',
             'origin_cost' => $this->sum,
             'service_fee' => $serviceFee,
