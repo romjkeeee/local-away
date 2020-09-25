@@ -63,10 +63,18 @@ class ShowRoomController extends Controller
         $user_like = auth()->user()->showRoomLike()->where('product_id', $request->product_id)->where('type', 'like')->first();
         if ($user_like) {
             $user_like->delete();
+            return response([
+                'status' => 'success',
+                'data' => ''
+            ], 204);
         }
         $user_dislike = auth()->user()->showRoomLike()->where('product_id', $request->product_id)->where('type', 'dislike')->first();
         if ($user_dislike) {
             $user_dislike->delete();
+            return response([
+                'status' => 'success',
+                'data' => ''
+            ], 204);
         }
         return response([
             'status' => 'success',
