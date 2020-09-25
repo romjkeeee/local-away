@@ -30,7 +30,7 @@ class Stripe extends Processor
         foreach ($items as $item) {
             $lineItems[] = [
                 'name' => e($item['name']),
-                'images' => $item['image'] ? [$item['image'].'.jpg'] : [],
+                'images' => $item['image'] ? [$item['image']] : [],
                 'quantity' => $item['quantity'],
                 'amount' => $item['price'] * 100,
                 'currency' => $transaction->currency,
