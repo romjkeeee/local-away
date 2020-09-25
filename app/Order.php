@@ -117,6 +117,7 @@ class Order extends Model
                 'image' => isset($image) ? $image : '',
                 'quantity' => $orderProduct->count,
                 'price' => $orderProduct->price,
+                'description' => 'test'
             ];
         }
 
