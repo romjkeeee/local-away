@@ -34,7 +34,6 @@ class Stripe extends Processor
                 'quantity' => $item['quantity'],
                 'amount' => $item['price'] * 100,
                 'currency' => $transaction->currency,
-                'description' => 'test'
             ];
         }
 
