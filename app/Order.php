@@ -110,12 +110,12 @@ class Order extends Model
 //            $image = $orderProduct->product->getMedia('images')->first();
             $media = $orderProduct->product->colorImage->where('color_id',$this->color_id)->first();
             if ($media) {
-                $image = $orderProduct->product->getMedia('images')->where('id', $media->media_id)->first()->getFullUrl();
+                $image = $media->product->getMedia('images')->where('id', $media->media_id)->first()->getFullUrl();
             }
 
             $items[] = [
                 'name' => $orderProduct->product->name,
-                'image' => $image ? $image : '',
+                'image' => isset($image) ? $image : '',
                 'quantity' => $orderProduct->count,
                 'price' => $orderProduct->price,
             ];
