@@ -106,9 +106,9 @@ class Order extends Model
     {
         $items = [];
 
-        foreach ($this->order_products_all()->get() as $orderProduct) {
+        foreach ($this->order_products_all as $orderProduct) {
 //            $image = $orderProduct->product->getMedia('images')->first();
-            $media = $orderProduct->product()->colorImage()->where('color_id',$this->color_id)->first();
+            $media = $orderProduct->product->colorImage->where('color_id',$this->color_id)->first();
             if ($media) {
                 $image = $media->product->getMedia('images')->where('id', $media->media_id)->first();
                 dd($image);
