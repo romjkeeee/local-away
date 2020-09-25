@@ -115,7 +115,7 @@ class Order extends Model
 
             $items[] = [
                 'name' => $orderProduct->product->name,
-                'image' => $image ? $image->getFullUrl() : '',
+                'image' => $image ? $image : '',
                 'quantity' => $orderProduct->count,
                 'price' => $orderProduct->price,
             ];
