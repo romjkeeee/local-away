@@ -49,4 +49,9 @@ class ShowRoomProduct extends Model
     {
         return $this->hasMany(ShowRoomLike::class, 'product_id', 'id')->where('type', 'dislike');
     }
+
+    public function collection()
+    {
+        return $this->hasOne(Collection::class, 'id', 'collection_id');
+    }
 }

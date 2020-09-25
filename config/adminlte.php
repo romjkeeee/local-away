@@ -343,6 +343,11 @@ return [
                     'icon'        => 'far fa-fw fa-circle nav-icon',
                 ],
                 [
+                    'text'        => 'Show Room Product',
+                    'url'         => 'admin/show-room-products',
+                    'icon'        => 'far fa-fw fa-circle nav-icon',
+                ],
+                [
                     'text'        => 'Show Room Likes',
                     'url'         => 'admin/show-room-like',
                     'icon'        => 'far fa-fw fa-circle nav-icon',

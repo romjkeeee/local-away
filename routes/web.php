@@ -70,6 +70,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::resource('beta-forms', 'BetaFormController');
     Route::resource('founders', 'FounderController');
     Route::resource('documents', 'DocumentController');
+    Route::resource('show-room-products', 'ShowRoomProductController');
 
     Route::get('profile','UserController@adminProfile');
     Route::get('edit-profile','UserController@adminEdit');
