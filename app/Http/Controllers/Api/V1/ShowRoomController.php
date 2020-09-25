@@ -62,7 +62,6 @@ class ShowRoomController extends Controller
     {
         $user_like = auth()->user()->showRoomLike()
             ->where('type', 'like')
-            ->orWhere('type', 'dislike')
             ->where('product_id', $request->product_id)
             ->first();
         if ($user_like) {
@@ -78,14 +77,20 @@ class ShowRoomController extends Controller
                 'data' => ''
             ], 204);
         }
-//        $user_dislike = auth()->user()->showRoomLike()->where('product_id', $request->product_id)->where('type', 'dislike')->first();
-//        if ($user_dislike) {
-//            $user_dislike->delete();
-//            return response([
-//                'status' => 'success',
-//                'data' => ''
-//            ], 204);
-//        }
+        $user_dislike = auth()->user()->showRoomLike()->where('product_id', $request->product_id)->where('type', 'dislike')->first();
+        if ($user_dislike) {
+            $user_dislike->delete();
+            if ($user_dislike->type != $request->type) {
+                return response([
+                    'status' => 'success',
+                    'data' => auth()->user()->showRoomLike()->create($request->validated())
+                ], 201);
+            }
+            return response([
+                'status' => 'success',
+                'data' => ''
+            ], 204);
+        }
         return response([
             'status' => 'success',
             'data' => auth()->user()->showRoomLike()->create($request->validated())
