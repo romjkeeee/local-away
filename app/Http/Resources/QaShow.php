@@ -22,6 +22,7 @@ class QaShow extends JsonResource
             'lead_image' => $this->lead_image,
             'lead_description' => $this->lead_description,
             'lead_lower_image' => $this->lead_lower_image,
+            'email' => $this->email
         ];
     }
 }
