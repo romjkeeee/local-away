@@ -106,15 +106,12 @@ class Order extends Model
     {
         $items = [];
 
-        foreach ($this->order_products_all()->get() as $orderProduct) {
-//            $image = $orderProduct->product->getMedia('images')->first();
-            $media = $orderProduct->product->colorImage->where('color_id',$orderProduct->color_id)->first();
-            if ($media) {
-                $image = $orderProduct->product->getMedia('images')->where('id', $media->media_id)->first()->getFullUrl();
-            }
+        foreach ($this->order_products_all as $orderProduct) {
+            $image = $orderProduct->product->getMedia('images')->first();
+
             $items[] = [
                 'name' => $orderProduct->product->name,
-                'image' => isset($image) ? $image : '',
+                'image' => $image ? $image->getFullUrl() : '',
                 'quantity' => $orderProduct->count,
                 'price' => $orderProduct->price,
             ];

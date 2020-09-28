@@ -27,6 +27,7 @@ class AdminUpdateCollectionRequest extends FormRequest
             'name' => 'string',
             'image' => 'mimes:jpeg,png,jpg',
             'gender_id' => 'exists:genders,id',
+            'active' => 'boolean'
 //            'product_id' => 'exists:products,id',
         ];
     }

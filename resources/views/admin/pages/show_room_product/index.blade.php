@@ -18,6 +18,11 @@
 @stop
 
 @section('content')
+    @if(count($errors) > 0)
+        @foreach($errors->all() as $error)
+            <x-validation-error errors="{{ $error }}"></x-validation-error>
+        @endforeach
+    @endif
     <div class="primary">
         <p>
             <a href="{{ route('show-room-products.create') }}" class="btn btn-success btn-lg">Create Product</a>

@@ -7,7 +7,7 @@ use Illuminate\Support\Str;
 
 class Collection extends Model
 {
-    public $fillable = ['alias','name', 'gender_id','image'];
+    public $fillable = ['alias','name', 'gender_id','image', 'active'];
 
 //    public function products()
 //    {
