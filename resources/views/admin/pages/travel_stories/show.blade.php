@@ -21,29 +21,40 @@
                 </div>
                 <div class="form-group">
                     <label>Preview image</label>
-                    <img style="height: 100px" class="img-thumbnail" src="{{ asset('storage/'.$data->preview_image) }}" disabled>
+                    <img style="height: 100px" class="img-thumbnail" src="{{ asset('storage/'.$data->preview_image) }}"
+                         disabled>
                 </div>
                 <div class="form-group">
                     <label>Full image</label>
-                    <img style="height: 100px" class="img-thumbnail" src="{{ asset('storage/'.$data->full_image_path) }}" disabled>
+                    <img style="height: 100px" class="img-thumbnail"
+                         src="{{ asset('storage/'.$data->full_image_path) }}" disabled>
                 </div>
                 <div class="form-group">
                     <label>Description</label>
-                    <textarea class="form-control" rows="3" placeholder="{{ $data->description }}" disabled=""></textarea>
+                    <textarea class="form-control" rows="3" placeholder="{{ $data->description }}"
+                              disabled=""></textarea>
                 </div>
                 <div class="form-group">
                     <label>Products</label>
                     @if($data->product_ids)
-                    @php($products_ids = str_split(str_replace(',','', $data->product_ids)))
-                    @foreach($products_ids as $product)
-                        @php($data_products = \App\Product::query()->where('id',$product)->first())
-                        <span class="badge badge-primary badge-pill">{{ $data_products->name ?? 'NO NAME' }}</span>
-                    @endforeach
-                        @endif
+                        @php($products_ids = str_split(str_replace(',','', $data->product_ids)))
+                        @foreach($products_ids as $product)
+                            @php($data_products = \App\Product::query()->where('id',$product)->first())
+                            <span class="badge badge-primary badge-pill">{{ $data_products->name ?? 'NO NAME' }}</span>
+                        @endforeach
+                        <br>
+                        @foreach($products_ids as $product)
+
+                            <img style="height: 100px" class="img-thumbnail"
+                                 src="{{ $data_products->getMedia('images')->first()->getFullUrl()  }}"
+                                 disabled>
+                        @endforeach
+                    @endif
                 </div>
                 <div class="form-group">
                     <label>Home page</label><br>
-                    <td style="text-align: center">@if($data->is_to_homepage)<i class="fas fa-toggle-on fa-2x"></i>@else<i class="fa fa-toggle-off fa-2x"></i>@endif</td>
+                    <td style="text-align: center">@if($data->is_to_homepage)<i class="fas fa-toggle-on fa-2x"></i>@else
+                            <i class="fa fa-toggle-off fa-2x"></i>@endif</td>
 
                 </div>
             </div>

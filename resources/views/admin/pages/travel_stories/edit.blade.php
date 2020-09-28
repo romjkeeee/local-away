@@ -1,7 +1,7 @@
 {{-- resources/views/admin/dashboard.blade.php --}}
 
 @extends('adminlte::page')
-<link rel="stylesheet" href="{{ asset('editor-md/css/editormd.min.css') }}" />
+<link rel="stylesheet" href="{{ asset('editor-md/css/editormd.min.css') }}"/>
 
 @section('title', 'Dashboard')
 
@@ -74,6 +74,17 @@
                     {{ Form::label('Products') }}<br>
                     {{ Form::select('product_ids[]',$products, $data_products, ['class' => 'js-example-basic-multiple',  'multiple'=>true]) }}
                 </div>
+                <br>
+                @if($data->product_ids)
+                    @php($products_ids = str_split(str_replace(',','', $data->product_ids)))
+                    @foreach($products_ids as $product)
+                        @php($data_products = \App\Product::query()->where('id',$product)->first())
+
+                        <img alt="travel" style="height: 100px" class="img-thumbnail"
+                             src="{{ $data_products->getMedia('images')->lazy()->first()->getFullUrl()  }}"
+                             disabled>
+                    @endforeach
+                @endif
                 <div class="form-group">
                     {{ Form::label('is_to_homepage','Home page') }}<br>
                     {{ Form::radio('is_to_homepage',0, null) }}No <br>
@@ -88,38 +99,37 @@
                 {{ Form::close() }}
             </div>
         </div>
-@stop
+        @stop
 
         @section('js')
             <script src="{{ asset('/editor-md/editormd.min.js') }}"></script>
             <script src="{{ asset('/editor-md/languages/en.js') }}"></script>
             <script type="text/javascript">
-                $(function() {
+                $(function () {
                     var testEditor = editormd("editor", {
-                        width   : "100%",
-                        height  : 500,
-                        syncScrolling : "single",
+                        width: "100%",
+                        height: 500,
+                        syncScrolling: "single",
                         toolbarIcons: "simple",
                         placeholder: "",
 
-                        path : "{{ asset('editor-md/lib/') }}/",  // Autoload modules mode, codemirror, marked... dependents libs path
+                        path: "{{ asset('editor-md/lib/') }}/",  // Autoload modules mode, codemirror, marked... dependents libs path
 
                     });
 
                     editormd.toolbarModes = {
-                        simple : [
+                        simple: [
                             "undo", "redo", "|",
                             "bold", "del", "italic", "quote", "uppercase", "lowercase", "|",
                             "h1", "h2", "h3", "h4", "h5", "h6", "|",
-                            "list-ul", "list-ol", "hr","|",
+                            "list-ul", "list-ol", "hr", "|",
 
                         ],
                     };
 
-                    $( ".editormd-preview-close-btn" ).remove();
+                    $(".editormd-preview-close-btn").remove();
                 });
             </script>
-
 
 
             <script type="text/javascript">
