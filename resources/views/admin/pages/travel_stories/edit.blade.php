@@ -79,10 +79,12 @@
                     @php($products_ids = str_split(str_replace(',','', $data->product_ids)))
                     @foreach($products_ids as $product)
                         @php($data_products = \App\Product::query()->where('id',$product)->first())
-
+                    @php($imgs = $data_products->getMedia('images')->lazy()->first())
+                        @if($imgs)
                         <img alt="travel" style="height: 100px" class="img-thumbnail"
-                             src="{{ $data_products->getMedia('images')->lazy()->first()->getFullUrl()  }}"
+                             src="{{ $imgs->getFullUrl()  }}"
                              disabled>
+                        @endif
                     @endforeach
                 @endif
                 <div class="form-group">
