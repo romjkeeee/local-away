@@ -37,17 +37,19 @@
                 <div class="form-group">
                     <label>Products</label>
                     @if($data->product_ids)
-                        @php($products_ids = str_split(str_replace(',','', $data->product_ids)))
+                        @php($products_ids = explode(",",$data->product_ids))
                         @foreach($products_ids as $product)
                             @php($data_products = \App\Product::query()->where('id',$product)->first())
                             <span class="badge badge-primary badge-pill">{{ $data_products->name ?? 'NO NAME' }}</span>
                         @endforeach
                         <br>
                         @foreach($products_ids as $product)
-
+                            @php($data_products = \App\Product::query()->where('id',$product)->first())
+                        @if(count($data_products->getMedia('images')))
                             <img style="height: 100px" class="img-thumbnail"
                                  src="{{ $data_products->getMedia('images')->first()->getFullUrl()  }}"
                                  disabled>
+                            @endif
                         @endforeach
                     @endif
                 </div>

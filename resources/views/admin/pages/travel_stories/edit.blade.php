@@ -76,13 +76,12 @@
                 </div>
                 <br>
                 @if($data->product_ids)
-                    @php($products_ids = str_split(str_replace(',','', $data->product_ids)))
+                    @php($products_ids = explode(",",$data->product_ids))
                     @foreach($products_ids as $product)
-                        @php($data_products = \App\Product::query()->where('id',$product)->first())
-                    @php($imgs = $data_products->getMedia('images')->lazy()->first())
-                        @if($imgs)
+                        @php($data_prod = \App\Product::query()->where('id',$product)->first())
+                        @if(count($data_prod->getMedia('images')))
                         <img alt="travel" style="height: 100px" class="img-thumbnail"
-                             src="{{ $imgs->getFullUrl()  }}"
+                             src="{{ $data_prod->getMedia('images')->first()->getFullUrl()  }}"
                              disabled>
                         @endif
                     @endforeach

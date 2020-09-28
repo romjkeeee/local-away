@@ -96,8 +96,8 @@ class TravelStoryController extends Controller
         $data = $travel_story;
         $gender = Gender::all()->pluck('title', 'id');
         $products = Product::all()->pluck('name', 'id');
-        $products_ids = explode(',',$travel_story['product_ids']);
-        $data_products = Product::query()->whereIn('id', $products_ids)->take(1)->get();
+        $products_ids = explode(",",$travel_story['product_ids']);
+        $data_products = Product::query()->whereIn('id', $products_ids)->get();
         $boutiques = Boutique::all()->pluck('name', 'id');
         return view('admin.pages.travel_stories.edit', compact('data', 'gender', 'products', 'data_products', 'boutiques'));
     }
