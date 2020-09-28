@@ -45,14 +45,10 @@ class ShowRoomProductController extends Controller
      */
     public function store(AdminShowRoomProductStoreRequest $request)
     {
-        if (ShowRoomProduct::query()->where('collection_id', $request->collection_id)->count() < 6) {
-            $collection = ShowRoomProduct::query()->create($request->validated());
-            if ($request->file('image')) {
-                $collection->image = $request->file('image')->store('showroom-product');
-                $collection->update();
-            }
-        }else{
-            return redirect()->route('show-room-products.index')->withErrors('Count product of collection must be 6');
+        $collection = ShowRoomProduct::query()->create($request->validated());
+        if ($request->file('image')) {
+            $collection->image = $request->file('image')->store('showroom-product');
+            $collection->update();
         }
         return redirect()->route('show-room-products.index');
     }
@@ -94,16 +90,12 @@ class ShowRoomProductController extends Controller
      */
     public function update(AdminShowRoomProductUpdateRequest $request, ShowRoomProduct $show_room_product)
     {
-        if (ShowRoomProduct::query()->where('collection_id', $request->collection_id)->count() <= 6) {
-            $show_room_product->update($request->validated());
-                if ($request->file('image')) {
-                    $show_room_product->image = $request->file('image')->store('showroom-product');
-                    $show_room_product->update();
-                }
-        }else{
-            return redirect()->route('show-room-products.index')->withErrors('Count product of collection must be 6');
-        }
-        return redirect()->route('show-room-products.index');
+        $show_room_product->update($request->validated());
+            if ($request->file('image')) {
+                $show_room_product->image = $request->file('image')->store('showroom-product');
+                $show_room_product->update();
+            }
+            return redirect()->route('show-room-products.index');
     }
 
     /**
