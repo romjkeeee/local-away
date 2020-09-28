@@ -131,7 +131,12 @@
                 });
             </script>
 
+            <script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.js"></script>
 
+            <script type="text/javascript">
+                let images = document.querySelectorAll(".img-thumbnail");
+                lazyload(images);
+                </script>
             <script type="text/javascript">
 
                 $(document).ready(function () {
