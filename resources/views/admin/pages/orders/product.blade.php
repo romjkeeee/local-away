@@ -43,12 +43,13 @@
                          <label for="inputName">On date</label><br>
                             @foreach($date as $key => $value)
                              @if($key == 'date')
+                                 @dd($value)
                                     <label for="inputName">Start</label>
                                     <input type="text" id="inputName" class="form-control"
-                                   value="{{ $value['start'] }}" disabled>
+                                   value="{{ $value['start'] ?? 'NO DATA'}}" disabled>
                                     <label for="inputName">End</label>
                                     <input type="text" id="inputName" class="form-control"
-                                   value="{{ $value['end'] }}" disabled>
+                                   value="{{ $value['end'] ?? 'NO DATA'}}" disabled>
                             @endif
                             @endforeach
                         </div>
