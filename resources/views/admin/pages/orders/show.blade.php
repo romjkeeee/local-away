@@ -53,7 +53,8 @@
             <!-- /.col -->
             <div class="col-sm-4 invoice-col">
                 <b>Order ID:</b> {{ $data->id }}<br>
-                <b>Account:</b> {{ $data->user->first_name. ' ' . $data->user->last_name ?? '' }}
+                <b>Account:</b> {{ $data->user->first_name. ' ' . $data->user->last_name ?? '' }}<br>
+                {{ $data->user->email ?? '' }}
             </div>
             @if($data->status->name == 'PAYED')
                 <div class="col-sm-4 invoice-col">
