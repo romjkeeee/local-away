@@ -42,6 +42,10 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    {{ Form::label('annotation') }}
+                    {{ Form::text('annotation', old('annotation'), ['class' => 'form-control', 'placeholder' => '']) }}
+                </div>
+                <div class="form-group">
                     <label for="description">Description</label>
                     <div id="editor">
                         <!-- Tips: Editor.md can auto append a `<textarea>` tag -->

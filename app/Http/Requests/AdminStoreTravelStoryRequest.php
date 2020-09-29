@@ -25,6 +25,7 @@ class AdminStoreTravelStoryRequest extends FormRequest
     {
         return [
             'name' => 'required|string',
+            'annotation' => 'required|string',
             'description' => 'required|string',
             'preview_image' => 'required|image|mimes:jpeg,png,jpg',
             'full_image_path' => 'required|image|mimes:jpeg,png,jpg',

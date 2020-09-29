@@ -55,6 +55,7 @@ class TravelStoryController extends Controller
     {
         $travel = TravelStory::query()->create([
             'name' => $request->name,
+            'annotation' => $request->annotation,
             'description' => $request->description,
             'is_to_homepage' => $request->is_to_homepage,
             'active' => $request->active,
@@ -113,6 +114,7 @@ class TravelStoryController extends Controller
     {
         $travel_story->update([
             'name' => $request->name,
+            'annotation' => $request->annotation,
             'description' => $request->description,
             'is_to_homepage' => $request->is_to_homepage,
             'active' => $request->active,
