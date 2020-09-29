@@ -29,7 +29,7 @@ class ShowRoomController extends Controller
             'pagination' => Collection::query()
                 ->where('active', true)
                 ->with(['products', function ($query) {
-                    return $query->where('active', '=', 1);
+                    return $query->where('active', 1);
                 }])
                 ->paginate($request->perPage ?? 5)
         ]);
