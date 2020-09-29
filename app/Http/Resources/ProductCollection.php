@@ -22,7 +22,7 @@ class ProductCollection extends ResourceCollection
             }
             $data[] = $item->product;
             $item->product['price'] = $item->price ?? 0;
-            $item->product['count'] = $item->count;
+            $item->product['count'] = $item->count ?? 0;
             $item->product['order_product_id'] = $item->id;
             $item->product['color_id'] = $item->color_id;
             $item->product['size_id'] = $item->size_id;
