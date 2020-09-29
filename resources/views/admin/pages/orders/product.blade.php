@@ -171,7 +171,7 @@
                             {{ Form::label('Products') }}<br>
                             {{ Form::select('product_ids[]',$products, old('product_ids'), ['class' => 'js-example-basic-multiple',  'multiple'=>true]) }}
                         </div>
-                        <x-footer-button route="{{ route('orders.index') }}"></x-footer-button>
+                        <x-footer-button route="{{ route('orders.show', $data->order_id) }}"></x-footer-button>
                         {{ Form::close() }}
                     </div>
                     <!-- /.card-body -->

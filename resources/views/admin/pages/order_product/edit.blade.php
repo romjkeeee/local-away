@@ -83,7 +83,7 @@
                             {{--                            </h4>--}}
                         </div>
 
-                        <x-footer-button route="{{ route('orders.index') }}"></x-footer-button>
+                        <x-footer-button route="{{ route('orders.equip', $data->order_quiz_id) }}"></x-footer-button>
 
                     </div>
                 </div>
