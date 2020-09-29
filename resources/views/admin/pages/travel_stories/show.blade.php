@@ -46,9 +46,14 @@
                         @foreach($products_ids as $product)
                             @php($data_products = \App\Product::query()->where('id',$product)->first())
                         @if(count($data_products->getMedia('images')))
-                            <img style="height: 100px" class="img-thumbnail"
-                                 src="{{ $data_products->getMedia('images')->first()->getFullUrl()  }}"
-                                 disabled>
+                            <div class="col-md-2">
+                                    <img alt="travel" style="height: 100px" class="img-thumbnail"
+                                         src="{{ $data_products->getMedia('images')->first()->getFullUrl()  }}"
+                                         disabled>
+                                    <div class="col-sm-6">
+                                        <p class="" style="width: 10ch;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">{{ $data_prod->name }}</p>
+                                    </div>
+                                </div>
                             @endif
                         @endforeach
                     @endif
