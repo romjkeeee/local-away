@@ -51,7 +51,7 @@
                                          src="{{ $data_products->getMedia('images')->first()->getFullUrl()  }}"
                                          disabled>
                                     <div class="col-sm-6">
-                                        <p class="" style="width: 10ch;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">{{ $data_prod->name }}</p>
+                                        <p class="" style="width: 10ch;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">{{ $data_products->name }}</p>
                                     </div>
                                 </div>
                             @endif
