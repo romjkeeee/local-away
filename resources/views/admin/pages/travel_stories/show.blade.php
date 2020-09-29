@@ -30,6 +30,10 @@
                          src="{{ asset('storage/'.$data->full_image_path) }}" disabled>
                 </div>
                 <div class="form-group">
+                    <label>Annotation</label>
+                    <input class="form-control" value="{{ $data->Annotation }}" disabled>
+                </div>
+                <div class="form-group">
                     <label>Description</label>
                     <textarea class="form-control" rows="3" placeholder="{{ $data->description }}"
                               disabled=""></textarea>
