@@ -88,6 +88,14 @@ class OrderController extends Controller
     public function update(UpdateOrderReqeust $request, Order $order)
     {
         if ($order->status_id == 2 || $order->status_id == 3) {
+            $products = $order->order_products_all()->get();
+            if ($products) {
+                foreach ($products as $product) {
+                    if ($product->price == null || $product->count == null){
+                        return redirect()->route('orders.index')->withErrors(['One of products not set, go to order and check this']);
+                    }
+                }
+            }
             if (!$order->quiz) {
                 $order->update(['status_id' => 4]);
                 $order->update($request->validated());
@@ -104,7 +112,7 @@ class OrderController extends Controller
                 if (count($good_status) == count($order->quiz)) {
                     $order->update(['status_id' => 4]);
                     $order->update($request->validated());
-                    foreach ($order->quiz as $quiz){
+                    foreach ($order->quiz as $quiz) {
                         $quiz->update(['status_id' => 4]);
                     }
                     foreach ($order->order_products_all as $product) {
@@ -141,7 +149,7 @@ class OrderController extends Controller
         if ($data) {
             if ($data->status_id == 2) {
                 $data->update(['status_id' => 3]);
-                if ($data->order){
+                if ($data->order) {
                     $data->order->update(['status_id' => 3]);
                 }
             }
