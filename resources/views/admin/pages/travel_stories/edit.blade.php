@@ -81,7 +81,7 @@
                         @foreach($products_ids as $product)
                             @php($data_prod = \App\Product::query()->where('id',$product)->first())
                             @if(count($data_prod->getMedia('images')))
-                                <div class="col-md-6">
+                                <div class="col-md-2">
                                     <img alt="travel" style="height: 100px" class="img-thumbnail"
                                          src="{{ $data_prod->getMedia('images')->first()->getFullUrl()  }}"
                                          disabled>
