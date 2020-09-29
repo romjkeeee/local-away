@@ -28,9 +28,9 @@ class ShowRoomController extends Controller
             'status' => 'success',
             'pagination' => Collection::query()
                 ->where('active', true)
-                ->with(['products', function ($query) {
-                    return $query->where('active', 1);
-                }])
+                ->whereHas('products', function ($query) {
+                    return $query->where('active', true);
+                })
                 ->paginate($request->perPage ?? 5)
         ]);
     }
