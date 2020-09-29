@@ -26,6 +26,7 @@ class AdminShowRoomProductStoreRequest extends FormRequest
         return [
             'image' => 'required|mimes:jpeg,png,jpg',
             'collection_id' => 'required|exists:collections,id',
+            'active' => 'boolean'
         ];
     }
 }

@@ -39,6 +39,7 @@
                             <th>id</th>
                             <th>Collection</th>
                             <th>image</th>
+                            <th>Active</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -48,6 +49,7 @@
                                 <td>{{ $user->id }}</td>
                                 <td style="width: 100%">{{ $user->collection->name ?? '' }}</td>
                                 <td><img class="img-thumbnail" src="{{ asset('storage/'.$user->image) }}"></td>
+                                <x-active-status active="{{ $user->active }}"></x-active-status>
                                 <x-action-buttons show="{{ route('show-room-products.show',[$user->id]) }}"
                                                   edit="{{ route('show-room-products.edit',[$user->id]) }}"></x-action-buttons>
                             </tr>
