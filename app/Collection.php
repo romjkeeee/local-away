@@ -16,7 +16,7 @@ class Collection extends Model
 
     public function products()
     {
-        return $this->hasMany(ShowRoomProduct::class, 'collection_id', 'id');
+        return $this->hasMany(ShowRoomProduct::class, 'collection_id', 'id')->where('active','=', true);
     }
 
     public function gender()
