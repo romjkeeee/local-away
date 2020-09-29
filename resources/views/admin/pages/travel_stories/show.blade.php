@@ -43,6 +43,7 @@
                             <span class="badge badge-primary badge-pill">{{ $data_products->name ?? 'NO NAME' }}</span>
                         @endforeach
                         <br>
+                        <div class="form-inline">
                         @foreach($products_ids as $product)
                             @php($data_products = \App\Product::query()->where('id',$product)->first())
                         @if(count($data_products->getMedia('images')))
@@ -56,6 +57,7 @@
                                 </div>
                             @endif
                         @endforeach
+                        </div>
                     @endif
                 </div>
                 <div class="form-group">
