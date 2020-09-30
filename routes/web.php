@@ -47,6 +47,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::resource('product-categories', 'ProductCategoryController');
     Route::get('product/{id}/step2', 'ProductController@step2create');
     Route::put('product/{id}/step2', 'ProductController@store2step');
+    Route::get('product/{id}/refund', 'ProductController@refund_product')->name('product.refund');
     Route::get('product/{product}/images', 'ProductController@show_image');
     Route::get('image/{id}/delete', 'ProductController@deleteImage');
     Route::resource('travel-stories', 'TravelStoryController');

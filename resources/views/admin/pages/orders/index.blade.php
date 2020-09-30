@@ -32,6 +32,7 @@
             <a href="{{ route('orders.index', ['id' => 4]) }}" class="btn btn-default btn-sm">SEND_TO_CUSTOMER ({{ \App\Order::query()->where('status_id', 4)->count() }})</a>
             <a href="{{ route('orders.index', ['id' => 5]) }}" class="btn btn-default btn-sm">DELIVERED ({{ \App\Order::query()->where('status_id', 5)->count() }})</a>
             <a href="{{ route('orders.index', ['id' => 6]) }}" class="btn btn-default btn-sm">PRODUCT_REFUND ({{ \App\Order::query()->where('status_id', 6)->count() }})</a>
+            <a href="{{ route('orders.index', ['id' => 7]) }}" class="btn btn-default btn-sm">REFUNDED ({{ \App\Order::query()->where('status_id', 7)->count() }})</a>
         </p>
     </div>
     <div class="row">

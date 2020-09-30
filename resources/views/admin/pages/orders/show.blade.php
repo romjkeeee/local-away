@@ -125,7 +125,12 @@
                             <td>${{ $products->price * $products->count ?? ''}}</td>
                             <td></td>
                             <td>{{ $products->status->name ?? ''}}</td>
-                            <td>{{ $products->product->status == 'disable' && $data->status_id == 2? 'Attention this product is disable' : '' }}</td>
+                            <td>{{ $products->product->status == 'disable' && $data->status_id == 2? 'Attention this product is disable' : '' }}
+                                @if($products->status_id == 6)
+                                    <a class="btn btn-primary float-right"
+                                       href="{{ route('product.refund', $products->id) }}">Refund</a>
+                                @endif
+                            </td>
                         </tr>
                     @endforeach
                     </tbody>

@@ -10,6 +10,8 @@ use App\Http\Requests\AdminStorePersonalStyle;
 use App\Http\Requests\AdminStoreProductRequest;
 use App\Http\Requests\AdminUpdateProductRequest;
 use App\MediaToColorProduct;
+use App\Order;
+use App\OrderProduct;
 use App\Product;
 use App\ProductCategory;
 use App\Sizing;
@@ -181,6 +183,20 @@ class ProductController extends Controller
                 return redirect()->back();
         }
         return response('error1');
+
+    }
+
+    public function refund_product($id)
+    {
+        $product = OrderProduct::query()->find($id);
+        $product->status_id = 7;
+        $product->update();
+
+        $order = Order::query()->find($product->order_id);
+        $order->status_id = 7;
+        $order->update();
+
+        return redirect()->route('orders.show', $order->id);
 
     }
 }
