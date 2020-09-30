@@ -25,7 +25,7 @@ class StoreUserAddressRequest extends FormRequest
     {
         return [
             'address' => 'required|string',
-            'zip_code' => 'required|numeric',
+            'zip_code' => 'required|string',
             'city' => 'required|string',
             'state' => 'nullable|string',
             'country' => 'required|string',
