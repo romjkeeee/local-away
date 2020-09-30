@@ -29,7 +29,7 @@ class UpdateUserAddress extends FormRequest
             'city' => 'string',
             'state' => 'string',
             'country' => 'string',
-            'apartment' => 'string',
+            'apartment' => 'nullable|string',
             'default' => 'boolean'
         ];
     }
