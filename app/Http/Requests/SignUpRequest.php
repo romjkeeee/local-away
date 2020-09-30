@@ -28,7 +28,7 @@ class SignUpRequest extends FormRequest
             'last_name' => 'string',
             'email' => 'required|string|email|unique:users',
             'password' => 'required|string|confirmed|min:6|max:22',
-            'user_agreement' => 'required|boolean'
+//            'user_agreement' => 'required|boolean'
         ];
     }
 }
