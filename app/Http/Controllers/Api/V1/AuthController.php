@@ -27,6 +27,7 @@ class AuthController extends Controller
      * @bodyParam email string required
      * @bodyParam password string required
      * @bodyParam password_confirmation string required
+     * @bodyParam user_agreement boolean required
      *
      * @response 201
      */
