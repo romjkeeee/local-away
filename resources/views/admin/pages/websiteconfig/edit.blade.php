@@ -18,11 +18,11 @@
             <div class="card-body">
                 {{ Form::model(['method' => 'POST', 'route' => ['web-settings.update']]) }}
                 {{ csrf_field() }}
-            @foreach($data as $key => $value)
-                        <div class="form-group">
-                            <label for="{{ $key }}">{{ $key }}</label>
-                            <input name="{{ $key }}" type="text" value="{{ $value }}">
-                        </div>
+                @foreach($data as $page)
+                    <div class="form-group">
+                        <label>{{ $page->title }}</label>
+                        <input name="{{ $page->key }}" type="text" value="{{ $page->value }}">
+                    </div>
                 @endforeach
                 <x-footer-button route="{{ route('home') }}"></x-footer-button>
                 {{ Form::close() }}

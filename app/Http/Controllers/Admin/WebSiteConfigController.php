@@ -20,7 +20,7 @@ class WebSiteConfigController extends Controller
      */
     public function index()
     {
-        $data = WebSiteConfig::all()->pluck('value','key');
+        $data = WebSiteConfig::get(['title','value','key']);
         return view('admin.pages.websiteconfig.edit',compact('data'));
     }
 
@@ -31,10 +31,10 @@ class WebSiteConfigController extends Controller
      */
     public function update(Request $request)
     {
-        $data = $request->except('submit','_token');
-        foreach ($data as $key => $value) {
-            WebSiteConfig::query()->where('key', $key)->update(['value' => $value]);
+        $request_data = $request->except('submit','_token');
+        foreach ($request_data as $key => $value) {
+            $data = WebSiteConfig::query()->where('key', $key)->update(['value' => $value]);
         }
-        return view('admin.pages.websiteconfig.edit',compact('data'))->withErrors('Success update');
+        return redirect()->route('web-settings.index')->withErrors('Success update');
     }
 }
