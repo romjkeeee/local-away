@@ -20,7 +20,7 @@ class SizingCategory extends Model
 
     public function sizing_guide()
     {
-        return $this->hasOne(SizingGuide::class,'sizing_category_id','id');
+        return $this->hasOne(SizingGuide::class,'sizing_category_id','id')->where('active', true);
     }
 
     public function gender()
