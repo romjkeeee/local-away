@@ -33,7 +33,7 @@ class AuthController extends Controller
      */
     public function signup(SignUpRequest $request)
     {
-//        if ($request->user_agreement == true) {
+        if ($request->user_agreement == true) {
             $user = new User($request->validated());
             $user->save();
             $user->attachRole('user');
@@ -49,12 +49,12 @@ class AuthController extends Controller
                     $tokenResult->token->expires_at
                 )->toDateTimeString()
             ]);
-//        }else{
-//            return response()->json([
-//                'status' => 'failed',
-//                'message' => 'Agreement must be true'
-//            ], 401);
-//        }
+        }else{
+            return response()->json([
+                'status' => 'failed',
+                'message' => 'Agreement must be true'
+            ], 401);
+        }
     }
 
     /**
