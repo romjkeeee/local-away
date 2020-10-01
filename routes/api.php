@@ -21,6 +21,7 @@ Route::group(['namespace' => 'Api\V1', 'as' => 'api.'], function () {
     Route::post('subscribe', 'SubscribeController@create');
     Route::post('beta-form', 'BetaFormController@store');
     Route::get('cities', 'CityController@index');
+    Route::get('home-page-settings', 'WebSiteConfigController@index');
     Route::get('countries', 'CityController@list');
     Route::get('genders', 'GenderController@index');
     Route::get('founders', 'FounderController@index');

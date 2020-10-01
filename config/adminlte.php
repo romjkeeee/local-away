@@ -462,6 +462,11 @@ return [
             'url'         => 'admin/user-settings',
             'icon'        => 'far fa-fw fa-user',
         ],
+        [
+            'text'        => 'Home page Settings',
+            'url'         => 'admin/web-settings',
+            'icon'        => 'far fa-fw fa-user',
+        ],
         ['header' => 'account_settings'],
         [
             'text' => 'profile',
