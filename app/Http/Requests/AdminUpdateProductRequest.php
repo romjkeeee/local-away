@@ -30,6 +30,8 @@ class AdminUpdateProductRequest extends FormRequest
             'sizing_id' => 'exists:sizings,id',
             'color_id' => 'exists:colors,id',
             'status' => 'in:active,disable',
+            'price' => 'numeric',
+            'boutiques_id' => 'exists:boutiques,id',
         ];
     }
 }

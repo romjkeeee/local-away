@@ -8,13 +8,22 @@ use Illuminate\Support\Str;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
+/**
+ * Class Product
+ * @property string $name
+ */
 class Product extends Model implements HasMedia
 {
     use InteractsWithMedia;
 
-    public $fillable = ['alias','name', 'gender_id', 'status','product_category_id'];
+    public $fillable = ['alias','name', 'gender_id', 'status','product_category_id', 'boutiques_id', 'price'];
 
-    protected $with = ['sizes', 'colors', 'colorImage', 'gender','category'];
+    protected $with = ['sizes', 'colors', 'colorImage', 'gender','category', 'boutique'];
+
+    public function boutique()
+    {
+        return $this->hasOne(Boutique::class, 'id', 'boutiques_id');
+    }
 
     public function category()
     {
@@ -49,5 +58,21 @@ class Product extends Model implements HasMedia
     public function registerMediaCollections(): void
     {
         $this->addMediaCollection('images');
+    }
+
+    public function toArray()
+    {
+        $data = parent::toArray();
+
+        $images = [];
+
+        foreach ($this->getMedia('images') as $key => $value) {
+            $images[$key]['id'] = $value->id;
+            $images[$key]['link'] = $value->getFullUrl();
+        }
+
+        $data['images'] = $images;
+
+        return $data;
     }
 }

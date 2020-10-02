@@ -31,13 +31,18 @@
                         </div>
                     </div>
                 </div>
-                <div class="form-group">
-                    {{ Form::label('Products') }}<br>
-                    {{ Form::select('product_id[]',$products, old('product_id'), ['class' => 'js-example-basic-multiple',  'multiple'=>true]) }}
-                </div>
+{{--                <div class="form-group">--}}
+{{--                    {{ Form::label('Products') }}<br>--}}
+{{--                    {{ Form::select('product_id[]',$products, old('product_id'), ['class' => 'js-example-basic-multiple',  'multiple'=>true]) }}--}}
+{{--                </div>--}}
                 <div class="form-group">
                     {{ Form::label('Gender') }}
                     {{ Form::select('gender_id',$gender, old('gender'),['class' => 'form-control',  'placeholder' => 'Choose a gender...']) }}
+                </div>
+                <div class="form-group">
+                    {{ Form::label('active','active') }}<br>
+                    {{ Form::radio('active',0, null) }}No <br>
+                    {{ Form::radio('active',1, null) }}Yes
                 </div>
                 <x-footer-button route="{{ route('collections.index') }}"></x-footer-button>
                 {{ Form::close() }}

@@ -35,7 +35,7 @@
                             <th>sizing category</th>
                             <th>title</th>
                             <th>text</th>
-                            <th>image</th>
+{{--                            <th>image</th>--}}
                             <th>gender</th>
                             <th>active</th>
                             <th>Action</th>
@@ -48,7 +48,7 @@
                                 <td>{{ $user->sizing_category->title ?? '' }}</td>
                                 <td>{{ $user->title }}</td>
                                 <td style="width: 100%">{{ $user->text }}</td>
-                                <td><img class="img-thumbnail" src="{{ asset('storage/'.$user->image) }}"></td>
+{{--                                <td><img class="img-thumbnail" src="{{ asset('storage/'.$user->image) }}"></td>--}}
                                 <td>{{ $user->gender }}</td>
                                 <x-active-status active="{{ $user->active }}"></x-active-status>
                                 <x-action-buttons show="{{ route('sizing-guides.show',[$user->id]) }}"

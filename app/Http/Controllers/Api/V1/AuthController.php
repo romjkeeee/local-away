@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use App\User;
+use phpseclib\Crypt\Hash;
 
 /**
  * @group Auth
@@ -21,19 +22,39 @@ class AuthController extends Controller
      * Sign-up
      *
      *
-     * @bodyParam name string required
+     * @bodyParam first_name string
+     * @bodyParam last_name string
      * @bodyParam email string required
      * @bodyParam password string required
      * @bodyParam password_confirmation string required
+     * @bodyParam user_agreement boolean required
      *
      * @response 201
      */
     public function signup(SignUpRequest $request)
     {
-        $user = new User($request->validated());
-        $user->save();
-        $user->attachRole('user');
-        return response()->json(['status' => 'success', 'message' => 'Successfully created user!'], 201);
+        if ($request->user_agreement == true) {
+            $user = new User($request->validated());
+            $user->save();
+            $user->attachRole('user');
+            $tokenResult = $user->createToken('Personal Access Token');
+            $token = $tokenResult->token;
+            if ($request->remember_me)
+                $token->expires_at = Carbon::now()->addWeeks(1);
+            $token->save();
+            return response()->json([
+                'access_token' => $tokenResult->accessToken,
+                'token_type' => 'Bearer',
+                'expires_at' => Carbon::parse(
+                    $tokenResult->token->expires_at
+                )->toDateTimeString()
+            ]);
+        }else{
+            return response()->json([
+                'status' => 'failed',
+                'message' => 'Agreement must be true'
+            ], 401);
+        }
     }
 
     /**
@@ -50,7 +71,8 @@ class AuthController extends Controller
         $credentials = request(['email', 'password']);
         if(!Auth::attempt($credentials))
             return response()->json([
-                'message' => 'Unauthorized'
+                'status' => 'failed',
+                'message' => 'Password is incorrect'
             ], 401);
         $user = $request->user();
         $tokenResult = $user->createToken('Personal Access Token');
@@ -77,15 +99,5 @@ class AuthController extends Controller
     {
         $request->user()->token()->revoke();
         return response(['message' => 'Successfully logged out']);
-    }
-
-    /**
-     * Get User
-     * @authenticated required
-     * @response 200
-     */
-    public function user(Request $request)
-    {
-        return response($request->user());
     }
 }

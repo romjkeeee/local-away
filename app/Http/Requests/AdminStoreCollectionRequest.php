@@ -27,7 +27,8 @@ class AdminStoreCollectionRequest extends FormRequest
             'name' => 'required|string',
             'image' => 'required|mimes:jpeg,png,jpg',
             'gender_id' => 'required|exists:genders,id',
-            'product_id' => 'required|exists:products,id',
+            'active' => 'boolean'
+//            'product_id' => 'required|exists:products,id',
         ];
     }
 }

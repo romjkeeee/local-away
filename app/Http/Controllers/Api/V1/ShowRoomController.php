@@ -15,9 +15,6 @@ use Illuminate\Http\Request;
  */
 class ShowRoomController extends Controller
 {
-    function __construct() {
-        $this->middleware('auth:api')->except('index');
-    }
 
     /**
      * List
@@ -29,7 +26,30 @@ class ShowRoomController extends Controller
     {
         return response([
             'status' => 'success',
-            'pagination' => Collection::query()->paginate($request->perPage ?? 5)
+            'pagination' => Collection::query()
+                ->where('active', true)
+                ->with('products')
+                ->paginate($request->perPage ?? 5)
+        ]);
+    }
+
+    /**
+     * Last collection by gender
+     *
+     * @queryParam gender_id required
+     *
+     * @response 200
+     */
+    public function last_collection(Request $request)
+    {
+        return response([
+            'status' => 'success',
+            'data' => Collection::query()
+                ->where('active', true)
+                ->where('gender_id', $request->gender_id)
+                ->inRandomOrder()
+                ->limit(3)
+                ->get()
         ]);
     }
 
@@ -45,8 +65,40 @@ class ShowRoomController extends Controller
      */
     public function like(LikeRequest $request)
     {
+        $user_like = auth()->user()->showRoomLike()
+            ->where('type', 'like')
+            ->where('product_id', $request->product_id)
+            ->first();
+        if ($user_like) {
+            $user_like->delete();
+            if ($user_like->type != $request->type) {
+                return response([
+                    'status' => 'success',
+                    'data' => auth()->user()->showRoomLike()->create($request->validated())
+                ], 201);
+            }
+            return response([
+                'status' => 'success',
+                'data' => ''
+            ], 204);
+        }
+        $user_dislike = auth()->user()->showRoomLike()->where('product_id', $request->product_id)->where('type', 'dislike')->first();
+        if ($user_dislike) {
+            $user_dislike->delete();
+            if ($user_dislike->type != $request->type) {
+                return response([
+                    'status' => 'success',
+                    'data' => auth()->user()->showRoomLike()->create($request->validated())
+                ], 201);
+            }
+            return response([
+                'status' => 'success',
+                'data' => ''
+            ], 204);
+        }
         return response([
             'status' => 'success',
-            'data' => auth()->user()->showRoomLike()->create($request->validated())]);
+            'data' => auth()->user()->showRoomLike()->create($request->validated())
+        ], 201);
     }
 }

@@ -24,10 +24,11 @@ class AdminUpdateUser extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'string',
+            'first_name' => 'string',
+            'last_name' => 'string',
             'email' => 'string|email|unique:users,email,'.$this->user->id,
             'password' => 'nullable|string',
-            'role' => 'in:admin,user'
+            'role' => 'exists:roles,id'
         ];
     }
 }

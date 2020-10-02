@@ -22,7 +22,7 @@
                         {{ Form::text('title', old('title'), ['class' => 'form-control', 'maxlength' => '190', 'placeholder' => '']) }}
                     </div>
             <div class="form-group">
-                        {{ Form::label('active','active') }}<br>
+                        {{ Form::label('Status','active') }}<br>
                         {{ Form::radio('active',0, null) }}No <br>
                         {{ Form::radio('active',1, null) }}Yes
             </div>

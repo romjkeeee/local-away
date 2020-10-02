@@ -37,8 +37,19 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <div class="row-cols-3">
+                        @if($data->image)
+                            {{--                            <a href="{{ url('travel-stories/'.$data->id.'/delete') }}"><i--}}
+                            {{--                                    class="fas fa-trash"></i></a>--}}
+                            <img style="height: 100px" class="img-thumbnail"
+                                 src="{{ asset('storage/'.$data->image) }}"
+                                 disabled>
+                        @endif
+                    </div>
+                </div>
+                <div class="form-group">
                     {{ Form::label('gender') }}
-                    {{ Form::select('gender',['male' => 'male', 'female' => 'female'], old('gender'), ['class' => 'form-control']) }}
+                    {{ Form::select('gender',$gender, old('gender'), ['class' => 'form-control']) }}
                 </div>
                 <div class="form-group">
                     {{ Form::label('active','active') }}<br>
@@ -52,3 +63,15 @@
         </div>
         @stop
 
+        @section('js')
+            <script type="text/javascript">
+
+                $(document).ready(function () {
+                    $('.js-example-basic-multiple').select2({ width: '100%' });
+                    bsCustomFileInput.init();
+
+                })
+
+            </script>
+
+@endsection()

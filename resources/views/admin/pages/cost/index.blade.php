@@ -34,6 +34,7 @@
                             <th>title</th>
                             <th>cost from</th>
                             <th>cost to</th>
+                            <th>status</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -44,6 +45,7 @@
                                 <td style="width: 100%">{{ $user->title }}</td>
                                 <td>{{ $user->cost_from }}</td>
                                 <td>{{ $user->cost_to }}</td>
+                                <x-active-status active="{{ $user->status }}"></x-active-status>
                                 <x-action-buttons show="{{ route('costs.show',[$user->id]) }}" edit="{{ route('costs.edit',[$user->id]) }}"></x-action-buttons>
                             </tr>
                         @endforeach

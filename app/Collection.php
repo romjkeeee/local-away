@@ -7,11 +7,16 @@ use Illuminate\Support\Str;
 
 class Collection extends Model
 {
-    public $fillable = ['alias','name', 'gender_id','image'];
+    public $fillable = ['alias','name', 'gender_id','image', 'active'];
+
+//    public function products()
+//    {
+//        return $this->belongsToMany(Product::class, 'collection_products','collection_id','product_id');
+//    }
 
     public function products()
     {
-        return $this->belongsToMany(Product::class, 'collection_products','collection_id','product_id');
+        return $this->hasMany(ShowRoomProduct::class, 'collection_id', 'id')->where('active','=', true);
     }
 
     public function gender()

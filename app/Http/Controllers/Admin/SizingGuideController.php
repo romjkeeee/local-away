@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Gender;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AdminStoreSizingGuides;
 use App\Http\Requests\AdminUpdateSizingGuide;
@@ -16,7 +17,7 @@ use Illuminate\View\View;
 class SizingGuideController extends Controller
 {
     function __construct() {
-        $this->middleware('role:admin|user');
+        $this->middleware('role:admin');
     }
 
     /**
@@ -37,7 +38,8 @@ class SizingGuideController extends Controller
     public function create()
     {
         $sizing_category = SizingCategory::all()->pluck('title', 'id');
-        return view('admin.pages.sizing_guide.create',compact('sizing_category'));
+        $gender = Gender::all()->pluck('title','id');
+        return view('admin.pages.sizing_guide.create',compact('sizing_category', 'gender'));
     }
 
     /**
@@ -78,7 +80,8 @@ class SizingGuideController extends Controller
     {
         $data = $sizing_guide;
         $sizing_category = SizingCategory::get()->pluck('title', 'id');
-        return view('admin.pages.sizing_guide.edit', compact('data','sizing_category'));
+        $gender = Gender::all()->pluck('title','id');
+        return view('admin.pages.sizing_guide.edit', compact('data','sizing_category', 'gender'));
     }
 
     /**

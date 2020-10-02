@@ -25,12 +25,14 @@ class AdminStoreProductRequest extends FormRequest
     {
         return [
             'name' => 'required|string',
+            'price' => 'required|numeric',
 //            'images' => 'required',
 //            'images.*' => 'image|mimes:jpeg,png,jpg',
             'gender_id' => 'required|exists:genders,id',
             'product_category_id' => 'required|exists:product_categories,id',
             'sizing_id' => 'required|exists:sizings,id',
             'color_id' => 'required|exists:colors,id',
+            'boutiques_id' => 'required|exists:boutiques,id',
         ];
     }
 }

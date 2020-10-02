@@ -26,6 +26,7 @@ class AdminStoreSizingType extends FormRequest
         return [
             'title' => 'required|string',
             'sizing_category_id' => 'required|exists:sizing_categories,id',
+            'sizing_id' => 'required|exists:sizings,id',
         ];
     }
 }

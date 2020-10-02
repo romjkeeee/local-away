@@ -33,6 +33,7 @@
                         <tr>
                             <th>id</th>
                             <th>title</th>
+                            <th>gender</th>
                             <th>active</th>
                             <th>Action</th>
                         </tr>
@@ -42,6 +43,7 @@
                             <tr>
                                 <td>{{ $user->id }}</td>
                                 <td style="width:100%">{{ $user->title }}</td>
+                                <td>{{ $user->gender->title ?? '' }}</td>
                                 <x-active-status active="{{ $user->active }}"></x-active-status>
                                 <x-action-buttons show="{{ route('clothes-categories.show',[$user->id]) }}"
                                                   edit="{{ route('clothes-categories.edit',[$user->id]) }}"></x-action-buttons>

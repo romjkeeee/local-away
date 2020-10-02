@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Gender;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AdminStoreSizingCategory;
 use App\Http\Requests\AdminUpdateSizingCategory;
+use App\Sizing;
 use App\SizingCategory;
+use App\SizingType;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
@@ -15,7 +18,7 @@ use Illuminate\View\View;
 class SizingCategoryController extends Controller
 {
     function __construct() {
-        $this->middleware('role:admin|user');
+        $this->middleware('role:admin');
     }
 
     /**
@@ -25,7 +28,7 @@ class SizingCategoryController extends Controller
      */
     public function index()
     {
-        $data = SizingCategory::all();
+        $data = SizingCategory::query()->with('gender')->get();
         return view('admin.pages.sizing_category.index', compact('data'));
     }
 
@@ -36,7 +39,8 @@ class SizingCategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.sizing_category.create');
+        $gender = Gender::all()->pluck('title','id');
+        return view('admin.pages.sizing_category.create', compact('gender'));
     }
 
     /**
@@ -76,7 +80,8 @@ class SizingCategoryController extends Controller
     public function edit(SizingCategory $sizing_category)
     {
         $data = $sizing_category;
-        return view('admin.pages.sizing_category.edit', compact('data'));
+        $gender = Gender::all()->pluck('title','id');
+        return view('admin.pages.sizing_category.edit', compact('data','gender'));
     }
 
     /**

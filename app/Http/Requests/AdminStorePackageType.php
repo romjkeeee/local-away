@@ -26,6 +26,7 @@ class AdminStorePackageType extends FormRequest
         return [
             'title' => 'required|string',
             'image' => 'required|image|mimes:jpeg,png,jpg',
+            'gender_id' => 'required|exists:genders,id',
         ];
     }
 }

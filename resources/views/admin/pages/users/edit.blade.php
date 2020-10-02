@@ -20,8 +20,12 @@
                     {{ method_field('PUT') }}
                     {{ csrf_field() }}
                 <div class="form-group">
-                    {{ Form::label('name') }}
-                    {{ Form::text('name', old('name'), ['class' => 'form-control', 'maxlength' => '190', 'placeholder' => '']) }}
+                    {{ Form::label('first_name') }}
+                    {{ Form::text('first_name', old('first_name'), ['class' => 'form-control', 'maxlength' => '190', 'placeholder' => '']) }}
+                </div>
+                <div class="form-group">
+                    {{ Form::label('last_name') }}
+                    {{ Form::text('last_name', old('last_name'), ['class' => 'form-control', 'maxlength' => '190', 'placeholder' => '']) }}
                 </div>
                 <div class="form-group">
                     {{ Form::label('email') }}
@@ -33,7 +37,7 @@
                 </div>
                 <div class="form-group">
                     {{ Form::label('role') }}
-                    {{ Form::select('role', ['admin' => 'admin', 'user' => 'user'], old('role'), ['class' => 'form-control']) }}
+                    {{ Form::select('role', $role, $user_role->id, ['class' => 'form-control']) }}
                 </div>
                 <x-footer-button route="{{ route('users.index') }}"></x-footer-button>
                 {{ Form::close() }}

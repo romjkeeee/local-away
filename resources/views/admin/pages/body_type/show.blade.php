@@ -6,7 +6,7 @@
 
 @section('content')
     <div class="card card-secondary">
-        <x-card-header title="Create Body Type"></x-card-header>
+        <x-card-header title="Show Body Type"></x-card-header>
         <!-- /.card-header -->
         <!-- form start -->
         <form role="form" action="">

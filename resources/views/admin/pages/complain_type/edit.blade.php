@@ -26,7 +26,7 @@
                         {{ Form::radio('active',0, null) }}No <br>
                         {{ Form::radio('active',1, null) }}Yes
             </div>
-                <x-footer-button route="{{ route('genders.index') }}"></x-footer-button>
+                <x-footer-button route="{{ route('complain-types.index') }}"></x-footer-button>
                 {{ Form::close() }}
             </div>
         </div>

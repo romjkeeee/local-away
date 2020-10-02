@@ -25,10 +25,11 @@ class AdminStoreUser extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string',
+            'first_name' => 'required|string',
+            'last_name' => 'required|string',
             'email' => 'required|string|email|unique:users',
             'password' => 'required|string',
-            'role' => 'required|in:admin,user'
+            'role' => 'required|exists:roles,id'
         ];
     }
 }

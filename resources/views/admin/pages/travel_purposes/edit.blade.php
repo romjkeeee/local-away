@@ -29,6 +29,17 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <div class="row-cols-3">
+                        @if($data->image)
+                            {{--                            <a href="{{ url('travel-stories/'.$data->id.'/delete') }}"><i--}}
+                            {{--                                    class="fas fa-trash"></i></a>--}}
+                            <img style="height: 100px" class="img-thumbnail"
+                                 src="{{ asset('storage/'.$data->image) }}"
+                                 disabled>
+                        @endif
+                    </div>
+                </div>
+                <div class="form-group">
                     {{ Form::label('active','active') }}<br>
                     {{ Form::radio('active',0, null) }}No <br>
                     {{ Form::radio('active',1, null) }}Yes
@@ -38,3 +49,15 @@
             </div>
         </div>
         @stop
+        @section('js')
+            <script type="text/javascript">
+
+                $(document).ready(function () {
+                    $('.js-example-basic-multiple').select2({ width: '100%' });
+                    bsCustomFileInput.init();
+
+                })
+
+            </script>
+
+@endsection()

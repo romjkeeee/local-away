@@ -25,6 +25,7 @@ class AdminUpdateCity extends FormRequest
     {
         return [
             'name' => 'string',
+            'country_id' => 'exists:countries,id',
             'status' => 'boolean'
         ];
     }

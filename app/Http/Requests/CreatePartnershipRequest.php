@@ -27,7 +27,7 @@ class CreatePartnershipRequest extends FormRequest
             'first_name' => 'required|string',
             'last_name' => 'required|string',
             'email' => 'required|string|email',
-            'company_name' => 'required|string',
+            'company_name' => 'nullable|string',
             'country' => 'required|string',
             'phone' => 'required|string',
         ];

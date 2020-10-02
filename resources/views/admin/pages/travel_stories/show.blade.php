@@ -6,7 +6,7 @@
 
 @section('content')
     <div class="card card-secondary">
-        <x-card-header title="Create Body Type"></x-card-header>
+        <x-card-header title="Show travel stories"></x-card-header>
         <!-- /.card-header -->
         <!-- form start -->
         <form role="form" action="">
@@ -21,23 +21,53 @@
                 </div>
                 <div class="form-group">
                     <label>Preview image</label>
-                    <img class="img-fluid" src="{{ asset('storage/'.$data->preview_image) }}" disabled>
+                    <img style="height: 100px" class="img-thumbnail" src="{{ asset('storage/'.$data->preview_image) }}"
+                         disabled>
                 </div>
                 <div class="form-group">
                     <label>Full image</label>
-                    <img class="img-fluid" src="{{ asset('storage/'.$data->full_image_path) }}" disabled>
+                    <img style="height: 100px" class="img-thumbnail"
+                         src="{{ asset('storage/'.$data->full_image_path) }}" disabled>
+                </div>
+                <div class="form-group">
+                    <label>Annotation</label>
+                    <input class="form-control" value="{{ $data->Annotation }}" disabled>
                 </div>
                 <div class="form-group">
                     <label>Description</label>
-                    <textarea class="form-control" rows="3" placeholder="{{ $data->description }}" disabled=""></textarea>
+                    <textarea class="form-control" rows="3" placeholder="{{ $data->description }}"
+                              disabled=""></textarea>
                 </div>
                 <div class="form-group">
                     <label>Products</label>
-                    <input class="form-control" value="{{ $data->product_ids }}" disabled>
+                    @if($data->product_ids)
+                        @php($products_ids = explode(",",$data->product_ids))
+                        @foreach($products_ids as $product)
+                            @php($data_products = \App\Product::query()->where('id',$product)->first())
+                            <span class="badge badge-primary badge-pill">{{ $data_products->name ?? 'NO NAME' }}</span>
+                        @endforeach
+                        <br>
+                        <div class="form-inline">
+                        @foreach($products_ids as $product)
+                            @php($data_products = \App\Product::query()->where('id',$product)->first())
+                        @if(count($data_products->getMedia('images')))
+                            <div class="col-md-2">
+                                    <img alt="travel" style="height: 100px" class="img-thumbnail"
+                                         src="{{ $data_products->getMedia('images')->first()->getFullUrl()  }}"
+                                         disabled>
+                                    <div class="col-sm-6">
+                                        <p class="" style="width: 10ch;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">{{ $data_products->name }}</p>
+                                    </div>
+                                </div>
+                            @endif
+                        @endforeach
+                        </div>
+                    @endif
                 </div>
                 <div class="form-group">
                     <label>Home page</label><br>
-                    <td style="text-align: center">@if($data->is_to_homepage)<i class="fas fa-toggle-on fa-2x"></i>@else<i class="fa fa-toggle-off fa-2x"></i>@endif</td>
+                    <td style="text-align: center">@if($data->is_to_homepage)<i class="fas fa-toggle-on fa-2x"></i>@else
+                            <i class="fa fa-toggle-off fa-2x"></i>@endif</td>
 
                 </div>
             </div>

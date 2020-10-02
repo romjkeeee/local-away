@@ -45,8 +45,16 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    {{ Form::label('Price') }}
+                    {{ Form::text('price', old('price'), ['class' => 'form-control', 'maxlength' => '190', 'placeholder' => '']) }}
+                </div>
+                <div class="form-group">
                     {{ Form::label('Gender') }}
                     {{ Form::select('gender_id',$gender, old('gender'),['class' => 'form-control',  'placeholder' => 'Choose a gender...']) }}
+                </div>
+                <div class="form-group">
+                    {{ Form::label('Boutique') }}<br>
+                    {{ Form::select('boutiques_id',$boutiques, old('boutiques_id'), ['class' => 'js-example-basic-multiple']) }}
                 </div>
                 <div class="form-group">
                     {{ Form::label('status','status') }}<br>
@@ -60,6 +68,7 @@
         @stop
         @section('js')
             <script type="text/javascript">$(document).ready(function () {
+                    $('.js-example-basic-multiple').select2({ width: '100%' });
                     bsCustomFileInput.init();
                 });
             </script>

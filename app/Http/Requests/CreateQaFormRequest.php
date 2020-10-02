@@ -25,7 +25,8 @@ class CreateQaFormRequest extends FormRequest
     {
         return [
             'qa_id' => 'nullable|exists:qas,id',
-            'email' => 'required|string|email'
+            'email' => 'required|string|email',
+            'city_id' => 'exists:cities,id'
         ];
     }
 }

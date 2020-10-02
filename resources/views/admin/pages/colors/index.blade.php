@@ -33,7 +33,7 @@
                         <tr>
                             <th>id</th>
                             <th>Name</th>
-                            <th>Image</th>
+{{--                            <th>Image</th>--}}
                             <th>active</th>
                             <th>Action</th>
                         </tr>
@@ -43,7 +43,7 @@
                             <tr>
                                 <td>{{ $user->id }}</td>
                                 <td style="width: 100%">{{ $user->name }}</td>
-                                <td><img class="img-thumbnail" src="{{ asset('storage/'.$user->image) }}"></td>
+{{--                                <td><img class="img-thumbnail" src="{{ asset('storage/'.$user->image) }}"></td>--}}
                                 <x-active-status active="{{ $user->status }}"></x-active-status>
                                 <x-action-buttons show="{{ route('colors.show',[$user->id]) }}"
                                                   edit="{{ route('colors.edit',[$user->id]) }}"></x-action-buttons>

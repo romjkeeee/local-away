@@ -15,7 +15,7 @@ use Illuminate\View\View;
 class PartnershipController extends Controller
 {
     function __construct() {
-        $this->middleware('role:admin|user');
+        $this->middleware('role:admin');
     }
 
     /**

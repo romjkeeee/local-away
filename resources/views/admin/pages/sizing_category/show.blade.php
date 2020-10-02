@@ -24,7 +24,7 @@
             </div>
                 <div class="form-group">
                     <label>Gender</label>
-                    <input class="form-control" value="{{ $data->gender }}" disabled>
+                    <input class="form-control" value="{{ $data->gender->title ?? '' }}" disabled>
                 </div>
             <!-- /.card-body -->
             <a href="{{ route('sizing-categories.index') }}" class="btn btn-default">Back to list</a>

@@ -20,7 +20,7 @@ use Illuminate\View\View;
 class UserController extends Controller
 {
     function __construct() {
-        $this->middleware('role:admin|user');
+        $this->middleware('role:admin');
     }
 
     /**
@@ -41,7 +41,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.users.create');
+        $role = Role::all()->pluck('name','id');
+        return view('admin.pages.users.create', compact('role'));
     }
 
     /**
@@ -76,8 +77,9 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        $role = Role::all();
-        return view('admin.pages.users.edit', compact('user', 'role'));
+        $role = Role::all()->pluck('name','id');
+        $user_role = $user->roles()->first(['name','id']);
+        return view('admin.pages.users.edit', compact('user', 'role','user_role'));
     }
 
     /**
@@ -89,8 +91,11 @@ class UserController extends Controller
      */
     public function update(AdminUpdateUser $request,User $user)
     {
-        if ($request->name){
-            $user->name = $request->name;
+        if ($request->first_name){
+            $user->first_name = $request->first_name;
+        }
+        if ($request->last_name){
+            $user->last_name = $request->last_name;
         }
         if ($request->email){
             $user->email = $request->email;
@@ -125,5 +130,11 @@ class UserController extends Controller
     {
         $user = auth()->user();
         return redirect()->route('users.show', $user->id);
+    }
+
+    public function adminEdit()
+    {
+        $user = auth()->user();
+        return redirect()->route('users.edit', $user->id);
     }
 }

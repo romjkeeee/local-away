@@ -303,7 +303,7 @@ return [
                 ],
                 [
                     'text'        => 'Orders',
-                    'url'         => '#',
+                    'url'         => 'admin/orders',
                     'icon'        => 'far fa-fw fa-circle nav-icon',
                 ],
                 [
@@ -321,76 +321,150 @@ return [
                     'url'         => 'admin/subscribes',
                     'icon'        => 'far fa-fw fa-circle nav-icon',
                 ],
+//                [
+//                    'text'        => 'Complains',
+//                    'url'         => 'admin/complains',
+//                    'icon'        => 'far fa-fw fa-circle nav-icon',
+//                ],
                 [
-                    'text'        => 'Complains',
-                    'url'         => 'admin/complains',
+                    'text'        => 'Beta Form',
+                    'url'         => 'admin/beta-forms',
                     'icon'        => 'far fa-fw fa-circle nav-icon',
                 ],
             ],
         ],
         [
-            'text'        => 'Complain Types',
-            'url'         => 'admin/complain-types',
-            'icon'        => 'fas fa-fw fa-angry',
+            'text'    => 'Show room',
+            'icon'    => 'fas fa-fw fa-list',
+            'submenu' => [
+                [
+                    'text'        => 'Show Room',
+                    'url'         => 'admin/collections',
+                    'icon'        => 'far fa-fw fa-circle nav-icon',
+                ],
+                [
+                    'text'        => 'Show Room Product',
+                    'url'         => 'admin/show-room-products',
+                    'icon'        => 'far fa-fw fa-circle nav-icon',
+                ],
+                [
+                    'text'        => 'Show Room Likes',
+                    'url'         => 'admin/show-room-like',
+                    'icon'        => 'far fa-fw fa-circle nav-icon',
+                ],
+            ],
         ],
         [
-            'text'        => 'Show Room',
-            'url'         => 'admin/collections',
-            'icon'        => 'fas fa-fw fa-store',
+            'text'    => 'Products',
+            'icon'    => 'fas fa-fw fa-list',
+            'submenu' => [
+                [
+                    'text'        => 'Products Category',
+                    'url'         => 'admin/product-categories',
+                    'icon'        => 'far fa-fw fa-circle nav-icon',
+                ],
+                [
+                    'text'        => 'Products',
+                    'url'         => 'admin/products',
+                    'icon'        => 'far fa-fw fa-circle nav-icon',
+                ],
+            ],
         ],
         [
-            'text'        => 'Show Room Likes',
-            'url'         => 'admin/show-room-like',
-            'icon'        => 'fas fa-fw fa-thumbs-up',
+            'text'    => 'Travel Stories',
+            'icon'    => 'fas fa-fw fa-list',
+            'submenu' => [
+                [
+                    'text'        => 'Travel Stories',
+                    'url'         => 'admin/travel-stories',
+                    'icon'        => 'far fa-fw fa-circle nav-icon',
+                ],
+                [
+                    'text'        => 'Story style',
+                    'url'         => 'admin/story-styles',
+                    'icon'        => 'far fa-fw fa-circle nav-icon',
+                ],
+            ],
         ],
         [
-            'text'        => 'Travel Stories',
-            'url'         => 'admin/travel-stories',
-            'icon'        => 'fas fa-fw fa-mountain',
+            'text'    => 'Settings',
+            'icon'    => 'fas fa-fw fa-list',
+            'submenu' => [
+                [
+                    'text'        => 'Genders',
+                    'url'         => 'admin/genders',
+                    'icon'        => 'far fa-fw fa-circle nav-icon',
+                ],
+                [
+                    'text'        => 'Cities',
+                    'url'         => 'admin/cities',
+                    'icon'        => 'far fa-fw fa-circle nav-icon',
+                ],
+                [
+                    'text'        => 'Colors',
+                    'url'         => 'admin/colors',
+                    'icon'        => 'far fa-fw fa-circle nav-icon',
+                ],
+                [
+                    'text'        => 'Sizes',
+                    'url'         => 'admin/sizing',
+                    'icon'        => 'far fa-fw fa-circle nav-icon',
+                ],
+                [
+                    'text'        => 'Box',
+                    'url'         => 'admin/boxs',
+                    'icon'        => 'far fa-fw fa-circle nav-icon',
+                ],
+                [
+                    'text'        => 'Founders',
+                    'url'         => 'admin/founders',
+                    'icon'        => 'far fa-fw fa-circle nav-icon',
+                ],
+                [
+                    'text'        => 'Documents',
+                    'url'         => 'admin/documents',
+                    'icon'        => 'far fa-fw fa-circle nav-icon',
+                ],
+            ],
         ],
-        [
-            'text'        => 'Story style',
-            'url'         => 'admin/story-styles',
-            'icon'        => 'fas fa-fw fa-tshirt',
-        ],
+//        [
+//            'text'        => 'Complain Types',
+//            'url'         => 'admin/complain-types',
+//            'icon'        => 'fas fa-fw fa-angry',
+//        ],
         [
             'text'        => 'Q&A',
             'url'         => 'admin/qas',
             'icon'        => 'fas fa-fw fa-question',
         ],
         [
-            'text'        => 'Genders',
-            'url'         => 'admin/genders',
-            'icon'        => 'fas fa-fw fa-venus-mars',
+            'text'        => 'Countries',
+            'url'         => 'admin/countries',
+            'icon'        => 'fas fa-fw fa-globe',
         ],
         [
-            'text'        => 'Cities',
-            'url'         => 'admin/cities',
-            'icon'        => 'far fa-fw fa-building',
-        ],
-        [
-            'text'        => 'Colors',
-            'url'         => 'admin/colors',
-            'icon'        => 'fas fa-fw fa-paint-brush',
-        ],
-        [
-            'text'        => 'Sizes',
-            'url'         => 'admin/sizing',
-            'icon'        => 'fas fa-fw fa-ruler',
-        ],
-        [
-            'text'        => 'Products Category',
-            'url'         => 'admin/product-categories',
-            'icon'        => 'fas fa-fw fa-shopping-cart',
-        ],
-        [
-            'text'        => 'Products',
-            'url'         => 'admin/products',
-            'icon'        => 'fas fa-fw fa-shopping-cart',
+            'text'        => 'Boutiques',
+            'url'         => 'admin/boutiques',
+            'icon'        => 'fas fa-fw fa-globe',
         ],
         [
             'text'        => 'Users',
             'url'         => 'admin/users',
+            'icon'        => 'far fa-fw fa-user',
+        ],
+        [
+            'text'        => 'User Address',
+            'url'         => 'admin/user-address',
+            'icon'        => 'far fa-fw fa-user',
+        ],
+        [
+            'text'        => 'User Preference',
+            'url'         => 'admin/user-settings',
+            'icon'        => 'far fa-fw fa-user',
+        ],
+        [
+            'text'        => 'Home page Settings',
+            'url'         => 'admin/web-settings',
             'icon'        => 'far fa-fw fa-user',
         ],
         ['header' => 'account_settings'],
@@ -401,8 +475,13 @@ return [
         ],
         [
             'text' => 'change_password',
-            'url'  => 'admin/change_password',
+            'url'  => 'admin/edit-profile',
             'icon' => 'fas fa-fw fa-lock',
+        ],
+        [
+            'text' => 'Logout',
+            'url'  => 'admin/logout',
+            'icon' => 'fas fa-fw fa-power-off',
         ],
     ],
 
@@ -478,6 +557,21 @@ return [
                     'type' => 'css',
                     'asset' => false,
                     'location' => '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.css',
+                ],
+            ],
+        ],
+        'Summernote' => [
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'js',
+                    'asset' => false,
+                    'location' => 'https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js',
+                ],
+                [
+                    'type' => 'css',
+                    'asset' => false,
+                    'location' => 'https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css',
                 ],
             ],
         ],

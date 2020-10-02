@@ -14,7 +14,7 @@ use Illuminate\Http\RedirectResponse;
 class GenderController extends Controller
 {
     function __construct() {
-        $this->middleware('role:admin|user');
+        $this->middleware('role:admin');
     }
 
     /**

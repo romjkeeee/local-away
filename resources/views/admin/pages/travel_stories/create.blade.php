@@ -3,6 +3,7 @@
 @extends('adminlte::page')
 
 @section('title', 'Dashboard')
+<link rel="stylesheet" href="{{ asset('editor-md/css/editormd.min.css') }}" />
 
 @section('content')
     @if(count($errors) > 0)
@@ -20,7 +21,7 @@
                 {{ csrf_field() }}
                 <div class="form-group">
                     {{ Form::label('name') }}
-                    {{ Form::text('name', old('name'), ['class' => 'form-control', 'maxlength' => '190', 'placeholder' => '']) }}
+                    {{ Form::text('name', old('name'), ['class' => 'form-control', 'placeholder' => '']) }}
                 </div>
                 <div class="form-group">
                     <label for="exampleInputImage">Preview image</label>
@@ -41,21 +42,29 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    {{ Form::label('description') }}
-                    {{ Form::textarea('description', old('description'), ['class' => 'form-control', 'maxlength' => '190', 'placeholder' => '']) }}
+                    {{ Form::label('annotation') }}
+                    {{ Form::text('annotation', old('annotation'), ['class' => 'form-control', 'placeholder' => '']) }}
+                </div>
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <div id="editor">
+                        <!-- Tips: Editor.md can auto append a `<textarea>` tag -->
+                        <textarea name="description"></textarea>
+                    </div>
                 </div>
                 <div class="form-group">
                     {{ Form::label('Products') }}<br>
                     {{ Form::select('product_ids[]',$products, old('product_ids'), ['class' => 'js-example-basic-multiple',  'multiple'=>true]) }}
                 </div>
                 <div class="form-group">
-                    {{ Form::label('Gender') }}
-                    {{ Form::select('gender_id',$gender, old('gender'),['class' => 'form-control',  'placeholder' => 'Choose a gender...']) }}
-                </div>
-                <div class="form-group">
                     {{ Form::label('is_to_homepage','Home page') }}<br>
                     {{ Form::radio('is_to_homepage',0, null) }}No <br>
                     {{ Form::radio('is_to_homepage',1, null) }}Yes
+                </div>
+                <div class="form-group">
+                    {{ Form::label('active','active') }}<br>
+                    {{ Form::radio('active',0, null) }}No <br>
+                    {{ Form::radio('active',1, null) }}Yes
                 </div>
                 <x-footer-button route="{{ route('travel-stories.index') }}"></x-footer-button>
                 {{ Form::close() }}
@@ -63,6 +72,34 @@
         </div>
         @stop
         @section('js')
+            <script src="{{ asset('/editor-md/editormd.min.js') }}"></script>
+            <script src="{{ asset('/editor-md/languages/en.js') }}"></script>
+            <script type="text/javascript">
+                $(function() {
+                    var testEditor = editormd("editor", {
+                        width   : "100%",
+                        height  : 500,
+                        syncScrolling : "single",
+                        toolbarIcons: "simple",
+                        placeholder: "",
+
+                        path : "{{ asset('editor-md/lib/') }}/",  // Autoload modules mode, codemirror, marked... dependents libs path
+
+                    });
+
+                    editormd.toolbarModes = {
+                        simple : [
+                            "undo", "redo", "|",
+                            "bold", "del", "italic", "quote", "uppercase", "lowercase", "|",
+                            "h1", "h2", "h3", "h4", "h5", "h6", "|",
+                            "list-ul", "list-ol", "hr","|",
+
+                        ],
+                    };
+
+                    $( ".editormd-preview-close-btn" ).remove();
+                });
+            </script>
             <script type="text/javascript">
 
                 $(document).ready(function () {

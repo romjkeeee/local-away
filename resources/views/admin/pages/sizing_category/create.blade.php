@@ -33,10 +33,19 @@
                 </div>
                 <div class="form-group">
                     {{ Form::label('gender') }}
-                    {{ Form::select('gender',['male' => 'male', 'female' => 'female'], old('gender'), ['class' => 'form-control', 'placeholder' => 'Choose a gender...']) }}
+                    {{ Form::select('gender_id',$gender, old('gender_id'), ['class' => 'form-control', 'placeholder' => 'Choose a gender...']) }}
                 </div>
                 <x-footer-button route="{{ route('sizing-categories.index') }}"></x-footer-button>
                 {{ Form::close() }}
             </div>
         </div>
 @stop
+@section('js')
+            <script type="text/javascript">
+                $(document).ready(function(){
+                    $('.js-example-basic-multiple').select2({ width: '100%' });
+                    bsCustomFileInput.init();
+                });
+
+            </script>
+    @stop

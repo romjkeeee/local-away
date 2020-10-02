@@ -28,6 +28,17 @@
                         {{ Form::file('image') }}
                     </div>
                 </div>
+                <div class="form-group">
+                    <div class="row-cols-3">
+                        @if($data->image)
+                            {{--                            <a href="{{ url('travel-stories/'.$data->id.'/delete') }}"><i--}}
+                            {{--                                    class="fas fa-trash"></i></a>--}}
+                            <img style="height: 100px" class="img-thumbnail"
+                                 src="{{ asset('storage/'.$data->image) }}"
+                                 disabled>
+                        @endif
+                    </div>
+                </div>
             <div class="form-group">
                         {{ Form::label('status','active') }}<br>
                         {{ Form::radio('status',0, null) }}No <br>

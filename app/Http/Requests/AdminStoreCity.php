@@ -24,7 +24,8 @@ class AdminStoreCity extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string'
+            'name' => 'required|string',
+            'country_id' => 'required|exists:countries,id'
         ];
     }
 }

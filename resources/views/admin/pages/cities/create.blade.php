@@ -22,6 +22,10 @@
                     {{ Form::label('name') }}
                     {{ Form::text('name', old('name'), ['class' => 'form-control', 'maxlength' => '190', 'placeholder' => '']) }}
                 </div>
+                <div class="form-group">
+                    {{ Form::label('Country') }}
+                    {{ Form::select('country_id',$countries, old('country_id'),['class' => 'form-control',  'placeholder' => 'Choose a country...']) }}
+                </div>
                     <x-footer-button route="{{ route('cities.index') }}"></x-footer-button>
                 {{ Form::close() }}
             </div>

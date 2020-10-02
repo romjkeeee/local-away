@@ -7,19 +7,27 @@
 @section('content')
     <div class="card card-secondary">
         <div class="card-header">
-            <h3 class="card-title">Users</h3>
+            <h3 class="card-title">Users Show</h3>
         </div>
         <!-- /.card-header -->
         <!-- form start -->
         <form role="form" action="">
             <div class="card-body">
                 <div class="form-group">
-                    <label>Name</label>
-                    <input class="form-control" value="{{ $user->name }}" disabled>
+                    <label>First Name</label>
+                    <input class="form-control" value="{{ $user->first_name }}" disabled>
+                </div>
+                <div class="form-group">
+                    <label>Last Name</label>
+                    <input class="form-control" value="{{ $user->last_name }}" disabled>
                 </div>
                 <div class="form-group">
                     <label>Email</label>
                     <input class="form-control" value="{{ $user->email }}" disabled>
+                </div>
+                <div class="form-group">
+                    <label>Avatar</label>
+                    <img style="height: 100px" class="img-thumbnail" src="{{ $user->avatar }}" disabled>
                 </div>
                 <div class="form-group">
                     <label>Role</label>

@@ -14,6 +14,8 @@ return [
     */
 
     'name' => env('APP_NAME', 'Laravel'),
+    'box_fee' => 50,
+    'default_processor' => env('DEFAULT_PROCESSOR', 'stripe'),
 
     /*
     |--------------------------------------------------------------------------
@@ -52,7 +54,8 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localway.dev-page.site'),
+    'url' => env('APP_URL', 'https://admin.localaway.com'),
+    'front_url' => env('FRONT_URL', 'https://localaway.com'),
 
     'asset_url' => env('ASSET_URL', null),
 
@@ -167,6 +170,8 @@ return [
          * Package Service Providers...
          */
         Fruitcake\Cors\CorsServiceProvider::class,
+        Laravel\Socialite\SocialiteServiceProvider::class,
+
         /*
          * Application Service Providers...
          */
@@ -228,6 +233,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
     ],
 
 ];

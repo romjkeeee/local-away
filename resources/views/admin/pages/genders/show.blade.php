@@ -7,7 +7,7 @@
 @section('content')
     <div class="card card-secondary">
         <div class="card-header">
-            <h3 class="card-title">Show color</h3>
+            <h3 class="card-title">Show gender</h3>
         </div>
         <!-- /.card-header -->
         <!-- form start -->
@@ -15,15 +15,11 @@
             <div class="card-body">
                 <div class="form-group">
                     <label>Name</label>
-                    <input class="form-control" value="{{ $data->name }}" disabled>
-                </div>
-                <div class="form-group">
-                    <label>Image</label>
-                    <img class="img-fluid" src="{{ asset('storage/'.$data->image) }}" disabled>
+                    <input class="form-control" value="{{ $data->title }}" disabled>
                 </div>
             </div>
             <!-- /.card-body -->
-            <a href="{{ route('colors.index') }}" class="btn btn-default">Back to list</a>
+            <a href="{{ route('genders.index') }}" class="btn btn-default">Back to list</a>
 
         </form>
     </div>

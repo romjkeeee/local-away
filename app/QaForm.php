@@ -12,4 +12,9 @@ class QaForm extends Model
     {
         return $this->hasOne(Qa::class, 'id', 'qa_id');
     }
+
+    public function city()
+    {
+        return $this->hasOne(City::class, 'id', 'city_id');
+    }
 }

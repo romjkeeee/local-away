@@ -28,17 +28,27 @@
                             </div>
                         </div>
                     </div>
-                        <div class="form-group">
-                            <div class="row-cols-3">
-                                @foreach($data->colorImage()->where('color_id',$color->id)->get() as $image)
-                                    <a href="{{ url('admin/image/'.$image->media_id.'/delete') }}"><i class="fas fa-trash"></i></a>
-                                    <img style="height: 100px" class="img-thumbnail"
-                                         src="{{ $data->getMedia('images')->where('id',$image->media_id)->first()->getFullUrl()  }}"
-                                         disabled>
-                                @endforeach
+                    <div class="form-group">
+                        <div class="row-cols-3">
+                            @foreach($data->colorImage()->where('color_id',$color->id)->get() as $image)
+                                <a href="{{ url('admin/image/'.$image->media_id.'/delete') }}"><i
+                                        class="fas fa-trash"></i></a>
+                                <img style="height: 100px" class="img-thumbnail"
+                                     src="{{ $data->getMedia('images')->where('id',$image->media_id)->first()->getFullUrl()  }}"
+                                     disabled>
+                            @endforeach
+                        </div>
+                    </div>
                 @endforeach
-                <x-footer-button route="{{ route('products.index') }}"></x-footer-button>
-                {{ Form::close() }}
+                            <x-footer-button route="{{ route('products.index') }}"></x-footer-button>
+                            {{ Form::close() }}
+
             </div>
         </div>
-@stop
+        @stop
+        @section('js')
+            <script type="text/javascript">$(document).ready(function () {
+                    bsCustomFileInput.init();
+                });
+            </script>
+@endsection

@@ -3,13 +3,16 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AdminStoreQaRequest;
+use App\Http\Requests\AdminUpdateQaRequest;
+use App\Qa;
 use App\QaForm;
 use Illuminate\Http\Request;
 
 class QaFormController extends Controller
 {
     function __construct() {
-        $this->middleware('role:admin|user');
+        $this->middleware('role:admin');
     }
 
     /**
@@ -84,7 +87,7 @@ class QaFormController extends Controller
      * @param PersonalStyle $personal_style
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(AdminUpdatePersonalStyle $request, QaForm $qa_form)
+    public function update(AdminUpdateQaRequest $request, QaForm $qa_form)
     {
         if ($qa_form->update($request->validated()))
         {

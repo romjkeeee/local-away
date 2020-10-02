@@ -34,9 +34,8 @@
                             <th>id</th>
                             <th>City</th>
                             <th>Alias</th>
-                            <th>Local Image</th>
+                            <th>Email</th>
                             <th>Lead Description</th>
-                            <th>Lead Image</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -46,9 +45,8 @@
                                 <td>{{ $user->id }}</td>
                                 <td>{{ $user->city->name ?? '' }}</td>
                                 <td>{{ $user->alias }}</td>
-                                <td><img class="img-thumbnail" src="{{ asset('storage/'.$user->location_image) }}"></td>
+                                <td>{{ $user->email }}</td>
                                 <td style="width: 100%">{{ $user->lead_description }}</td>
-                                <td><img class="img-thumbnail" src="{{ asset('storage/'.$user->lead_image) }}"></td>
                                 <x-action-buttons show="{{ route('qas.show',[$user->id]) }}"
                                                   edit="{{ route('qas.edit',[$user->id]) }}"></x-action-buttons>
                             </tr>

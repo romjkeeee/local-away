@@ -14,7 +14,7 @@ use Illuminate\View\View;
 class ContactFormController extends Controller
 {
     function __construct() {
-        $this->middleware('role:admin|user');
+        $this->middleware('role:admin');
     }
 
     /**

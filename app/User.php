@@ -20,7 +20,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password'
+        'first_name', 'last_name', 'email', 'password', 'avatar', 'user_agreement'
     ];
 
     /**
@@ -44,6 +44,27 @@ class User extends Authenticatable
     public function showRoomLike()
     {
         return $this->hasMany(ShowRoomLike::class, 'user_id', 'id');
+    }
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class, 'user_id', 'id');
+    }
+
+    public function preference()
+    {
+        return $this->hasOne(UserPreference::class, 'user_id', 'id');
+    }
+
+    public function userAddress()
+    {
+        return $this->hasMany(UserAddress::class, 'user_id', 'id')
+            ->where('status','show');
+    }
+
+    public function userSettings()
+    {
+        return $this->hasMany(UserSetting::class, 'user_id', 'id');
     }
 
     public function setPasswordAttribute($value)

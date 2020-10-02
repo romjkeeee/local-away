@@ -19,6 +19,9 @@ Auth::routes();
 
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::get('home', 'HomeController@index')->name('home');
+    Route::get('logout', 'HomeController@logout');
+
+    Route::get('image/{id}', 'HomeController@image');
 
     Route::resource('users', 'UserController');
     Route::resource('package-types', 'PackageTypeController');
@@ -44,15 +47,40 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::resource('product-categories', 'ProductCategoryController');
     Route::get('product/{id}/step2', 'ProductController@step2create');
     Route::put('product/{id}/step2', 'ProductController@store2step');
+    Route::get('product/{id}/refund', 'ProductController@refund_product')->name('product.refund');
     Route::get('product/{product}/images', 'ProductController@show_image');
     Route::get('image/{id}/delete', 'ProductController@deleteImage');
     Route::resource('travel-stories', 'TravelStoryController');
+    Route::get('travel-stories/{id}/step2', 'TravelStoryController@step2create');
+    Route::put('travel-stories/{id}/step2', 'TravelStoryController@store2step');
+    Route::get('travel-stories/{id}/delete', 'TravelStoryController@deleteImage');
     Route::resource('story-styles', 'StoryStyleController');
     Route::resource('collections', 'CollectionController');
     Route::resource('complain-types', 'ComplainTypeController');
     Route::get('complains', 'ComplainController@index');
     Route::get('show-room-like', 'ShowRoomLikeController@index');
+    Route::get('user-address', 'UserAddressController@index');
+    Route::resource('countries', 'CountryController');
+    Route::resource('boxs', 'BoxController')->except('create', 'store');
+    Route::resource('user-settings', 'UserSettingController')->only('index');
+    Route::resource('orders', 'OrderController');
+    Route::get('orders/equip/{id}', 'OrderController@equip')->name('orders.equip');
+    Route::post('orders/equip/{id}', 'OrderController@store_equip')->name('orders.equip.store');
+    Route::resource('order-products', 'OrderProductController');
+    Route::resource('boutiques', 'BoutiqueController');
+    Route::resource('beta-forms', 'BetaFormController');
+    Route::resource('founders', 'FounderController');
+    Route::resource('documents', 'DocumentController');
+    Route::resource('show-room-products', 'ShowRoomProductController');
+    Route::get('web-settings','WebSiteConfigController@index')->name('web-settings.index');
+    Route::post('web-settings','WebSiteConfigController@update')->name('web-settings.update');
 
 
     Route::get('profile','UserController@adminProfile');
+    Route::get('edit-profile','UserController@adminEdit');
 });
+
+//Route::get('stripe-checkout', function() {
+//    return view('payments.stripe-checkout');
+//});
+Route::get('stripe-checkout', 'Admin\HomeController@stripe');

@@ -30,9 +30,9 @@
                     {{ Form::text('cost_to', old('cost_to'), ['class' => 'form-control', 'maxlength' => '190', 'placeholder' => '']) }}
                 </div>
                 <div class="form-group">
-                    {{ Form::label('active','active') }}<br>
-                    {{ Form::radio('active',0, null) }}No <br>
-                    {{ Form::radio('active',1, null) }}Yes
+                    {{ Form::label('status','active') }}<br>
+                    {{ Form::radio('status',0, null) }}No <br>
+                    {{ Form::radio('status',1, null) }}Yes
                 </div>
                 <x-footer-button route="{{ route('costs.index') }}"></x-footer-button>
                 {{ Form::close() }}

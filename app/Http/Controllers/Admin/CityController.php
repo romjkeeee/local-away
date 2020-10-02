@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\City;
 use App\Color;
+use App\Country;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AdminStoreCity;
 use App\Http\Requests\AdminStoreColor;
@@ -18,7 +19,7 @@ use Illuminate\Http\RedirectResponse;
 class CityController extends Controller
 {
     function __construct() {
-        $this->middleware('role:admin|user');
+        $this->middleware('role:admin');
     }
 
     /**
@@ -39,7 +40,8 @@ class CityController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.cities.create');
+        $countries = Country::all()->pluck('name','id');
+        return view('admin.pages.cities.create', compact('countries'));
     }
 
     /**
@@ -76,7 +78,8 @@ class CityController extends Controller
     public function edit(City $city)
     {
         $data = $city;
-        return view('admin.pages.cities.edit', compact('data'));
+        $countries = Country::all()->pluck('name','id');
+        return view('admin.pages.cities.edit', compact('data', 'countries'));
     }
 
     /**

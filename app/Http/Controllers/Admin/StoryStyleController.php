@@ -17,7 +17,7 @@ use Illuminate\View\View;
 class StoryStyleController extends Controller
 {
     function __construct() {
-        $this->middleware('role:admin|user');
+        $this->middleware('role:admin');
     }
 
     /**

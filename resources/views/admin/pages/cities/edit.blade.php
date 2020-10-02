@@ -21,6 +21,10 @@
                         {{ Form::label('name') }}
                         {{ Form::text('name', old('name'), ['class' => 'form-control', 'maxlength' => '190', 'placeholder' => '']) }}
                     </div>
+                <div class="form-group">
+                    {{ Form::label('Country') }}
+                    {{ Form::select('country_id',$countries, old('country_id'),['class' => 'form-control',  'placeholder' => 'Choose a country...']) }}
+                </div>
             <div class="form-group">
                         {{ Form::label('status','active') }}<br>
                         {{ Form::radio('status',0, null) }}No <br>

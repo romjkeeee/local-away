@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Boutique;
 use App\Color;
 use App\Gender;
 use App\Http\Controllers\Controller;
@@ -9,6 +10,8 @@ use App\Http\Requests\AdminStorePersonalStyle;
 use App\Http\Requests\AdminStoreProductRequest;
 use App\Http\Requests\AdminUpdateProductRequest;
 use App\MediaToColorProduct;
+use App\Order;
+use App\OrderProduct;
 use App\Product;
 use App\ProductCategory;
 use App\Sizing;
@@ -24,7 +27,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 class ProductController extends Controller
 {
     function __construct() {
-        $this->middleware('role:admin|user');
+        $this->middleware('role:admin');
     }
 
     /**
@@ -47,9 +50,10 @@ class ProductController extends Controller
     {
         $gender = Gender::all()->pluck('title', 'id');
         $sizes = Sizing::all();
-        $colors = Color::all();
-        $category = ProductCategory::all()->pluck('name','id');
-        return view('admin.pages.products.create', compact('gender','sizes','colors','category'));
+        $colors = Color::query()->where('status', 1)->get();
+        $category = ProductCategory::query()->where('status',1)->pluck('name','id');
+        $boutiques = Boutique::query()->where('status',1)->pluck('name','id');
+        return view('admin.pages.products.create', compact('gender','sizes','colors','category','boutiques'));
     }
 
     /**
@@ -98,10 +102,11 @@ class ProductController extends Controller
     {
         $gender = Gender::all()->pluck('title', 'id');
         $sizes = Sizing::all();
-        $colors = Color::all();
+        $colors = Color::query()->where('status', 1)->get();
         $data = $product;
         $category = ProductCategory::all()->pluck('name','id');
-        return view('admin.pages.products.edit', compact('data','gender','sizes','colors','category'));
+        $boutiques = Boutique::query()->where('status',1)->pluck('name','id');
+        return view('admin.pages.products.edit', compact('data','gender','sizes','colors','category', 'boutiques'));
     }
 
     /**
@@ -113,17 +118,20 @@ class ProductController extends Controller
      */
     public function update(AdminUpdateProductRequest $request, Product $product)
     {
-        if ($product->update($request->validated()))
-        {
-            if($request->hasFile('images') && $request->file('images'))
-            {
-                foreach ($request->file('images') as $images) {
-                    $product->addMedia($images)->toMediaCollection('images');
+        $boutiques = Boutique::query()->where('id',$request->boutiques_id)->where('status',1)->first();
+        if ($boutiques) {
+            if ($product->update($request->validated())) {
+                if ($request->hasFile('images') && $request->file('images')) {
+                    foreach ($request->file('images') as $images) {
+                        $product->addMedia($images)->toMediaCollection('images');
+                    }
                 }
+                $product->sizes()->sync($request->get('sizing_id'));
+                $product->colors()->sync($request->get('color_id'));
+                return redirect()->route('products.index');
             }
-            $product->sizes()->sync($request->get('sizing_id'));
-            $product->colors()->sync($request->get('color_id'));
-            return redirect()->route('products.index');
+        }else{
+            return redirect()->back()->withErrors('This boutiques is disable');
         }
     }
 
@@ -175,6 +183,20 @@ class ProductController extends Controller
                 return redirect()->back();
         }
         return response('error1');
+
+    }
+
+    public function refund_product($id)
+    {
+        $product = OrderProduct::query()->find($id);
+        $product->status_id = 7;
+        $product->update();
+
+        $order = Order::query()->find($product->order_id);
+        $order->status_id = 7;
+        $order->update();
+
+        return redirect()->route('orders.show', $order->id);
 
     }
 }
