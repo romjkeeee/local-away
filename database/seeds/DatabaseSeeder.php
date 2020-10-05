@@ -13,6 +13,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
            StatusSeeder::class,
+           PreferencesSeeder::class,
         ]);
     }
 }

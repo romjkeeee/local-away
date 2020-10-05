@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AdminUpdateSizing extends FormRequest
+class AgesRequestUpdate extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,8 @@ class AdminUpdateSizing extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'string',
-            'measurement_id' => 'exists:measurements,id',
+            'name' => 'string',
+            'active' => 'boolean'
         ];
     }
 }

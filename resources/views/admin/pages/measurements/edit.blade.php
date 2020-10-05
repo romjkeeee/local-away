@@ -12,20 +12,21 @@
     @endif
     <div class="card card-secondary">
         <div class="card-header">
-            <h3 class="card-title">Edit size</h3>
+            <h3 class="card-title">Edit measurement</h3>
         </div>
         <div class="panel panel-default">
             <div class="card-body">
-                {{ Form::model($data, ['method' => 'PUT', 'enctype'=>'multipart/form-data', 'route' => ['sizing.update', $data->id]]) }}
+                {{ Form::model($data, ['method' => 'PUT', 'enctype'=>'multipart/form-data', 'route' => ['measurements.update', $data->id]]) }}
                 <div class="form-group">
-                    {{ Form::label('title') }}
-                    {{ Form::text('title', old('title'), ['class' => 'form-control', 'maxlength' => '190', 'placeholder' => '']) }}
+                    {{ Form::label('name') }}
+                    {{ Form::text('name', old('name'), ['class' => 'form-control', 'maxlength' => '190', 'placeholder' => '']) }}
                 </div>
                 <div class="form-group">
-                    {{ Form::label('measurement') }}
-                    {{ Form::select('measurement_id',$measurement, old('measurement_id'), ['class' => 'form-control', 'placeholder' => 'Choose a measurement...']) }}
+                    {{ Form::label('status','active') }}<br>
+                    {{ Form::radio('active',0, null) }}No <br>
+                    {{ Form::radio('active',1, null) }}Yes
                 </div>
-                <x-footer-button route="{{ route('sizing.index') }}"></x-footer-button>
+                <x-footer-button route="{{ route('measurements.index') }}"></x-footer-button>
                 {{ Form::close() }}
             </div>
         </div>

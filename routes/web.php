@@ -72,12 +72,15 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::resource('founders', 'FounderController');
     Route::resource('documents', 'DocumentController');
     Route::resource('show-room-products', 'ShowRoomProductController');
-    Route::get('web-settings','WebSiteConfigController@index')->name('web-settings.index');
-    Route::post('web-settings','WebSiteConfigController@update')->name('web-settings.update');
+    Route::get('web-settings', 'WebSiteConfigController@index')->name('web-settings.index');
+    Route::post('web-settings', 'WebSiteConfigController@update')->name('web-settings.update');
+    Route::resource('ages', 'AgeController');
+    Route::resource('feets', 'FeetController');
+    Route::resource('measurements', 'MeasurementController');
 
 
-    Route::get('profile','UserController@adminProfile');
-    Route::get('edit-profile','UserController@adminEdit');
+    Route::get('profile', 'UserController@adminProfile');
+    Route::get('edit-profile', 'UserController@adminEdit');
 });
 
 //Route::get('stripe-checkout', function() {

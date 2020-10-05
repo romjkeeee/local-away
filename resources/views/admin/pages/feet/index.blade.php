@@ -5,12 +5,12 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Sizing</h1>
+                <h1>Feet</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                    <li class="breadcrumb-item active">Sizing</li>
+                    <li class="breadcrumb-item active">Feet</li>
                 </ol>
             </div>
         </div>
@@ -20,7 +20,7 @@
 @section('content')
     <div class="primary">
         <p>
-            <a href="{{ route('sizing.create') }}" class="btn btn-success btn-lg">Create Sizing</a>
+            <a href="{{ route('feets.create') }}" class="btn btn-success btn-lg">Create Feet</a>
         </p>
     </div>
     <div class="row">
@@ -32,8 +32,9 @@
                         <thead>
                         <tr>
                             <th>id</th>
-                            <th>title</th>
+                            <th>Name</th>
                             <th>Measurement</th>
+                            <th>active</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -41,13 +42,11 @@
                         @foreach ($data as $user)
                             <tr>
                                 <td>{{ $user->id }}</td>
-                                <td style="width:100%">{{ $user->title }}</td>
+                                <td style="width: 100%">{{ $user->name }}</td>
                                 <td>{{ $user->measurement->name ?? '' }}</td>
-                                <td>
-                                    @role('admin')
-                                    <a href="{{ route('sizing.edit',[$user->id]) }}"><i class="fas fa-edit"></i></a>
-                                    @endrole
-                                </td>
+                                <x-active-status active="{{ $user->active }}"></x-active-status>
+                                <x-action-buttons show="{{ route('feets.show',[$user->id]) }}"
+                                                  edit="{{ route('feets.edit',[$user->id]) }}"></x-action-buttons>
                             </tr>
                         @endforeach
                     </table>

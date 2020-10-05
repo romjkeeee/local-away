@@ -25,6 +25,7 @@ class AdminStoreSizing extends FormRequest
     {
         return [
             'title' => 'required|string',
+            'measurement_id' => 'required|exists:measurements,id',
         ];
     }
 }

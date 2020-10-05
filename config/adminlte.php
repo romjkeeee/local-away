@@ -448,24 +448,51 @@ return [
             'icon'        => 'fas fa-fw fa-globe',
         ],
         [
-            'text'        => 'Users',
-            'url'         => 'admin/users',
-            'icon'        => 'far fa-fw fa-user',
-        ],
-        [
-            'text'        => 'User Address',
-            'url'         => 'admin/user-address',
-            'icon'        => 'far fa-fw fa-user',
-        ],
-        [
-            'text'        => 'User Preference',
-            'url'         => 'admin/user-settings',
-            'icon'        => 'far fa-fw fa-user',
-        ],
-        [
             'text'        => 'Home page Settings',
             'url'         => 'admin/web-settings',
             'icon'        => 'far fa-fw fa-user',
+        ],
+        [
+            'text'    => 'Preferences',
+            'icon'    => 'fas fa-fw fa-list',
+            'submenu' => [
+                [
+                    'text'        => 'Measurement',
+                    'url'         => 'admin/measurements',
+                    'icon'        => 'far fa-fw fa-circle nav-icon',
+                ],
+                [
+                    'text'        => 'Age',
+                    'url'         => 'admin/ages',
+                    'icon'        => 'far fa-fw fa-circle nav-icon',
+                ],
+                [
+                    'text'        => 'Feet',
+                    'url'         => 'admin/feets',
+                    'icon'        => 'far fa-fw fa-circle nav-icon',
+                ],
+            ],
+        ],
+        [
+            'text'    => 'Users',
+            'icon'    => 'fas fa-fw fa-list',
+            'submenu' => [
+                [
+                    'text'        => 'Users',
+                    'url'         => 'admin/users',
+                    'icon'        => 'far fa-fw fa-circle nav-icon',
+                ],
+                [
+                    'text'        => 'User Address',
+                    'url'         => 'admin/user-address',
+                    'icon'        => 'far fa-fw fa-circle nav-icon',
+                ],
+                [
+                    'text'        => 'User Preference',
+                    'url'         => 'admin/user-settings',
+                    'icon'        => 'far fa-fw fa-circle nav-icon',
+                ],
+            ],
         ],
         ['header' => 'account_settings'],
         [

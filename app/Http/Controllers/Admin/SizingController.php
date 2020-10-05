@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AdminStoreSizing;
 use App\Http\Requests\AdminUpdateSizing;
+use App\Measurement;
 use App\Sizing;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -36,7 +37,8 @@ class SizingController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.sizing.create');
+        $measurement = Measurement::query()->where('active', true)->get()->pluck('name','id');
+        return view('admin.pages.sizing.create', compact('measurement'));
     }
 
     /**
@@ -60,7 +62,8 @@ class SizingController extends Controller
     public function edit(Sizing $sizing)
     {
         $data = $sizing;
-        return view('admin.pages.sizing.edit', compact('data'));
+        $measurement = Measurement::query()->where('active', true)->get()->pluck('name','id');
+        return view('admin.pages.sizing.edit', compact('data', 'measurement'));
     }
 
     /**
