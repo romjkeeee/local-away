@@ -3,7 +3,7 @@
 #---------------------------------------------------------------
 .common:
     tags:
-    - &ENV_TAG develop
+    - &ENV_TAG production
     only:
     - &ENV_ONLY master
 
