@@ -25,7 +25,11 @@
                 @foreach($data as $page)
                     <div class="form-group">
                         <label>{{ $page->title }}</label>
-                        <input name="{{ $page->key }}" type="text" value="{{ $page->value }}">
+                        @if($page->key == 'home_page_title')
+                        <input class="form-control" name="{{ $page->key }}" type="text" value="{{ $page->value }}">
+                        @else
+                            <textarea class="form-control" name="{{ $page->key }}" id="" >{{ $page->value }}</textarea>
+                        @endif
                     </div>
                 @endforeach
                 <x-footer-button route="{{ route('home') }}"></x-footer-button>
