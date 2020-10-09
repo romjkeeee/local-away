@@ -22,8 +22,12 @@
                     {{ Form::label('title') }}
                     {{ Form::text('title', old('title'), ['class' => 'form-control', 'maxlength' => '190', 'placeholder' => '']) }}
                 </div>
+                <div class="form-group">
+                    {{ Form::label('measurement') }}
+                    {{ Form::select('measurement_id',$measurement, old('measurement_id'), ['class' => 'form-control', 'placeholder' => 'Choose a measurement...']) }}
+                </div>
                 <x-footer-button route="{{ route('sizing.index') }}"></x-footer-button>
                 {{ Form::close() }}
             </div>
         </div>
-        @stop
+@stop
