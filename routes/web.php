@@ -77,7 +77,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::resource('ages', 'AgeController');
     Route::resource('feets', 'FeetController');
     Route::resource('measurements', 'MeasurementController');
-
+//comment
     Route::get('profile', 'UserController@adminProfile');
     Route::get('edit-profile', 'UserController@adminEdit');
 });
