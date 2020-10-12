@@ -31,7 +31,7 @@
                         @if($page->key == 'home_page_title')
                             <input class="form-control" name="{{ $page->key }}" type="text" value="{{ $page->value }}">
                         @else
-                            <textarea class="form-control" name="{{ $page->key }}" id="">{{ $page->value }}</textarea>
+                            <textarea class="form-control" name="{{ $page->key }}" id="{{ $page->key }}">{{ $page->value }}</textarea>
                         @endif
                     </div>
                 @endforeach
