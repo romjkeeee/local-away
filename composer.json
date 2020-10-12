@@ -24,6 +24,7 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.1",
         "laravelcollective/html": "^6.1",
+        "mailchimp/transactional": "dev-master",
         "mpociot/laravel-apidoc-generator": "^4.8",
         "php-http/curl-client": "^2.1",
         "santigarcor/laratrust": "^6.1",

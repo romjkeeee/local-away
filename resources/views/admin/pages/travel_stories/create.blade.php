@@ -88,12 +88,10 @@
                     });
 
                     editormd.toolbarModes = {
-                        simple : [
+                        simple: [
                             "undo", "redo", "|",
                             "bold", "del", "italic", "quote", "uppercase", "lowercase", "|",
-                            "h1", "h2", "h3", "h4", "h5", "h6", "|",
-                            "list-ul", "list-ol", "hr","|",
-
+                            "h1", "h2", "h3", "h4", "h5", "h6", "|", "hr", "|",
                         ],
                     };
 

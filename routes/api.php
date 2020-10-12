@@ -121,4 +121,12 @@ Route::group(['namespace' => 'Api\V1', 'as' => 'api.'], function () {
         Route::get('success/{transaction:token}', 'PaymentController@success')->name('payment.success');
         Route::get('fail/{transaction:token}', 'PaymentController@fail')->name('payment.fail');
     });
+
+    Route::group([
+        'prefix' => 'password'
+    ], function () {
+        Route::post('create', 'PasswordResetController@create');
+        Route::get('find/{token}', 'PasswordResetController@find');
+        Route::post('reset', 'PasswordResetController@reset');
+    });
 });

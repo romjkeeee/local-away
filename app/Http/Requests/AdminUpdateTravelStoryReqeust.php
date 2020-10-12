@@ -25,7 +25,7 @@ class AdminUpdateTravelStoryReqeust extends FormRequest
     {
         return [
             'name' => 'string',
-            'annotation' => 'string',
+            'annotation' => 'string|max:80',
             'description' => 'string',
             'preview_image' => 'image|mimes:jpeg,png,jpg',
             'full_image_path' => 'image|mimes:jpeg,png,jpg',

@@ -7,7 +7,11 @@
 @section('content')
     @if(count($errors) > 0)
         @foreach($errors->all() as $error)
-            <x-validation-error errors="{{ $error }}"></x-validation-error>
+            <div class="alert alert-success alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <h5><i class="icon fas fa-exclamation-triangle"></i> Success!</h5>
+                {{$error}}
+            </div>
         @endforeach
     @endif
     <div class="card card-secondary">
@@ -21,7 +25,11 @@
                 @foreach($data as $page)
                     <div class="form-group">
                         <label>{{ $page->title }}</label>
-                        <input name="{{ $page->key }}" type="text" value="{{ $page->value }}">
+                        @if($page->key == 'home_page_title')
+                        <input class="form-control" name="{{ $page->key }}" type="text" value="{{ $page->value }}">
+                        @else
+                            <textarea class="form-control" name="{{ $page->key }}" id="" >{{ $page->value }}</textarea>
+                        @endif
                     </div>
                 @endforeach
                 <x-footer-button route="{{ route('home') }}"></x-footer-button>
