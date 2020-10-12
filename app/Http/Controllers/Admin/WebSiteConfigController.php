@@ -36,6 +36,6 @@ class WebSiteConfigController extends Controller
         foreach ($request_data as $key => $value) {
             $data = WebSiteConfig::query()->where('key', $key)->update(['value' => $value]);
         }
-        return redirect()->route('web-settings.index')->withErrors('Success update');
+        return redirect()->route('web-settings.index')->with(['success' => 'Success update']);
     }
 }
