@@ -33,6 +33,9 @@ test_dir:
     only:
         - *ENV_ONLY
     script:
+        
+        - "echo $CI_COMMIT_BRANCH;"
+        - "echo $CI_REPOSITORY_URL;"
         # -- If the directory exists and there are files in it, then no action is required --
         - "[ -d ~/www ] && [ `ls -1q ~/www| wc -l` -ne '0' ] && echo 'Look ok' && exit 0;"
         #-- Else. Remove old dir if exist --
