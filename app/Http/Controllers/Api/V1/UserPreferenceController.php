@@ -49,6 +49,7 @@ class UserPreferenceController extends Controller
      * @bodyParam feet string
      * @bodyParam measurement string
      * @bodyParam body_type_id string
+     * @bodyParam sizing array
      *
      * @authenticated required
      * @response 200

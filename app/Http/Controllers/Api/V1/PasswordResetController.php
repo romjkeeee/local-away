@@ -117,15 +117,16 @@ class PasswordResetController extends Controller
         }
         return response()->json($passwordReset);
     }
-     /**
+    /**
      * Reset password
      *
-     * @param  [string] email
-     * @param  [string] password
-     * @param  [string] password_confirmation
-     * @param  [string] token
-     * @return [string] message
-     * @return [json] user object
+     * @bodyParam email string require
+     * @bodyParam password string require
+     * @bodyParam password_confirmation string require
+     * @bodyParam token string require
+     *
+     * @response 200
+     *
      */
     public function reset(Request $request)
     {
