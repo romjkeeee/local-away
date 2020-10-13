@@ -109,7 +109,7 @@ class PasswordResetController extends Controller
             return response()->json([
                 'message' => 'This password reset token is invalid.'
             ], 404);
-        if (Carbon::parse($passwordReset->updated_at)->addMinutes(720)->isPast()) {
+        if (Carbon::parse($passwordReset->updated_at)->addMinutes(60)->isPast()) {
             $passwordReset->delete();
             return response()->json([
                 'message' => 'This password reset token is invalid.'
