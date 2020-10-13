@@ -97,7 +97,7 @@ Route::group(['namespace' => 'Api\V1', 'as' => 'api.'], function () {
     Route::group(['prefix' => 'travel-stories'], function () {
         Route::get('/home-page', 'TravelStoryController@home_page');
         Route::get('/', 'TravelStoryController@index');
-        Route::get('/{travel_story}', 'TravelStoryController@show');
+        Route::get('/{id}', 'TravelStoryController@show');
 
     });
     //Partnership

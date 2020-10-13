@@ -74,9 +74,9 @@ class TravelStoryController extends Controller
      * @response 200
      *
      */
-    public function show(TravelStory $travel_story, Request $request)
+    public function show($id, Request $request)
     {
-        $travel_story = TravelStory::query()->where('id', $travel_story->id)->where('active', true)->first();
+        $travel_story = TravelStory::query()->where('id', $id)->where('active', true)->first();
         if ($travel_story) {
             $products = explode(',', $travel_story['product_ids']);
             foreach ($products as $product) {
