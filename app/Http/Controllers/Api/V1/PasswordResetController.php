@@ -33,59 +33,59 @@ class PasswordResetController extends Controller
             ['email' => $user->email],
             [
                 'email' => $user->email,
-                'token' => rand(10, 20)
+                'token' => str_random(60)
              ]
         );
         if ($user && $passwordReset)
             $mailchimp = new MailchimpTransactional\ApiClient();
         $mailchimp->setApiKey('L0_LgqhnhMl7y39ngfsRMg');
 
-        $response = $mailchimp->messages->send([
-            "message" => ['
-                "html": "",
-        "text": "",
-        "subject": "",
-        "from_email": "tester@rasd.ds",
-        "from_name": "tester",
-        "to": [{
-        "email":"romjkeeeen@gmail.com",
-            "name":"test",
-            "type":"to"
-        }],
-        "headers": {},
-        "important": false,
-        "track_opens": false,
-        "track_clicks": false,
-        "auto_text": false,
-        "auto_html": false,
-        "inline_css": false,
-        "url_strip_qs": false,
-        "preserve_recipients": false,
-        "view_content_link": false,
-        "bcc_address": "",
-        "tracking_domain": "",
-        "signing_domain": "",
-        "return_path_domain": "",
-        "merge": false,
-        "merge_language": "mailchimp",
-        "global_merge_vars": [],
-        "merge_vars": [],
-        "tags": [],
-        "subaccount": "",
-        "google_analytics_domains": [],
-        "google_analytics_campaign": "",
-        "metadata": {
-        "website": ""
-        },
-        "recipient_metadata": [],
-        "attachments": [],
-        "images": []
-            ']
-        ]);
-        dd($response);
-            $user->notify(
-                new PasswordResetRequest($passwordReset->token)
-            );
+//        $response = $mailchimp->messages->send([
+//            "message" => ['
+//                "html": "",
+//        "text": "",
+//        "subject": "",
+//        "from_email": "tester@rasd.ds",
+//        "from_name": "tester",
+//        "to": [{
+//        "email":"romjkeeeen@gmail.com",
+//            "name":"test",
+//            "type":"to"
+//        }],
+//        "headers": {},
+//        "important": false,
+//        "track_opens": false,
+//        "track_clicks": false,
+//        "auto_text": false,
+//        "auto_html": false,
+//        "inline_css": false,
+//        "url_strip_qs": false,
+//        "preserve_recipients": false,
+//        "view_content_link": false,
+//        "bcc_address": "",
+//        "tracking_domain": "",
+//        "signing_domain": "",
+//        "return_path_domain": "",
+//        "merge": false,
+//        "merge_language": "mailchimp",
+//        "global_merge_vars": [],
+//        "merge_vars": [],
+//        "tags": [],
+//        "subaccount": "",
+//        "google_analytics_domains": [],
+//        "google_analytics_campaign": "",
+//        "metadata": {
+//        "website": ""
+//        },
+//        "recipient_metadata": [],
+//        "attachments": [],
+//        "images": []
+//            ']
+//        ]);
+//        dd($response);
+//            $user->notify(
+//                new PasswordResetRequest($passwordReset->token)
+//            );
         return response()->json([
             'message' => 'We have e-mailed your password reset link!'
         ]);
@@ -99,7 +99,7 @@ class PasswordResetController extends Controller
      */
     public function find($token)
     {
-        $passwordReset = PasswordReset::where('token', $token)
+        $passwordReset = PasswordReset::query()->where('token', $token)
             ->first();
         if (!$passwordReset)
             return response()->json([
