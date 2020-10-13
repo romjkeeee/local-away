@@ -29,6 +29,7 @@ class UpdateUserSettingsRequest extends FormRequest
             'feet' => 'required|string',
             'age' => 'required|string',
             'body_type_id' => 'required|exists:body_types,id',
+            'sizing' => 'required|array',
         ];
     }
 }

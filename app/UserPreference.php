@@ -8,6 +8,10 @@ class UserPreference extends Model
 {
     public $guarded = ['id'];
 
+    public $casts = [
+        'sizing' => 'json'
+    ];
+
     public function user()
     {
         return $this->hasOne(User::class, 'id', 'user_id');

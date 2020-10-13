@@ -9,15 +9,19 @@ use App\Notifications\PasswordResetRequest;
 use App\Notifications\PasswordResetSuccess;
 use App\User;
 use App\PasswordReset;
+use Illuminate\Support\Str;
 use MailchimpTransactional;
 
 class PasswordResetController extends Controller
 {
+
     /**
      * Create token password reset
      *
-     * @param  [string] email
-     * @return [string] message
+     * @bodyParam email string require
+     *
+     * @response 201
+     *
      */
     public function create(Request $request)
     {
@@ -33,7 +37,7 @@ class PasswordResetController extends Controller
             ['email' => $user->email],
             [
                 'email' => $user->email,
-                'token' => str_random(60)
+                'token' => Str::random(60)
              ]
         );
         if ($user && $passwordReset)
@@ -88,7 +92,7 @@ class PasswordResetController extends Controller
 //            );
         return response()->json([
             'message' => 'We have e-mailed your password reset link!'
-        ]);
+        ], 201);
     }
     /**
      * Find token password reset
