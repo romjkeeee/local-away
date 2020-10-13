@@ -147,7 +147,7 @@ class PasswordResetController extends Controller
             return response()->json([
                 'message' => 'We can\'t find a user with that e-mail address.'
             ], 404);
-        $user->password = bcrypt($request->password);
+        $user->password = $request->password;
         $user->save();
         $passwordReset->delete();
         $user->notify(new PasswordResetSuccess($passwordReset));
