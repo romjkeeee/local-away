@@ -40,6 +40,7 @@ class PaymentController extends Controller
                     )
                 );
             }else{
+                $this->initApiKey();
 
                 $customer = \Stripe\Customer::create();
                 $user->update(['client_id', $customer->id]);
