@@ -32,11 +32,11 @@ class PaymentController extends Controller
                 );
             }else{
                 $customer = \Stripe\Customer::create();
-                $user->update(['clinet_id', $customer->id]);
+                $user->update(['client_id', $customer->id]);
                 $session = \Stripe\Checkout\Session::create([
                     'payment_method_types' => ['card'],
                     'mode' => 'setup',
-                    'customer_id',
+                    'customer_id' => $customer->id,
                     'success_url' => '',
                     'cancel_url' => '',
                     'client_reference_id' => '',
