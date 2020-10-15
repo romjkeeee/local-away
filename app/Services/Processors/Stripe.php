@@ -49,6 +49,13 @@ class Stripe extends Processor
             'client_reference_id' => $transaction->token,
         ]);
 
+        \Stripe\PaymentIntent::create([
+            'amount' => 2000,
+            'customer' => $customer->id,
+            'currency' => 'usd',
+            'payment_method_types' => ['card'],
+        ]);
+
         return [
             'sessionId' => $session->id ?? '',
             'publicKey' => $this->publicKey,
