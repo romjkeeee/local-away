@@ -34,7 +34,7 @@ class PaymentController extends Controller
             }else{
                 $stripe = new Stripe('stripe');
                 $stripe->createClient($user);
-                $this->create($order->id);
+                return redirect()->route('api.payment.create', $order->id);
             }
         }
         catch
