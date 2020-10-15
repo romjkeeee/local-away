@@ -12,9 +12,13 @@ use App\{Http\Controllers\Controller,
 
 class PaymentController extends Controller
 {
+    protected string $publicKey;
+    protected string $secretKey;
+    protected int $tolerance = 0;
+
     protected function initApiKey()
     {
-        \Stripe\Stripe::setApiKey(env('STRIPE_SECRET_KEY'));
+        \Stripe\Stripe::setApiKey($this->secretKey);
     }
 
     public function create(OrderCreateRequest $request)
@@ -36,6 +40,7 @@ class PaymentController extends Controller
                     )
                 );
             }else{
+
                 $customer = \Stripe\Customer::create();
                 $user->update(['client_id', $customer->id]);
                 $session = \Stripe\Checkout\Session::create([
