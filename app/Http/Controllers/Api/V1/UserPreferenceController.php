@@ -62,7 +62,7 @@ class UserPreferenceController extends Controller
         if ($preference) {
             $preference->update($request->validated());
         } else {
-            $preference->create($request->validated());
+            $user->preference()->create($request->validated());
         }
         return response([
             'status' => 'success',
