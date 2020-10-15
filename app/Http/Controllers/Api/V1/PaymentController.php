@@ -22,7 +22,7 @@ class PaymentController extends Controller
                 throw new \Exception('Order not exists');
             }
             $user = User::query()->where('id', $order->user_id)->first();
-            if (!$user->client_id) {
+            if ($user->client_id) {
 
                 return $this->successResponse(
                     $processor->create(
@@ -41,7 +41,6 @@ class PaymentController extends Controller
                     'cancel_url' => '',
                     'client_reference_id' => '',
                 ]);
-                dd($customer);
                 $this->create($order->id);
             }
         }
