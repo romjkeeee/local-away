@@ -12,6 +12,11 @@ use App\{Http\Controllers\Controller,
 
 class PaymentController extends Controller
 {
+    protected function initApiKey()
+    {
+        \Stripe\Stripe::setApiKey(env('STRIPE_SECRET_KEY'));
+    }
+
     public function create(OrderCreateRequest $request)
     {
         $processor = Processor::instance(config('app.default_processor'));
