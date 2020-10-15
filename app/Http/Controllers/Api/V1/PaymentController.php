@@ -7,7 +7,8 @@ use App\{Http\Controllers\Controller,
     Http\Requests\OrderCreateRequest,
     Order,
     Transaction,
-    Services\Processors\Processor};
+    Services\Processors\Processor,
+    User};
 
 class PaymentController extends Controller
 {
@@ -16,22 +17,33 @@ class PaymentController extends Controller
         $processor = Processor::instance(config('app.default_processor'));
         try {
             /** @var Order $order */
-            $order = Order::query()->where('id',$request->get('order_id'))->first();
+            $order = Order::query()->where('id', $request->get('order_id'))->first();
             if (!$order) {
                 throw new \Exception('Order not exists');
             }
+            $user = User::query()->where('id', $order->user_id)->first();
+            if (!$user->client_id) {
 
-            return $this->successResponse(
-                $processor->create(
-                    $order->getTransaction($processor->getAlias()),
-                    $order->getProductItems()
-                )
-            );
-        } catch (\Exception $e) {
-            logger()->channel('payment')->error($e);
+                return $this->successResponse(
+                    $processor->create(
+                        $order->getTransaction($processor->getAlias()),
+                        $order->getProductItems()
+                    )
+                );
+            }else{
+                $customer = \Stripe\Customer::create();
+                $user->update(['clinet_id', $customer->id]);
 
-            return $this->errorResponse($e->getMessage());
+                $this->create($order->id);
+            }
         }
+        catch
+            (\Exception $e) {
+                logger()->channel('payment')->error($e);
+
+                return $this->errorResponse($e->getMessage());
+            }
+
     }
 
     public function process(Processor $processor)

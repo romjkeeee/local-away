@@ -37,23 +37,13 @@ class Stripe extends Processor
             ];
         }
 
-        $customer = \Stripe\Customer::create();
-
         $session = \Stripe\Checkout\Session::create([
             'payment_method_types' => ['card'],
             'mode' => 'setup',
-            'customer' => $customer->id,
-//            'line_items' => $lineItems,
+            'line_items' => $lineItems,
             'success_url' => $this->createUrl($transaction->token, 'success'),
             'cancel_url' => $this->createUrl($transaction->token),
             'client_reference_id' => $transaction->token,
-        ]);
-
-        \Stripe\PaymentIntent::create([
-            'amount' => 2000,
-            'customer' => $customer->id,
-            'currency' => 'usd',
-            'payment_method_types' => ['card'],
         ]);
 
         return [
