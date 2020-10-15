@@ -41,6 +41,7 @@ class PaymentController extends Controller
                     'cancel_url' => '',
                     'client_reference_id' => '',
                 ]);
+                dd($customer);
                 $this->create($order->id);
             }
         }
