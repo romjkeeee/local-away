@@ -3,7 +3,9 @@
 namespace App\Services\Processors;
 
 
+use App\Order;
 use App\Transaction;
+use App\User;
 
 class Stripe extends Processor
 {
@@ -37,9 +39,13 @@ class Stripe extends Processor
             ];
         }
 
+        $order = Order::query()->where('transaction_id',$transaction->id)->first();
+        $user = User::query()->where('id',$order->user_id)->first();
+
         $session = \Stripe\Checkout\Session::create([
             'payment_method_types' => ['card'],
             'mode' => 'payment',
+            'customer' => $user->client_id,
             'line_items' => $lineItems,
             'success_url' => $this->createUrl($transaction->token, 'success'),
             'cancel_url' => $this->createUrl($transaction->token),
@@ -84,14 +90,6 @@ class Stripe extends Processor
 
         $customer = \Stripe\Customer::create();
         $user->update(['client_id', $customer->id]);
-        $session = \Stripe\Checkout\Session::create([
-            'payment_method_types' => ['card'],
-            'mode' => 'setup',
-            'customer' => $customer->id,
-            'success_url' => 'https://localaway.com',
-            'cancel_url' => 'https://localaway.com',
-            'client_reference_id' => $customer->id,
-        ]);
 
         return true;
     }

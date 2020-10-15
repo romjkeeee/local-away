@@ -28,7 +28,7 @@ class PaymentController extends Controller
                 return $this->successResponse(
                     $processor->create(
                         $order->getTransaction($processor->getAlias()),
-                        $order->getProductItems()
+                        $order->getProductItems(),
                     )
                 );
             }else{

@@ -124,7 +124,7 @@ class Order extends Model
                     'name' => 'Travel box',
                     'image' => Box::query()->first()->image,
                     'quantity' => 1,
-                    'price' => $quiz->price + $cost_box_client['all_cost_to'],
+                    'price' => $quiz->price,
                 ];
                 array_push($items,$data);
             }
