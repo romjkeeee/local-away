@@ -90,7 +90,7 @@ class Stripe extends Processor
             'customer' => $customer->id,
             'success_url' => 'localaway.com',
             'cancel_url' => 'localaway.com',
-            'client_reference_id' => '',
+            'client_reference_id' => $customer->id,
         ]);
 
         return true;
