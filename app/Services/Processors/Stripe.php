@@ -88,8 +88,8 @@ class Stripe extends Processor
             'payment_method_types' => ['card'],
             'mode' => 'setup',
             'customer' => $customer->id,
-            'success_url' => '',
-            'cancel_url' => '',
+            'success_url' => 'localaway.com',
+            'cancel_url' => 'localaway.com',
             'client_reference_id' => '',
         ]);
 
