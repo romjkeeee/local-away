@@ -39,7 +39,7 @@ class Stripe extends Processor
 
         $session = \Stripe\Checkout\Session::create([
             'payment_method_types' => ['card'],
-            'mode' => 'setup',
+            'mode' => 'payment',
             'line_items' => $lineItems,
             'success_url' => $this->createUrl($transaction->token, 'success'),
             'cancel_url' => $this->createUrl($transaction->token),
