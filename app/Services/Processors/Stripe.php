@@ -79,4 +79,11 @@ class Stripe extends Processor
 
         return false;
     }
+
+    public function getPay()
+    {
+        $this->initApiKey();
+
+
+    }
 }
