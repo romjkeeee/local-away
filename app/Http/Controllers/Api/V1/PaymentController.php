@@ -22,26 +22,12 @@ class PaymentController extends Controller
             if (!$order) {
                 throw new \Exception('Order not exists');
             }
-            $user = User::query()->where('id', $order->user_id)->first();
-            if ($user->client_id) {
-
                 return $this->successResponse(
                     $processor->create(
                         $order->getTransaction($processor->getAlias()),
                         $order->getProductItems(),
                     )
                 );
-            }else{
-                $stripe = new Stripe('stripe');
-                $stripe->createClient($user);
-
-                return $this->successResponse(
-                    $processor->create(
-                        $order->getTransaction($processor->getAlias()),
-                        $order->getProductItems()
-                    )
-                );
-            }
         }
         catch
             (\Exception $e) {
@@ -65,6 +51,11 @@ class PaymentController extends Controller
                 $transaction->response = json_encode(request()->all());
                 $transaction->getOperation()->process();
             }
+            $order = Order::query()->where('transaction_id', $transaction->id)->first();
+            $user = User::query()->where('id', $order->user_id)->first();
+            $user->update([
+                'client_id' => request()->get('data.object.customer')
+            ]);
         } catch (\Exception $e) {
             logger()->channel('payment')->error($e);
         }

@@ -39,13 +39,9 @@ class Stripe extends Processor
             ];
         }
 
-        $order = Order::query()->where('transaction_id',$transaction->id)->first();
-        $user = User::query()->where('id',$order->user_id)->first();
-
         $session = \Stripe\Checkout\Session::create([
             'payment_method_types' => ['card'],
             'mode' => 'payment',
-            'customer' => $user->client_id,
             'line_items' => $lineItems,
             'success_url' => $this->createUrl($transaction->token, 'success'),
             'cancel_url' => $this->createUrl($transaction->token),
@@ -83,15 +79,4 @@ class Stripe extends Processor
 
         return false;
     }
-
-    public function createClient($user){
-
-        $this->initApiKey();
-
-        $customer = \Stripe\Customer::create();
-        $user->update(['client_id', $customer->id]);
-
-        return true;
-    }
-
 }
