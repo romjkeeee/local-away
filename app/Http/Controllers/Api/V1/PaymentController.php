@@ -52,11 +52,10 @@ class PaymentController extends Controller
                 $transaction->getOperation()->process();
             }
             $json = json_decode(request()->getContent(), true);
-            dd($json['data']['object']['customer']);
             $order = Order::query()->where('transaction_id', $transaction->id)->first();
             $user = User::query()->where('id', $order->user_id)->first();
             $user->update([
-                'client_id' => request()->get('data.object.customer')
+                'client_id' => $json['data']['object']['customer']
             ]);
         } catch (\Exception $e) {
             logger()->channel('payment')->error($e);
