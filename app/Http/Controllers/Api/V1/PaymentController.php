@@ -51,7 +51,8 @@ class PaymentController extends Controller
                 $transaction->response = json_encode(request()->all());
                 $transaction->getOperation()->process();
             }
-            dd(request()->getContent());
+            $json = json_decode(request()->getContent(), true);
+            dd($json['data']['object']['customer']);
             $order = Order::query()->where('transaction_id', $transaction->id)->first();
             $user = User::query()->where('id', $order->user_id)->first();
             $user->update([
