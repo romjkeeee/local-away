@@ -126,7 +126,7 @@
                             <td></td>
                             <td>{{ $products->status->name ?? ''}}</td>
                             <td>{{ $products->product->status == 'disable' && $data->status_id == 2? 'Attention this product is disable' : '' }}
-                                @if($products->status_id == 6)
+                                @if($products->status_id == 8)
                                     <a class="btn btn-primary float-right"
                                        href="{{ route('product.refund', $products->id) }}">Refund</a>
                                 @endif
@@ -159,27 +159,49 @@
                                 <th>Commission:</th>
                                 <td>${{$quiz->price * count($data->quiz)}}</td>
                             </tr>
+                            <tr>
+                                @php($total_cost_prod = 0)
+                                @foreach($data->quiz_products()->where('status_id','!=', 10)->where('status_id','!=', 11)->get() as $quiz_prod)
+                                    @php($total_cost_prod += $quiz_prod->price * $quiz_prod->count)
+                                @endforeach
+                                @if(count($data->quiz_products()->get()))
+                                    @if($data->status_id >= 7)
+                                        <th>Box product cost:</th>
+                                        <td>${{ $total_cost_prod }}</td>
+                                    @endif
+                                @endif
+                            </tr>
                         @endif
                         <tr>
                             <th>Total:</th>
                             <td>${{$total}}</td>
                         </tr>
-                        @if($data->status_id >= 4)
+{{--                        @if($data->status_id >= 6)--}}
 
-                            <tr>
-                                @if(count($data->quiz_products()->get()))
-                                    @php($total_cost_prod = 0)
-                                    @foreach($data->quiz_products()->get() as $quiz_prod)
-                                        @php($total_cost_prod += $quiz_prod->price * $quiz_prod->count)
-                                    @endforeach
-                                <th>Cost to return:</th>
-                                <td>${{ abs($total_cost - $total_cost_prod) }}</td>
-                                @endif
-                            </tr>
-                        @endif
+{{--                            <tr>--}}
+{{--                                @if(count($data->quiz_products()->get()))--}}
+{{--                                    @php($total_cost_prod = 0)--}}
+{{--                                    @foreach($data->quiz_products()->get() as $quiz_prod)--}}
+{{--                                        @php($total_cost_prod += $quiz_prod->price * $quiz_prod->count)--}}
+{{--                                    @endforeach--}}
+{{--                                    <th>Cost to return:</th>--}}
+{{--                                    <td>${{ abs($total_cost - $total_cost_prod) }}</td>--}}
+{{--                                @endif--}}
+{{--                            </tr>--}}
+{{--                        @endif--}}
                         <tr>
                             <th>Order amount:</th>
                             <td>${{$data->sum}}</td>
+                        </tr>
+                        <tr>
+                            <th>Withdraw funds</th>
+{{--                            <td>${{ $total_cost_prod }}</td>--}}
+                            <td>$<input type="text" value="{{ $total_cost_prod }}"></td>
+                        </tr><tr>
+                            <th></th>
+                            <td><button type="button" class="btn btn-success "><i class="far fa-credit-card"></i> Submit
+                                    Payment
+                                </button></td>
                         </tr>
                         </tbody>
                     </table>

@@ -25,14 +25,32 @@
     @endif
     <div class="primary">
         <p>
-            <a href="{{ route('orders.index') }}" class="btn btn-default btn-sm">ALL ({{ \App\Order::query()->count() }})</a>
-            <a href="{{ route('orders.index', ['id' => 1]) }}" class="btn btn-default btn-sm">PENDING_PAYMENT ({{ \App\Order::query()->where('status_id', 1)->count() }})</a>
-            <a href="{{ route('orders.index', ['id' => 2]) }}" class="btn btn-default btn-sm">PAYED ({{ \App\Order::query()->where('status_id', 2)->count() }})</a>
-            <a href="{{ route('orders.index', ['id' => 3]) }}" class="btn btn-default btn-sm">BOX_LOADING ({{ \App\Order::query()->where('status_id', 3)->count() }})</a>
-            <a href="{{ route('orders.index', ['id' => 4]) }}" class="btn btn-default btn-sm">SEND_TO_CUSTOMER ({{ \App\Order::query()->where('status_id', 4)->count() }})</a>
-            <a href="{{ route('orders.index', ['id' => 5]) }}" class="btn btn-default btn-sm">DELIVERED ({{ \App\Order::query()->where('status_id', 5)->count() }})</a>
-            <a href="{{ route('orders.index', ['id' => 6]) }}" class="btn btn-default btn-sm">PRODUCT_REFUND ({{ \App\Order::query()->where('status_id', 6)->count() }})</a>
-            <a href="{{ route('orders.index', ['id' => 7]) }}" class="btn btn-default btn-sm">REFUNDED ({{ \App\Order::query()->where('status_id', 7)->count() }})</a>
+            <a href="{{ route('orders.index') }}" class="btn btn-default btn-sm">ALL ({{ \App\Order::query()->count() }}
+                )</a>
+            <a href="{{ route('orders.index', ['id' => 1]) }}" class="btn btn-default btn-sm">PENDING_PAYMENT
+                ({{ \App\Order::query()->where('status_id', 1)->count() }})</a>
+            <a href="{{ route('orders.index', ['id' => 2]) }}" class="btn btn-default btn-sm">BOX_PAYED
+                ({{ \App\Order::query()->where('status_id', 2)->count() }})</a>
+            <a href="{{ route('orders.index', ['id' => 3]) }}" class="btn btn-default btn-sm">SHOP_PAYED
+                ({{ \App\Order::query()->where('status_id', 3)->count() }})</a>
+            <a href="{{ route('orders.index', ['id' => 4]) }}" class="btn btn-default btn-sm">BOX_AND_SHOP_PAYED
+                ({{ \App\Order::query()->where('status_id', 4)->count() }})</a>
+            <a href="{{ route('orders.index', ['id' => 5]) }}" class="btn btn-default btn-sm">BOX_LOADING
+                ({{ \App\Order::query()->where('status_id', 5)->count() }})</a>
+            <a href="{{ route('orders.index', ['id' => 6]) }}" class="btn btn-default btn-sm">SEND_TO_CUSTOMER
+                ({{ \App\Order::query()->where('status_id', 6)->count() }})</a>
+            <a href="{{ route('orders.index', ['id' => 7]) }}" class="btn btn-default btn-sm">DELIVERED
+                ({{ \App\Order::query()->where('status_id', 7)->count() }})</a>
+            <a href="{{ route('orders.index', ['id' => 8]) }}" class="btn btn-default btn-sm">PAYMENT_FAILED
+                ({{ \App\Order::query()->where('status_id', 8)->count() }})</a>
+            <a href="{{ route('orders.index', ['id' => 9]) }}" class="btn btn-default btn-sm">FULL_PAYMENT
+                ({{ \App\Order::query()->where('status_id', 9)->count() }})</a>
+            <a href="{{ route('orders.index', ['id' => 10]) }}" class="btn btn-default btn-sm">PRODUCT_REFUND
+                ({{ \App\Order::query()->where('status_id', 10)->count() }})</a>
+            <a href="{{ route('orders.index', ['id' => 11]) }}" class="btn btn-default btn-sm">REFUNDED
+                ({{ \App\Order::query()->where('status_id', 11)->count() }})</a>
+            <a href="{{ route('orders.index', ['id' => 12]) }}" class="btn btn-default btn-sm">COMPLETED
+                ({{ \App\Order::query()->where('status_id', 12)->count() }})</a>
         </p>
     </div>
     <div class="row">
@@ -57,10 +75,18 @@
                                 <td>{{ $user->id }}</td>
                                 <td style="width: 100%">{{ $user->user->first_name ?? '' .''.$user->user->last_name ?? '' }}</td>
                                 <td>${{ $user->sum }}</td>
-                                <td>@if($user->tracking_number){{ $user->tracking_number }}<a href="{{ route('orders.edit',[$user->id]) }}"><i class="fas fa-edit"></i></a>@else <a href="{{ route('orders.edit',[$user->id]) }}"><i class="fas fa-plus"></i></a> @endif</td>
-                                <td>{{ $user->status->name ?? ''}}</td>
+                                <td>@if($user->tracking_number){{ $user->tracking_number }}<a
+                                        href="{{ route('orders.edit',[$user->id]) }}"><i
+                                            class="fas fa-edit"></i></a>@else <a
+                                        href="{{ route('orders.edit',[$user->id]) }}"><i
+                                            class="fas fa-plus"></i></a> @endif</td>
+                                @php
+                                    $created = new \Carbon\Carbon($user->updated_at);
+                                    $now = \Carbon\Carbon::now();
+                                @endphp
+                                <td>{{ $user->status->name ?? ''}}@if($user->status->name == 'DELIVERED')<br>{{ $created->diff($now)->days }} days ago @endif</td>
                                 <td>
-                                <a href="{{ route('orders.show',[$user->id]) }}"><i class="fas fa-eye"></i></a>
+                                    <a href="{{ route('orders.show',[$user->id]) }}"><i class="fas fa-eye"></i></a>
                                 </td>
                             </tr>
                         @endforeach

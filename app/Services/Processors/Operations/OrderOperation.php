@@ -16,22 +16,35 @@ class OrderOperation extends Operation
     public function process()
     {
         $order = $this->findOrder();
-        $order->status_id = Status::payed()->id;
+        if (count($order->quiz()->get()) && count($order->order_products_all()->get())){
+            $order->status_id = Status::boxAndShopPayed()->id;
+        }elseif (count($order->quiz()->get())){
+            $order->status_id = Status::boxPayed()->id;
+        }elseif (count($order->order_products_all()->get())){
+            $order->status_id = Status::shopPayed()->id;
+        }
         $order->save();
+
         if (count($order->order_products_all()->get())){
             foreach ($order->order_products_all()->get() as $products){
-                $products->status_id = Status::payed()->id;
+                $products->status_id = Status::shopPayed()->id;
                 $products->update();
             }
         }
         if (count($order->quiz()->get())){
             foreach ($order->quiz()->get() as $quiz){
-                $quiz->status_id = Status::payed()->id;
+                $quiz->status_id = Status::boxPayed()->id;
                 $quiz->update();
             }
         }
 
-        $this->transaction->status_id = Status::payed()->id;
+        if (count($order->quiz()->get()) && count($order->order_products_all()->get())){
+            $this->transaction->status_id = Status::boxAndShopPayed()->id;
+        }elseif (count($order->quiz()->get())){
+            $this->transaction->status_id = Status::boxPayed()->id;
+        }elseif (count($order->order_products_all()->get())){
+            $this->transaction->status_id = Status::shopPayed()->id;
+        }
         $this->transaction->external_id = request('data.object.id');
         $this->transaction->save();
     }
