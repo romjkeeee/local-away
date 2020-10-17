@@ -176,34 +176,40 @@
                             <th>Total:</th>
                             <td>${{$total}}</td>
                         </tr>
-{{--                        @if($data->status_id >= 6)--}}
+                        {{--                        @if($data->status_id >= 6)--}}
 
-{{--                            <tr>--}}
-{{--                                @if(count($data->quiz_products()->get()))--}}
-{{--                                    @php($total_cost_prod = 0)--}}
-{{--                                    @foreach($data->quiz_products()->get() as $quiz_prod)--}}
-{{--                                        @php($total_cost_prod += $quiz_prod->price * $quiz_prod->count)--}}
-{{--                                    @endforeach--}}
-{{--                                    <th>Cost to return:</th>--}}
-{{--                                    <td>${{ abs($total_cost - $total_cost_prod) }}</td>--}}
-{{--                                @endif--}}
-{{--                            </tr>--}}
-{{--                        @endif--}}
+                        {{--                            <tr>--}}
+                        {{--                                @if(count($data->quiz_products()->get()))--}}
+                        {{--                                    @php($total_cost_prod = 0)--}}
+                        {{--                                    @foreach($data->quiz_products()->get() as $quiz_prod)--}}
+                        {{--                                        @php($total_cost_prod += $quiz_prod->price * $quiz_prod->count)--}}
+                        {{--                                    @endforeach--}}
+                        {{--                                    <th>Cost to return:</th>--}}
+                        {{--                                    <td>${{ abs($total_cost - $total_cost_prod) }}</td>--}}
+                        {{--                                @endif--}}
+                        {{--                            </tr>--}}
+                        {{--                        @endif--}}
                         <tr>
                             <th>Order amount:</th>
                             <td>${{$data->sum}}</td>
                         </tr>
                         @if(count($data->quiz_products()->get()))
-                            <tr>
-                            <th>Withdraw funds</th>
-{{--                            <td>${{ $total_cost_prod }}</td>--}}
-                            <td>$<input type="text" value="{{ $total_cost_prod }}"></td>
-                        </tr><tr>
-                            <th></th>
-                            <td><button type="button" class="btn btn-success "><i class="far fa-credit-card"></i> Submit
-                                    Payment
-                                </button></td>
-                        </tr>
+                            @if($data->status->name == 'DELIVERED')
+                                <tr>
+                                    <th>Withdraw funds</th>
+                                    {{--                            <td>${{ $total_cost_prod }}</td>--}}
+                                    <td>$<input type="text" value="{{ $total_cost_prod }}"></td>
+                                </tr>
+                                <tr>
+                                    <th></th>
+                                    <td>
+                                        <button type="button" class="btn btn-success "><i
+                                                class="far fa-credit-card"></i> Submit
+                                            Payment
+                                        </button>
+                                    </td>
+                                </tr>
+                            @endif
                         @endif
 
                         </tbody>
