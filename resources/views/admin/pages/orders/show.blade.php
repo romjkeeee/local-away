@@ -198,13 +198,14 @@
                             <th>Withdraw funds</th>
 {{--                            <td>${{ $total_cost_prod }}</td>--}}
                             <td>$<input type="text" value="{{ $total_cost_prod }}"></td>
-                                @endif
                         </tr><tr>
                             <th></th>
                             <td><button type="button" class="btn btn-success "><i class="far fa-credit-card"></i> Submit
                                     Payment
                                 </button></td>
                         </tr>
+                        @endif
+
                         </tbody>
                     </table>
                 </div>
