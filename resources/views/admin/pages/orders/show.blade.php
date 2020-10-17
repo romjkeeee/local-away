@@ -193,10 +193,12 @@
                             <th>Order amount:</th>
                             <td>${{$data->sum}}</td>
                         </tr>
-                        <tr>
+                        @if(count($data->quiz_products()->get()))
+                            <tr>
                             <th>Withdraw funds</th>
 {{--                            <td>${{ $total_cost_prod }}</td>--}}
                             <td>$<input type="text" value="{{ $total_cost_prod }}"></td>
+                                @endif
                         </tr><tr>
                             <th></th>
                             <td><button type="button" class="btn btn-success "><i class="far fa-credit-card"></i> Submit
