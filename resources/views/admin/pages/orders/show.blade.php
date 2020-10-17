@@ -194,21 +194,25 @@
                             <td>${{$data->sum}}</td>
                         </tr>
                         @if(count($data->quiz_products()->get()))
-                            @if($data->status->name == 'DELIVERED')
+                            @if($data->status_id == 7)
+                                {{ Form::model($data, ['method' => 'POST', 'enctype'=>'multipart/form-data', 'route' => ['orders.payment', $data->id]]) }}
+
                                 <tr>
                                     <th>Withdraw funds</th>
                                     {{--                            <td>${{ $total_cost_prod }}</td>--}}
-                                    <td>$<input type="text" value="{{ $total_cost_prod }}"></td>
+                                    <td>{{ Form::text('total_cost_prod', $total_cost_prod, ['class' => 'form-control', 'placeholder' => 'Quantity', 'id' => 'sales_quantity']) }}</td>
                                 </tr>
                                 <tr>
                                     <th></th>
                                     <td>
-                                        <button type="button" class="btn btn-success "><i
+                                        <button type="submit" class="btn btn-success "><i
                                                 class="far fa-credit-card"></i> Submit
                                             Payment
                                         </button>
                                     </td>
                                 </tr>
+                                {{ Form::close() }}
+
                             @endif
                         @endif
 

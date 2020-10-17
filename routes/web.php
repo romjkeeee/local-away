@@ -66,6 +66,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::resource('orders', 'OrderController');
     Route::get('orders/equip/{id}', 'OrderController@equip')->name('orders.equip');
     Route::post('orders/equip/{id}', 'OrderController@store_equip')->name('orders.equip.store');
+    Route::post('orders/pay/{order}', 'OrderController@getPayment')->name('orders.payment');
     Route::resource('order-products', 'OrderProductController');
     Route::resource('boutiques', 'BoutiqueController');
     Route::resource('beta-forms', 'BetaFormController');
@@ -77,7 +78,6 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::resource('ages', 'AgeController');
     Route::resource('feets', 'FeetController');
     Route::resource('measurements', 'MeasurementController');
-//comment
     Route::get('profile', 'UserController@adminProfile');
     Route::get('edit-profile', 'UserController@adminEdit');
 });

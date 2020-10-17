@@ -180,4 +180,9 @@ class OrderController extends Controller
         }
         return redirect()->route('orders.equip', $order->id);
     }
+
+    public function getPayment(Order $order, Request $request)
+    {
+        dd($order);
+    }
 }
