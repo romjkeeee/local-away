@@ -6,6 +6,7 @@ namespace App\Services\Processors;
 use App\Order;
 use App\Transaction;
 use App\User;
+use Stripe\PaymentMethod;
 
 class Stripe extends Processor
 {
@@ -82,8 +83,12 @@ class Stripe extends Processor
 
     public function getPay()
     {
-        $this->initApiKey();
-
+        $stripe = $this->initApiKey();
+        $stripe->paymentMethods->all([
+            'customer' => 'cus_HxchGzA5IMCXY9',
+            'type' => 'card',
+        ]);
+        dd();
 
     }
 }
