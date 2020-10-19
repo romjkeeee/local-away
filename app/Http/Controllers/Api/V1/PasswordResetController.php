@@ -12,6 +12,11 @@ use App\PasswordReset;
 use Illuminate\Support\Str;
 use MailchimpTransactional;
 
+/**
+ * @group Password reset
+ *
+ * APIs for
+ */
 class PasswordResetController extends Controller
 {
 
@@ -51,8 +56,7 @@ class PasswordResetController extends Controller
     /**
      * Find token password reset
      *
-     * @param  [string] $token
-     * @return [string] message
+     * @bodyParam token string require
      * @return [json] passwordReset object
      */
     public function find($token)
