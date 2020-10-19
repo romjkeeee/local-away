@@ -81,11 +81,11 @@ class Stripe extends Processor
         return false;
     }
 
-    public function getPay()
+    public function getPay($user, $order)
     {
         $stripe = $this->initApiKey();
         $stripe->paymentMethods->all([
-            'customer' => 'cus_HxchGzA5IMCXY9',
+            'customer' => $user->client_id,
             'type' => 'card',
         ]);
         dd();
