@@ -1,5 +1,4 @@
 <?php
-dd(env('MAIL_USERNAME'));
 
 return [
 
@@ -39,7 +38,7 @@ return [
             'transport' => 'smtp',
             'host' => env('MAIL_HOST', 'smtp.gmail.com'),
             'port' => env('MAIL_PORT', 465),
-            'encryption' => env('MAIL_ENCRYPTION', 'tls'),
+            'encryption' => env('MAIL_ENCRYPTION', 'ssl'),
             'username' => env('MAIL_USERNAME', 'romjkeeeen@gmail.com'),
             'password' => env('MAIL_PASSWORD', 'ojfxgtinepdqtuml'),
             'timeout' => null,
