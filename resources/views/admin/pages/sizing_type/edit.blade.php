@@ -34,6 +34,11 @@
                         @endforeach
                     </div>
                 </div>
+                <div class="form-group">
+                    {{ Form::label('status','active') }}<br>
+                    {{ Form::radio('active',0, null) }}No <br>
+                    {{ Form::radio('active',1, null) }}Yes
+                </div>
                 <x-footer-button route="{{ route('sizing-type.index') }}"></x-footer-button>
                 {{ Form::close() }}
             </div>
