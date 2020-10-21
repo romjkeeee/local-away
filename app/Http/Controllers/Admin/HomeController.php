@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\MediaToColorProduct;
+use App\Order;
+use App\Services\Processors\Stripe;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -39,6 +42,16 @@ class HomeController extends Controller
     public function stripe()
     {
         return view('payments.stripe-checkout');
+    }
+
+    public function stripeCharge(Request $request,Order $order)
+    {
+        $user = User::query()->where('id',$order->user_id)->first();
+        $stripe = new Stripe('stripe');
+        $payment = $stripe->getPay($user, $request);
+        if ($payment['message'] == 'Success') {
+            return redirect()->route('orders.show', $order->id);
+        }
     }
 
     public function logout(){

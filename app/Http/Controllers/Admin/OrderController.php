@@ -10,6 +10,9 @@ use App\Measurement;
 use App\Order;
 use App\OrderQuizSetting;
 use App\Product;
+use App\Services\Processors\Stripe;
+use App\Status;
+use App\User;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -183,6 +186,19 @@ class OrderController extends Controller
 
     public function getPayment(Order $order, Request $request)
     {
-        dd($order);
+        $user = User::query()->where('id',$order->user_id)->first();
+        $stripe = new Stripe('stripe');
+        $payment = $stripe->getPay($user, $request);
+        if ($payment['message'] == 'Success') {
+            if (count($order->quiz()->get()) && count($order->order_products_all()->get())){
+                $order->status_id = Status::boxAndShopPayed()->id;
+            }elseif (count($order->quiz()->get())){
+                $order->status_id = Status::boxPayed()->id;
+            }elseif (count($order->order_products_all()->get())){
+                $order->status_id = Status::shopPayed()->id;
+            }
+            $order->save();
+            return redirect()->route('orders.show', $order->id);
+        }
     }
 }

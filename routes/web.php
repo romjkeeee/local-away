@@ -86,3 +86,4 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
 //    return view('payments.stripe-checkout');
 //});
 Route::get('stripe-checkout', 'Admin\HomeController@stripe');
+Route::get('stripe-charge/{order}', 'Admin\HomeController@stripeCharge');

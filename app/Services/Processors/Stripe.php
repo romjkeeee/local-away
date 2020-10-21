@@ -6,7 +6,6 @@ namespace App\Services\Processors;
 use App\Order;
 use App\Transaction;
 use App\User;
-use Stripe\PaymentMethod;
 
 class Stripe extends Processor
 {
@@ -81,14 +80,24 @@ class Stripe extends Processor
         return false;
     }
 
-    public function getPay($user, $order)
+    public function getPay($user, $request)
     {
-        $stripe = $this->initApiKey();
-        $stripe->paymentMethods->all([
+        \Stripe\Stripe::setApiKey('sk_test_51HNbnkEI72nOy8syuo29KVd5gWhzrq3DZwEDVgMJUnesqePL0tdEiAXDLC7CAUSe2d4rUrDsO30FELt4PUDwCO6A00QVr26ePv');
+        $paymentMethod = \Stripe\PaymentMethod::all([
             'customer' => $user->client_id,
             'type' => 'card',
         ]);
-        dd();
 
+        $payment = \Stripe\PaymentIntent::create([
+            'amount' => $request->amount*100,
+            'currency' => 'usd',
+            'customer' => $user->client_id,
+            'payment_method' => $paymentMethod['data'][0]['id'],
+            'off_session' => true,
+            'confirm' => true,
+        ]);
+        if ($payment['status'] == 'succeeded'){
+            return ['message' => 'Success'];
+        }
     }
 }
