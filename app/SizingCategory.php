@@ -21,7 +21,7 @@ class SizingCategory extends Model
 
     public function sizing_type_sizing()
     {
-        return $this->sizing_types()->whereHas('sizings');
+        return $this->sizing_types()->whereHas('sizings')->get();
     }
 
     public function sizing_guide()
