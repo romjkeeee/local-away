@@ -15,6 +15,6 @@ class SizingType extends Model
 
     public function sizings()
     {
-        return $this->belongsToMany(Sizing::class,'sizing_type_sizings')->whereNotNull('sizing_id');
+        return $this->belongsToMany(Sizing::class,'sizing_type_sizings')->whereNotNull('sizing_type_id');
     }
 }
