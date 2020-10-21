@@ -16,7 +16,7 @@ class SizingCategory extends Model
 
     public function sizing_types()
     {
-        return $this->hasMany(SizingType::class,'sizing_category_id','id')->with('sizings')->has('sizings')->get();
+        return $this->hasMany(SizingType::class,'sizing_category_id','id');
     }
 
     public function sizing_guide()
