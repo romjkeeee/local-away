@@ -193,7 +193,7 @@ class OrderController extends Controller
         if ($payment['message'] == 'Success') {
             $order->status_id = Status::fullPayment()->id;
             $order->save();
-            $order_product = OrderProduct::query()->where('order_id',$order->id)->get();
+            $order_product = $order->quiz_products()->get();
             foreach ($order_product as $products){
                 $products->status_id = Status::fullPayment()->id;
             }
