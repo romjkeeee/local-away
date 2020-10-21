@@ -15,6 +15,6 @@ class SizingType extends Model
 
     public function sizings()
     {
-        return $this->belongsToMany(Sizing::class,'sizing_type_sizings');
+        return $this->belongsToMany(Sizing::class,'sizing_type_sizings')->exists();
     }
 }
