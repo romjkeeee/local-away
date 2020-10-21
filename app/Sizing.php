@@ -17,4 +17,9 @@ class Sizing extends Model
     {
         return $this->hasOne(Measurement::class, 'id','measurement_id');
     }
+
+    public function sizing_type()
+    {
+        return $this->belongsToMany(SizingType::class,'sizing_type_sizings');
+    }
 }
