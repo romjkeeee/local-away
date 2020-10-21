@@ -133,7 +133,9 @@ class QuizController extends Controller
                     return $query->where('gender_id', $request->gender_id);
                 })
                 ->whereHas('sizing_types.sizings')
-                ->with('sizing_types.sizings','sizing_guide')
+                ->with('sizing_types.sizings','sizing_guide', function ($q) use ($request){
+                    return $q->where('measurement_id',$request->measurement_id);
+                })
                 ->get()
         ]);
     }
