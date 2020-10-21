@@ -194,8 +194,9 @@ class OrderController extends Controller
 //            $order->status_id = Status::fullPayment()->id;
 //            $order->save();
             $order_product = $order->quiz_products()->get();
-            dd($order_product);
             foreach ($order_product as $products){
+                dd($products);
+
                 $products->status_id = Status::fullPayment()->id;
                 $products->save();
             }
