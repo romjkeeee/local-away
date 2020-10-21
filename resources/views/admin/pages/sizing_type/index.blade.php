@@ -50,7 +50,7 @@
                                     {{ $sizings->title ?? '' }},
                                     @endforeach
                                 </td>
-                                <x-active-status active="{{ $user->active }}"></x-active-status>
+                                <x-active-status active="{{ $user->status }}"></x-active-status>
                                 <x-action-buttons show="{{ route('sizing-type.show',[$user->id]) }}"
                                                   edit="{{ route('sizing-type.edit',[$user->id]) }}"></x-action-buttons>
                             </tr>
