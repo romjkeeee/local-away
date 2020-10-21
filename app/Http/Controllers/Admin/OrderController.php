@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\UpdateOrderReqeust;
 use App\Measurement;
 use App\Order;
+use App\OrderProduct;
 use App\OrderQuizSetting;
 use App\Product;
 use App\Services\Processors\Stripe;
@@ -97,7 +98,7 @@ class OrderController extends Controller
             $products = $order->order_products_all()->get();
             if ($products) {
                 foreach ($products as $product) {
-                    if ($product->price == null || $product->count == null){
+                    if ($product->price == null || $product->count == null) {
                         return redirect()->route('orders.index')->withErrors(['One of products not set, go to order and check this']);
                     }
                 }
@@ -186,18 +187,16 @@ class OrderController extends Controller
 
     public function getPayment(Order $order, Request $request)
     {
-        $user = User::query()->where('id',$order->user_id)->first();
+        $user = User::query()->where('id', $order->user_id)->first();
         $stripe = new Stripe('stripe');
         $payment = $stripe->getPay($user, $request);
         if ($payment['message'] == 'Success') {
-            if (count($order->quiz()->get()) && count($order->order_products_all()->get())){
-                $order->status_id = Status::boxAndShopPayed()->id;
-            }elseif (count($order->quiz()->get())){
-                $order->status_id = Status::boxPayed()->id;
-            }elseif (count($order->order_products_all()->get())){
-                $order->status_id = Status::shopPayed()->id;
-            }
+            $order->status_id = Status::fullPayment()->id;
             $order->save();
+            $order_product = OrderProduct::query()->where('order_id',$order->id)->get();
+            foreach ($order_product as $products){
+                $products->status_id = Status::fullPayment()->id;
+            }
             return redirect()->route('orders.show', $order->id);
         }
     }
