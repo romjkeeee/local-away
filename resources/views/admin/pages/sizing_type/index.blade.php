@@ -35,6 +35,7 @@
                             <th>title</th>
                             <th>sizing category</th>
                             <th>sizings</th>
+                            <th>Active</th>
                             <th>Action</th>
                         </tr>
                         </thead>
