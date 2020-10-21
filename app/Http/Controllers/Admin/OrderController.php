@@ -198,6 +198,11 @@ class OrderController extends Controller
                 $products->status_id = Status::fullPayment()->id;
                 $products->update();
             }
+            $quizs = $order->quiz()->get();
+            foreach ($quizs as $quiz){
+                $quiz->status_id = Status::fullPayment()->id;
+                $quiz->update();
+            }
         }
         return redirect()->route('orders.show', $order->id);
     }
