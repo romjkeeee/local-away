@@ -133,6 +133,7 @@ class QuizController extends Controller
                 ->when($request->gender_id, function ($query) use ($request) {
                     return $query->where('gender_id', $request->gender_id);
                 })
+                ->with(['sizing_types.sizings'])
                 ->whereHas('sizing_types.sizings', function ($q) use ($request) {
                     return $q->where('measurement_id', $request->measurement_id);
                 })
