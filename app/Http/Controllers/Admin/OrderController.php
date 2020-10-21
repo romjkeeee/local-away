@@ -191,11 +191,13 @@ class OrderController extends Controller
         $stripe = new Stripe('stripe');
         $payment = $stripe->getPay($user, $request);
         if ($payment['message'] == 'Success') {
-            $order->status_id = Status::fullPayment()->id;
-            $order->save();
+//            $order->status_id = Status::fullPayment()->id;
+//            $order->save();
             $order_product = $order->quiz_products()->get();
+            dd($order_product);
             foreach ($order_product as $products){
                 $products->status_id = Status::fullPayment()->id;
+                $products->save();
             }
             return redirect()->route('orders.show', $order->id);
         }
