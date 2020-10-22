@@ -194,7 +194,7 @@
                             <td>${{$data->sum}}</td>
                         </tr>
                         @if(count($data->quiz()->get()))
-                            @if($data->status_id == 7)
+                            @if($data->status_id >= 7 && $data->status_id != 9 && $data->status_id != 11 && $data->status_id != 9)
                                 {{ Form::model($data, ['method' => 'POST', 'enctype'=>'multipart/form-data', 'route' => ['orders.payment', $data->id]]) }}
 
                                 <tr>
