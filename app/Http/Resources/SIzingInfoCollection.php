@@ -15,18 +15,15 @@ class SIzingInfoCollection extends JsonResource
      */
     public function toArray($request)
     {
-        if (SizingTypeCollection::collection($this->sizing_types) != null){
-            $types = SizingTypeCollection::collection($this->sizing_types);
-        }else{
-            $types = '';
-        }
+        $types = SizingTypeCollection::collection($this->sizing_types)->toArray($this->sizing_types);
+        $newArray = array_filter($types, function($v) { return !is_null($v); });
         return [
             'id' => $this->id,
             'title' => $this->title,
             'image' => $this->image,
             'gender_id' => $this->gender_id,
             'sizing_guide' => $this->sizing_guide,
-            'sizing_types' => $types
+            'sizing_types' =>$newArray
         ];
     }
 }
