@@ -109,13 +109,11 @@
                                     @endif
                                 </td>
                             </tr>
-                            <?php $total += $box->price; ?>
+                            <?php $total += $cost['all_cost_to']; ?>
                         @endforeach
                     @endif
                     @foreach($product as $products)
-                        @if($products->status_id != 11)
-                            <?php $total += $products->price * $products->count; ?>
-                        @endif
+
                         <tr>
                             <td>{{ $products->product->name ?? ''}}</td>
                             <td>{{ $products->size->title ?? '' }}</td>
