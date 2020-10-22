@@ -204,7 +204,7 @@
                                 <tr>
                                     <th>Withdraw funds</th>
                                     {{--                            <td>${{ $total_cost_prod }}</td>--}}
-                                    <td>{{ Form::text('amount', $total_cost_prod, ['class' => 'form-control', 'placeholder' => 'Quantity', 'id' => 'sales_quantity']) }}</td>
+                                    <td>{{ Form::text('amount', $total_cost_prod, ['class' => 'form-control', 'placeholder' => 'Sum', 'id' => 'sales_quantity']) }}</td>
                                 </tr>
                                 <tr>
                                     <th></th>
