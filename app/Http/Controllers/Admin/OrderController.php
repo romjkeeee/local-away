@@ -178,7 +178,7 @@ class OrderController extends Controller
                 $order->quiz_products()->create([
                     'product_id' => $product,
                     'order_id' => $order->order_id,
-                    'status_id' => 3
+                    'status_id' => 5
                 ]);
             }
         }
