@@ -150,9 +150,9 @@ class OrderController extends Controller
             $check_order_product = OrderProduct::query()->where('order_id', $order->id)->whereIn('id', $request->get('products_ids'))->get();
             if (count($check_order_product) == count($request->get('products_ids'))) {
                 foreach ($request->get('products_ids') as $key => $value) {
-                    $order_product = OrderProduct::query()->where('order_id', $order->id)->where('id', $value)->update(['status_id' => 6]);
+                    $order_product = OrderProduct::query()->where('order_id', $order->id)->where('id', $value)->update(['status_id' => 10]);
                 }
-                if ($order->update(['status_id' => 6])) {
+                if ($order->update(['status_id' => 10])) {
                     return response(['status' => 'success', 'message' => 'Success send request'], 201);
                 } else {
                     return response(['status' => 'error', 'message' => 'Something wrong'], 400);

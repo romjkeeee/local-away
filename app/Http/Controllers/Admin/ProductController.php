@@ -189,11 +189,11 @@ class ProductController extends Controller
     public function refund_product($id)
     {
         $product = OrderProduct::query()->find($id);
-        $product->status_id = 10;
+        $product->status_id = 11;
         $product->update();
 
         $order = Order::query()->find($product->order_id);
-        $order->status_id = 10;
+        $order->status_id = 11;
         $order->update();
 
         return redirect()->route('orders.show', $order->id);
