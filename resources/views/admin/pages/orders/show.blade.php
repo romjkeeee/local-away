@@ -176,7 +176,7 @@
                         @endif
                         <tr>
                             <th>Total:</th>
-                            <td>${{$cost_box}}</td>
+                            <td>${{$total}}</td>
                         </tr>
                         {{--                        @if($data->status_id >= 6)--}}
 
@@ -191,10 +191,12 @@
                         {{--                                @endif--}}
                         {{--                            </tr>--}}
                         {{--                        @endif--}}
-                        <tr>
-                            <th>Approximate box price:</th>
-                            <td>${{$cost_box}}</td>
-                        </tr>
+                        @if(count($data->quiz()->get()))
+                            <tr>
+                                <th>Approximate box price:</th>
+                                <td>${{$cost_box}}</td>
+                            </tr>
+                        @endif
                         @if(count($data->quiz()->get()))
                             @if($data->status_id >= 7 && $data->status_id != 9 && $data->status_id != 12)
                                 {{ Form::model($data, ['method' => 'POST', 'enctype'=>'multipart/form-data', 'route' => ['orders.payment', $data->id]]) }}
