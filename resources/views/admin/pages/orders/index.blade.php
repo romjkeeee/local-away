@@ -88,7 +88,7 @@
                                         <br>{{ $created->diff($now)->days }} days ago @endif</td>
                                 <td>
                                     <a href="{{ route('orders.show',[$user->id]) }}"><i class="fas fa-eye"></i></a>
-                                    @if($user->status->name == 'FULL_PAYMENT' || $user->status->name == 'SHOP_PAYED')
+                                    @if($user->status_id >= 7)
                                         {{ Form::open(['method' => 'GET', 'route' => ['order.success', $user->id], 'onsubmit' => 'return confirm("are you sure ?")']) }}
                                         {{ Form::button('COMPLETE',
                                             ['class' => 'btn btn-success btn-sm', 'type' => 'submit'] )  }}
