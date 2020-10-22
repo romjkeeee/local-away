@@ -15,9 +15,10 @@ class SIzingInfoCollection extends JsonResource
      */
     public function toArray($request)
     {
-        $types = '';
         if (SizingTypeCollection::collection($this->sizing_types) != null){
             $types = SizingTypeCollection::collection($this->sizing_types);
+        }else{
+            $types = '';
         }
         return [
             'id' => $this->id,
