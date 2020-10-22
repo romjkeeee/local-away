@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Age;
 use App\Feet;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\GetPaymentRequest;
 use App\Http\Requests\Admin\UpdateOrderReqeust;
 use App\Measurement;
 use App\Order;
@@ -185,7 +186,7 @@ class OrderController extends Controller
         return redirect()->route('orders.equip', $order->id);
     }
 
-    public function getPayment(Order $order, Request $request)
+    public function getPayment(Order $order, GetPaymentRequest $request)
     {
         $user = User::query()->where('id', $order->user_id)->first();
         $stripe = new Stripe('stripe');
