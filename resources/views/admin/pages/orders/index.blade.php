@@ -84,13 +84,16 @@
                                     $created = new \Carbon\Carbon($user->updated_at);
                                     $now = \Carbon\Carbon::now();
                                 @endphp
-                                <td>{{ $user->status->name ?? ''}}@if($user->status->name == 'DELIVERED')<br>{{ $created->diff($now)->days }} days ago @endif</td>
+                                <td>{{ $user->status->name ?? ''}}@if($user->status->name == 'DELIVERED')
+                                        <br>{{ $created->diff($now)->days }} days ago @endif</td>
                                 <td>
                                     <a href="{{ route('orders.show',[$user->id]) }}"><i class="fas fa-eye"></i></a>
-                                    {{ Form::open(['method' => 'GET', 'route' => ['order.success', $user->id], 'onsubmit' => 'return confirm("are you sure ?")']) }}
-                                    {{ Form::button('COMPLETE',
-                                        ['class' => 'btn btn-success btn-sm', 'type' => 'submit'] )  }}
-                                    {{ Form::close() }}
+                                    @if($user->status->name == 'FULL_PAYMENT' || $user->status->name == 'SHOP_PAYED')
+                                        {{ Form::open(['method' => 'GET', 'route' => ['order.success', $user->id], 'onsubmit' => 'return confirm("are you sure ?")']) }}
+                                        {{ Form::button('COMPLETE',
+                                            ['class' => 'btn btn-success btn-sm', 'type' => 'submit'] )  }}
+                                        {{ Form::close() }}
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach
