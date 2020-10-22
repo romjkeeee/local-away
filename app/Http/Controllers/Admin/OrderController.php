@@ -104,10 +104,10 @@ class OrderController extends Controller
                 }
             }
             if (!$order->quiz) {
-                $order->update(['status_id' => 4]);
+                $order->update(['status_id' => 6]);
                 $order->update($request->validated());
                 foreach ($order->order_products_all as $product) {
-                    $product->update(['status_id' => 4]);
+                    $product->update(['status_id' => 6]);
                 }
             } else {
                 $good_status = [];
@@ -117,13 +117,13 @@ class OrderController extends Controller
                     }
                 }
                 if (count($good_status) == count($order->quiz)) {
-                    $order->update(['status_id' => 4]);
+                    $order->update(['status_id' => 6]);
                     $order->update($request->validated());
                     foreach ($order->quiz as $quiz) {
-                        $quiz->update(['status_id' => 4]);
+                        $quiz->update(['status_id' => 6]);
                     }
                     foreach ($order->order_products_all as $product) {
-                        $product->update(['status_id' => 4]);
+                        $product->update(['status_id' => 6]);
                     }
                 } else {
                     return redirect()->route('orders.index')->withErrors(['Quiz products must be loading']);
@@ -201,6 +201,19 @@ class OrderController extends Controller
             $quizs = $order->quiz()->get();
             foreach ($quizs as $quiz){
                 $quiz->status_id = Status::fullPayment()->id;
+                $quiz->update();
+            }
+        }else{
+            $order->status_id = Status::paymentFailed()->id;
+            $order->save();
+            $order_product = $order->quiz_products()->get();
+            foreach ($order_product as $products){
+                $products->status_id = Status::paymentFailed()->id;
+                $products->update();
+            }
+            $quizs = $order->quiz()->get();
+            foreach ($quizs as $quiz){
+                $quiz->status_id = Status::paymentFailed()->id;
                 $quiz->update();
             }
         }
