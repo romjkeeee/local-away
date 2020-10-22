@@ -166,7 +166,7 @@
                                 @endforeach
                                 @if(count($data->quiz_products()->get()))
                                     @if($data->status_id >= 7)
-                                        <th>Approximate box price:</th>
+                                        <th>Box product cost:</th>
                                         <td>${{ $total_cost_prod }}</td>
                                     @endif
                                 @endif
@@ -190,7 +190,7 @@
                         {{--                            </tr>--}}
                         {{--                        @endif--}}
                         <tr>
-                            <th>Order amount:</th>
+                            <th>Approximate box price:</th>
                             <td>${{$data->sum}}</td>
                         </tr>
                         @if(count($data->quiz()->get()))
