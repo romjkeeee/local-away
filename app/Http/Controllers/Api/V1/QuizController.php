@@ -7,6 +7,7 @@ use App\BodyType;
 use App\ClothesCategory;
 use App\Feet;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\SIzingInfoCollection;
 use App\Measurement;
 use App\PackageType;
 use App\PersonalStyle;
@@ -127,18 +128,19 @@ class QuizController extends Controller
      */
     public function sizing_info(Request $request)
     {
+        $data = SizingCategory::query()
+            ->where('active', true)
+            ->when($request->gender_id, function ($query) use ($request) {
+                return $query->where('gender_id', $request->gender_id);
+            })
+            ->with(['sizing_types.sizings' => function ($q) use ($request) {
+                return $q->where('measurement_id','=', $request->measurement_id);
+            }])
+            ->whereHas('sizing_types')
+            ->get();
         return response([
             'status' => 'success',
-            'data' => SizingCategory::query()
-                ->where('active', true)
-                ->when($request->gender_id, function ($query) use ($request) {
-                    return $query->where('gender_id', $request->gender_id);
-                })
-                ->with(['sizing_types.sizings' => function ($q) use ($request) {
-                    return $q->where('measurement_id','=', $request->measurement_id);
-                }])
-                ->whereHas('sizing_types')
-                ->get()
+            'data' => SIzingInfoCollection::collection($data)
         ]);
     }
 

@@ -22,7 +22,7 @@ $cost =  json_decode($this->costs, true);
         return [
             'travel_box' => $box,
             'travel_box_cost_to' => $quiz_price_to,
-            'products' => $this->status_id >= 5 ? ProductCollection::make($this->quiz_products) : [],
+            'products' => $this->status_id >= 7 ? ProductCollection::make($this->quiz_products) : [],
         ];
     }
 }
