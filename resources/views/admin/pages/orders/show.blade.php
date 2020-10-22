@@ -92,6 +92,7 @@
                         @foreach($data->quiz as $quiz)
                             @php($cost = json_decode($quiz->costs, true))
                             @php($total_cost += $cost['all_cost_to'])
+                            @php($cost_box += $cost['all_cost_to'])
                             <tr>
                                 <td>Travel box</td>
                                 <td></td>
@@ -109,11 +110,13 @@
                                     @endif
                                 </td>
                             </tr>
-                            <?php $total += $cost['all_cost_to']; ?>
+                            <?php $total += $box->price; ?>
                         @endforeach
                     @endif
                     @foreach($product as $products)
-
+                        @if($products->status_id != 11)
+                            <?php $total += $products->price * $products->count; ?>
+                        @endif
                         <tr>
                             <td>{{ $products->product->name ?? ''}}</td>
                             <td>{{ $products->size->title ?? '' }}</td>
@@ -172,7 +175,7 @@
                         @endif
                         <tr>
                             <th>Total:</th>
-                            <td>${{$total}}</td>
+                            <td>${{$cost_box}}</td>
                         </tr>
                         {{--                        @if($data->status_id >= 6)--}}
 
@@ -189,7 +192,7 @@
                         {{--                        @endif--}}
                         <tr>
                             <th>Approximate box price:</th>
-                            <td>${{$data->sum}}</td>
+                            <td>${{$cost_box}}</td>
                         </tr>
                         @if(count($data->quiz()->get()))
                             @if($data->status_id >= 7 && $data->status_id != 9 && $data->status_id != 12)
