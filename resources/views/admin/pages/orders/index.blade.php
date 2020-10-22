@@ -88,7 +88,7 @@
                                 <td>
                                     <a href="{{ route('orders.show',[$user->id]) }}"><i class="fas fa-eye"></i></a>
                                     {{ Form::open(['method' => 'GET', 'route' => ['order.success', $user->id], 'onsubmit' => 'return confirm("are you sure ?")']) }}
-                                    {{ Form::button(
+                                    {{ Form::button('<i class="fas fa-ok" aria-hidden="true"></i>',
                                         ['class' => 'btn btn-success btn-sm', 'type' => 'submit', 'style' => 'padding:0; background: none; border:none; color:#007bff;'] )  }}
                                     {{ Form::close() }}
                                 </td>
