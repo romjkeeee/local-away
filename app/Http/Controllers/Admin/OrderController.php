@@ -154,10 +154,10 @@ class OrderController extends Controller
     {
         $data = OrderQuizSetting::query()->with('quiz_products.product', 'quiz_products.size', 'quiz_products.color', 'order')->where('id', $id)->first();
         if ($data) {
-            if ($data->status_id == 2) {
-                $data->update(['status_id' => 3]);
+            if ($data->status_id >= 2 && $data->status_id <= 4) {
+                $data->update(['status_id' => 5]);
                 if ($data->order) {
-                    $data->order->update(['status_id' => 3]);
+                    $data->order->update(['status_id' => 5]);
                 }
             }
         }
