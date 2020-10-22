@@ -33,17 +33,17 @@ class ShippoController extends Controller
             if ($status['status'] == 'DELIVERED') {
                 $order = Order::query()->where('tracking_number', $shippo->tracking_number)->first();
                 if ($order) {
-                    $order->update(['status_id'=> 5]);
+                    $order->update(['status_id'=> 7]);
                 }
                 $order_product = OrderProduct::query()->where('order_id', $order->id)->get();
                 if ($order_product) {
                     foreach ($order_product as $product) {
-                        $product->update(['status_id'=> 5]);
+                        $product->update(['status_id'=> 7]);
                     }
                 }
                 if ($order->quiz) {
                     foreach ($order->quiz as $quiz) {
-                        $quiz->update(['status_id'=> 5]);
+                        $quiz->update(['status_id'=> 7]);
                     }
                 }
             }
