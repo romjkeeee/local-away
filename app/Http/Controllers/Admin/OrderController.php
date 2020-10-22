@@ -220,4 +220,11 @@ class OrderController extends Controller
         }
         return redirect()->route('orders.show', $order->id);
     }
+
+    public function orderSuccess(Order $order)
+    {
+        $order->status_id = 12;
+        $order->update();
+        return redirect()->route('orders.index');
+    }
 }
