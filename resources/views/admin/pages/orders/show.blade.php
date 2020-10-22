@@ -161,7 +161,7 @@
                             </tr>
                             <tr>
                                 @php($total_cost_prod = 0)
-                                @foreach($data->quiz_products()->where('status_id','!=', 10)->where('status_id','!=', 11)->get() as $quiz_prod)
+                                @foreach($data->quiz_products()->where('status_id','!=', 11)->get() as $quiz_prod)
                                     @php($total_cost_prod += $quiz_prod->price * $quiz_prod->count)
                                 @endforeach
                                 @if(count($data->quiz_products()->get()))
