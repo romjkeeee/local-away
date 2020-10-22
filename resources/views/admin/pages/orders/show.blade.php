@@ -167,7 +167,7 @@
                                     @php($total_cost_prod += $quiz_prod->price * $quiz_prod->count)
                                 @endforeach
                                 @if(count($data->quiz_products()->get()))
-                                    @if($data->status_id >= 7)
+                                    @if($data->status_id >= 5)
                                         <th>Box product cost:</th>
                                         <td>${{ $total_cost_prod }}</td>
                                     @endif
