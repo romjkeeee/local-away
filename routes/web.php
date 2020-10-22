@@ -67,7 +67,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::get('orders/equip/{id}', 'OrderController@equip')->name('orders.equip');
     Route::post('orders/equip/{id}', 'OrderController@store_equip')->name('orders.equip.store');
     Route::post('orders/pay/{order}', 'OrderController@getPayment')->name('orders.payment');
-    Route::post('orders/success/{order}', 'OrderController@orderSuccess')->name('order.success');
+    Route::get('orders/success/{order}', 'OrderController@orderSuccess')->name('order.success');
     Route::resource('order-products', 'OrderProductController');
     Route::resource('boutiques', 'BoutiqueController');
     Route::resource('beta-forms', 'BetaFormController');
