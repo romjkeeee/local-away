@@ -102,7 +102,7 @@
                                 <td>{{ $quiz->as_gift ? 'Yes' : 'No' }}</td>
                                 <td>{{ $quiz->status->name ?? '' }}</td>
                                 <td>
-                                    @if(count($data->quiz) && $data->status_id < 5 && $data->status_id != 1)
+                                    @if(count($data->quiz) && $data->status_id <= 5 && $data->status_id != 1)
                                         <a class="btn btn-primary float-right"
                                            href="{{ route('orders.equip', $quiz->id) }}"><i
                                                 class="fas fa-download"></i> Equip</a>
