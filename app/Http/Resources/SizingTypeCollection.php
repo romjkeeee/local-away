@@ -15,7 +15,6 @@ class SizingTypeCollection extends JsonResource
      */
     public function toArray($request)
     {
-        $data ='';
         if (count($this->sizings)) {
             $data = [
                 'id' => $this->id,
@@ -23,6 +22,8 @@ class SizingTypeCollection extends JsonResource
                 'title' => $this->title,
                 'sizings' => $this->sizings
             ];
+        }else{
+            $data = false;
         }
         return $data;
 
