@@ -112,7 +112,7 @@ class OrderController extends Controller
             } else {
                 $good_status = [];
                 foreach ($order->quiz as $quiz) {
-                    if ($quiz->status_id == 3) {
+                    if ($quiz->status_id == 5) {
                         $good_status[] = $quiz;
                     }
                 }
