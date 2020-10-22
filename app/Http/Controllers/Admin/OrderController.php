@@ -194,7 +194,7 @@ class OrderController extends Controller
         if ($payment['message'] == 'Success') {
             $order->status_id = Status::fullPayment()->id;
             $order->save();
-            $order_product = $order->quiz_products()->get();
+            $order_product = $order->quiz_products()->where('status_id', '!=',11)->get();
             foreach ($order_product as $products){
                 $products->status_id = Status::fullPayment()->id;
                 $products->update();
@@ -207,7 +207,7 @@ class OrderController extends Controller
         }else{
             $order->status_id = Status::paymentFailed()->id;
             $order->save();
-            $order_product = $order->quiz_products()->get();
+            $order_product = $order->quiz_products()->where('status_id', '!=',11)->get();
             foreach ($order_product as $products){
                 $products->status_id = Status::paymentFailed()->id;
                 $products->update();
