@@ -89,7 +89,7 @@
                                     <a href="{{ route('orders.show',[$user->id]) }}"><i class="fas fa-eye"></i></a>
                                     {{ Form::open(['method' => 'GET', 'route' => ['order.success', $user->id], 'onsubmit' => 'return confirm("are you sure ?")']) }}
                                     {{ Form::button('COMPLETE',
-                                        ['class' => 'btn btn-success btn-sm', 'type' => 'submit', 'style' => 'padding:0; background: none; border:none; color:#007bff;'] )  }}
+                                        ['class' => 'btn btn-success btn-sm', 'type' => 'submit'] )  }}
                                     {{ Form::close() }}
                                 </td>
                             </tr>
