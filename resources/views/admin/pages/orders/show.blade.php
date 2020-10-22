@@ -89,6 +89,7 @@
                     @if(count($data->quiz))
                         @php($box = \App\Box::query()->first())
                         @php($total_cost = 0)
+                        @php($cost_box = 0)
                         @foreach($data->quiz as $quiz)
                             @php($cost = json_decode($quiz->costs, true))
                             @php($total_cost += $cost['all_cost_to'])
