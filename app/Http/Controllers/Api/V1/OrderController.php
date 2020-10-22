@@ -175,9 +175,9 @@ class OrderController extends Controller
     {
         $order = Order::query()
             ->where('user_id', auth()->id())
-            ->where('status_id', '>=', 6)
+            ->where('status_id', '>=', 7)
             ->with(['order_products_all' => function ($q) {
-                $q->where('status_id', '>=', 6);
+                $q->where('status_id', '>=', 10);
             }])->get();
         if ($order) {
             return response([
