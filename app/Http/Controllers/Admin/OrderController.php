@@ -35,7 +35,7 @@ class OrderController extends Controller
             ->when($request->id, function ($q) use ($request) {
                 $q->where('status_id', $request->id);
             })
-            ->orderByDesc('id')
+            ->orderByDesc('created_at')
             ->get();
         return view('admin.pages.orders.index', compact('data'));
     }
