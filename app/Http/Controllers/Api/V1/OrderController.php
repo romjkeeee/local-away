@@ -38,7 +38,7 @@ class OrderController extends Controller
     {
         return response([
             'status' => 'success',
-            'data' => OrderCollection::collection($orders = Order::query()->where('user_id', auth()->id())->where('status_id','>',1)->get())
+            'data' => OrderCollection::collection($orders = Order::query()->where('user_id', auth()->id())->where('status_id','>',1)->orderByDesc('created_at')->get())
         ]);
     }
 
