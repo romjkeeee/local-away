@@ -36,10 +36,9 @@ class OrderController extends Controller
      */
     public function index()
     {
-        dd($orders = Order::query()->where('user_id', auth()->id())->where('status_id','>',1)->get());
         return response([
             'status' => 'success',
-            'data' => OrderCollection::collection()
+            'data' => OrderCollection::collection($orders = Order::query()->where('user_id', auth()->id())->where('status_id','>',1)->get())
         ]);
     }
 
