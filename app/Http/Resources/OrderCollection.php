@@ -26,6 +26,7 @@ class OrderCollection extends JsonResource
                 }
             }
         }
+        $not_quiz_prod = 0;
         if (count($this->order_products)) {
             foreach ($this->order_products as $not_quiz) {
                 if ($not_quiz->status_id != 11){
