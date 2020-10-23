@@ -55,7 +55,7 @@ return [
     */
 
     'url' => env('APP_URL', 'https://admin.localaway.com'),
-    'front_url' => env('FRONT_URL', 'https://localaway.com'),
+    'front_url' => env('FRONT_URL', 'https://localaway.dev-page.site'),
 
     'asset_url' => env('ASSET_URL', null),
 
