@@ -29,7 +29,7 @@ class OrderCollection extends JsonResource
         return [
             'id' => $this->id,
             'user_id' => $this->user_id,
-            'sum' => $this->sum + $price_product ?? 0,
+            'sum' => $this->sum + $price_product,
             'status' => $this->status,
             'products' => ProductCollection::make($this->order_products) ?? [],
             'travel_box_price' => Box::query()->first(),
