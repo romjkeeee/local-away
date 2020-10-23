@@ -21,10 +21,14 @@ class OrderCollection extends JsonResource
         $price_product = 0;
         if (count($this->order_products)) {
             foreach ($this->order_products as $product) {
+                if ($product->order_quiz_id != null) {
                     $price_product += $product->price;
+                }
             }
         }
+        if ($this->id == 278) {
             dd($price_product);
+        }
         return [
             'id' => $this->id,
             'user_id' => $this->user_id,
