@@ -82,7 +82,7 @@ class Stripe extends Processor
 
     public function getPay($user, $request)
     {
-        \Stripe\Stripe::setApiKey('sk_test_51HNbnkEI72nOy8syuo29KVd5gWhzrq3DZwEDVgMJUnesqePL0tdEiAXDLC7CAUSe2d4rUrDsO30FELt4PUDwCO6A00QVr26ePv');
+        \Stripe\Stripe::setApiKey('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');
         $paymentMethod = \Stripe\PaymentMethod::all([
             'customer' => $user->client_id,
             'type' => 'card',
