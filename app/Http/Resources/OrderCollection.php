@@ -26,7 +26,9 @@ class OrderCollection extends JsonResource
                 }
             }
         }
-        dd($price_product);
+        if ($this->id == 278) {
+            dd($price_product);
+        }
         return [
             'id' => $this->id,
             'user_id' => $this->user_id,
