@@ -93,8 +93,7 @@
                                         {{ Form::button('COMPLETE',
                                             ['class' => 'btn btn-success btn-sm', 'type' => 'submit'] )  }}
                                         {{ Form::close() }}
-                                    @endif
-                                    @if(count($user->order_products) && $user->status_id >= 7 && $user->status_id != 12)
+                                    @elseif(count($user->order_products) && $user->status_id >= 7 && $user->status_id != 12)
                                         {{ Form::open(['method' => 'GET', 'route' => ['order.success', $user->id], 'onsubmit' => 'return confirm("are you sure ?")']) }}
                                         {{ Form::button('COMPLETE',
                                             ['class' => 'btn btn-success btn-sm', 'type' => 'submit'] )  }}
