@@ -19,12 +19,11 @@ class OrderCollection extends JsonResource
     public function toArray($request)
     {
         $price_product = 0;
-        dd($this->order_products);
+        dd(count($this->order_products));
         if (count($this->order_products)) {
             foreach ($this->order_products as $product) {
                 if ($product->order_quiz_id != null) {
                     $price_product += $product->price;
-                    dd($product->price);
                 }
             }
         }
