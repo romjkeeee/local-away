@@ -26,10 +26,17 @@ class OrderCollection extends JsonResource
                 }
             }
         }
+        if (count($this->order_products)) {
+            foreach ($this->order_products as $not_quiz) {
+                if ($not_quiz->status_id != 11){
+                    $not_quiz_prod += $not_quiz->price * $not_quiz->count;
+                }
+            }
+        }
         return [
             'id' => $this->id,
             'user_id' => $this->user_id,
-            'sum' => $this->sum + $price_product,
+            'sum' => $this->sum + $price_product + $not_quiz_prod,
             'status' => $this->status,
             'products' => ProductCollection::make($this->order_products) ?? [],
             'travel_box_price' => Box::query()->first(),
