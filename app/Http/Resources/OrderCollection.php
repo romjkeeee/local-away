@@ -23,6 +23,7 @@ class OrderCollection extends JsonResource
             foreach ($this->order_products as $product) {
                 if ($product->order_quiz_id != null) {
                     $price_product += $product->price;
+                    dd($product->price);
                 }
             }
         }
