@@ -178,7 +178,7 @@ class OrderController extends Controller
             ->where('status_id', '>=', 7)
             ->with(['order_products_all' => function ($q) {
                 $q->where('status_id', '>=', 10);
-            }])->get();
+            }])->orderByDesc('created_at')->get();
         if ($order) {
             return response([
                 'status' => 'success',
