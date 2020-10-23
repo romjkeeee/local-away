@@ -20,8 +20,8 @@ class OrderCollection extends JsonResource
     {
         $price_product = 0;
         if (count($this->order_products)) {
-            dd('tyt');
             foreach ($this->order_products as $product) {
+                dd($product);
                 if ($product->order_quiz_id != null) {
                     $price_product += $product->price;
                 }
