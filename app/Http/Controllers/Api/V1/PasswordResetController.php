@@ -45,10 +45,33 @@ class PasswordResetController extends Controller
                 'token' => Str::random(60)
              ]
         );
+        $message_id = '2364956';
+        $user = 'Local Away';
+        $password = '927C054C828170B653986F2B90EAE97D';
+        $send_message_url = 'https://esputnik.com/api/v1/message/'.$message_id.'/smartsend';
 
-            $user->notify(
-                new PasswordResetRequest($passwordReset->token)
-            );
+        $json_value = new \stdClass();
+        $json_value->recipients = array(array('email'=>'test1@mail.com', 'jsonParam'=>'{"link":"https://localaway.dev-page.site/reset-password?token='.$passwordReset->token.'"}'));
+
+// В подготовленном сообщении можно использовать передаваемое значение "discount" для каждого контакта, обратившись к нему таким образом: $data.get('discount')
+// Есть возможность передавать массивы объектов и строить контент сообщения с использованием циклов
+
+        send_request($send_message_url, $json_value, $user, $password);
+
+        function send_request($url, $json_value, $user, $password) {
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_POST, 1);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($json_value));
+            curl_setopt($ch, CURLOPT_HEADER, 1);
+            curl_setopt($ch, CURLOPT_HTTPHEADER, array('Accept: application/json', 'Content-Type: application/json'));
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch,CURLOPT_USERPWD, $user.':'.$password);
+            curl_setopt($ch,CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt ($ch, CURLOPT_SSLVERSION, 6);
+            $output = curl_exec($ch);
+            curl_close($ch);
+            echo($output);
+        }
         return response()->json([
             'message' => 'We have e-mailed your password reset link!'
         ], 201);
