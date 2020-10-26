@@ -56,26 +56,28 @@ class PasswordResetController extends Controller
 // В подготовленном сообщении можно использовать передаваемое значение "discount" для каждого контакта, обратившись к нему таким образом: $data.get('discount')
 // Есть возможность передавать массивы объектов и строить контент сообщения с использованием циклов
 
-        send_request($send_message_url, $json_value, $user, $password);
+        $this->send_request($send_message_url, $json_value, $user, $password);
 
-        function send_request($url, $json_value, $user, $password) {
-            $ch = curl_init();
-            curl_setopt($ch, CURLOPT_POST, 1);
-            curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($json_value));
-            curl_setopt($ch, CURLOPT_HEADER, 1);
-            curl_setopt($ch, CURLOPT_HTTPHEADER, array('Accept: application/json', 'Content-Type: application/json'));
-            curl_setopt($ch, CURLOPT_URL, $url);
-            curl_setopt($ch,CURLOPT_USERPWD, $user.':'.$password);
-            curl_setopt($ch,CURLOPT_RETURNTRANSFER, 1);
-            curl_setopt ($ch, CURLOPT_SSLVERSION, 6);
-            $output = curl_exec($ch);
-            curl_close($ch);
-            echo($output);
-        }
         return response()->json([
             'message' => 'We have e-mailed your password reset link!'
         ], 201);
     }
+
+    public function send_request($url, $json_value, $user, $password) {
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($json_value));
+        curl_setopt($ch, CURLOPT_HEADER, 1);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Accept: application/json', 'Content-Type: application/json'));
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch,CURLOPT_USERPWD, $user.':'.$password);
+        curl_setopt($ch,CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt ($ch, CURLOPT_SSLVERSION, 6);
+        $output = curl_exec($ch);
+        curl_close($ch);
+        echo($output);
+    }
+
     /**
      * Find token password reset
      *
