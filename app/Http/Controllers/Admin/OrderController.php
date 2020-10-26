@@ -117,7 +117,7 @@ class OrderController extends Controller
                         $good_status[] = $quiz;
                     }
                 }
-                if ($order->status_id <= 6){
+                if ($order->status_id >= 6){
                     $order->update($request->validated());
                     return redirect()->route('orders.index');
                 }
