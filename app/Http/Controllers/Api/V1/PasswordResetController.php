@@ -46,17 +46,17 @@ class PasswordResetController extends Controller
              ]
         );
         $message_id = '2364956';
-        $user = 'Local Away';
+        $user_sputnik = 'Secret';
         $password = '927C054C828170B653986F2B90EAE97D';
         $send_message_url = 'https://esputnik.com/api/v1/message/'.$message_id.'/smartsend';
 
         $json_value = new \stdClass();
-        $json_value->recipients = array(array('email'=>'test1@mail.com', 'jsonParam'=>'{"link":"https://localaway.dev-page.site/reset-password?token='.$passwordReset->token.'"}'));
+        $json_value->recipients = array(array('email'=>$user->email, 'jsonParam'=>'{"link":"https://localaway.dev-page.site/reset-password?token='.$passwordReset->token.'"}'));
 
 // В подготовленном сообщении можно использовать передаваемое значение "discount" для каждого контакта, обратившись к нему таким образом: $data.get('discount')
 // Есть возможность передавать массивы объектов и строить контент сообщения с использованием циклов
 
-        $this->send_request($send_message_url, $json_value, $user, $password);
+        $this->send_request($send_message_url, $json_value, $user_sputnik, $password);
 
         return response()->json([
             'message' => 'We have e-mailed your password reset link!'
