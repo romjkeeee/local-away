@@ -95,7 +95,7 @@ class OrderController extends Controller
      */
     public function update(UpdateOrderReqeust $request, Order $order)
     {
-        if ($order->status_id >= 2 || $order->status_id <= 11) {
+        if ($order->status_id >= 2 && $order->status_id <= 11) {
             $products = $order->order_products_all()->get();
             if ($products) {
                 foreach ($products as $product) {
