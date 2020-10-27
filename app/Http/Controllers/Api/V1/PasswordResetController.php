@@ -71,7 +71,6 @@ class PasswordResetController extends Controller
         curl_setopt ($ch, CURLOPT_SSLVERSION, 6);
         $output = curl_exec($ch);
         curl_close($ch);
-        echo($output);
     }
 
     /**
