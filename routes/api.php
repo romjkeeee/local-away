@@ -89,7 +89,7 @@ Route::group(['namespace' => 'Api\V1', 'as' => 'api.'], function () {
     //Show Room
     Route::group(['prefix' => '/show-room'], function () {
         Route::get('/', 'ShowRoomController@index');
-        Route::get('/home_page', 'ShowRoomController@home_page');
+        Route::get('/home-page', 'ShowRoomController@home_page');
         Route::get('/last-collection', 'ShowRoomController@last_collection');
         Route::post('/like', 'ShowRoomController@like')->middleware('auth:api');
     });
