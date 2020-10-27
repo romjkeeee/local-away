@@ -15,7 +15,7 @@
             <div class="card-body">
                 <div class="form-group">
                     <label for="inputName">Sizing info</label><br>
-                    @foreach($data->sizing as $key => $value)
+                    @foreach(json_decode($data->sizing, true) as $key => $value)
                         <label for="inputName">Sizing category
                             - {{ \App\SizingCategory::query()->where('id', $value['sizing_category_id'])->first()->title ?? 'no name'}}</label>
                         <br>
@@ -27,6 +27,7 @@
                         <hr>
                     @endforeach
                 </div>
+
             </div>
             <!-- /.card-body -->
             <a href="{{ route('user-settings.index') }}" class="btn btn-default">Back to list</a>
