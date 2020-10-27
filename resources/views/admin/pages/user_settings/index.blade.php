@@ -54,7 +54,7 @@
                                 @endforeach
                                 @foreach($preference['age'] as $data)
                                     @if($data['id'] == $user->age)
-                                        <td style="width: 100%">{{ $data['name'] }}</td>
+                                        <td style="width: 100%">{{ $data['name'] ?? 'NO DATA' }}</td>
                                     @endif
                                 @endforeach
                                 <td>{{ $user->bodyType->title ?? 'NO DATA' }}</td>
