@@ -49,7 +49,7 @@
                                 <td>{{ $user->height }}</td>
                                 @foreach($preference['feet'] as $data)
                                     @if($data['id'] == $user->feet)
-                                        <td style="width: 100%">{{ $data['name'] }}</td>
+                                        <td style="width: 100%">{{ $data['name'] ?? 'NO DATA'}}</td>
                                     @endif
                                 @endforeach
                                 @foreach($preference['age'] as $data)
