@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['namespace' => 'Api\V1', 'as' => 'api.'], function () {
     Route::post('shippo/mister-hook', 'ShippoController@webhook');
+    Route::post('shippo/validate-address', 'ShippoController@address_validation');
     Route::post('contact-form', 'ContactFormController@create');
     Route::post('subscribe', 'SubscribeController@create');
     Route::post('beta-form', 'BetaFormController@store');

@@ -33,17 +33,17 @@ class ShippoController extends Controller
             if ($status['status'] == 'DELIVERED') {
                 $order = Order::query()->where('tracking_number', $shippo->tracking_number)->first();
                 if ($order) {
-                    $order->update(['status_id'=> 7]);
+                    $order->update(['status_id' => 7]);
                 }
                 $order_product = OrderProduct::query()->where('order_id', $order->id)->get();
                 if ($order_product) {
                     foreach ($order_product as $product) {
-                        $product->update(['status_id'=> 7]);
+                        $product->update(['status_id' => 7]);
                     }
                 }
                 if ($order->quiz) {
                     foreach ($order->quiz as $quiz) {
-                        $quiz->update(['status_id'=> 7]);
+                        $quiz->update(['status_id' => 7]);
                     }
                 }
             }
@@ -64,5 +64,23 @@ class ShippoController extends Controller
                 'test' => $data['data']['test'],
             ]);
         }
+    }
+
+    public function address_validation(Request $request)
+    {
+        $shippo = new \App\Services\Shipping();
+        $validation = $shippo->validateAddress($request);
+        $ser = object_get($validation, 'validation_results');
+        foreach ($ser->messages as $mess) {
+            $data[] = ['source' => $mess['source'],
+                'code' => $mess['code'],
+                'type' => $mess['type'],
+                'text' => $mess['text'],
+            ];
+        }
+        return response()->json([
+            'is_valid' => $validation['validation_results']['is_valid'],
+            'messages' => $data
+        ]);
     }
 }

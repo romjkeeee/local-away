@@ -33,6 +33,7 @@
                             <th>feet</th>
                             <th>age range</th>
                             <th>body type</th>
+                            <th>Sizing</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -57,6 +58,7 @@
                                     @endif
                                 @endforeach
                                 <td>{{ $user->bodyType->title ?? '' }}</td>
+                                <td><a href="{{ route('user-settings.show',$user->id) }}"><i class="fas fa-eye"></i></a></td>
                             </tr>
                         @endforeach
                     </table>

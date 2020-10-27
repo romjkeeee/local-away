@@ -9,6 +9,7 @@ use App\Product;
 use Shippo_Address;
 use Shippo_Shipment;
 use Shippo_Transaction;
+use Illuminate\Http\Request;
 
 class Shipping
 {
@@ -33,13 +34,17 @@ class Shipping
     /**
      * Validate an address through Shippo service
      */
-    public function validateAddress(User $user)
+    public function validateAddress(Request $request)
     {
-        $toAddress = $user->userAddress();
-
-        $toAddress['validate'] = true;
-
-        return Shippo_Address::create($toAddress);
+        $toAddress = Shippo_Address::create( array(
+            "street1" => $request->street,
+            "city" => $request->city,
+            "state" => $request->state,
+            "zip" => $request->zip_code,
+            "country" => $request->country,
+            "validate" => true
+        ));
+        return $toAddress;
     }
 
     /**

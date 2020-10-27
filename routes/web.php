@@ -62,7 +62,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::get('user-address', 'UserAddressController@index');
     Route::resource('countries', 'CountryController');
     Route::resource('boxs', 'BoxController')->except('create', 'store');
-    Route::resource('user-settings', 'UserSettingController')->only('index');
+    Route::resource('user-settings', 'UserSettingController')->only('index', 'show');
     Route::resource('orders', 'OrderController');
     Route::get('orders/equip/{id}', 'OrderController@equip')->name('orders.equip');
     Route::post('orders/equip/{id}', 'OrderController@store_equip')->name('orders.equip.store');

@@ -193,9 +193,10 @@ class UserSettingController extends Controller
      * @param \App\UserSetting $userSetting
      * @return \Illuminate\Http\Response
      */
-    public function show(UserSetting $userSetting)
+    public function show(UserPreference $user_setting)
     {
-        //
+        $data = $user_setting;
+        return view('admin.pages.user_settings.show', compact('data'));
     }
 
     /**
