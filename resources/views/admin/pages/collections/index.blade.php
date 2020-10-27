@@ -37,6 +37,7 @@
 {{--                            <th>image</th>--}}
 {{--                            <th>products</th>--}}
                             <th>gender</th>
+                            <th>is homepage</th>
                             <th>Active</th>
                             <th>Action</th>
                         </tr>
@@ -54,6 +55,7 @@
 {{--                                    @endforeach--}}
 {{--                                </td>--}}
                                 <td>{{ $user->gender->title ?? '' }}</td>
+                                <x-active-status active="{{ $user->is_to_homepage }}"></x-active-status>
                                 <x-active-status active="{{ $user->active }}"></x-active-status>
                                 <x-action-buttons show="{{ route('collections.show',[$user->id]) }}"
                                                   edit="{{ route('collections.edit',[$user->id]) }}"></x-action-buttons>
