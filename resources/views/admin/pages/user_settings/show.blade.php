@@ -15,19 +15,22 @@
             <div class="card-body">
                 <div class="form-group">
                     <label for="inputName">Sizing info</label><br>
-                    @foreach(json_decode($data->sizing, true) as $key => $value)
-                        <label for="inputName">Sizing category
-                            - {{ \App\SizingCategory::query()->where('id', $value['sizing_category_id'])->first()->title ?? 'no name'}}</label>
-                        <br>
-                        <label for="inputName">Sizing Type
-                            - {{ \App\SizingType::query()->where('id',$value['sizing_types'])->first()->title ?? 'no name'}}</label>
-                        <input type="text" id="inputName" class="form-control"
-                               value="{{ \App\Sizing::query()->where('id',$value['id'])->first()->title ?? 'no name'}}"
-                               disabled>
-                        <hr>
-                    @endforeach
+                    @if($data->sizing)
+                        @foreach($data->sizing as $key => $value)
+                            <label for="inputName">Sizing category
+                                - {{ \App\SizingCategory::query()->where('id', $value['sizing_category_id'])->first()->title ?? 'no name'}}</label>
+                            <br>
+                            <label for="inputName">Sizing Type
+                                - {{ \App\SizingType::query()->where('id',$value['sizing_types'])->first()->title ?? 'no name'}}</label>
+                            <input type="text" id="inputName" class="form-control"
+                                   value="{{ \App\Sizing::query()->where('id',$value['id'])->first()->title ?? 'no name'}}"
+                                   disabled>
+                            <hr>
+                        @endforeach
                 </div>
-
+                @else
+                    Nothing to show
+                @endif
             </div>
             <!-- /.card-body -->
             <a href="{{ route('user-settings.index') }}" class="btn btn-default">Back to list</a>
