@@ -57,8 +57,9 @@
                                         <td style="width: 100%">{{ $data['name'] }}</td>
                                     @endif
                                 @endforeach
-                                <td>{{ $user->bodyType->title ?? '' }}</td>
-                                <td><a href="{{ route('user-settings.show',$user->id) }}"><i class="fas fa-eye"></i></a></td>
+                                <td>{{ $user->bodyType->title ?? 'NO DATA' }}</td>
+                                <td><a href="{{ route('user-settings.show',$user->id) }}"><i class="fas fa-eye"></i></a>
+                                </td>
                             </tr>
                         @endforeach
                     </table>
