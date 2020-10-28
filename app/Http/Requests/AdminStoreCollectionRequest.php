@@ -27,6 +27,9 @@ class AdminStoreCollectionRequest extends FormRequest
             'name' => 'required|string',
             'image' => 'required|mimes:jpeg,png,jpg',
             'gender_id' => 'required|exists:genders,id',
+            'pack_for' => 'required|string',
+            'title' => 'required|string',
+            'description' => 'required|string',
             'is_to_homepage' => 'boolean',
             'active' => 'boolean'
 //            'product_id' => 'required|exists:products,id',

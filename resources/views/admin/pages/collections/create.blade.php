@@ -31,6 +31,18 @@
                         </div>
                     </div>
                 </div>
+                <div class="form-group">
+                    {{ Form::label('pack for') }}
+                    {{ Form::text('pack_for', old('pack_for'), ['class' => 'form-control', 'maxlength' => '190', 'placeholder' => '']) }}
+                </div>
+                <div class="form-group">
+                    {{ Form::label('title') }}
+                    {{ Form::text('title', old('title'), ['class' => 'form-control', 'maxlength' => '190', 'placeholder' => '']) }}
+                </div>
+                <div class="form-group">
+                    {{ Form::label('description') }}
+                    {{ Form::textarea('description', old('description'),['class' => 'form-control']) }}
+                </div>
 {{--                <div class="form-group">--}}
 {{--                    {{ Form::label('Products') }}<br>--}}
 {{--                    {{ Form::select('product_id[]',$products, old('product_id'), ['class' => 'js-example-basic-multiple',  'multiple'=>true]) }}--}}
