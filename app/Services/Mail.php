@@ -23,7 +23,6 @@ class Mail
     }
 
     public function send_request($url, $json_value) {
-        dd($this->password);
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_POST, 1);
         curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($json_value));
@@ -35,6 +34,5 @@ class Mail
         curl_setopt ($ch, CURLOPT_SSLVERSION, 6);
         $output = curl_exec($ch);
         curl_close($ch);
-        dd($output);
     }
 }
