@@ -34,5 +34,6 @@ class Mail
         curl_setopt ($ch, CURLOPT_SSLVERSION, 6);
         $output = curl_exec($ch);
         curl_close($ch);
+        dd($output);
     }
 }
