@@ -96,7 +96,7 @@ class ShippoController extends Controller
         }
         return response()->json([
             'is_valid' => $validation['validation_results']['is_valid'],
-            'messages' => $data
+            'messages' => $data ?? []
         ]);
     }
 }
