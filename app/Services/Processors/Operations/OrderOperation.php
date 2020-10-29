@@ -26,7 +26,7 @@ class OrderOperation extends Operation
         $order->save();
 
         $user = User::query()->where('id',$order->user_id)->first();
-        $message_id = '2368705';
+        $message_id = '2368950';
         $send_message_url = 'https://esputnik.com/api/v1/message/'.$message_id.'/smartsend';
         $json_value = new \stdClass();
         $json_value->recipients = array(array('email'=>$user->email));

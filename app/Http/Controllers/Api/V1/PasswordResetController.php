@@ -46,7 +46,7 @@ class PasswordResetController extends Controller
                 'token' => Str::random(60)
              ]
         );
-        $message_id = '2364956';
+        $message_id = '2368907';
         $send_message_url = 'https://esputnik.com/api/v1/message/'.$message_id.'/smartsend';
         $json_value = new \stdClass();
         $json_value->recipients = array(array('email'=>$user->email, 'jsonParam'=>'{"link":"https://localaway.dev-page.site/reset-password?token='.$passwordReset->token.'"}'));
@@ -115,7 +115,7 @@ class PasswordResetController extends Controller
         $user->save();
         $passwordReset->delete();
 
-        $message_id = '2365763';
+        $message_id = '2368915';
         $send_message_url = 'https://esputnik.com/api/v1/message/'.$message_id.'/smartsend';
 
         $json_value = new \stdClass();

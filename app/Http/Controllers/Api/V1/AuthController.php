@@ -44,7 +44,7 @@ class AuthController extends Controller
                 $token->expires_at = Carbon::now()->addWeeks(1);
             $token->save();
 
-            $message_id = '2368677';
+            $message_id = '2368920';
             $send_message_url = 'https://esputnik.com/api/v1/message/'.$message_id.'/smartsend';
             $json_value = new \stdClass();
             $json_value->recipients = array(array('email'=>$user->email));

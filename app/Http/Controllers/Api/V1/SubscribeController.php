@@ -27,7 +27,7 @@ class SubscribeController extends Controller
      */
     public function create(CreateSubscribeRequest $request)
     {
-        $message_id = '2368688';
+        $message_id = '2368935';
         $send_message_url = 'https://esputnik.com/api/v1/message/'.$message_id.'/smartsend';
         $json_value = new \stdClass();
         $json_value->recipients = array(array('email'=>$request->email));
