@@ -8,6 +8,11 @@ use App\Shipping;
 use App\OrderProduct;
 use Illuminate\Http\Request;
 
+/**
+ * @group Shippo
+ *
+ * APIs for
+ */
 class ShippoController extends Controller
 {
     public function webhook(Request $request)
