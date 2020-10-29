@@ -51,8 +51,8 @@ class PasswordResetController extends Controller
         $json_value = new \stdClass();
         $json_value->recipients = array(array('email'=>$user->email, 'jsonParam'=>'{"link":"https://localaway.dev-page.site/reset-password?token='.$passwordReset->token.'"}'));
         $mailing = new Mail();
-        $mailing->send_request($send_message_url, $json_value);
-
+        $test = $mailing->send_request($send_message_url, $json_value);
+        dd($test);
         return response()->json([
             'message' => 'We have e-mailed your password reset link!'
         ], 201);
@@ -122,8 +122,8 @@ class PasswordResetController extends Controller
         $json_value->recipients = array(array('email'=>$user->email));
 
         $mailing = new Mail();
-        $test = $mailing->send_request($send_message_url, $json_value);
-dd($test);
+        $mailing->send_request($send_message_url, $json_value);
+
         return response()->json($user);
     }
 }
