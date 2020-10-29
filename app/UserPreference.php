@@ -9,7 +9,8 @@ class UserPreference extends Model
     public $guarded = ['id'];
 
     public $casts = [
-        'sizing' => 'json'
+        'sizing' => 'json',
+        'height' => 'json'
     ];
 
     public function user()
