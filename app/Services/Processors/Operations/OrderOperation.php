@@ -3,7 +3,7 @@
 namespace App\Services\Processors\Operations;
 
 
-use App\{Http\Resources\OrderResource, Order, Status};
+use App\{Http\Resources\OrderResource, Order, Services\Mail, Status, User};
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class OrderOperation extends Operation
@@ -24,6 +24,14 @@ class OrderOperation extends Operation
             $order->status_id = Status::shopPayed()->id;
         }
         $order->save();
+
+        $user = User::query()->where('id',$order->user_id)->first();
+        $message_id = '2368705';
+        $send_message_url = 'https://esputnik.com/api/v1/message/'.$message_id.'/smartsend';
+        $json_value = new \stdClass();
+        $json_value->recipients = array(array('email'=>$user->email));
+        $mailing = new Mail();
+        $mailing->send_request($send_message_url, $json_value);
 
         if (count($order->order_products_all()->get())){
             foreach ($order->order_products_all()->get() as $products){

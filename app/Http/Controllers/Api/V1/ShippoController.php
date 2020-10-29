@@ -66,6 +66,17 @@ class ShippoController extends Controller
         }
     }
 
+    /**
+     * Address Validation
+     * @bodyParam street string require
+     * @bodyParam city string require
+     * @bodyParam state string
+     * @bodyParam zip_code string require
+     * @bodyParam country string require
+     *
+     * @response 201
+     *
+     */
     public function address_validation(Request $request)
     {
         $shippo = new \App\Services\Shipping();

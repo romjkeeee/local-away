@@ -233,93 +233,93 @@ return [
     'menu' => [
         [
             'text' => 'blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
+            'url' => 'admin/blog',
+            'can' => 'manage-blog',
         ],
         [
-            'text'    => 'Quiz',
-            'icon'    => 'fas fa-fw fa-share',
+            'text' => 'Quiz',
+            'icon' => 'fas fa-fw fa-share',
             'submenu' => [
                 [
-                    'text'        => 'Package Type',
-                    'url'         => 'admin/package-types',
-                    'icon'        => 'far fa-fw fa-circle nav-icon',
+                    'text' => 'Package Type',
+                    'url' => 'admin/package-types',
+                    'icon' => 'far fa-fw fa-circle nav-icon',
                 ],
                 [
-                    'text'        => 'Travel Purpose',
-                    'url'         => 'admin/travel-purposes',
-                    'icon'        => 'far fa-fw fa-circle nav-icon',
+                    'text' => 'Travel Purpose',
+                    'url' => 'admin/travel-purposes',
+                    'icon' => 'far fa-fw fa-circle nav-icon',
                 ],
                 [
-                    'text'        => 'Personal Style',
-                    'url'         => 'admin/personal-style',
-                    'icon'        => 'far fa-fw fa-circle nav-icon',
+                    'text' => 'Personal Style',
+                    'url' => 'admin/personal-style',
+                    'icon' => 'far fa-fw fa-circle nav-icon',
                 ],
                 [
-                    'text'        => 'Styled',
-                    'url'         => 'admin/styled',
-                    'icon'        => 'far fa-fw fa-circle nav-icon',
+                    'text' => 'Styled',
+                    'url' => 'admin/styled',
+                    'icon' => 'far fa-fw fa-circle nav-icon',
                 ],
                 [
-                    'text'        => 'Body type',
-                    'url'         => 'admin/body-type',
-                    'icon'        => 'far fa-fw fa-circle nav-icon',
+                    'text' => 'Body type',
+                    'url' => 'admin/body-type',
+                    'icon' => 'far fa-fw fa-circle nav-icon',
                 ],
                 [
-                    'text'        => 'Sizing guides',
-                    'url'         => 'admin/sizing-guides',
-                    'icon'        => 'far fa-fw fa-circle nav-icon',
+                    'text' => 'Sizing guides',
+                    'url' => 'admin/sizing-guides',
+                    'icon' => 'far fa-fw fa-circle nav-icon',
                 ],
                 [
-                    'text'        => 'Sizing type',
-                    'url'         => 'admin/sizing-type',
-                    'icon'        => 'far fa-fw fa-circle nav-icon',
+                    'text' => 'Sizing type',
+                    'url' => 'admin/sizing-type',
+                    'icon' => 'far fa-fw fa-circle nav-icon',
                 ],
                 [
-                    'text'        => 'Sizing categories',
-                    'url'         => 'admin/sizing-categories',
-                    'icon'        => 'far fa-fw fa-circle nav-icon',
+                    'text' => 'Sizing categories',
+                    'url' => 'admin/sizing-categories',
+                    'icon' => 'far fa-fw fa-circle nav-icon',
                 ],
                 [
-                    'text'        => 'Costs',
-                    'url'         => 'admin/costs',
-                    'icon'        => 'far fa-fw fa-circle nav-icon',
+                    'text' => 'Costs',
+                    'url' => 'admin/costs',
+                    'icon' => 'far fa-fw fa-circle nav-icon',
                 ],
                 [
-                    'text'        => 'Clothes categories',
-                    'url'         => 'admin/clothes-categories',
-                    'icon'        => 'far fa-fw fa-circle nav-icon',
+                    'text' => 'Clothes categories',
+                    'url' => 'admin/clothes-categories',
+                    'icon' => 'far fa-fw fa-circle nav-icon',
                 ],
             ],
         ],
         [
-            'text'    => 'Orders',
-            'icon'    => 'fas fa-fw fa-list',
+            'text' => 'Orders',
+            'icon' => 'fas fa-fw fa-list',
             'submenu' => [
                 [
-                    'text'        => 'Partnership',
-                    'url'         => 'admin/partnerships',
-                    'icon'        => 'far fa-fw fa-circle nav-icon',
+                    'text' => 'Partnership',
+                    'url' => 'admin/partnerships',
+                    'icon' => 'far fa-fw fa-circle nav-icon',
                 ],
                 [
-                    'text'        => 'Orders',
-                    'url'         => 'admin/orders',
-                    'icon'        => 'far fa-fw fa-circle nav-icon',
+                    'text' => 'Orders',
+                    'url' => 'admin/orders',
+                    'icon' => 'far fa-fw fa-circle nav-icon',
                 ],
                 [
-                    'text'        => 'Contact Form',
-                    'url'         => 'admin/contact-form',
-                    'icon'        => 'far fa-fw fa-circle nav-icon',
+                    'text' => 'Contact Form',
+                    'url' => 'admin/contact-form',
+                    'icon' => 'far fa-fw fa-circle nav-icon',
                 ],
                 [
-                    'text'        => 'Q&A Form',
-                    'url'         => 'admin/qa-forms',
-                    'icon'        => 'far fa-fw fa-circle nav-icon',
+                    'text' => 'Q&A Form',
+                    'url' => 'admin/qa-forms',
+                    'icon' => 'far fa-fw fa-circle nav-icon',
                 ],
                 [
-                    'text'        => 'Subscribes',
-                    'url'         => 'admin/subscribes',
-                    'icon'        => 'far fa-fw fa-circle nav-icon',
+                    'text' => 'Subscribes',
+                    'url' => 'admin/subscribes',
+                    'icon' => 'far fa-fw fa-circle nav-icon',
                 ],
 //                [
 //                    'text'        => 'Complains',
@@ -327,103 +327,103 @@ return [
 //                    'icon'        => 'far fa-fw fa-circle nav-icon',
 //                ],
                 [
-                    'text'        => 'Beta Form',
-                    'url'         => 'admin/beta-forms',
-                    'icon'        => 'far fa-fw fa-circle nav-icon',
+                    'text' => 'Beta Form',
+                    'url' => 'admin/beta-forms',
+                    'icon' => 'far fa-fw fa-circle nav-icon',
                 ],
             ],
         ],
         [
-            'text'    => 'Show room',
-            'icon'    => 'fas fa-fw fa-list',
+            'text' => 'Show room',
+            'icon' => 'fas fa-fw fa-list',
             'submenu' => [
                 [
-                    'text'        => 'Show Room',
-                    'url'         => 'admin/collections',
-                    'icon'        => 'far fa-fw fa-circle nav-icon',
+                    'text' => 'Show Room',
+                    'url' => 'admin/collections',
+                    'icon' => 'far fa-fw fa-circle nav-icon',
                 ],
                 [
-                    'text'        => 'Show Room Product',
-                    'url'         => 'admin/show-room-products',
-                    'icon'        => 'far fa-fw fa-circle nav-icon',
+                    'text' => 'Show Room Product',
+                    'url' => 'admin/show-room-products',
+                    'icon' => 'far fa-fw fa-circle nav-icon',
                 ],
                 [
-                    'text'        => 'Show Room Likes',
-                    'url'         => 'admin/show-room-like',
-                    'icon'        => 'far fa-fw fa-circle nav-icon',
+                    'text' => 'Show Room Likes',
+                    'url' => 'admin/show-room-like',
+                    'icon' => 'far fa-fw fa-circle nav-icon',
                 ],
             ],
         ],
         [
-            'text'    => 'Products',
-            'icon'    => 'fas fa-fw fa-list',
+            'text' => 'Products',
+            'icon' => 'fas fa-fw fa-list',
             'submenu' => [
                 [
-                    'text'        => 'Products Category',
-                    'url'         => 'admin/product-categories',
-                    'icon'        => 'far fa-fw fa-circle nav-icon',
+                    'text' => 'Products Category',
+                    'url' => 'admin/product-categories',
+                    'icon' => 'far fa-fw fa-circle nav-icon',
                 ],
                 [
-                    'text'        => 'Products',
-                    'url'         => 'admin/products',
-                    'icon'        => 'far fa-fw fa-circle nav-icon',
+                    'text' => 'Products',
+                    'url' => 'admin/products',
+                    'icon' => 'far fa-fw fa-circle nav-icon',
                 ],
             ],
         ],
         [
-            'text'    => 'Travel Stories',
-            'icon'    => 'fas fa-fw fa-list',
+            'text' => 'Travel Stories',
+            'icon' => 'fas fa-fw fa-list',
             'submenu' => [
                 [
-                    'text'        => 'Travel Stories',
-                    'url'         => 'admin/travel-stories',
-                    'icon'        => 'far fa-fw fa-circle nav-icon',
+                    'text' => 'Travel Stories',
+                    'url' => 'admin/travel-stories',
+                    'icon' => 'far fa-fw fa-circle nav-icon',
                 ],
                 [
-                    'text'        => 'Story style',
-                    'url'         => 'admin/story-styles',
-                    'icon'        => 'far fa-fw fa-circle nav-icon',
+                    'text' => 'Story style',
+                    'url' => 'admin/story-styles',
+                    'icon' => 'far fa-fw fa-circle nav-icon',
                 ],
             ],
         ],
         [
-            'text'    => 'Settings',
-            'icon'    => 'fas fa-fw fa-list',
+            'text' => 'Settings',
+            'icon' => 'fas fa-fw fa-list',
             'submenu' => [
                 [
-                    'text'        => 'Genders',
-                    'url'         => 'admin/genders',
-                    'icon'        => 'far fa-fw fa-circle nav-icon',
+                    'text' => 'Genders',
+                    'url' => 'admin/genders',
+                    'icon' => 'far fa-fw fa-circle nav-icon',
                 ],
                 [
-                    'text'        => 'Cities',
-                    'url'         => 'admin/cities',
-                    'icon'        => 'far fa-fw fa-circle nav-icon',
+                    'text' => 'Cities',
+                    'url' => 'admin/cities',
+                    'icon' => 'far fa-fw fa-circle nav-icon',
                 ],
                 [
-                    'text'        => 'Colors',
-                    'url'         => 'admin/colors',
-                    'icon'        => 'far fa-fw fa-circle nav-icon',
+                    'text' => 'Colors',
+                    'url' => 'admin/colors',
+                    'icon' => 'far fa-fw fa-circle nav-icon',
                 ],
                 [
-                    'text'        => 'Sizes',
-                    'url'         => 'admin/sizing',
-                    'icon'        => 'far fa-fw fa-circle nav-icon',
+                    'text' => 'Sizes',
+                    'url' => 'admin/sizing',
+                    'icon' => 'far fa-fw fa-circle nav-icon',
                 ],
                 [
-                    'text'        => 'Box',
-                    'url'         => 'admin/boxs',
-                    'icon'        => 'far fa-fw fa-circle nav-icon',
+                    'text' => 'Box',
+                    'url' => 'admin/boxs',
+                    'icon' => 'far fa-fw fa-circle nav-icon',
                 ],
                 [
-                    'text'        => 'Founders',
-                    'url'         => 'admin/founders',
-                    'icon'        => 'far fa-fw fa-circle nav-icon',
+                    'text' => 'Founders',
+                    'url' => 'admin/founders',
+                    'icon' => 'far fa-fw fa-circle nav-icon',
                 ],
                 [
-                    'text'        => 'Documents',
-                    'url'         => 'admin/documents',
-                    'icon'        => 'far fa-fw fa-circle nav-icon',
+                    'text' => 'Documents',
+                    'url' => 'admin/documents',
+                    'icon' => 'far fa-fw fa-circle nav-icon',
                 ],
             ],
         ],
@@ -433,240 +433,256 @@ return [
 //            'icon'        => 'fas fa-fw fa-angry',
 //        ],
         [
-            'text'        => 'Q&A',
-            'url'         => 'admin/qas',
-            'icon'        => 'fas fa-fw fa-question',
+            'text' => 'Q&A',
+            'url' => 'admin/qas',
+            'icon' => 'fas fa-fw fa-question',
         ],
         [
-            'text'        => 'Countries',
-            'url'         => 'admin/countries',
-            'icon'        => 'fas fa-fw fa-globe',
+            'text' => 'Countries',
+            'url' => 'admin/countries',
+            'icon' => 'fas fa-fw fa-globe',
         ],
         [
-            'text'        => 'Boutiques',
-            'url'         => 'admin/boutiques',
-            'icon'        => 'fas fa-fw fa-globe',
+            'text' => 'Boutiques',
+            'url' => 'admin/boutiques',
+            'icon' => 'fas fa-fw fa-globe',
         ],
         [
-            'text'        => 'Home page Settings',
-            'url'         => 'admin/web-settings',
-            'icon'        => 'far fa-fw fa-user',
+            'text' => 'Home page Settings',
+            'url' => 'admin/web-settings',
+            'icon' => 'far fa-fw fa-user',
         ],
         [
-            'text'    => 'Preferences',
-            'icon'    => 'fas fa-fw fa-list',
+            'text' => 'Preferences',
+            'icon' => 'fas fa-fw fa-list',
             'submenu' => [
                 [
-                    'text'        => 'Measurement',
-                    'url'         => 'admin/measurements',
-                    'icon'        => 'far fa-fw fa-circle nav-icon',
+                    'text' => 'Measurement',
+                    'url' => 'admin/measurements',
+                    'icon' => 'far fa-fw fa-circle nav-icon',
                 ],
                 [
-                    'text'        => 'Age',
-                    'url'         => 'admin/ages',
-                    'icon'        => 'far fa-fw fa-circle nav-icon',
+                    'text' => 'Age',
+                    'url' => 'admin/ages',
+                    'icon' => 'far fa-fw fa-circle nav-icon',
                 ],
                 [
-                    'text'        => 'Feet',
-                    'url'         => 'admin/feets',
-                    'icon'        => 'far fa-fw fa-circle nav-icon',
+                    'text' => 'Feet',
+                    'url' => 'admin/feets',
+                    'icon' => 'far fa-fw fa-circle nav-icon',
+                ],
+                [
+                    'text' => 'Height',
+                    'icon' => 'fas fa-fw fa-list',
+                    'submenu' => [
+                        [
+                            'text' => 'Heights',
+                            'url' => 'admin/heights',
+                            'icon' => 'far fa-fw fa-circle nav-icon',
+                        ],
+                        [
+                            'text' => 'Heights Metrics',
+                            'url' => 'admin/height-metrics',
+                            'icon' => 'far fa-fw fa-circle nav-icon',
+                        ],
+                    ],
+                    ]
                 ],
             ],
-        ],
-        [
-            'text'    => 'Users',
-            'icon'    => 'fas fa-fw fa-list',
-            'submenu' => [
-                [
-                    'text'        => 'Users',
-                    'url'         => 'admin/users',
-                    'icon'        => 'far fa-fw fa-circle nav-icon',
-                ],
-                [
-                    'text'        => 'User Address',
-                    'url'         => 'admin/user-address',
-                    'icon'        => 'far fa-fw fa-circle nav-icon',
-                ],
-                [
-                    'text'        => 'User Preference',
-                    'url'         => 'admin/user-settings',
-                    'icon'        => 'far fa-fw fa-circle nav-icon',
-                ],
-            ],
-        ],
-        ['header' => 'account_settings'],
-        [
-            'text' => 'profile',
-            'url'  => 'admin/profile',
-            'icon' => 'fas fa-fw fa-user',
-        ],
-        [
-            'text' => 'change_password',
-            'url'  => 'admin/edit-profile',
-            'icon' => 'fas fa-fw fa-lock',
-        ],
-        [
-            'text' => 'Logout',
-            'url'  => 'admin/logout',
-            'icon' => 'fas fa-fw fa-power-off',
-        ],
-    ],
-
-    /*
-    |--------------------------------------------------------------------------
-    | Menu Filters
-    |--------------------------------------------------------------------------
-    |
-    | Here we can modify the menu filters of the admin panel.
-    |
-    | For more detailed instructions you can look here:
-    | https://github.com/jeroennoten/Laravel-AdminLTE/#612-menu-filters
-    |
-    */
-
-    'filters' => [
-        JeroenNoten\LaravelAdminLte\Menu\Filters\HrefFilter::class,
-        JeroenNoten\LaravelAdminLte\Menu\Filters\SearchFilter::class,
-        JeroenNoten\LaravelAdminLte\Menu\Filters\ActiveFilter::class,
-        JeroenNoten\LaravelAdminLte\Menu\Filters\ClassesFilter::class,
-        JeroenNoten\LaravelAdminLte\Menu\Filters\GateFilter::class,
-        JeroenNoten\LaravelAdminLte\Menu\Filters\LangFilter::class,
-        JeroenNoten\LaravelAdminLte\Menu\Filters\DataFilter::class,
-    ],
-
-    /*
-    |--------------------------------------------------------------------------
-    | Plugins Initialization
-    |--------------------------------------------------------------------------
-    |
-    | Here we can modify the plugins used inside the admin panel.
-    |
-    | For more detailed instructions you can look here:
-    | https://github.com/jeroennoten/Laravel-AdminLTE/#613-plugins
-    |
-    */
-
-    'plugins' => [
-        'Datatables' => [
-            'active' => true,
-            'files' => [
-                [
-                    'type' => 'js',
-                    'asset' => false,
-                    'location' => 'https://code.jquery.com/jquery-3.4.1.js',
-                ],
-                [
-                    'type' => 'js',
-                    'asset' => true,
-                    'location' => 'https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js',
-                ],
-                [
-                    'type' => 'js',
-                    'asset' => true,
-                    'location' => 'https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js',
-                ],
-                [
-                    'type' => 'css',
-                    'asset' => false,
-                    'location' => 'https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css',
+            [
+                'text' => 'Users',
+                'icon' => 'fas fa-fw fa-list',
+                'submenu' => [
+                    [
+                        'text' => 'Users',
+                        'url' => 'admin/users',
+                        'icon' => 'far fa-fw fa-circle nav-icon',
+                    ],
+                    [
+                        'text' => 'User Address',
+                        'url' => 'admin/user-address',
+                        'icon' => 'far fa-fw fa-circle nav-icon',
+                    ],
+                    [
+                        'text' => 'User Preference',
+                        'url' => 'admin/user-settings',
+                        'icon' => 'far fa-fw fa-circle nav-icon',
+                    ],
                 ],
             ],
-        ],
-        'Select2' => [
-            'active' => true,
-            'files' => [
-                [
-                    'type' => 'js',
-                    'asset' => false,
-                    'location' => '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js',
-                ],
-                [
-                    'type' => 'css',
-                    'asset' => false,
-                    'location' => '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.css',
-                ],
+            ['header' => 'account_settings'],
+            [
+                'text' => 'profile',
+                'url' => 'admin/profile',
+                'icon' => 'fas fa-fw fa-user',
             ],
-        ],
-        'Summernote' => [
-            'active' => true,
-            'files' => [
-                [
-                    'type' => 'js',
-                    'asset' => false,
-                    'location' => 'https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js',
-                ],
-                [
-                    'type' => 'css',
-                    'asset' => false,
-                    'location' => 'https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css',
-                ],
+            [
+                'text' => 'change_password',
+                'url' => 'admin/edit-profile',
+                'icon' => 'fas fa-fw fa-lock',
             ],
-        ],
-        'MyScript' => [
-            'active' => true,
-            'files' => [
-                [
-                    'type' => 'js',
-                    'asset' => true,
-                    'location' => 'js/data.js',
-                ],
-            ],
-        ],
-        'Chartjs' => [
-            'active' => false,
-            'files' => [
-                [
-                    'type' => 'js',
-                    'asset' => false,
-                    'location' => '//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.bundle.min.js',
-                ],
+            [
+                'text' => 'Logout',
+                'url' => 'admin/logout',
+                'icon' => 'fas fa-fw fa-power-off',
             ],
         ],
 
-        'InputFIleJs' => [
-            'active' => true,
-            'files' => [
-                [
-                    'type' => 'js',
-                    'asset' => false,
-                    'location' => 'https://cdnjs.cloudflare.com/ajax/libs/bs-custom-file-input/1.3.4/bs-custom-file-input.min.js',
+        /*
+        |--------------------------------------------------------------------------
+        | Menu Filters
+        |--------------------------------------------------------------------------
+        |
+        | Here we can modify the menu filters of the admin panel.
+        |
+        | For more detailed instructions you can look here:
+        | https://github.com/jeroennoten/Laravel-AdminLTE/#612-menu-filters
+        |
+        */
+
+        'filters' => [
+            JeroenNoten\LaravelAdminLte\Menu\Filters\HrefFilter::class,
+            JeroenNoten\LaravelAdminLte\Menu\Filters\SearchFilter::class,
+            JeroenNoten\LaravelAdminLte\Menu\Filters\ActiveFilter::class,
+            JeroenNoten\LaravelAdminLte\Menu\Filters\ClassesFilter::class,
+            JeroenNoten\LaravelAdminLte\Menu\Filters\GateFilter::class,
+            JeroenNoten\LaravelAdminLte\Menu\Filters\LangFilter::class,
+            JeroenNoten\LaravelAdminLte\Menu\Filters\DataFilter::class,
+        ],
+
+        /*
+        |--------------------------------------------------------------------------
+        | Plugins Initialization
+        |--------------------------------------------------------------------------
+        |
+        | Here we can modify the plugins used inside the admin panel.
+        |
+        | For more detailed instructions you can look here:
+        | https://github.com/jeroennoten/Laravel-AdminLTE/#613-plugins
+        |
+        */
+
+        'plugins' => [
+            'Datatables' => [
+                'active' => true,
+                'files' => [
+                    [
+                        'type' => 'js',
+                        'asset' => false,
+                        'location' => 'https://code.jquery.com/jquery-3.4.1.js',
+                    ],
+                    [
+                        'type' => 'js',
+                        'asset' => true,
+                        'location' => 'https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js',
+                    ],
+                    [
+                        'type' => 'js',
+                        'asset' => true,
+                        'location' => 'https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js',
+                    ],
+                    [
+                        'type' => 'css',
+                        'asset' => false,
+                        'location' => 'https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css',
+                    ],
+                ],
+            ],
+            'Select2' => [
+                'active' => true,
+                'files' => [
+                    [
+                        'type' => 'js',
+                        'asset' => false,
+                        'location' => '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js',
+                    ],
+                    [
+                        'type' => 'css',
+                        'asset' => false,
+                        'location' => '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.css',
+                    ],
+                ],
+            ],
+            'Summernote' => [
+                'active' => true,
+                'files' => [
+                    [
+                        'type' => 'js',
+                        'asset' => false,
+                        'location' => 'https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js',
+                    ],
+                    [
+                        'type' => 'css',
+                        'asset' => false,
+                        'location' => 'https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css',
+                    ],
+                ],
+            ],
+            'MyScript' => [
+                'active' => true,
+                'files' => [
+                    [
+                        'type' => 'js',
+                        'asset' => true,
+                        'location' => 'js/data.js',
+                    ],
+                ],
+            ],
+            'Chartjs' => [
+                'active' => false,
+                'files' => [
+                    [
+                        'type' => 'js',
+                        'asset' => false,
+                        'location' => '//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.bundle.min.js',
+                    ],
+                ],
+            ],
+
+            'InputFIleJs' => [
+                'active' => true,
+                'files' => [
+                    [
+                        'type' => 'js',
+                        'asset' => false,
+                        'location' => 'https://cdnjs.cloudflare.com/ajax/libs/bs-custom-file-input/1.3.4/bs-custom-file-input.min.js',
+                    ],
+                ],
+            ],
+            'Validation' => [
+                'active' => false,
+                'files' => [
+                    [
+                        'type' => 'js',
+                        'asset' => false,
+                        'location' => '//cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js',
+                    ],
+                ],
+            ],
+            'Sweetalert2' => [
+                'active' => false,
+                'files' => [
+                    [
+                        'type' => 'js',
+                        'asset' => false,
+                        'location' => '//cdn.jsdelivr.net/npm/sweetalert2@8',
+                    ],
+                ],
+            ],
+            'Pace' => [
+                'active' => false,
+                'files' => [
+                    [
+                        'type' => 'css',
+                        'asset' => false,
+                        'location' => '//cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/themes/blue/pace-theme-center-radar.min.css',
+                    ],
+                    [
+                        'type' => 'js',
+                        'asset' => false,
+                        'location' => '//cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js',
+                    ],
                 ],
             ],
         ],
-        'Validation' => [
-            'active' => false,
-            'files' => [
-                [
-                    'type' => 'js',
-                    'asset' => false,
-                    'location' => '//cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js',
-                ],
-            ],
-        ],
-        'Sweetalert2' => [
-            'active' => false,
-            'files' => [
-                [
-                    'type' => 'js',
-                    'asset' => false,
-                    'location' => '//cdn.jsdelivr.net/npm/sweetalert2@8',
-                ],
-            ],
-        ],
-        'Pace' => [
-            'active' => false,
-            'files' => [
-                [
-                    'type' => 'css',
-                    'asset' => false,
-                    'location' => '//cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/themes/blue/pace-theme-center-radar.min.css',
-                ],
-                [
-                    'type' => 'js',
-                    'asset' => false,
-                    'location' => '//cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js',
-                ],
-            ],
-        ],
-    ],
-];
+    ];

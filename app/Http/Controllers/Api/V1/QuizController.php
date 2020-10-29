@@ -6,6 +6,7 @@ use App\Age;
 use App\BodyType;
 use App\ClothesCategory;
 use App\Feet;
+use App\Height;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\SIzingInfoCollection;
 use App\Measurement;
@@ -179,7 +180,8 @@ class QuizController extends Controller
             'data' => [
                 'measurement' => Measurement::query()->where('active', true)->get(),
                 'age' => Age::query()->where('active', true)->get(),
-                'feet' => Feet::query()->where('active', true)->get()
+                'feet' => Feet::query()->where('active', true)->get(),
+                'height' => Height::query()->where('active', true)->with('heightMetric')->get()
             ]
         ]);
     }

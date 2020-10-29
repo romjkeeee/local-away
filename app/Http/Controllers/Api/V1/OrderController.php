@@ -13,6 +13,7 @@ use App\Http\Resources\OrderReturnCollection;
 use App\Order;
 use App\OrderProduct;
 use App\OrderQuizSetting;
+use App\Services\Mail;
 use Illuminate\Http\Request;
 
 /**
@@ -152,6 +153,12 @@ class OrderController extends Controller
                 foreach ($request->get('products_ids') as $key => $value) {
                     $order_product = OrderProduct::query()->where('order_id', $order->id)->where('id', $value)->update(['status_id' => 10]);
                 }
+                $message_id = '2368694';
+                $send_message_url = 'https://esputnik.com/api/v1/message/'.$message_id.'/smartsend';
+                $json_value = new \stdClass();
+                $json_value->recipients = array(array('email'=>$request->email));
+                $mailing = new Mail();
+                $mailing->send_request($send_message_url, $json_value);
                 if ($order->update(['status_id' => 10])) {
                     return response(['status' => 'success', 'message' => 'Success send request'], 201);
                 } else {
