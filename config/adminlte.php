@@ -466,11 +466,11 @@ return [
                     'url' => 'admin/ages',
                     'icon' => 'far fa-fw fa-circle nav-icon',
                 ],
-                [
-                    'text' => 'Feet',
-                    'url' => 'admin/feets',
-                    'icon' => 'far fa-fw fa-circle nav-icon',
-                ],
+//                [
+//                    'text' => 'Feet',
+//                    'url' => 'admin/feets',
+//                    'icon' => 'far fa-fw fa-circle nav-icon',
+//                ],
                 [
                     'text' => 'Height',
                     'icon' => 'fas fa-fw fa-list',
@@ -478,11 +478,6 @@ return [
                         [
                             'text' => 'Heights',
                             'url' => 'admin/heights',
-                            'icon' => 'far fa-fw fa-circle nav-icon',
-                        ],
-                        [
-                            'text' => 'Heights Metrics',
-                            'url' => 'admin/height-metrics',
                             'icon' => 'far fa-fw fa-circle nav-icon',
                         ],
                     ],

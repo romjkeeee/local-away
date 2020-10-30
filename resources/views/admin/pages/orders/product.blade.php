@@ -39,17 +39,18 @@
                             @php($date = json_decode($data->date_city, true))
                             <label for="inputName">Travel to</label>
                             <input type="text" id="inputName" class="form-control"
-                                   value="{{ \App\City::query()->where('id', $date['city'])->first()->name ?? ''}}" disabled>
-                         <label for="inputName">On date</label><br>
+                                   value="{{ \App\City::query()->where('id', $date['city'])->first()->name ?? ''}}"
+                                   disabled>
+                            <label for="inputName">On date</label><br>
                             @foreach($date as $key => $value)
-                             @if($key == 'date')
+                                @if($key == 'date')
                                     <label for="inputName">Start</label>
                                     <input type="text" id="inputName" class="form-control"
-                                   value="{{ $value['start'] ?? 'NO DATA'}}" disabled>
+                                           value="{{ $value['start'] ?? 'NO DATA'}}" disabled>
                                     <label for="inputName">End</label>
                                     <input type="text" id="inputName" class="form-control"
-                                   value="{{ $value['end'] ?? 'NO DATA'}}" disabled>
-                            @endif
+                                           value="{{ $value['end'] ?? 'NO DATA'}}" disabled>
+                                @endif
                             @endforeach
                         </div>
                         <div class="form-group">
@@ -97,8 +98,11 @@
                                 @endforeach
                                 @if($key == 'height')
                                     <label for="inputName">{{ $key }}</label>
-                                    <input type="text" id="inputName" class="form-control"
-                                           value="{{ $value }}" disabled>
+                                            <input type="text" id="inputName" class="form-control"
+                                                   value="{{ \App\Height::query()->where('id',$value['height'])->first()->name }}"
+                                                   disabled>
+                                            <input type="text" id="inputName" class="form-control"
+                                                   value="{{ $value['growth'] }}" disabled>
                                 @endif
                                 @if($key == 'body')
                                     <label for="inputName">{{ $key }}</label>

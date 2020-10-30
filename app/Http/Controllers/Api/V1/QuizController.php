@@ -181,7 +181,7 @@ class QuizController extends Controller
                 'measurement' => Measurement::query()->where('active', true)->get(),
                 'age' => Age::query()->where('active', true)->get(),
                 'feet' => Feet::query()->where('active', true)->get(),
-                'height' => Height::query()->where('active', true)->with('heightMetric')->get()
+                'height' => Height::query()->where('active', true)->get()
             ]
         ]);
     }
