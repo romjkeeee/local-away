@@ -18,7 +18,7 @@ class Mail
 
     public function __construct()
     {
-        $this->password = env('ESPUTNIK_PASSWORD');
+        $this->password = "DA8EBEE490877EE553F42CBEBE18A3EF";
         $this->user_sputnik = 'secret';
     }
 
