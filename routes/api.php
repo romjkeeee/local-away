@@ -45,6 +45,7 @@ Route::group(['namespace' => 'Api\V1', 'as' => 'api.'], function () {
         Route::get('/cities', 'QaController@cities_list');
         Route::get('/show/{alias}', 'QaController@show');
         Route::post('/create', 'QaController@create');
+        Route::post('/create-for-julia', 'QaController@create_julia');
     });
 
     //User address
