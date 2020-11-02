@@ -32,7 +32,7 @@ class QaController extends Controller
      */
     public function create(CreateQaFormRequest $request)
     {
-        $message_id = '2372712';
+        $message_id = '2372709';
         $send_message_url = 'https://esputnik.com/api/v1/message/'.$message_id.'/smartsend';
         $json_value = new \stdClass();
         $json_value->recipients = array(array('email'=>$request->email));
