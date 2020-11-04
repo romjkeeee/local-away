@@ -38,10 +38,10 @@
                 To
                 <address>
                     @if(isset($data->address->country))
-                        @php($country = \App\Country::query()->where('id',$data->address->country)->first())
+                        {{$data->address->country}}
                     @endif
                     @if(isset($data->address->city))
-                        @php($city = \App\City::query()->where('id',$data->address->city)->first())
+                            {{$data->address->city}}
                     @endif
                     <strong>{{ $data->user->first_name. ' ' . $data->user->last_name ?? '' }}</strong><br>
                     {{ $data->address->address ?? '' }}, {{ $data->address->apartment ?? '' }}<br>
