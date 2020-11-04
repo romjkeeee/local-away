@@ -28,7 +28,7 @@ class Shipping
 
     public function __construct()
     {
-        Shippo::setApiKey(env('SHIPPO_PRIVATE'));
+        Shippo::setApiKey('shippo_live_ed02135ae608b6f89ac84ac67221e381d8d22f4b');
     }
 
     /**
