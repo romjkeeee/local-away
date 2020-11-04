@@ -39,7 +39,7 @@
                             @php($date = json_decode($data->date_city, true))
                             <label for="inputName">Travel to</label>
                             <input type="text" id="inputName" class="form-control"
-                                   value="{{ $date['city'] }}"
+                                   value="{{ $date['address']['city'] }}"
                                    disabled>
                             <label for="inputName">On date</label><br>
                             @foreach($date as $key => $value)
