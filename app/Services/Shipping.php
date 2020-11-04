@@ -38,6 +38,7 @@ class Shipping
     {
         $toAddress = Shippo_Address::create( array(
             "street1" => $request->street,
+            "street_no" => $request->street_no,
             "city" => $request->city,
             "state" => $request->state,
             "zip" => $request->zip_code,
