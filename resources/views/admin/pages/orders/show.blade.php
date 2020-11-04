@@ -37,12 +37,12 @@
             <div class="col-sm-4 invoice-col">
                 To
                 <address>
-                    @if(isset($data->address->country))
-                        {{$data->address->country}}
-                    @endif
-                    @if(isset($data->address->city))
-                            {{$data->address->city}}
-                    @endif
+{{--                    @if(isset($data->address->country))--}}
+{{--                        {{$data->address->country}}--}}
+{{--                    @endif--}}
+{{--                    @if(isset($data->address->city))--}}
+{{--                            {{$data->address->city}}--}}
+{{--                    @endif--}}
                     <strong>{{ $data->user->first_name. ' ' . $data->user->last_name ?? '' }}</strong><br>
                     {{ $data->address->address ?? '' }}, {{ $data->address->apartment ?? '' }}<br>
                     {{ isset($data->address->country) ? $data->address->country  : 'no data' }}, {{ isset($data->address->city) ? $data->address->city : 'no data' }}
