@@ -27,7 +27,7 @@ class UpdateUserAddress extends FormRequest
             'address' => 'string',
             'zip_code' => 'string',
             'city' => 'string',
-            'state' => 'string',
+            'state' => 'nullable|string',
             'country' => 'string',
             'apartment' => 'nullable|string',
             'phone' => 'nullable|string',
