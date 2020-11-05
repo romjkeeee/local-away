@@ -171,7 +171,7 @@ class UserAddressController extends Controller
     public function get_default()
     {
         return response([
-            'status' => 'error',
+            'status' => 'success',
             'data' => auth()->user()->userAddress()->where('default', true)->first()
         ]);
     }
