@@ -34,6 +34,7 @@
                             <th>State</th>
                             <th>Country</th>
                             <th>Apartment</th>
+                            <th>Phone</th>
                             <th>Default</th>
                             <th>Status</th>
                         </tr>
@@ -49,6 +50,7 @@
                                 <td>{{ $user->state }}</td>
                                 <td>{{ $user->countries->name ?? ''}}</td>
                                 <td>{{ $user->apartment }}</td>
+                                <td>{{ $user->phone }}</td>
                                 <x-active-status active="{{ $user->default }}"></x-active-status>
                                 <td>{{ $user->status }}</td>
                             </tr>
