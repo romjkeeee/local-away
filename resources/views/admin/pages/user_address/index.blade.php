@@ -29,6 +29,7 @@
                             <th>id</th>
                             <th>User</th>
                             <th>Address</th>
+                            <th>Streen No</th>
                             <th>Zip Code</th>
                             <th>City</th>
                             <th>State</th>
@@ -45,6 +46,7 @@
                                 <td>{{ $user->id }}</td>
                                 <td>{{ $user->user->first_name ?? '' }}</td>
                                 <td style="width: 100%">{{ $user->address }}</td>
+                                <td>{{ $user->street_no }}</td>
                                 <td>{{ $user->zip_code }}</td>
                                 <td>{{ $user->city}}</td>
                                 <td>{{ $user->state }}</td>
