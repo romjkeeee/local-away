@@ -121,7 +121,7 @@ class Order extends Model
             foreach ($this->quiz()->get() as $quiz) {
                 $cost_box_client = json_decode($quiz->costs, true);
                 $data = [
-                    'name' => 'Travel box',
+                    'name' => Box::query()->first()->name,
                     'image' => Box::query()->first()->image,
                     'quantity' => 1,
                     'price' => $quiz->price,
