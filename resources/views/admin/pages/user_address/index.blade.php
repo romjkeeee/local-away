@@ -48,7 +48,7 @@
                                 <td>{{ $user->zip_code }}</td>
                                 <td>{{ $user->cities}}</td>
                                 <td>{{ $user->state }}</td>
-                                <td>{{ $user->countries}}</td>
+                                <td>{{ $user->country}}</td>
                                 <td>{{ $user->apartment }}</td>
                                 <td>{{ $user->phone }}</td>
                                 <x-active-status active="{{ $user->default }}"></x-active-status>
