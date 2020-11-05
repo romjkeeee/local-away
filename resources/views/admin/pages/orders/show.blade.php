@@ -47,7 +47,7 @@
                     {{ $data->address->address ?? '' }}, {{ $data->address->apartment ?? '' }}<br>
                     {{ isset($data->address->country) ? $data->address->country  : 'no data' }}, {{ isset($data->address->city) ? $data->address->city : 'no data' }}
                     <br>
-                    {{ $data->address->zip_code ?? '' }},<br>
+                    {{ $data->address->zip_code ?? '' }},{{ $data->address->state ?? '' }}<br>
                     {{ $data->address->phone ?? '' }},<br>
                 </address>
             </div>
