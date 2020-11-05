@@ -59,7 +59,16 @@ class UserAddressController extends Controller
         }
         return response([
             'status' => 'success',
-            'data' => auth()->user()->userAddress()->create($request->validated())
+            'data' => auth()->user()->userAddress()->create([
+                'address' => $request->address . ' ' . $request->street_no,
+                'zip_code' => $request->zip_code,
+                'city' => $request->city,
+                'state' => $request->state,
+                'country' => $request->country,
+                'apartment' => $request->apartment,
+                'phone' => $request->phone,
+                'default' => $request->default
+            ])
         ], 201);
     }
 
@@ -83,7 +92,16 @@ class UserAddressController extends Controller
         if (auth()->user()->userAddress()->where('id', $id)->first()) {
             return response([
                 'status' => 'success',
-                'data' => auth()->user()->userAddress()->where('id', $id)->first()->update($request->validated())
+                'data' => auth()->user()->userAddress()->where('id', $id)->first()->update([
+                    'address' => $request->address . ' ' . $request->street_no,
+                    'zip_code' => $request->zip_code,
+                    'city' => $request->city,
+                    'state' => $request->state,
+                    'country' => $request->country,
+                    'apartment' => $request->apartment,
+                    'phone' => $request->phone,
+                    'default' => $request->default
+                ])
             ]);
         } else {
             return response([
