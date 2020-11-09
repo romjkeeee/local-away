@@ -27,11 +27,33 @@ class UserPreferenceController extends Controller
      */
     public function index(Request $request)
     {
-        $data = auth()->user()->preference()->orderByDesc('updated_at')->first();
+        $data = auth()->user()->preference()->where('gender_id', $request->gender_id)->first();
         if ($data) {
             return response([
                 'status' => 'success',
                 'data' => $data
+            ]);
+        } else {
+            return response([
+                'status' => 'error',
+                'message' => 'Not found'
+            ], 204);
+        }
+
+    }
+
+    /**
+     * get default gender
+     * @authenticated required
+     * @response 200
+     */
+    public function default_gender()
+    {
+        $data = auth()->user()->preference()->orderByDesc('updated_at')->first();
+        if ($data) {
+            return response([
+                'status' => 'success',
+                'gender_id' => $data->gender_id
             ]);
         } else {
             return response([
