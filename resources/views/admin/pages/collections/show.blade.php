@@ -6,7 +6,7 @@
 
 @section('content')
     <div class="card card-secondary">
-        <x-card-header title="Create Body Type"></x-card-header>
+        <x-card-header title="Show Collection Show Room"></x-card-header>
         <!-- /.card-header -->
         <!-- form start -->
         <form role="form" action="">
@@ -22,6 +22,18 @@
                 <div class="form-group">
                     <label>Image</label>
                     <img class="img-fluid" src="{{ asset('storage/'.$data->image) }}" disabled>
+                </div>
+                <div class="form-group">
+                    <label>Pack for</label>
+                    <input class="form-control" value="{{ $data->pack_for }}" disabled>
+                </div>
+                <div class="form-group">
+                    <label>Title</label>
+                    <input class="form-control" value="{{ $data->title }}" disabled>
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea class="form-control" disabled>{{ $data->description }}</textarea>
                 </div>
 {{--                <div class="form-group">--}}
 {{--                    {{ Form::label('product') }}<br>--}}

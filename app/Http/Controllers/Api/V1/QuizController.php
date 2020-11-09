@@ -6,14 +6,18 @@ use App\Age;
 use App\BodyType;
 use App\ClothesCategory;
 use App\Feet;
+use App\Height;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\SIzingInfoCollection;
 use App\Measurement;
 use App\PackageType;
 use App\PersonalStyle;
 use App\SizingCategory;
 use App\Styled;
 use App\TravelPurpose;
+use Illuminate\Database\Query\Builder;
 use Illuminate\Http\Request;
+use function Clue\StreamFilter\fun;
 
 /**
  * @group Quiz
@@ -125,16 +129,19 @@ class QuizController extends Controller
      */
     public function sizing_info(Request $request)
     {
+        $data = SizingCategory::query()
+            ->where('active', true)
+            ->when($request->gender_id, function ($query) use ($request) {
+                return $query->where('gender_id', $request->gender_id);
+            })
+            ->with(['sizing_types.sizings' => function ($q) use ($request) {
+                return $q->where('measurement_id','=', $request->measurement_id);
+            }])
+            ->whereHas('sizing_types')
+            ->get();
         return response([
             'status' => 'success',
-            'data' => SizingCategory::query()
-                ->where('active', true)
-                ->when($request->gender_id, function ($query) use ($request) {
-                    return $query->where('gender_id', $request->gender_id);
-                })
-                ->whereHas('sizing_types.sizings')
-                ->with('sizing_types.sizings','sizing_guide')
-                ->get()
+            'data' => SIzingInfoCollection::collection($data)
         ]);
     }
 
@@ -173,7 +180,8 @@ class QuizController extends Controller
             'data' => [
                 'measurement' => Measurement::query()->where('active', true)->get(),
                 'age' => Age::query()->where('active', true)->get(),
-                'feet' => Feet::query()->where('active', true)->get()
+                'feet' => Feet::query()->where('active', true)->get(),
+                'height' => Height::query()->where('active', true)->get()
             ]
         ]);
     }

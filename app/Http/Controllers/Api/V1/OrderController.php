@@ -13,6 +13,8 @@ use App\Http\Resources\OrderReturnCollection;
 use App\Order;
 use App\OrderProduct;
 use App\OrderQuizSetting;
+use App\Services\Mail;
+use App\User;
 use Illuminate\Http\Request;
 
 /**
@@ -38,7 +40,7 @@ class OrderController extends Controller
     {
         return response([
             'status' => 'success',
-            'data' => OrderCollection::collection($orders = Order::query()->where('user_id', auth()->id())->where('status_id','>',1)->get())
+            'data' => OrderCollection::collection($orders = Order::query()->where('user_id', auth()->id())->where('status_id','>',1)->orderByDesc('created_at')->get())
         ]);
     }
 
@@ -150,9 +152,16 @@ class OrderController extends Controller
             $check_order_product = OrderProduct::query()->where('order_id', $order->id)->whereIn('id', $request->get('products_ids'))->get();
             if (count($check_order_product) == count($request->get('products_ids'))) {
                 foreach ($request->get('products_ids') as $key => $value) {
-                    $order_product = OrderProduct::query()->where('order_id', $order->id)->where('id', $value)->update(['status_id' => 6]);
+                    $order_product = OrderProduct::query()->where('order_id', $order->id)->where('id', $value)->update(['status_id' => 10]);
                 }
-                if ($order->update(['status_id' => 6])) {
+                $message_id = '2368948';
+                $send_message_url = 'https://esputnik.com/api/v1/message/'.$message_id.'/smartsend';
+                $user = User::query()->where('id', $order->user_id)->first();
+                $json_value = new \stdClass();
+                $json_value->recipients = array(array('email'=>$user->email));
+                $mailing = new Mail();
+                $mailing->send_request($send_message_url, $json_value);
+                if ($order->update(['status_id' => 10])) {
                     return response(['status' => 'success', 'message' => 'Success send request'], 201);
                 } else {
                     return response(['status' => 'error', 'message' => 'Something wrong'], 400);
@@ -175,10 +184,10 @@ class OrderController extends Controller
     {
         $order = Order::query()
             ->where('user_id', auth()->id())
-            ->where('status_id', '>=', 6)
+            ->where('status_id', '>=', 7)
             ->with(['order_products_all' => function ($q) {
-                $q->where('status_id', '>=', 6);
-            }])->get();
+                $q->where('status_id', '>=', 10);
+            }])->orderByDesc('created_at')->get();
         if ($order) {
             return response([
                 'status' => 'success',

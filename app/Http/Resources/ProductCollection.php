@@ -28,7 +28,7 @@ class ProductCollection extends ResourceCollection
             $item->product['size_id'] = $item->size_id;
             $item->product['selected_color_image'] = $image ?? '';
             $item->product['product_id'] = $item->product_id;
-            if ($item->status_id >= 6) {
+            if ($item->status_id >= 10) {
                 $item->product['return'] = true;
             } else {
                 $item->product['return'] = false;

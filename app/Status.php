@@ -29,6 +29,31 @@ class Status extends Model
         return static::find('PAYED');
     }
 
+    public static function boxPayed()
+    {
+        return static::find('BOX_PAYED');
+    }
+
+    public static function shopPayed()
+    {
+        return static::find('SHOP_PAYED');
+    }
+
+    public static function paymentFailed()
+    {
+        return static::find('PAYMENT_FAILED');
+    }
+
+    public static function fullPayment()
+    {
+        return static::find('FULL_PAYMENT');
+    }
+
+    public static function boxAndShopPayed()
+    {
+        return static::find('BOX_AND_SHOP_PAYED');
+    }
+
     public static function boxLoading()
     {
         return static::find('BOX_LOADING');

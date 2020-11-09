@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['namespace' => 'Api\V1', 'as' => 'api.'], function () {
     Route::post('shippo/mister-hook', 'ShippoController@webhook');
+    Route::post('shippo/validate-address', 'ShippoController@address_validation');
     Route::post('contact-form', 'ContactFormController@create');
     Route::post('subscribe', 'SubscribeController@create');
     Route::post('beta-form', 'BetaFormController@store');
@@ -44,6 +45,7 @@ Route::group(['namespace' => 'Api\V1', 'as' => 'api.'], function () {
         Route::get('/cities', 'QaController@cities_list');
         Route::get('/show/{alias}', 'QaController@show');
         Route::post('/create', 'QaController@create');
+        Route::post('/create-for-julia', 'QaController@create_julia');
     });
 
     //User address
@@ -67,6 +69,7 @@ Route::group(['namespace' => 'Api\V1', 'as' => 'api.'], function () {
         Route::post('/preference', 'UserPreferenceController@update')->name('preference-update');
         Route::get('/metrics', 'UserSettingController@index')->name('metrics');
         Route::get('/get-user', 'UserController@index')->name('get-user');
+        Route::get('/get-gender', 'UserPreferenceController@default_gender')->name('get-gender');
 //        Route::post('/set-metrics', 'UserSettingController@update')->name('set-metrics');
         Route::post('/update-info', 'UserController@update_info')->name('update-info');
         Route::post('/update-avatar', 'UserController@update_avatar')->name('update-avatar');
@@ -89,6 +92,7 @@ Route::group(['namespace' => 'Api\V1', 'as' => 'api.'], function () {
     //Show Room
     Route::group(['prefix' => '/show-room'], function () {
         Route::get('/', 'ShowRoomController@index');
+        Route::get('/home-page', 'ShowRoomController@home_page');
         Route::get('/last-collection', 'ShowRoomController@last_collection');
         Route::post('/like', 'ShowRoomController@like')->middleware('auth:api');
     });
@@ -97,7 +101,7 @@ Route::group(['namespace' => 'Api\V1', 'as' => 'api.'], function () {
     Route::group(['prefix' => 'travel-stories'], function () {
         Route::get('/home-page', 'TravelStoryController@home_page');
         Route::get('/', 'TravelStoryController@index');
-        Route::get('/{travel_story}', 'TravelStoryController@show');
+        Route::get('/{id}', 'TravelStoryController@show');
 
     });
     //Partnership

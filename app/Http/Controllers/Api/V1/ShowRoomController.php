@@ -32,6 +32,23 @@ class ShowRoomController extends Controller
                 ->paginate($request->perPage ?? 5)
         ]);
     }
+    /**
+     * Home Page List
+     * Show room list
+     *
+     * @response 200
+     */
+    public function home_page(Request $request)
+    {
+        return response([
+            'status' => 'success',
+            'pagination' => Collection::query()
+                ->where('active', true)
+                ->where('is_to_homepage', true)
+                ->with('products')
+                ->paginate($request->perPage ?? 5)
+        ]);
+    }
 
     /**
      * Last collection by gender

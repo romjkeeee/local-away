@@ -31,7 +31,7 @@
                     <div class="form-check">
                         @foreach($sizes as $size)
                             {{ Form::checkbox('sizing_id[]', $size->id, false,['class' => 'form-check-input']) }}
-                            {{ Form::label($size->title,'', ['class' => 'form-check-label']) }}<br>
+                            {{ Form::label($size->title,'', ['class' => 'form-check-label']) }}({{ \App\Measurement::find($size->measurement_id)->name ?? '' }})<br>
                         @endforeach
                     </div>
                 </div>

@@ -33,7 +33,7 @@ class TravelStoryController extends Controller
     {
         if ($request->perPage == 0) {
             $per_page = TravelStory::query()->where('active', 1)->count();
-        }else{
+        } else {
             $per_page = $request->perPage;
         }
         $tavel_stories = TravelStory::query()->where('active', 1)->paginate($per_page);
@@ -74,36 +74,40 @@ class TravelStoryController extends Controller
      * @response 200
      *
      */
-    public function show(TravelStory $travel_story, Request $request)
+    public function show($id, Request $request)
     {
-        $travel_story = TravelStory::query()->where('id', $travel_story->id)->first();
-        $products = explode(',', $travel_story['product_ids']);
-        foreach ($products as $product) {
-            $prod = Product::query()
-                ->where('id', $product)
-                ->where('status', 'active')
-                ->when($request->gender_id, function ($query) use ($request) {
-                    return $query->where('gender_id', $request->gender_id);
-                })
-                ->first();
-            if ($prod) {
-                $data[] = $prod;
+        $travel_story = TravelStory::query()->where('id', $id)->where('active', true)->first();
+        if ($travel_story) {
+            $products = explode(',', $travel_story['product_ids']);
+            foreach ($products as $product) {
+                $prod = Product::query()
+                    ->where('id', $product)
+                    ->where('status', 'active')
+                    ->when($request->gender_id, function ($query) use ($request) {
+                        return $query->where('gender_id', $request->gender_id);
+                    })
+                    ->first();
+                if ($prod) {
+                    $data[] = $prod;
+                }
             }
-        }
 
-        if (isset($data)) {
-            $paginator = $this->paginate($data, $request->per_page ?? 15,$request->page ?? 1);
-            $travel_story['products'] = $paginator->values();
-        }else{
-            $travel_story['products'] = [];
-        }
+            if (isset($data)) {
+                $paginator = $this->paginate($data, $request->per_page ?? 15, $request->page ?? 1);
+                $travel_story['products'] = $paginator->values();
+            } else {
+                $travel_story['products'] = [];
+            }
 
 //        $after_image = $travel_story->travel_story_image_gender()->where('gender_id', $request->gender_id)->select('image')->first();
-        $travel_story['storyStyle'] = $travel_story->storyStyle()->where('gender_id', $request->gender_id)->get();
+            $travel_story['storyStyle'] = $travel_story->storyStyle()->where('gender_id', $request->gender_id)->get();
 //        if ($after_image) {
 //            $travel_story['after_text_image'] = $after_image->image;
 //        }
-        return response(['status' => 'success', 'data' => $travel_story]);
+            return response(['status' => 'success', 'data' => $travel_story]);
+        }else{
+            return response(['status' => 'success', 'data' => null], 404);
+        }
     }
 
     /* Пагинация для массива */

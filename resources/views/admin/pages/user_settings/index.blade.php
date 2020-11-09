@@ -33,6 +33,7 @@
                             <th>feet</th>
                             <th>age range</th>
                             <th>body type</th>
+                            <th>Sizing</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -48,15 +49,17 @@
                                 <td>{{ $user->height }}</td>
                                 @foreach($preference['feet'] as $data)
                                     @if($data['id'] == $user->feet)
-                                        <td style="width: 100%">{{ $data['name'] }}</td>
+                                        <td style="width: 100%">{{ $data['name'] ?? 'NO DATA'}}</td>
                                     @endif
                                 @endforeach
                                 @foreach($preference['age'] as $data)
                                     @if($data['id'] == $user->age)
-                                        <td style="width: 100%">{{ $data['name'] }}</td>
+                                        <td style="width: 100%">{{ $data['name'] ?? 'NO DATA' }}</td>
                                     @endif
                                 @endforeach
-                                <td>{{ $user->bodyType->title ?? '' }}</td>
+                                <td>{{ $user->bodyType->title ?? 'NO DATA' }}</td>
+                                <td><a href="{{ route('user-settings.show',$user->id) }}"><i class="fas fa-eye"></i></a>
+                                </td>
                             </tr>
                         @endforeach
                     </table>

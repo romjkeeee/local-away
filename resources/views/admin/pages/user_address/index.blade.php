@@ -29,11 +29,13 @@
                             <th>id</th>
                             <th>User</th>
                             <th>Address</th>
+                            <th>Streen No</th>
                             <th>Zip Code</th>
                             <th>City</th>
                             <th>State</th>
                             <th>Country</th>
                             <th>Apartment</th>
+                            <th>Phone</th>
                             <th>Default</th>
                             <th>Status</th>
                         </tr>
@@ -44,11 +46,13 @@
                                 <td>{{ $user->id }}</td>
                                 <td>{{ $user->user->first_name ?? '' }}</td>
                                 <td style="width: 100%">{{ $user->address }}</td>
+                                <td>{{ $user->street_no }}</td>
                                 <td>{{ $user->zip_code }}</td>
-                                <td>{{ $user->cities->name ?? ''}}</td>
+                                <td>{{ $user->city}}</td>
                                 <td>{{ $user->state }}</td>
-                                <td>{{ $user->countries->name ?? ''}}</td>
+                                <td>{{ $user->country}}</td>
                                 <td>{{ $user->apartment }}</td>
+                                <td>{{ $user->phone }}</td>
                                 <x-active-status active="{{ $user->default }}"></x-active-status>
                                 <td>{{ $user->status }}</td>
                             </tr>

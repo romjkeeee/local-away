@@ -37,17 +37,18 @@
             <div class="col-sm-4 invoice-col">
                 To
                 <address>
-                    @if(isset($data->address->country))
-                        @php($country = \App\Country::query()->where('id',$data->address->country)->first())
-                    @endif
-                    @if(isset($data->address->city))
-                        @php($city = \App\City::query()->where('id',$data->address->city)->first())
-                    @endif
+{{--                    @if(isset($data->address->country))--}}
+{{--                        {{$data->address->country}}--}}
+{{--                    @endif--}}
+{{--                    @if(isset($data->address->city))--}}
+{{--                            {{$data->address->city}}--}}
+{{--                    @endif--}}
                     <strong>{{ $data->user->first_name. ' ' . $data->user->last_name ?? '' }}</strong><br>
                     {{ $data->address->address ?? '' }}, {{ $data->address->apartment ?? '' }}<br>
-                    {{ isset($country) ? $country->name  : 'no data' }}, {{ isset($city) ? $city->name : 'no data' }}
+                    {{ isset($data->address->country) ? $data->address->country  : 'no data' }}, {{ isset($data->address->city) ? $data->address->city : 'no data' }}
                     <br>
-                    {{ $data->address->zip_code ?? '' }}<br>
+                    {{ $data->address->zip_code ?? '' }},{{ $data->address->state ?? '' }}<br>
+                    {{ $data->address->phone ?? '' }},<br>
                 </address>
             </div>
             <!-- /.col -->
@@ -89,20 +90,22 @@
                     @if(count($data->quiz))
                         @php($box = \App\Box::query()->first())
                         @php($total_cost = 0)
+                        @php($cost_box = 0)
                         @foreach($data->quiz as $quiz)
                             @php($cost = json_decode($quiz->costs, true))
                             @php($total_cost += $cost['all_cost_to'])
+                            @php($cost_box += $cost['all_cost_to'])
                             <tr>
                                 <td>Travel box</td>
                                 <td></td>
                                 <td></td>
                                 <td>1</td>
-                                <td>${{ $cost['all_cost_to'] ?? '' }}</td>
-                                <td>${{ $cost['all_cost_to'] ?? ''}}</td>
+                                <td>${{ $quiz->price }}</td>
+                                <td>${{ $quiz->price }}</td>
                                 <td>{{ $quiz->as_gift ? 'Yes' : 'No' }}</td>
                                 <td>{{ $quiz->status->name ?? '' }}</td>
                                 <td>
-                                    @if(count($data->quiz) && $data->status_id < 4 && $data->status_id != 1)
+                                    @if(count($data->quiz) && $data->status_id <= 5 && $data->status_id != 1)
                                         <a class="btn btn-primary float-right"
                                            href="{{ route('orders.equip', $quiz->id) }}"><i
                                                 class="fas fa-download"></i> Equip</a>
@@ -113,9 +116,9 @@
                         @endforeach
                     @endif
                     @foreach($product as $products)
-
-                        <?php $total += $products->price * $products->count; ?>
-
+                        @if($products->status_id != 11)
+                            <?php $total += $products->price * $products->count; ?>
+                        @endif
                         <tr>
                             <td>{{ $products->product->name ?? ''}}</td>
                             <td>{{ $products->size->title ?? '' }}</td>
@@ -126,7 +129,7 @@
                             <td></td>
                             <td>{{ $products->status->name ?? ''}}</td>
                             <td>{{ $products->product->status == 'disable' && $data->status_id == 2? 'Attention this product is disable' : '' }}
-                                @if($products->status_id == 6)
+                                @if($products->status_id == 10)
                                     <a class="btn btn-primary float-right"
                                        href="{{ route('product.refund', $products->id) }}">Refund</a>
                                 @endif
@@ -159,28 +162,65 @@
                                 <th>Commission:</th>
                                 <td>${{$quiz->price * count($data->quiz)}}</td>
                             </tr>
+                            <tr>
+                                @php($total_cost_prod = 0)
+                                @foreach($data->quiz_products()->where('status_id','!=', 11)->get() as $quiz_prod)
+                                    @php($total_cost_prod += $quiz_prod->price * $quiz_prod->count)
+                                @endforeach
+                                @if(count($data->quiz_products()->get()))
+                                    @if($data->status_id >= 5)
+                                        <th>Box product cost:</th>
+                                        <td>${{ $total_cost_prod }}</td>
+                                    @endif
+                                @endif
+                            </tr>
                         @endif
                         <tr>
                             <th>Total:</th>
                             <td>${{$total}}</td>
                         </tr>
-                        @if($data->status_id >= 4)
+                        {{--                        @if($data->status_id >= 6)--}}
 
+                        {{--                            <tr>--}}
+                        {{--                                @if(count($data->quiz_products()->get()))--}}
+                        {{--                                    @php($total_cost_prod = 0)--}}
+                        {{--                                    @foreach($data->quiz_products()->get() as $quiz_prod)--}}
+                        {{--                                        @php($total_cost_prod += $quiz_prod->price * $quiz_prod->count)--}}
+                        {{--                                    @endforeach--}}
+                        {{--                                    <th>Cost to return:</th>--}}
+                        {{--                                    <td>${{ abs($total_cost - $total_cost_prod) }}</td>--}}
+                        {{--                                @endif--}}
+                        {{--                            </tr>--}}
+                        {{--                        @endif--}}
+                        @if(count($data->quiz()->get()))
                             <tr>
-                                @if(count($data->quiz_products()->get()))
-                                    @php($total_cost_prod = 0)
-                                    @foreach($data->quiz_products()->get() as $quiz_prod)
-                                        @php($total_cost_prod += $quiz_prod->price * $quiz_prod->count)
-                                    @endforeach
-                                <th>Cost to return:</th>
-                                <td>${{ abs($total_cost - $total_cost_prod) }}</td>
-                                @endif
+                                <th>Approximate box price:</th>
+                                <td>${{$cost_box}}</td>
                             </tr>
                         @endif
-                        <tr>
-                            <th>Order amount:</th>
-                            <td>${{$data->sum}}</td>
-                        </tr>
+                        @if(count($data->quiz()->get()))
+                            @if($data->status_id >= 7 && $data->status_id != 9 && $data->status_id != 12)
+                                {{ Form::model($data, ['method' => 'POST', 'enctype'=>'multipart/form-data', 'route' => ['orders.payment', $data->id]]) }}
+
+                                <tr>
+                                    <th>Withdraw funds</th>
+                                    {{--                            <td>${{ $total_cost_prod }}</td>--}}
+                                    <td>{{ Form::text('amount', $total_cost_prod, ['class' => 'form-control', 'placeholder' => 'Sum', 'id' => 'sales_quantity']) }}</td>
+                                </tr>
+                                <tr>
+                                    <th></th>
+                                    <td>
+                                        <button type="submit" class="btn btn-success "><i
+                                                class="far fa-credit-card"></i> Submit
+                                            Payment
+                                        </button>
+                                    </td>
+                                </tr>
+                                {{ Form::close() }}
+
+                            @endif
+                        @endif
+
                         </tbody>
                     </table>
                 </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\WebSettingUpdateRequest;
 use App\WebSiteConfig;
 use Illuminate\Http\Request;
 
@@ -29,12 +30,12 @@ class WebSiteConfigController extends Controller
      *
      * @return Application|Factory|View|\Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function update(Request $request)
+    public function update(WebSettingUpdateRequest $request)
     {
         $request_data = $request->except('submit','_token');
         foreach ($request_data as $key => $value) {
             $data = WebSiteConfig::query()->where('key', $key)->update(['value' => $value]);
         }
-        return redirect()->route('web-settings.index')->withErrors('Success update');
+        return redirect()->route('web-settings.index')->with(['success' => 'Success update']);
     }
 }

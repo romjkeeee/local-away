@@ -5,11 +5,16 @@ namespace App\Http\Controllers\Admin;
 use App\Age;
 use App\Feet;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\GetPaymentRequest;
 use App\Http\Requests\Admin\UpdateOrderReqeust;
 use App\Measurement;
 use App\Order;
+use App\OrderProduct;
 use App\OrderQuizSetting;
 use App\Product;
+use App\Services\Processors\Stripe;
+use App\Status;
+use App\User;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -30,7 +35,7 @@ class OrderController extends Controller
             ->when($request->id, function ($q) use ($request) {
                 $q->where('status_id', $request->id);
             })
-            ->orderByDesc('id')
+            ->orderByDesc('created_at')
             ->get();
         return view('admin.pages.orders.index', compact('data'));
     }
@@ -90,36 +95,40 @@ class OrderController extends Controller
      */
     public function update(UpdateOrderReqeust $request, Order $order)
     {
-        if ($order->status_id == 2 || $order->status_id == 3) {
+        if ($order->status_id >= 2 && $order->status_id <= 11) {
             $products = $order->order_products_all()->get();
             if ($products) {
                 foreach ($products as $product) {
-                    if ($product->price == null || $product->count == null){
+                    if ($product->price == null || $product->count == null) {
                         return redirect()->route('orders.index')->withErrors(['One of products not set, go to order and check this']);
                     }
                 }
             }
             if (!$order->quiz) {
-                $order->update(['status_id' => 4]);
+                $order->update(['status_id' => 6]);
                 $order->update($request->validated());
                 foreach ($order->order_products_all as $product) {
-                    $product->update(['status_id' => 4]);
+                    $product->update(['status_id' => 6]);
                 }
             } else {
                 $good_status = [];
                 foreach ($order->quiz as $quiz) {
-                    if ($quiz->status_id == 3) {
+                    if ($quiz->status_id == 5) {
                         $good_status[] = $quiz;
                     }
                 }
+                if ($order->status_id >= 6){
+                    $order->update($request->validated());
+                    return redirect()->route('orders.index');
+                }
                 if (count($good_status) == count($order->quiz)) {
-                    $order->update(['status_id' => 4]);
+                    $order->update(['status_id' => 6]);
                     $order->update($request->validated());
                     foreach ($order->quiz as $quiz) {
-                        $quiz->update(['status_id' => 4]);
+                        $quiz->update(['status_id' => 6]);
                     }
                     foreach ($order->order_products_all as $product) {
-                        $product->update(['status_id' => 4]);
+                        $product->update(['status_id' => 6]);
                     }
                 } else {
                     return redirect()->route('orders.index')->withErrors(['Quiz products must be loading']);
@@ -150,10 +159,10 @@ class OrderController extends Controller
     {
         $data = OrderQuizSetting::query()->with('quiz_products.product', 'quiz_products.size', 'quiz_products.color', 'order')->where('id', $id)->first();
         if ($data) {
-            if ($data->status_id == 2) {
-                $data->update(['status_id' => 3]);
+            if ($data->status_id >= 2 && $data->status_id <= 4) {
+                $data->update(['status_id' => 5]);
                 if ($data->order) {
-                    $data->order->update(['status_id' => 3]);
+                    $data->order->update(['status_id' => 5]);
                 }
             }
         }
@@ -174,10 +183,52 @@ class OrderController extends Controller
                 $order->quiz_products()->create([
                     'product_id' => $product,
                     'order_id' => $order->order_id,
-                    'status_id' => 3
+                    'status_id' => 5
                 ]);
             }
         }
         return redirect()->route('orders.equip', $order->id);
+    }
+
+    public function getPayment(Order $order, GetPaymentRequest $request)
+    {
+        $user = User::query()->where('id', $order->user_id)->first();
+        $stripe = new Stripe('stripe');
+        $payment = $stripe->getPay($user, $request);
+        if ($payment['message'] == 'Success') {
+            $order->status_id = Status::fullPayment()->id;
+            $order->save();
+            $order_product = $order->quiz_products()->where('status_id', '!=',11)->get();
+            foreach ($order_product as $products){
+                $products->status_id = Status::fullPayment()->id;
+                $products->update();
+            }
+            $quizs = $order->quiz()->get();
+            foreach ($quizs as $quiz){
+                $quiz->status_id = Status::fullPayment()->id;
+                $quiz->update();
+            }
+        }else{
+            $order->status_id = Status::paymentFailed()->id;
+            $order->save();
+            $order_product = $order->quiz_products()->where('status_id', '!=',11)->get();
+            foreach ($order_product as $products){
+                $products->status_id = Status::paymentFailed()->id;
+                $products->update();
+            }
+            $quizs = $order->quiz()->get();
+            foreach ($quizs as $quiz){
+                $quiz->status_id = Status::paymentFailed()->id;
+                $quiz->update();
+            }
+        }
+        return redirect()->route('orders.show', $order->id);
+    }
+
+    public function orderSuccess(Order $order)
+    {
+        $order->status_id = 12;
+        $order->update();
+        return redirect()->route('orders.index');
     }
 }

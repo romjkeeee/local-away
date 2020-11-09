@@ -21,17 +21,39 @@ class UserPreferenceController extends Controller
 
     /**
      * Get
-     *
+     * @queryParam gender_id integer required
      * @authenticated required
      * @response 200
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data = auth()->user()->preference()->first();
+        $data = auth()->user()->preference()->where('gender_id', $request->gender_id)->first();
         if ($data) {
             return response([
                 'status' => 'success',
                 'data' => $data
+            ]);
+        } else {
+            return response([
+                'status' => 'error',
+                'message' => 'Not found'
+            ], 204);
+        }
+
+    }
+
+    /**
+     * get default gender
+     * @authenticated required
+     * @response 200
+     */
+    public function default_gender()
+    {
+        $data = auth()->user()->preference()->orderByDesc('updated_at')->first();
+        if ($data) {
+            return response([
+                'status' => 'success',
+                'gender_id' => $data->gender_id
             ]);
         } else {
             return response([
@@ -49,6 +71,8 @@ class UserPreferenceController extends Controller
      * @bodyParam feet string
      * @bodyParam measurement string
      * @bodyParam body_type_id string
+     * @bodyParam sizing array
+     * @bodyParam gender_id integer
      *
      * @authenticated required
      * @response 200
@@ -56,14 +80,15 @@ class UserPreferenceController extends Controller
     public function update(UpdateUserSettingsRequest $request)
     {
         $user = auth()->user();
-        if ($user->preference()->first()) {
-            $user->preference()->update($request->validated());
+        $preference = $user->preference()->where('gender_id', $request->gender_id)->first();
+        if ($preference) {
+            $preference->update($request->validated());
         } else {
             $user->preference()->create($request->validated());
         }
         return response([
             'status' => 'success',
-            'data' => $user->preference()->first()
+            'data' => $preference
         ]);
     }
 }

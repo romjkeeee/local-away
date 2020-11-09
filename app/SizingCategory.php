@@ -3,10 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use function Clue\StreamFilter\fun;
 
 class SizingCategory extends Model
 {
     public $guarded = ['id'];
+    public $with = ['sizing_guide'];
 
     public function sizings()
     {
@@ -15,7 +17,7 @@ class SizingCategory extends Model
 
     public function sizing_types()
     {
-        return $this->hasMany(SizingType::class,'sizing_category_id','id');
+        return $this->hasMany(SizingType::class,'sizing_category_id','id')->where('status',1);
     }
 
     public function sizing_guide()

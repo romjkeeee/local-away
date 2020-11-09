@@ -3,7 +3,9 @@
 namespace App\Services\Processors;
 
 
+use App\Order;
 use App\Transaction;
+use App\User;
 
 class Stripe extends Processor
 {
@@ -39,6 +41,7 @@ class Stripe extends Processor
 
         $session = \Stripe\Checkout\Session::create([
             'payment_method_types' => ['card'],
+            'mode' => 'payment',
             'line_items' => $lineItems,
             'success_url' => $this->createUrl($transaction->token, 'success'),
             'cancel_url' => $this->createUrl($transaction->token),
@@ -75,5 +78,26 @@ class Stripe extends Processor
         }
 
         return false;
+    }
+
+    public function getPay($user, $request)
+    {
+        \Stripe\Stripe::setApiKey('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');
+        $paymentMethod = \Stripe\PaymentMethod::all([
+            'customer' => $user->client_id,
+            'type' => 'card',
+        ]);
+
+        $payment = \Stripe\PaymentIntent::create([
+            'amount' => $request->amount*100,
+            'currency' => 'usd',
+            'customer' => $user->client_id,
+            'payment_method' => $paymentMethod['data'][0]['id'],
+            'off_session' => true,
+            'confirm' => true,
+        ]);
+        if ($payment['status'] == 'succeeded'){
+            return ['message' => 'Success'];
+        }
     }
 }

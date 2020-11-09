@@ -31,6 +31,18 @@
                         </div>
                     </div>
                 </div>
+                <div class="form-group">
+                    {{ Form::label('pack for') }}
+                    {{ Form::text('pack_for', old('pack_for'), ['class' => 'form-control', 'maxlength' => '190', 'placeholder' => '']) }}
+                </div>
+                <div class="form-group">
+                    {{ Form::label('title') }}
+                    {{ Form::text('title', old('title'), ['class' => 'form-control', 'maxlength' => '190', 'placeholder' => '']) }}
+                </div>
+                <div class="form-group">
+                    {{ Form::label('description') }}
+                    {{ Form::textarea('description', old('description'),['class' => 'form-control']) }}
+                </div>
 {{--                <div class="form-group">--}}
 {{--                    {{ Form::label('Products') }}<br>--}}
 {{--                    {{ Form::select('product_id[]',$products, old('product_id'), ['class' => 'js-example-basic-multiple',  'multiple'=>true]) }}--}}
@@ -38,6 +50,11 @@
                 <div class="form-group">
                     {{ Form::label('Gender') }}
                     {{ Form::select('gender_id',$gender, old('gender'),['class' => 'form-control',  'placeholder' => 'Choose a gender...']) }}
+                </div>
+                <div class="form-group">
+                    {{ Form::label('is_to_homepage','Home page') }}<br>
+                    {{ Form::radio('is_to_homepage',0, null) }}No <br>
+                    {{ Form::radio('is_to_homepage',1, null) }}Yes
                 </div>
                 <div class="form-group">
                     {{ Form::label('active','active') }}<br>

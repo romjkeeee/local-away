@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\V1;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\SignUpRequest;
+use App\Services\Mail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
@@ -42,6 +43,14 @@ class AuthController extends Controller
             if ($request->remember_me)
                 $token->expires_at = Carbon::now()->addWeeks(1);
             $token->save();
+
+            $message_id = '2368920';
+            $send_message_url = 'https://esputnik.com/api/v1/message/'.$message_id.'/smartsend';
+            $json_value = new \stdClass();
+            $json_value->recipients = array(array('email'=>$user->email));
+            $mailing = new Mail();
+            $mailing->send_request($send_message_url, $json_value);
+
             return response()->json([
                 'access_token' => $tokenResult->accessToken,
                 'token_type' => 'Bearer',

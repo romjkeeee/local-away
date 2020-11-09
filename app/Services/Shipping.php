@@ -9,6 +9,7 @@ use App\Product;
 use Shippo_Address;
 use Shippo_Shipment;
 use Shippo_Transaction;
+use Illuminate\Http\Request;
 
 class Shipping
 {
@@ -27,19 +28,24 @@ class Shipping
 
     public function __construct()
     {
-        Shippo::setApiKey(env('SHIPPO_PRIVATE'));
+        Shippo::setApiKey('shippo_live_ed02135ae608b6f89ac84ac67221e381d8d22f4b');
     }
 
     /**
      * Validate an address through Shippo service
      */
-    public function validateAddress(User $user)
+    public function validateAddress(Request $request)
     {
-        $toAddress = $user->userAddress();
-
-        $toAddress['validate'] = true;
-
-        return Shippo_Address::create($toAddress);
+        $toAddress = Shippo_Address::create( array(
+            "street1" => $request->street,
+            "street_no" => $request->street_no,
+            "city" => $request->city,
+            "state" => $request->state,
+            "zip" => $request->zip_code,
+            "country" => $request->country,
+            "validate" => true
+        ));
+        return $toAddress;
     }
 
     /**

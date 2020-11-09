@@ -30,9 +30,14 @@
                     <div class="form-check">
                         @foreach($sizes as $size)
                             {{ Form::checkbox('sizing_id[]', $size->id, (in_array($size->id, $data->sizings->pluck('id')->all())?true:null),['class' => 'form-check-input']) }}
-                            {{ Form::label($size->title,'', ['class' => 'form-check-label']) }}<br>
+                            {{ Form::label($size->title,'', ['class' => 'form-check-label']) }}({{ \App\Measurement::find($size->measurement_id)->name ?? '' }})<br>
                         @endforeach
                     </div>
+                </div>
+                <div class="form-group">
+                    {{ Form::label('status','active') }}<br>
+                    {{ Form::radio('status',0, null) }}No <br>
+                    {{ Form::radio('status',1, null) }}Yes
                 </div>
                 <x-footer-button route="{{ route('sizing-type.index') }}"></x-footer-button>
                 {{ Form::close() }}

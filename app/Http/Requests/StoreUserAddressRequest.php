@@ -25,11 +25,13 @@ class StoreUserAddressRequest extends FormRequest
     {
         return [
             'address' => 'required|string',
+            'street_no' => 'required|string',
             'zip_code' => 'required|string',
             'city' => 'required|string',
             'state' => 'nullable|string',
             'country' => 'required|string',
             'apartment' => 'nullable|string',
+            'phone' => 'required|string',
             'default' => 'boolean'
         ];
     }

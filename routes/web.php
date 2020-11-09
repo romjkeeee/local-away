@@ -62,10 +62,12 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::get('user-address', 'UserAddressController@index');
     Route::resource('countries', 'CountryController');
     Route::resource('boxs', 'BoxController')->except('create', 'store');
-    Route::resource('user-settings', 'UserSettingController')->only('index');
+    Route::resource('user-settings', 'UserSettingController')->only('index', 'show');
     Route::resource('orders', 'OrderController');
     Route::get('orders/equip/{id}', 'OrderController@equip')->name('orders.equip');
     Route::post('orders/equip/{id}', 'OrderController@store_equip')->name('orders.equip.store');
+    Route::post('orders/pay/{order}', 'OrderController@getPayment')->name('orders.payment');
+    Route::get('orders/success/{order}', 'OrderController@orderSuccess')->name('order.success');
     Route::resource('order-products', 'OrderProductController');
     Route::resource('boutiques', 'BoutiqueController');
     Route::resource('beta-forms', 'BetaFormController');
@@ -77,13 +79,14 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::resource('ages', 'AgeController');
     Route::resource('feets', 'FeetController');
     Route::resource('measurements', 'MeasurementController');
-
-
     Route::get('profile', 'UserController@adminProfile');
     Route::get('edit-profile', 'UserController@adminEdit');
+    Route::resource('heights', 'HeightController');
+    Route::resource('height-metrics', 'HeightMetricController');
 });
 
 //Route::get('stripe-checkout', function() {
 //    return view('payments.stripe-checkout');
 //});
 Route::get('stripe-checkout', 'Admin\HomeController@stripe');
+Route::get('stripe-charge/{order}', 'Admin\HomeController@stripeCharge');
