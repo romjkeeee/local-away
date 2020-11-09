@@ -27,7 +27,7 @@ class UserPreferenceController extends Controller
      */
     public function index(Request $request)
     {
-        $data = auth()->user()->preference()->where('gender_id', $request->gender_id)->first();
+        $data = auth()->user()->preference()->orderByDesc('updated_at')->first();
         if ($data) {
             return response([
                 'status' => 'success',
