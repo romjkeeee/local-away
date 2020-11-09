@@ -3,13 +3,13 @@
 #---------------------------------------------------------------
 .common:
     tags:
-    - &ENV_TAG develop
+    - &ENV_TAG production
     only:
-    - &ENV_ONLY develop
+    - &ENV_ONLY master
 
 variables:
     CI_ENV_GIT: "git@peiko-git.space:CaptainNemo/localway.git"
-    CI_ENV_BRANCH: "develop"
+    CI_ENV_BRANCH: "master"
     CI_MYSQL_USER: ""
     CI_MYSQL_PASS: ""
 
