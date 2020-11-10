@@ -44,7 +44,7 @@
 {{--                            {{$data->address->city}}--}}
 {{--                    @endif--}}
                     <strong>{{ $data->user->first_name. ' ' . $data->user->last_name ?? '' }}</strong><br>
-                    {{ $data->address->address ?? '' }}, {{ $data->address->apartment ?? '' }}<br>
+                    {{ $data->address->address ?? '' }}, {{ $data->address->street_no ?? '' }}, {{ $data->address->apartment ?? '' }}<br>
                     {{ isset($data->address->country) ? $data->address->country  : 'no data' }}, {{ isset($data->address->city) ? $data->address->city : 'no data' }}
                     <br>
                     {{ $data->address->zip_code ?? '' }},{{ $data->address->state ?? '' }}<br>
