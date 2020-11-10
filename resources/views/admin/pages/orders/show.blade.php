@@ -96,7 +96,7 @@
                             @php($total_cost += $cost['all_cost_to'])
                             @php($cost_box += $cost['all_cost_to'])
                             <tr>
-                                <td>Travel box</td>
+                                <td>{{ $box->name }}</td>
                                 <td></td>
                                 <td></td>
                                 <td>1</td>
