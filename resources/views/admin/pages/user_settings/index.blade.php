@@ -46,7 +46,15 @@
                                         <td style="width: 100%">{{ $data['name'] }}</td>
                                     @endif
                                 @endforeach
-                                <td>{{ $user->height }}</td>
+                                @if(isset($user->height))
+                                <td>
+                                    @foreach($user->height as $key => $value)
+                                   {{ $key }} - {{ $value }}<br>
+                                    @endforeach
+                                </td>
+                                @else
+                                    <td></td>
+                                @endif
                                 @foreach($preference['feet'] as $data)
                                     @if($data['id'] == $user->feet)
                                         <td style="width: 100%">{{ $data['name'] ?? 'NO DATA'}}</td>
