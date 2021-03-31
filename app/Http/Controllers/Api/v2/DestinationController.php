@@ -4,13 +4,12 @@
 namespace App\Http\Controllers\Api\v2;
 
 
-use App\Http\Requests\v2\DestinationSearchRequest;
 use App\TravelStory;
 use Illuminate\Http\Request;
 
 class DestinationController
 {
-    public function index(DestinationSearchRequest $request)
+    public function index(Request $request)
     {
         $destinations = TravelStory::query()
             ->where('active', 1);
