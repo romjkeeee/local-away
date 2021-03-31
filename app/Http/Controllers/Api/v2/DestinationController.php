@@ -27,10 +27,10 @@ class DestinationController
             'status' => 'success',
             'data' => DestinationSearchCollection::collection($data->items()),
             'pagination' => [
-                'total' => $data->total(),
+                'perPage' => $data->perPage(),
                 'currentPage' => $data->currentPage(),
-                'next_page' => $data->nextPageUrl(),
-                'prev_page' => $data->previousPageUrl(),
+                'lastPage' => $data->lastPage(),
+                'total' => $data->total()
             ]
         ]);
     }
