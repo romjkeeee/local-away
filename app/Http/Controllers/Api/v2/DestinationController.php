@@ -4,6 +4,7 @@
 namespace App\Http\Controllers\Api\v2;
 
 
+use App\Http\Resources\v2\DestinationSearchCollection;
 use App\Qa;
 use App\TravelStory;
 use Illuminate\Http\Request;
@@ -24,7 +25,7 @@ class DestinationController
         $data = $destinations->paginate($request->perPage ?? 10);
         return response()->json([
             'status' => 'success',
-            'data' => $data->items(),
+            'data' => DestinationSearchCollection::collection($data->items()),
             'pagination' => [
                 'total' => $data->total(),
                 'currentPage' => $data->currentPage(),
