@@ -24,11 +24,13 @@ class DestinationController
         $data = $destinations->paginate();
         return response()->json([
             'status' => 'success',
-            'currentPage' => $data->currentPage(),
             'data' => $data->items(),
-            'total' => $data->total(),
-            'next_page' => $data->nextPageUrl(),
-            'prev_page' => $data->previousPageUrl(),
+            'pagination' => [
+                'total' => $data->total(),
+                'currentPage' => $data->currentPage(),
+                'next_page' => $data->nextPageUrl(),
+                'prev_page' => $data->previousPageUrl(),
+            ]
         ]);
     }
 }
