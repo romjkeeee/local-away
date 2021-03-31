@@ -21,7 +21,7 @@ class DestinationController
         {
             $destinations->where('alias', 'LIKE', '%' . $request->q . '%');
         }
-        $data = $destinations->paginate();
+        $data = $destinations->paginate($request->perPage ?? 10);
         return response()->json([
             'status' => 'success',
             'data' => $data->items(),
