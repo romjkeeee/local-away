@@ -17,9 +17,9 @@ class DestinationController
             $destinations->where('name', 'LIKE', $request->letter . '%');
         }
 
-        if ($request->query)
+        if ($request->q)
         {
-            $destinations->where('name', 'LIKE', '%' . $request->query . '%');
+            $destinations->where('name', 'LIKE', '%' . $request->q . '%');
         }
         $data = $destinations->paginate();
         return response()->json([
