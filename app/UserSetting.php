@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class UserSetting extends Model
 {
-    public $guarded = ['id'];
+    protected $guarded = ['id'];
 
     public function bodyType()
     {

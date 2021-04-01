@@ -33,7 +33,7 @@
                             <th>feet</th>
                             <th>age range</th>
                             <th>body type</th>
-                            <th>Sizing</th>
+{{--                            <th>Sizing</th>--}}
                         </tr>
                         </thead>
                         <tbody>
@@ -41,24 +41,47 @@
                             <tr>
                                 <td>{{ $user->id }}</td>
                                 <td>{{ $user->user->first_name . ' ' . $user->user->last_name ?? '' }}</td>
+                                @php($measurement = false)
                                 @foreach($preference['measurement'] as $data)
                                     @if($data['id'] == $user->measurement)
+                                        @php($measurement = true)
                                         <td style="width: 100%">{{ $data['name'] }}</td>
                                     @endif
                                 @endforeach
-                                <td>{{ $user->height }}</td>
+                                @if(!$measurement)
+                                    <td></td>
+                                @endif
+                                @if(isset($user->height))
+                                    <td>
+                                        @foreach($user->height as $key => $value)
+                                            {{ $key }} - {{ $value }}<br>
+                                        @endforeach
+                                    </td>
+                                @else
+                                    <td></td>
+                                @endif
+                                @php($feet = false)
                                 @foreach($preference['feet'] as $data)
                                     @if($data['id'] == $user->feet)
+                                        @php($feet = true)
                                         <td style="width: 100%">{{ $data['name'] ?? 'NO DATA'}}</td>
                                     @endif
                                 @endforeach
+                                @if(!$feet)
+                                    <td></td>
+                                @endif
+                                @php($age = false)
                                 @foreach($preference['age'] as $data)
                                     @if($data['id'] == $user->age)
+                                        @php($age = true)
                                         <td style="width: 100%">{{ $data['name'] ?? 'NO DATA' }}</td>
                                     @endif
                                 @endforeach
+                                @if(!$age)
+                                    <td></td>
+                                @endif
                                 <td>{{ $user->bodyType->title ?? 'NO DATA' }}</td>
-                                <td><a href="{{ route('user-settings.show',$user->id) }}"><i class="fas fa-eye"></i></a>
+                                {{--                                <td><a href="{{ route('user-settings.show',$user->id) }}"><i class="fas fa-eye"></i></a>--}}
                                 </td>
                             </tr>
                         @endforeach

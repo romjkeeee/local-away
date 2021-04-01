@@ -82,7 +82,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::get('profile', 'UserController@adminProfile');
     Route::get('edit-profile', 'UserController@adminEdit');
     Route::resource('heights', 'HeightController');
-    Route::resource('height-metrics', 'HeightMetricController');
+//    Route::resource('height-metrics', 'HeightMetricController');
 });
 
 //Route::get('stripe-checkout', function() {
