@@ -4,6 +4,7 @@
 namespace App\Http\Controllers\Api\v2;
 
 
+use App\Destination;
 use App\Http\Resources\v2\DestinationSearchCollection;
 use App\Qa;
 use App\TravelStory;
@@ -13,7 +14,7 @@ class DestinationController
 {
     public function index(Request $request)
     {
-        $destinations = Qa::query()
+        $destinations = Destination::query()
             ->where('status',1);
         if ($request->letter) {
             $destinations->where('name', 'LIKE', $request->letter . '%');
