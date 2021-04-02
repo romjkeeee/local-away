@@ -13,14 +13,15 @@ class DestinationController
 {
     public function index(Request $request)
     {
-        $destinations = Qa::query();
+        $destinations = Qa::query()
+            ->where('status',1);
         if ($request->letter) {
-            $destinations->where('alias', 'LIKE', $request->letter . '%');
+            $destinations->where('name', 'LIKE', $request->letter . '%');
         }
 
         if ($request->q)
         {
-            $destinations->where('alias', 'LIKE', '%' . $request->q . '%');
+            $destinations->where('name', 'LIKE', '%' . $request->q . '%');
         }
         $data = $destinations->paginate($request->perPage ?? 10);
         return response()->json([
