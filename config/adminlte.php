@@ -433,6 +433,10 @@ return [
 //            'icon'        => 'fas fa-fw fa-angry',
 //        ],
         [
+            'text' => 'Destination',
+            'url' => 'admin/destinations',
+            'icon' => 'fas fa-fw fa-map-pin',
+        ],[
             'text' => 'Q&A',
             'url' => 'admin/qas',
             'icon' => 'fas fa-fw fa-question',
