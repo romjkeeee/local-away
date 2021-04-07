@@ -137,4 +137,5 @@ Route::group(['namespace' => 'Api\V1', 'as' => 'api.'], function () {
 
 Route::group(['namespace' => 'Api\v2', 'as' => 'api2.', 'prefix' => 'v2'], function () {
     Route::get('destination', 'DestinationController@index');
+    Route::post('subscribe', 'SubscribeController@create');
 });
