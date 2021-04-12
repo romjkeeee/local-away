@@ -24,7 +24,7 @@ class CreateSubscribeRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'string',
+            'name' => 'nullable|string',
             'email' => 'required|string|email',
         ];
     }
