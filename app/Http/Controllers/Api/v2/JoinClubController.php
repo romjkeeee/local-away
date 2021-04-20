@@ -21,7 +21,7 @@ class JoinClubController
         return response([
             'status' => 'success',
             'data' => JoinClub::query()->create($request->validated()),
-            'message' => 'You success send request.'
+            'message' => 'Your request has been successfully sent!.'
         ], 201);
     }
 }
