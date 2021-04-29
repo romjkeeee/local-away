@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class DestinationStory extends Model
@@ -19,5 +20,10 @@ class DestinationStory extends Model
     public function destination(): HasOne
     {
         return $this->hasOne(Destination::class, 'id','destination_id');
+    }
+
+    public function subDestinations(): HasMany
+    {
+        return $this->hasMany(SubDestination::class, 'destination_story_id','id');
     }
 }
