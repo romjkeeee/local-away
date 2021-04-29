@@ -12,11 +12,11 @@
     @endif
     <div class="card card-secondary">
         <div class="card-header">
-            <h3 class="card-title">Create Sub destination</h3>
+            <h3 class="card-title">Create Destination stories</h3>
         </div>
         <div class="panel panel-default">
             <div class="card-body">
-                {{ Form::open(['route' => ['sub-destinations.store'], 'file' => true, 'method' => 'POST','enctype'=>'multipart/form-data']) }}
+                {{ Form::open(['route' => ['destination-stories.store'], 'file' => true, 'method' => 'POST','enctype'=>'multipart/form-data']) }}
                 {{ csrf_field() }}
                 <div class="form-group">
                     {{ Form::label('Destination') }}
