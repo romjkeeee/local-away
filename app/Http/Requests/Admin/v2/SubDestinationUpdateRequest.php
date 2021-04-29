@@ -27,7 +27,7 @@ class SubDestinationUpdateRequest extends FormRequest
             'destination_story_id'      => 'required|integer|exists:destination_stories,id',
             'name'                      => 'required|string',
             'api_city'                  => 'required|string',
-            'image'                     => 'image|dimensions:max_width=1264,max_height=x280',
+            'image'                     => 'image|dimensions:max_width=1264,max_height=280',
         ];
     }
 }
