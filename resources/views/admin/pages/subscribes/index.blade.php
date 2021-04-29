@@ -27,6 +27,7 @@
                         <thead>
                         <tr>
                             <th>id</th>
+                            <th>name</th>
                             <th>email</th>
                         </tr>
                         </thead>
@@ -34,6 +35,7 @@
                         @foreach ($data as $user)
                             <tr>
                                 <td>{{ $user->id }}</td>
+                                <td>{{ $user->name }}</td>
                                 <td style="width: 100%">{{ $user->email }}</td>
                             </tr>
                         @endforeach

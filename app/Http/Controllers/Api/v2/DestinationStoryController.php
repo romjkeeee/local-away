@@ -16,9 +16,15 @@ class DestinationStoryController extends Controller
             ->where('status',1)
             ->with('subDestinations')
             ->first();
+        if ($data) {
+            return response()->json([
+                'status' => 'success',
+                'data' => DestinationStoryCollection::make($data)
+            ]);
+        }
         return response()->json([
-            'status' => 'success',
-            'data' => DestinationStoryCollection::make($data)
-        ]);
+            'status' => 'error',
+            'message' => 'Destination not found'
+        ], 404);
     }
 }
