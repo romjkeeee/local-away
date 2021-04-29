@@ -14,10 +14,10 @@ class DestinationStoryController extends Controller
         $data = DestinationStory::query()
             ->where('destination_id',$id)
             ->with('subDestinations')
-            ->get();
+            ->first();
         return response()->json([
             'status' => 'success',
-            'data' => DestinationStoryCollection::collection($data)
+            'data' => DestinationStoryCollection::make($data)
         ]);
     }
 }
