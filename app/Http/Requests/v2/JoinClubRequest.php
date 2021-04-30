@@ -24,6 +24,7 @@ class JoinClubRequest extends FormRequest
     public function rules()
     {
         return [
+            'form'  => 'nullable|integer',
             'name'  => 'required|string',
             'email'  => 'required|email',
             'phone'  => 'required|numeric',

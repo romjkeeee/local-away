@@ -331,6 +331,11 @@ return [
                     'url' => 'admin/beta-forms',
                     'icon' => 'far fa-fw fa-circle nav-icon',
                 ],
+                [
+                    'text' => 'Join Club Form',
+                    'url' => 'admin/join-club',
+                    'icon' => 'far fa-fw fa-circle nav-icon',
+                ],
             ],
         ],
         [

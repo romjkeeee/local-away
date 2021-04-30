@@ -88,6 +88,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
         Route::resource('destinations', 'DestinationController');
         Route::resource('destination-stories', 'DestinationStoryController');
         Route::resource('sub-destinations', 'SubDestinationController');
+        Route::get('join-club', 'JoinClubController@index');
     });
 });
 
