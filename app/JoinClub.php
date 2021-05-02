@@ -12,6 +12,7 @@ class JoinClub extends Model
         'phone',
         'country',
         'zip_code',
+        'form'
     ];
 
 }

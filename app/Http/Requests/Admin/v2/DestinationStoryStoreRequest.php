@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\v2;
+namespace App\Http\Requests\Admin\v2;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class JoinClubRequest extends FormRequest
+class DestinationStoryStoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,12 +24,10 @@ class JoinClubRequest extends FormRequest
     public function rules()
     {
         return [
-            'form'  => 'nullable|integer',
-            'name'  => 'required|string',
-            'email'  => 'required|email',
-            'phone'  => 'required|numeric',
-            'country'  => 'required|string',
-            'zip_code'  => 'required|regex:/^[0-9]{5}(?:-[0-9]{4})?$/',
+            'destination_id'    => 'required|integer|exists:destinations,id',
+            'name'              => 'required|string',
+            'description'       => 'required|string',
+            'image'             => 'required|image|dimensions:max_width=544,max_height=240',
         ];
     }
 }

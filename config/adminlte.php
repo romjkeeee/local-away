@@ -331,6 +331,11 @@ return [
                     'url' => 'admin/beta-forms',
                     'icon' => 'far fa-fw fa-circle nav-icon',
                 ],
+                [
+                    'text' => 'Join Club Form',
+                    'url' => 'admin/join-club',
+                    'icon' => 'far fa-fw fa-circle nav-icon',
+                ],
             ],
         ],
         [
@@ -433,10 +438,27 @@ return [
 //            'icon'        => 'fas fa-fw fa-angry',
 //        ],
         [
-            'text' => 'Destination',
-            'url' => 'admin/destinations',
-            'icon' => 'fas fa-fw fa-map-pin',
-        ],[
+            'text' => 'Shopping page',
+            'icon' => 'fas fa-fw fa-list',
+            'submenu' => [
+                [
+                    'text' => 'Destination',
+                    'url' => 'admin/destinations',
+                    'icon' => 'far fa-fw fa-circle nav-icon',
+                ],
+                [
+                    'text' => 'Destination Story',
+                    'url' => 'admin/destination-stories',
+                    'icon' => 'far fa-fw fa-circle nav-icon',
+                ],
+                [
+                    'text' => 'Sub Destination',
+                    'url' => 'admin/sub-destinations',
+                    'icon' => 'far fa-fw fa-circle nav-icon',
+                ],
+            ],
+        ],
+        [
             'text' => 'Q&A',
             'url' => 'admin/qas',
             'icon' => 'fas fa-fw fa-question',
